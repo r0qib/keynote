@@ -107,20 +107,21 @@ export default function App() {
   const progressPercent = ((current + 1) / total) * 100;
 
   return (
-    <div className="relative w-screen h-screen bg-[#000000] flex items-center justify-center p-3 md:p-6 lg:p-8 overflow-hidden select-none">
+    <div className="relative w-screen h-screen bg-[#000000] flex items-center justify-center p-3 md:p-5 overflow-hidden select-none">
       
       {/* 
         MacBook Liquid-Retina Style Screen Canvas 
-        Curved corners: rounded-[32px] md:rounded-[40px]
+        Curved corners: rounded-[28px] md:rounded-[36px]
         Framed seamlessly against pure black outer bezel
+        Pure CSS 16:9 widescreen: fits both width and height dynamically!
       */}
-      <main className="w-full h-full max-w-[1720px] aspect-video bg-[#FAFAFB] slide-canvas relative rounded-[32px] md:rounded-[40px] shadow-[0_25px_85px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.08)] overflow-hidden flex flex-col">
+      <main className="w-full max-w-[calc((100vh-2.5rem)*16/9)] max-h-full aspect-video bg-[#FAFAFB] slide-canvas relative rounded-[28px] md:rounded-[36px] shadow-[0_25px_85px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.08)] overflow-hidden flex flex-col">
         
         {/* 
           Floating Inset Progress Indicator 
           Inset from top with padding, perfectly rounded pill, never cuts corners!
         */}
-        <div className="absolute top-5 left-1/2 -translate-x-1/2 w-32 h-1 bg-neutral-200/50 rounded-full overflow-hidden z-30 pointer-events-none">
+        <div className="absolute top-5 left-1/2 -translate-x-1/2 w-32 3xl:w-48 h-1 3xl:h-1.5 bg-neutral-200/50 rounded-full overflow-hidden z-30 pointer-events-none">
           <motion.div 
             className="h-full bg-neutral-900 rounded-full"
             initial={false}

@@ -31,6 +31,6 @@ This presentation is designed for clean, distraction-free conference talks with 
 
 ## 🎨 Frame Design Details
 
-- **Aspect Ratio:** Strict 16:9 canvas (`max-w-[1720px]`).
+- **Aspect Ratio:** Strict 16:9 widescreen canvas dynamically optimized for 1080p, 2K, and 4K displays.
 - **MacBook Bezel:** Deep pure black surround (`#000000`) with high-precision Apple-style rounded corners (`rounded-[36px]`).
 - **Projector Optimized:** Crisp off-white interior (`#FAFAFB`) ensuring readability under any lighting.
