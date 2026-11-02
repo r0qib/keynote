@@ -1,0 +1,15 @@
+<svg viewBox="0 4 134 30" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#21172a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+  <!-- analytiQ wordmark (light). Mirrors src/app/shared/components/app-logo; the Q's tail is a deviated well path. -->
+  <circle cx="9.5" cy="19" r="7"/>
+  <path d="M16.5 12v14"/>
+  <path d="M22.5 12v14M22.5 19a7 7 0 0 1 14 0v7"/>
+  <circle cx="49.5" cy="19" r="7"/>
+  <path d="M56.5 12v14"/>
+  <path d="M62.5 6v20"/>
+  <path d="M68.5 12l7 14M82.5 12l-10 20"/>
+  <path d="M91.5 7v15a4 4 0 0 0 4 4h1M87.5 12h9"/>
+  <path d="M101.5 12v14M101.5 6.5h0"/>
+  <circle cx="118" cy="16" r="10"/>
+  <path stroke="#ee853b" d="M118 6v5.5c0 6.5 4 11 12.5 17"/>
+  <circle fill="#ee853b" stroke="none" cx="130.5" cy="28.5" r="2.6"/>
+</svg>
