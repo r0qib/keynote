@@ -10,6 +10,7 @@ This presentation is designed for clean, distraction-free conference talks with 
 | :--- | :--- | :--- |
 | **`→`** / **`Space`** / **`Enter`** / **`PageDown`** | **Next slide** | Advances with smooth forward motion |
 | **`←`** / **`Backspace`** / **`PageUp`** | **Previous slide** | Steps back with reverse motion |
+| **`P`** | **Open Presenter View** | Opens private dual-screen window with cues, notes, and pacing |
 | **`F`** | **Toggle Fullscreen** | Blends the black outer bezel into the projector |
 | **`O`** or **`Esc`** | **Slide Navigator** | Opens thumbnail/overview jump drawer |
 | **`Home`** | **Jump to Start** | Goes directly to Slide 01 |

@@ -16,12 +16,42 @@
     user-select: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #000000;
   }
 }
 
-/* Subtle dot grid or canvas background for high-end presentation feel */
+/* 
+  Solid off-white presentation canvas (#FAFAFB)
+  Teams Screen-Share Optimization: 
+  NO dot grid, NO repeating pattern, NO gradient banding
+*/
 .slide-canvas {
   background-color: #FAFAFB;
-  background-image: radial-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 0);
-  background-size: 32px 32px;
+}
+
+/* Custom scrollbars for notes and overview modal */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.presenter-dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.presenter-dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
 }

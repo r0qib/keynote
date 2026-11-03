@@ -2,45 +2,44 @@
 export const appleEase = [0.16, 1, 0.3, 1];
 export const playfulEase = [0.34, 1.56, 0.64, 1];
 
-export const springPhysics = {
+// Resilient spring configs that also act as safe callable fallbacks if passed directly to ease
+function createSpringConfig(config) {
+  const fn = function(t) { return t; };
+  return Object.assign(fn, config);
+}
+
+export const springPhysics = createSpringConfig({
   type: 'spring',
   stiffness: 280,
   damping: 22,
-};
+});
 
-export const bouncierSpring = {
+export const bouncierSpring = createSpringConfig({
   type: 'spring',
   stiffness: 400,
   damping: 18,
-};
+});
 
 // Resilient, smooth slide transitions that never leave white/blank screens
 export const slideVariants = {
   initial: (direction) => ({
     opacity: 0,
-    x: direction > 0 ? 60 : -60,
-    scale: 0.98,
+    x: direction > 0 ? 24 : -24,
   }),
   animate: {
     opacity: 1,
     x: 0,
-    scale: 1,
     transition: {
-      duration: 0.5,
+      duration: 0.2,
       ease: appleEase,
-      when: 'beforeChildren',
-      staggerChildren: 0.08,
     },
   },
-  exit: (direction) => ({
+  exit: {
     opacity: 0,
-    x: direction > 0 ? -40 : 40,
-    scale: 0.985,
     transition: {
-      duration: 0.35,
-      ease: appleEase,
+      duration: 0.05,
     },
-  }),
+  },
 };
 
 export const fadeUp = {
