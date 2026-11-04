@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { colors } from '../../theme.js';
 
-function Avatar({ from }) {
+export function ChatAvatar({ from }) {
   if (from === 'me') {
     return <span className="block rounded-full flex-shrink-0" style={{ width: 56, height: 56, backgroundColor: colors.mascot }} />;
   }
@@ -24,7 +24,7 @@ export default function ChatTurn({ from = 'ai', children, mono = false, classNam
       style={style}
       {...motionProps}
     >
-      <Avatar from={from} />
+      <ChatAvatar from={from} />
       <div
         className={`bg-surface border-2 border-line rounded-[28px] px-[36px] py-[24px] text-body text-ink ${mono ? 'font-mono' : ''}`}
         style={{ borderTopLeftRadius: isMe ? 28 : 8, borderTopRightRadius: isMe ? 8 : 28 }}

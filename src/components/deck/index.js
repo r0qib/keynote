@@ -6,6 +6,6 @@ export { default as ChapterCard } from './ChapterCard.jsx';
 export { default as ActShape, ACT_SHAPE_PATHS } from './ActShape.jsx';
 export { default as Mascot, mascotSrc } from './Mascot.jsx';
 export { default as TypingBubble } from './TypingBubble.jsx';
-export { default as ChatTurn } from './ChatTurn.jsx';
+export { default as ChatTurn, ChatAvatar } from './ChatTurn.jsx';
 export { default as CodeWindow } from './CodeWindow.jsx';
 export { default as CanvasBackground } from './CanvasBackground.jsx';

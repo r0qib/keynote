@@ -43,3 +43,5 @@
 - 2026-11-05 · B3 · S09 claims are verbatim verified fragments (Cognition/Devin 2024, OpenAI/Codex 2025, Anthropic/Claude Opus 4 2025), date order; sources in missing-pieces § Facts
 - 2026-11-05 · B3 · S09 and S11 use the light CodeWindow so "my terminal" looks the same on both; S09 caret static (no ambient loop)
 - 2026-11-05 · B3 · S10 has no headline (spec "No other copy"); S11 b0 centres the headline then glides it up at b1 · avoids an empty b0
+- 2026-11-05 · B4 · S12 attempt 3 overshoots (circle with parts bolted on) · reads as "architecture"; dart markers carry glyphs, not numbers
+- 2026-11-05 · B4 · S13 TOC scroll and mascot wobble are one-shot · §4.5 allows no ambient loop on S13

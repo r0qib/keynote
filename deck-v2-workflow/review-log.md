@@ -24,3 +24,9 @@ Reviewers always find something. HIGH/MEDIUM get fixed in the batch; LOW and lef
 - LOW · S09 b0: claim 1 at the top of the dark panel with ~60% empty until b1 (slots reserved). Consider centring then sliding up.
 - LOW · S09 claim 2 "Can work on many tasks in parallel." is a capitalised mid-sentence fragment (logged as verbatim fragment).
 - LOW · S11 b1/b2: ~150 px dead space at the bottom of the code window (fixed height avoids jumps; sound).
+
+## B4 (review PASS)
+- LOW · S12 b4: dart-marker glyphs small (~36 px, 5 px strokes); r 44 / stroke 6 would survive Teams 720p.
+- LOW · S12 b0: chat column and canvas mostly empty; a larger ghost circle would fill the canvas.
+- LOW · S13 b0: single 40 px prompt pill in an empty stage; ~48 px would hold it better.
+- LOW · S13 b2: ~170 px empty strip under the last TOC line; window height ~680.

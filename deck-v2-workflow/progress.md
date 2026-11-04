@@ -2,7 +2,7 @@
 
 Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, reviewed, committed) · `[!]` blocked (reason logged).
 
-**next:** B4
+**next:** B5
 
 ---
 
@@ -56,13 +56,13 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Scope:** `src/slides/S05_TimeBack.jsx`, `S06_Manuals.jsx`, `S07_Poll.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S05,S06,S07`.
 
-### [x] B3 · The Bad (1): S09, S10, S11
+### [x] B3 · The Bad (1): S09, S10, S11 · d2644bb
 - **Legacy:** `S11_KeynoteVsTerminal`, `S12_NinetyNine`, `S13_DidYouRead`.
 - **Notes:** S09 needs real, verified vendor claims (WebFetch the official announcements; log URLs in `missing-pieces.md § Facts`). S11 uses one large `CodeWindow`.
 - **Scope:** `src/slides/S09_KeynoteVsTerminal.jsx`, `S10_NinetyNine.jsx`, `S11_DidYouRead.jsx`, manifest entries, `deck-v2-workflow/missing-pieces.md` (append).
 - **Verify:** build; `snap --slides S09,S10,S11`.
 
-### [ ] B4 · The Bad (2): S12, S13
+### [x] B4 · The Bad (2): S12, S13
 - **Legacy:** `S14_Circle`, `S15_Overengineered`.
 - **Scope:** `src/slides/S12_Circle.jsx`, `S13_Overengineered.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S12,S13`.

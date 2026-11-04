@@ -45,3 +45,4 @@ React 18 + Vite 5 + Tailwind 3 + Framer Motion 11 + lucide-react. `npm run build
 - **SlideFrame** is `flex flex-col`; a `flex-row` className won't win. Nest a `flex flex-1` div for row layouts.
 - **Headline** size overrides: use `style={{ fontSize }}`, not a className (conflicts with `text-headline`).
 - **openai.com blocks WebFetch/curl (403);** verify via `web.archive.org/web/<date>/<url>`.
+- **ChatAvatar** (named export) gives typing rows the same avatar as ChatTurn AI turns.
