@@ -35,3 +35,7 @@ Reviewers always find something. HIGH/MEDIUM get fixed in the batch; LOW and lef
 ## B5
 - LOW · S15 code: BIG_* constants mirror TypingBubble internals by hand; export a helper if reused.
 - LOW · S17 b0: Enter key idle colour #8A8A96 on #2C2D35 is low contrast (decorative).
+
+## B6
+- LOW · S20 b0: corner badge has weak contrast on the purple gradient (shell chrome); Z1 could add a light text shadow on dark canvases.
+- LOW · S19: raw hex "#F1F1F4" triangle fill → theme token.

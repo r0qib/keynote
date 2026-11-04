@@ -48,3 +48,4 @@ React 18 + Vite 5 + Tailwind 3 + Framer Motion 11 + lucide-react. `npm run build
 - **ChatAvatar** (named export) gives typing rows the same avatar as ChatTurn AI turns.
 - **Framer `layout`/`layoutId` misbehave inside the scaled Stage** (page-px deltas applied in design px). For morphs, measure offsetLeft/offsetTop and animate x/y/scale yourself (see S15 `offsetWithin`).
 - **TypingBubble** `dots={false}` draws just the bubble.
+- **Reviewers keep flagging under-scaled slides (B2, B5).** Size for a Teams share: the main visual should fill most of the safe area (≈1680×888), no empty band > ~200 px, body text ≥ 36 px, mock UI text ≥ 24 px where it must be read, strokes ≥ 6 px on big shapes.

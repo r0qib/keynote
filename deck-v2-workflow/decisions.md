@@ -49,3 +49,6 @@
 - 2026-11-05 · B5 · S16 cost weights "Tokens" (b1) and "Time" (b2); framework names only · minimal, no unverified attributions
 - 2026-11-05 · B5 · S18 cuts Plan in b2 with Spec/Test/QA · spec says "until only Implement is left"
 - 2026-11-05 · B5 · S18 no elephant icon; meter uses a Coins icon instead of a label · spec "if at all"
+- 2026-11-05 · B6 · S21 totalBuilds 3 → 2: three escalation states, the "me" bubbles are the headline, older bubbles shrink/mute · spec lists exactly three states
+- 2026-11-05 · B6 · S22 log is `git log --oneline --reverse` (newest at bottom); spec's c4d2a8 dropped to fit 4 builds
+- 2026-11-05 · B6 · S20 slop page is one full-stage layer that shrinks to a 0.5 framed thumbnail; "purple" in the headline uses the slop gradient

@@ -70,8 +70,8 @@ export const slideManifest = [
     'The triangle. [1] Running between corners. [2] The collapse.', { cutTier: 'A' }),
   s('S20', 'slop', 'Everything is purple now.', 'Slop', 'Ugly', 1.25, 2, 'S20_Slop',
     'Let the slop land. [1] Back to clean. [2] Our principles, not its defaults.', { canvas: [SLOP_GRADIENT, '#FAFAFB'] }),
-  s('S21', 'make-no-mistakes', 'Make it better. Make no mistakes.', 'Prompting', 'Ugly', 1.0, 3, 'S21_MakeNoMistakes',
-    "It's on us: lazy prompts. [1] [2] [3] The escalation."),
+  s('S21', 'make-no-mistakes', 'Make it better. Make no mistakes.', 'Prompting', 'Ugly', 1.0, 2, 'S21_MakeNoMistakes',
+    "It's on us: my lazy prompt. [1] Make no mistakes. [2] MAKE. NO. MISTAKES."),
   s('S22', 'meat-proxy', "Don't be a meat proxy.", 'Meat proxy', 'Ugly', 1.5, 5, 'S22_MeatProxy',
     'Client, me, AI. [1]-[4] The commit log, ending on "who is JSON?". [5] The model said so.'),
 

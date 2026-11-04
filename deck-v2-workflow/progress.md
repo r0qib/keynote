@@ -2,7 +2,7 @@
 
 Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, reviewed, committed) · `[!]` blocked (reason logged).
 
-**next:** B6
+**next:** B7
 
 ---
 
@@ -67,12 +67,12 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Scope:** `src/slides/S12_Circle.jsx`, `S13_Overengineered.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S12,S13`.
 
-### [x] B5 · The Ugly (1): S15, S16, S17, S18
+### [x] B5 · The Ugly (1): S15, S16, S17, S18 · 2664410
 - **Legacy:** `S18_Thinking`, `S19_Frameworks`, `S20_SayVsDo`, `S21_Elephant`.
 - **Scope:** `src/slides/S15_Thinking.jsx`, `S16_Frameworks.jsx`, `S17_SayVsDo.jsx`, `S18_Elephant.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S15,S16,S17,S18`.
 
-### [ ] B6 · The Ugly (2): S19, S20, S21, S22
+### [x] B6 · The Ugly (2): S19, S20, S21, S22
 - **Legacy:** `S22_PickTwo`, `S23_Slop`, `S16_MakeNoMistakes`, `S24_MeatProxy`. See `drafts/slide_feedback/feedback_images/s24.png`.
 - **Scope:** `src/slides/S19_ThreeBody.jsx`, `S20_Slop.jsx`, `S21_MakeNoMistakes.jsx`, `S22_MeatProxy.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S19,S20,S21,S22`.
