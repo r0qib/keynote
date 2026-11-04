@@ -1,1012 +1,629 @@
-# Slide Deck Plan: AI-Assisted Development: The Good, the Bad and the Ugly
+# Slide Deck Plan v2: AI-Assisted Development: The Good, the Bad and the Ugly
 
-> This file covers **what the audience sees**: every slide's headline, its minimal on-screen content, its visual, and its click-by-click build.
-> What the presenter needs per slide (the point, reminders, punchlines, poll callbacks, timing) is in [`presenter-notes.md`](./presenter-notes.md), together with the poll questions and the Q&A backup.
-> Both files use the same slide IDs (`S01` … `S43`) and the same build numbers, so `[2]` in the notes is build 2 here.
+> **What this file is:** the source of truth for **what the audience sees**. It gives each slide's idea, its minimal on-screen copy, its visual and its click-by-click builds.
+> **Presenter-side material** (talking points, story beats, timings, jokes) lives in [`presenter-notes.md`](./presenter-notes.md), plus an optional full script in [`presenter-script.md`](./presenter-script.md). Both are regenerated from this plan by the v2 run.
+> **How it gets built:** [`deck-v2-workflow/README.md`](../../deck-v2-workflow/README.md).
+> **v1 of this plan** is in git history and on the branch `snapshot/pre-deck-v2`.
+> Slide IDs are new in v2 (S01–S43). Builds are numbered as in v1: `0` is the state on entry, and each further number is one press of `→`.
 
 ---
 
 ## 1. The talk in one breath
 
-AI is genuinely good for us (**The Good**). It is also unreliable in very specific, very funny ways (**The Bad**: that part is the AI). The worst problems, though, come from how *we* use it: waiting, saying we follow frameworks we can't afford to follow properly, budget games, slop and becoming a meat proxy (**The Ugly**: that part is us). The ugly part is the one we can fix, so the last chapter (**Making It Good**) shows how: become the orchestrator, use the time we got back to add value, plan first, right-size the process, and run feature-specific workflows that are cheap, resumable and trustworthy.
+AI is genuinely good for us (**The Good**). It is also unreliable in very specific, very funny ways (**The Bad**: that part is the AI). The worst problems, though, come from how *we* use it (**The Ugly**: that part is us). The ugly part is the one we can fix (**Making It Count**): the role shift, using the time we got back to raise the bar, and planning first. Then the centrepiece: **How We Work**, the custom AI workflow the InformatiQ team runs on complex features. Halfway through, a number appears with no explanation: **$25,000**. The **epilogue** pays it off: the "unlimited" subscription, going all in, the morning access was revoked, and the two technical lessons we learned the hard way. They're the reason the workflow looks the way it does.
 
-**The line the talk pivots on:** *"The Bad is the AI. The Ugly… is us."*
+**Two jobs, one deck:**
+1. An honest, funny, useful talk about the good, the bad and the ugly of AI-assisted development.
+2. A quiet showcase of the InformatiQ team: the products we built (S02), how seriously we engineer with AI (S30–S37), and how we share it (S42). Team stats (budgets, usage, adoption) are **spoken, never shown**.
+
+**Pivot line (spoken on S14):** *"The Bad is the AI. The Ugly… is us."*
 
 ---
 
-## 2. Shape of the talk
+## 2. Shape of the talk (~60 min total, ~51 min talking + Q&A)
 
-| Chapter | Slides | Time | Purpose |
+| Chapter | Slides | Talk time | Purpose |
 | --- | --- | --- | --- |
-| Opening | S01–S04 | ~5 min | Who we are, the wrong-slide gag, the agenda |
-| I · The Good | S05–S08 | ~5.75 min | Honest credit: time back, the user-manual win, the "day one" magic |
-| Poll | S09 | ~3.5 min | Between The Good and The Bad (opens at ~10:45). Its answers feed The Bad and The Ugly |
-| II · The Bad | S10–S16 | ~9.5 min | AI's quirks: promises vs. reality, not listening, the last 20%, overengineering. Each gets one spoken line on *why* it happens |
-| III · The Ugly | S17–S24 | ~15 min | Our side: waiting, great frameworks we can't always afford to follow, the budget elephant, slop, meat proxies |
-| IV · Making It Good | S25–S42 | ~33.5 min | Role shift, value add, plan-first, feature-specific workflows (S29–S38, ~20 min, ≈25% of the talk, discussed on the slides with no live demo), cost tricks, finale |
-| Q&A | S43 | ~7.5 min | Questions (humans only) |
-| **Total** | **43 slides** | **~80 min** | 4 of the slides are 15-second chapter cards |
+| Opening | S01–S03 | ~3.5 min | Title (plays while people join), our products, agenda |
+| I · The Good | S04–S06 | ~3.5 min | Time back, user manuals |
+| Poll | S07 | ~2 min | Anonymous poll; answers are read back later |
+| II · The Bad | S08–S13 | ~6.5 min | The AI's quirks |
+| III · The Ugly | S14–S22 | ~10 min | Our side of it |
+| IV · Making It Count | S23–S28 | ~6.5 min | Role shift, raising the bar, plan-first, then the $25,000 teaser |
+| V · How We Work | S29–S37 | ~12.5 min | The workflow centrepiece |
+| Epilogue · The $25,000 lesson | S38–S41 | ~5.5 min | The story and the two hard lessons (no chapter number, so the reveal isn't spoiled) |
+| Close | S42–S43 | ~1.5 min + Q&A | Share it, then questions |
 
-**Structural trick:** Act IV answers Act III **in reverse order**: meat proxy → role shift, slop → "make it better", waiting → plan-for-hours, frameworks we can't always follow → one workflow per feature that borrows their best ideas, budget elephant → receipts and cost tricks. The audience feels each problem being closed, without the deck ever saying "problem / solution".
+The cut tiers in §5 can save about 6 more minutes if a rehearsal runs long.
 
-**Expectation setting:** the agenda (S04) tells the audience up front that Making It Good is the longest chapter. Knowing the fix is coming keeps people with us through the Ugly.
-
----
-
-## 3. Through-lines and callbacks
-
-These make the deck feel like one story (project rule 12). Most of them are **shared-element transitions**: the same object carries across slides.
-
-| # | Set up | Paid off | What carries over |
-| --- | --- | --- | --- |
-| 1 | S03 wrong slide ("How AI Will Destroy the Human Race") | S42: the five-step plan is revealed, then flips into the five takeaways | Same title, same globe illustration |
-| 2 | S06 "We got our time back" (empty calendar) | S18 (spent waiting) → S27 (spent on value) | The empty calendar block |
-| 3 | S08 progress bar rockets to 80% | S14: stuck, jittering 81 → 79 → 82 → 78 | Same progress bar |
-| 4 | S18 spiky "your focus" line | S29: morphs into a long flat flow plateau | Same chart line |
-| 5 | S23 purple slop page | S28: the "With AI" slop gag | Same slop styling |
-| 6 | S24 meat-proxy blob in the pipe | S26: the same blob becomes the orchestrator (meat-think) | The blob |
-| 7 | S11 "You're absolutely right!" | S42 doom step 2 | The phrase |
-| 8 | S03 eraser wipe | S28: the same eraser wipes the slop away | The eraser |
-| 9 | S28 the polished data grid | S29+: "so how did we build it?" (the real data-grid overhaul) | Narrative bridge |
-| 10 | S09 poll | Called back verbally on S11, S18, S20, S21, S24, S26, S30, S43 | Spoken results |
-| 11 | S02 "someone on a rig reads the wrong number" | S36: "remember the rig? This is why we check." | Spoken (the stakes line) |
-| 12 | S13 `✓ All tests pass` after `it.skip` | S36: all-green checks that still hide bugs | The green check |
-| 13 | S18 "context rot (yours)" | S33 "context rot (the chat's)" | The caption |
-| 14 | S28 slop grid broken at 1280 px | S36 browser frame at 1280 px | The "1280 px" width label |
+**Story devices (each replaces something v1 had):**
+- **The $25,000 open loop.** S28 shows the number with no explanation. S38 brings back the identical number in the identical position, then tells the story. This replaces v1's wrong-slide / doom-flip callback.
+- **The workflow map.** S30 introduces 4 stations (Gather · Plan · Orchestrate · Remember). Each later V slide shows a small "you are here" mini-map in the same place.
+- **The mascot** (the pink "meat" blob) is *the engineer, meaning me/us*. It is the recurring character (§4.6).
+- **Visual rhymes, not shared elements.** Slides are separate components, so "carry-overs" are done by placing the same element at the same position, size and colour at the end of one slide and the start of the next.
 
 ---
 
-## 4. Global design rules
+## 3. Copy principles (apply to every slide; these come straight from the feedback)
 
-### 4.1 Visual system (kept from the current deck, then tightened)
+1. **The slide shows; the presenter tells.** No captions that explain the slide, no meta labels, no "exhibit", "audience perspective", "spot the difference", "retrospective" or footers. If a line explains the joke or the point, delete it.
+2. **Never blame the audience.** No "you/your" in anything negative. When something is bad, it's *me* or *we* (e.g. "context rot", never "context rot (yours)"). Imperatives are fine when they're advice ("Start fresh.").
+3. **Word budget.** A headline is ≤ 8 words. Other on-screen copy is ≤ ~20 words per slide, excluding the *content* of a mock UI, code or terminal. Most slides should have far fewer.
+4. **Real, not made up.** Quotes attributed to real companies must be real (§S09). Team numbers stay off screen, with one exception: **$25,000** (S28, S38, S39).
+5. **Headlines** are sentence case and statements, with a full stop when they're a sentence.
+6. **No humour on S02.** It's about pride in our products.
 
-- **Canvas:** off-white `#FAFAFB`. **Drop the dot grid**: fine repeating patterns shimmer and turn to mush under Teams video compression.
-- **Ink:** `#111113` for text. Secondary text `#4A4A55`, which is darker than the current light greys so it survives compression. Nothing lighter than that for anything the audience must read.
-- **Brand blue:** InformatiQ `#1B7ED0` (from `informatiq.svg`).
-- **Act accents** are used only for the chapter cards, the corner-label dot and the one key highlight per slide. The values are fixed:
-  - The Good: green `#1E9E6A`
-  - The Bad: amber `#D97706`
-  - The Ugly: coral `#E5484D`
-  - Making It Good: InformatiQ blue `#1B7ED0`
-  - On the light canvas these only hold enough contrast for large text (48 px and up), dots and strokes. Never use them for body text.
-- **Mascot pink:** `#F6A6A4` (the meat-blob colour). It appears only with the blob.
-- **No purple, anywhere**, except S23 and S28 state 1, where purple *is* the joke. (The presenter calls this out on S23.)
-- **No emoji, anywhere**: not on slides, labels, mocks or notes. Where a mock needs that look (the slop pages on S23 and S28), use simple drawn icons such as sparkles or a rocket. The only exception is the plain `✓` that test runners print, inside terminal snippets.
-- **Type:**
-  - Keep SF Pro Display / Inter for text and SF Mono for code and terminal.
-  - Headlines are huge, at least 72 px at 1080p.
-  - Body text is at least 28 px, and any label at least 20 px.
-  - Headlines use sentence case with a full stop. They are statements, not labels.
-- **Dark slides** are reserved for moments: the chapter cards and the Stark quote (S21 build 3). Every other slide is light.
+---
 
-### 4.2 Slide chrome (from `template_layout_feedback.png`)
+## 4. Global design system
 
-- **Remove** the file-name pill in the top-left (`// physics_playground.tsx`).
-- **Remove** every bottom hint/tip text ("Click the orb…", "Draggable playground items").
-- **Top-right corner label:** `NN / Slide name`, e.g. `31 / Feature-specific workflows`, with a small act-coloured dot.
-  - `NN` is the *live* position after disabled slides are skipped, so it stays correct when slides are toggled.
-  - The corner names are listed per slide below.
-- **Keep** the thin progress indicator at the top centre (project rule 1).
-- **No chrome** on S01 (title), the four chapter cards, or S43. The wrong slide (S03) **keeps normal chrome** so it looks legit.
-- Keep the rounded canvas but thin the black bezel. On a Teams share every pixel counts.
+### 4.1 Canvas: full bleed, no black bars (fixes "black bars top/bottom")
 
-### 4.3 Online delivery constraints (Teams screen share)
+- The viewport is **edge to edge**: no black background, no padding, no bezel, no rounded frame, no drop shadow.
+- Slides are composed on a fixed **1920 × 1080 design stage** (`data-testid="slide-stage"`). It is scaled uniformly to fit the window (`scale = min(vw/1920, vh/1080)`) and centred.
+- The **outer viewport** (`data-testid="slide-viewport"`) takes the active slide's `canvas` background from the manifest, so colour always fills the full window on 16:9, 16:10 or any other window. The background colour animates between slides (≤ 400 ms).
+- Slides whose visual must bleed (the S20 slop, chapter cards) set `canvas` in the manifest: a CSS background string, or an array indexed by `buildStep` (S20: purple gradient at build 0, `#FAFAFB` after). The default is `#FAFAFB`.
+- All sizes inside slides are **design px at 1920 × 1080**. **No responsive breakpoint classes** (`sm:`, `md:`, `lg:`…) inside slides; they are what made text tiny.
+- The presenter view's previews use the same stage component.
 
-- Share **the audience window only**, not the entire screen, so the presenter view stays private on the second monitor.
-- Teams compresses video, so:
-  - Use strokes of 2 px or more and solid shapes. No hairlines, no subtle gradients (they band), no blur or glow.
-  - Avoid full-screen continuous motion: it turns into blocky artefacts.
-- Viewers see changes **1–2 s late**. Reveal gags (S03, S12, S16, S28) need a beat of stillness after the click; the notes mark the pauses.
-- Element motion: **400–900 ms**. Slide transitions: **≤ 700 ms**.
-- Continuous loops are allowed only where the loop *is* the meaning: the typing dots on S18 and the traveling dot on S35. Keep them small.
-- 16:9, designed at 1920×1080, fullscreen-capable, no scrolling.
+### 4.2 Colour
 
-### 4.4 Motion vocabulary (from the animation guide)
+- Canvas `#FAFAFB` · ink `#111113` · secondary `#4A4A55` (nothing lighter for readable text) · InformatiQ blue `#1B7ED0` · mascot pink `#F6A6A4` (only with the blob).
+- Act accents, for chapter cards, the corner dot and one focal highlight per slide:
 
-- **Chapter morph:** a chapter card's title shrinks and flies into the top-right corner label of the act's first content slide. This is the shared element that tells you "you're in Act II now". It is used 4 times.
-- **Builds** are click-driven reveal steps. Every build listed below is one press of `→`/`Space`. The presenter view shows `build 2 / 4`.
-- **Shared-element carry-overs** are listed in §3. They are the "magic move" moments: use them deliberately and nowhere else.
-- **Kinetic typography** is used only for the twists: S12 (99% → 50%), S16 (the escalating prompts), S17 ("…is us"), S21 (the Stark quote), S42 (the flip).
-- **Feel:** gentle springs with no visible overshoot (≤ 3%). Ease-out for entrances, ease-in-out for morphs. Animate SVG paths for diagrams.
-- **Never:** fade-only on everything, bounce, spin, particles, glow, or the same entrance on every slide.
-
-### 4.5 The mascot
-
-The pink blob from `src/assets/meatproxy-emojis-svg/` is **"the engineer", meaning us**. It appears at most once per slide and on about 10 slides in total, so it stays a running character rather than wallpaper.
-
-| Slide | SVG | Why |
+| Act | Accent | Chapter card canvas (light) |
 | --- | --- | --- |
-| S06 | `meat-cool` (optional) | Time back, sunglasses on |
-| S07 | `meat-done` | "Finished, and it was read first": the human review |
-| S09 | `meat-typing` | "Writing its own words": answer honestly |
-| S13 | `meat-cry` | "Deadpan, but the tears are real" |
-| S18 | `meat-coffee` | "Still loading. Come back after the mug." |
-| S20 | `meat-meeting` | "Camera on, brain optional" |
-| S24 | `meat-proxy` → `meat-shrug` | The proxy, then "The model said so." |
-| S26 | `meat-think` | The same blob, now thinking: the orchestrator |
-| S37 | `meat-sweat` (optional) | Incident reports |
-| S43 | `meat-wave` | Goodbye |
+| Opening / Close | `#1B7ED0` | none |
+| I · The Good | green `#1E9E6A` | `#EEF7F2` |
+| Poll | ink `#111113` | none |
+| II · The Bad | amber `#D97706` | `#FBF3E8` |
+| III · The Ugly | coral `#E5484D` | `#FCEFEF` |
+| IV · Making It Count | teal `#0E7C86` | `#EBF5F6` |
+| V · How We Work | blue `#1B7ED0` | `#EDF4FB` |
+| Epilogue | ink `#111113` | none |
 
-### 4.6 Assets
+- **No purple** except where purple *is* the joke (S20, and S26 build 1).
+- **No emoji characters** anywhere. Use drawn icons. The only allowed glyph is `✓` inside terminals.
+- Teams compression: strokes ≥ 2 px, solid shapes, no hairlines. A soft gradient is OK only on large slow ambient shapes (S01) and in the slop jokes.
 
-**Existing:**
-- `src/assets/bs23_logo.webp` (S01 and S43: small, bottom-left, never focal)
-- `src/assets/informatiq-app-suite-logos/*.svg` (S02; Portal uses `informatiq.svg`)
-- the meat SVGs (above)
-- `docs/context/template_layout_feedback.png` (S23 build 2, optional)
+### 4.3 Typography (design px at 1920 × 1080)
 
-**To create** (simple, single-weight line-art or flat SVG, consistent stroke):
-- offshore rig on a horizon (S02)
-- globe with a typing-indicator bubble (S03, S42)
-- eraser/duster (S03, S28)
-- week calendar (S06)
-- annotated screenshot mock (S07)
-- shape morph paths (S14)
-- file tree (S15)
-- balance scale (S19)
-- elephant (S21)
-- triangle (S22)
-- slop landing page + 12-tile grid (S23)
-- pipe diagram (S24)
-- three data-grid mocks (S28)
-- workflow diagrams (S31–S36)
-- incident cards (S37)
+| Role | Size | Weight / notes |
+| --- | --- | --- |
+| Display (hero number, chapter title, S01 title) | 160–240 | 800–900, tight tracking (−0.03em) |
+| Headline | 88–112 | 800, leading 1.0–1.05 |
+| Sub-headline / kicker | 44–56 | 500–600 |
+| Body / labels inside visuals | 32–40 | 500–600 |
+| Small label / caption | 26–28 | 500, secondary colour |
+| Code / terminal / editor | 28–34 | SF Mono; mock windows should be large (≥ 60% of the stage width) |
+| Corner badge | 24 | mono, 600 |
+| Mock UI internals (tables, app chrome inside a mock) | ≥ 18 | wrapped in an element with `data-mock` |
 
-At most one or two illustrations per slide (project rule 4).
+- The audience must be able to read anything from the back of a Teams call: **nothing under 24 px outside `data-mock`**. `tools/snap.mjs` enforces this.
+- Use a **clear hierarchy**: one dominant element per build. Not everything big.
+- Add Tailwind tokens for this scale (`text-display`, `text-headline`, `text-sub`, `text-body`, `text-label`, `text-code`) and use them.
+- Fonts: SF Pro Display / Inter for text, SF Mono for code.
+
+### 4.4 Layout
+
+- Safe area: 120 px left/right, 96 px top/bottom. The corner badge sits inside the top-right of the safe area.
+- **Use the space.** Visuals are big; no tiny diagram floating in a sea of white (S02 and S15 feedback). Generous whitespace means *balanced*, not *empty*.
+- No default card grids. Prefer diagrams, timelines, big single objects and metaphors.
+- Nothing clipped, truncated (`…`) or overlapping, ever (S24 and S22 feedback). Labels must fit their containers at design size.
+
+### 4.5 Motion (Apple WWDC / Google I/O feel)
+
+- Easing `appleEase [0.16, 1, 0.3, 1]`. Springs `stiffness 280, damping 22`, overshoot ≤ 3%. Element motion 400–900 ms. Slide transition ≤ 500 ms.
+- Every slide has **one** designed moment (a morph, a draw-on, a count-up, a reveal). Vary them: not the same fade-up everywhere.
+- **Ambient loops** are allowed only on S01 (background), the typing bubbles (S12, S15), the mascot run (S19) and the keep-alive pulse (S40). They must be slow, non-distracting and low-contrast.
+- Framer Motion `layout` / `layoutId` is for morphs *within* a slide (S15 dots → title, S20 slop → content, S26 grid states).
+- Teams lag: viewers see changes 1–2 s late, so give reveals a beat of stillness.
+- Import everything you use from `src/motion.js`. A missing import (`springPhysics`) crashed S06 in v1.
+
+### 4.6 The mascot (`src/assets/meatproxy-emojis-svg/`)
+
+The blob is *me / us, the engineer*. Use it at most once per slide, and animate it (bob, blink, run, wave) rather than leaving it static where it's the focal point.
+
+| Slide | SVG | Moment |
+| --- | --- | --- |
+| S05 | `meat-cool` | time back |
+| S06 | `meat-done` | reviewed and done |
+| S13 | `meat-mindblown` or `meat-melt` | reading the 40-page theme architecture doc |
+| S15 | `meat-coffee` | waiting |
+| S19 | `meat-sweat` → `meat-melt` | running between the three corners, exhausted |
+| S22 | `meat-proxy` → `meat-shrug` | the proxy |
+| S24 | `meat-printer` or `meat-clerk` → `meat-think` | workhorse → decision maker |
+| S25 | `meat-lurk` or `meat-eyes` | peeking over the fence |
+| S31 | `meat-think` | being the user |
+| S38 | `meat-rocket` | all in |
+| S40 | `meat-coffee` | the coffee break that kills the cache |
+| S43 | `meat-wave` | goodbye (animated wave) |
+
+The SVG README lists all available poses. Inline the SVG, or wrap it in `motion`, to animate parts.
+
+### 4.7 Shared building blocks (create once in `src/components/deck/`)
+
+`Stage` (scaled 1920 × 1080) · `SlideFrame` (safe-area padding) · `Headline` / `Kicker` · `ChapterCard` (all five chapter cards) · `Mascot` (animated wrapper) · `TypingBubble` (three-dot indicator, any size) · `ChatTurn` (one consistent style for human and AI turns) · `CodeWindow` (editor or terminal chrome, large) · `WorkflowMiniMap` (V section). Slides use these instead of re-inventing them, so the deck stays consistent.
 
 ---
 
 ## 5. Slide manifest
 
-This is the list for the enable/disable file (project rule 1). **Cut** shows what to disable first if a rehearsal runs long: **A** = cut first, **B** = cut if still over, **—** = keep.
+`enabled` is on for all. **Cut A** = disable first, **B** = second. Corner shows `NN / name`, with NN the live position. "—" means no corner badge.
 
-| # | ID | Headline (on screen) | Act | Min | Enabled | Cut |
+| ID | key | Headline (on screen) | Act | Corner | Min | Cut |
 | --- | --- | --- | --- | --- | --- | --- |
-| 01 | `title` | AI-Assisted Development: The Good, the Bad and the Ugly | Opening | 1:00 | on | — |
-| 02 | `who-we-are` | We build software for the middle of the North Sea. | Opening | 2:00 | on | — |
-| 03 | `wrong-slide` | How AI Will Destroy the Human Race | Opening | 1:00 | on | — |
-| 04 | `agenda` | Today's feature presentation | Opening | 1:00 | on | — |
-| 05 | `act-good` | I · The Good | Good | 0:15 | on | — |
-| 06 | `time-back` | We got our time back. | Good | 2:00 | on | — |
-| 07 | `manuals` | Our user manuals write themselves. | Good | 2:30 | on | — |
-| 08 | `first-80` | Day one feels like magic. | Good | 1:00 | on | — |
-| 09 | `poll` | Be honest. It's anonymous. | Poll | 3:30 | on | — |
-| 10 | `act-bad` | II · The Bad | Bad | 0:15 | on | — |
-| 11 | `keynote-vs-terminal` | The keynote vs. my terminal. | Bad | 1:45 | on | — |
-| 12 | `ninety-nine` | 99% of 50% of the time. | Bad | 1:15 | on | — |
-| 13 | `did-you-read` | Did you even read what I said? | Bad | 1:45 | on | B |
-| 14 | `circle` | I asked for a circle. | Bad | 1:45 | on | — |
-| 15 | `overengineered` | Enterprise-grade hello world. | Bad | 1:15 | on | A |
-| 16 | `make-no-mistakes` | Make it better. Make no mistakes. | Bad | 1:30 | on | — |
-| 17 | `act-ugly` | III · The Ugly | Ugly | 0:20 | on | — |
-| 18 | `thinking` | Doomscrolling… | Ugly | 3:00 | on | — |
-| 19 | `frameworks` | Proven. Thorough. Not cheap. | Ugly | 2:00 | on | — |
-| 20 | `say-vs-do` | What we say vs. what we do. | Ugly | 1:30 | on | — |
-| 21 | `elephant` | The elephant in the room. | Ugly | 2:30 | on | — |
-| 22 | `pick-two` | Pick two. | Ugly | 1:30 | on | A |
-| 23 | `slop` | Everything is purple now. | Ugly | 2:00 | on | — |
-| 24 | `meat-proxy` | Don't be a meat proxy. | Ugly | 2:30 | on | — |
-| 25 | `act-making-good` | IV · Making It Good | Making Good | 0:15 | on | — |
-| 26 | `role-shift` | Promoted to orchestrator. | Making Good | 2:30 | on | — |
-| 27 | `ticket-floor` | The ticket is the floor, not the ceiling. | Making Good | 1:30 | on | B |
-| 28 | `make-it-better` | Let's make it better. | Making Good | 2:30 | on | — |
-| 29 | `plan-hours` | Plan for hours. Let it run for hours. | Making Good | 1:45 | on | — |
-| 30 | `right-size` | One workflow per feature. | Making Good | 1:30 | on | — |
-| 31 | `my-loop` | How I actually work. | Making Good | 3:00 | on | — |
-| 32 | `ask-everything` | Every question, answered up front. | Making Good | 2:30 | on | — |
-| 33 | `files-memory` | The files are the memory. Not the chat. | Making Good | 2:15 | on | — |
-| 34 | `the-team` | Pay for judgment, not for typing. | Making Good | 1:45 | on | — |
-| 35 | `unit-loop` | One unit at a time. | Making Good | 2:30 | on | — |
-| 36 | `dont-trust` | Never trust "it passes". | Making Good | 2:30 | on | — |
-| 37 | `hard-way` | Learned the hard way. | Making Good | 1:30 | on | B |
-| 38 | `receipts` | The receipts. | Making Good | 1:00 | on | A |
-| 39 | `stateless` | It re-reads everything. Every time. | Making Good | 2:00 | on | — |
-| 40 | `routing` | Right model. Right effort. Right context. | Making Good | 1:30 | on | — |
-| 41 | `shared-repo` | Build it once. Share it with everyone. | Making Good | 1:00 | on | B |
-| 42 | `doom-flip` | Remember the wrong slide? | Finale | 2:00 | on | — |
-| 43 | `thanks` | Questions? (Humans only.) | Finale | Q&A | on | — |
+| S01 | `title` | AI-Assisted Development: The Good, the Bad and the Ugly | Opening | — | 0:30 | — |
+| S02 | `who-we-are` | We build software for the North Sea. | Opening | Who we are | 2:00 | — |
+| S03 | `agenda` | Today's feature presentation. | Opening | Agenda | 0:45 | — |
+| S04 | `act-good` | I · The Good | Good | — | 0:10 | — |
+| S05 | `time-back` | We got our time back. | Good | Time back | 1:30 | — |
+| S06 | `manuals` | Our user manuals write themselves. | Good | User manuals | 1:45 | — |
+| S07 | `poll` | Be honest. It's anonymous. | Poll | Poll | 2:00 | — |
+| S08 | `act-bad` | II · The Bad | Bad | — | 0:10 | — |
+| S09 | `keynote-vs-terminal` | The keynote vs. my terminal. | Bad | Promises | 1:30 | — |
+| S10 | `ninety-nine` | 99% of 70% of the time. | Bad | Reliability | 1:00 | — |
+| S11 | `did-you-read` | Did you even read what I said? | Bad | Listening | 1:30 | B |
+| S12 | `circle` | I asked for a circle. | Bad | The sweet spot | 1:30 | — |
+| S13 | `overengineered` | Enterprise-grade dark mode. | Bad | Overengineering | 1:00 | A |
+| S14 | `act-ugly` | III · The Ugly | Ugly | — | 0:10 | — |
+| S15 | `thinking` | Doomscrolling… | Ugly | Waiting | 1:30 | — |
+| S16 | `frameworks` | Proven. Thorough. Not cheap. | Ugly | Frameworks | 1:00 | B |
+| S17 | `say-vs-do` | What we say vs. what we do. | Ugly | Say vs. do | 1:00 | A |
+| S18 | `elephant` | The elephant in the room. | Ugly | Budget | 1:30 | — |
+| S19 | `three-body` | The three-body problem. | Ugly | Pick two | 1:00 | A |
+| S20 | `slop` | Everything is purple now. | Ugly | Slop | 1:15 | — |
+| S21 | `make-no-mistakes` | Make it better. Make no mistakes. | Ugly | Prompting | 1:00 | — |
+| S22 | `meat-proxy` | Don't be a meat proxy. | Ugly | Meat proxy | 1:30 | — |
+| S23 | `act-count` | IV · Making It Count | Count | — | 0:10 | — |
+| S24 | `role-shift` | The role shift. | Count | Role shift | 1:30 | — |
+| S25 | `ticket-floor` | The ticket is the floor, not the ceiling. | Count | Raise the bar | 0:45 | B |
+| S26 | `make-it-better` | Let's make it better. | Count | Make it better | 2:00 | — |
+| S27 | `plan-hours` | Plan for hours. Let it run for hours. | Count | Plan first | 1:15 | — |
+| S28 | `the-number` | $25,000 | Count | — | 0:20 | — |
+| S29 | `act-how` | V · How We Work | How | — | 0:10 | — |
+| S30 | `workflow-map` | How we work now. | How | The workflow | 1:30 | — |
+| S31 | `gather` | The requirement is just the start. | How | Gather | 1:45 | — |
+| S32 | `plan-together` | Plan with a co-worker. | How | Plan | 1:45 | — |
+| S33 | `orchestrator` | One manager. Many fresh minds. | How | Orchestrate | 2:00 | — |
+| S34 | `right-model` | Right model. Right effort. | How | Routing | 1:15 | B |
+| S35 | `specialists` | Built for this feature. Then retired. | How | Specialists | 1:15 | — |
+| S36 | `files-memory` | The files are the memory. | How | Remember | 1:45 | — |
+| S37 | `code-context` | Code is the new context. | How | Context | 1:15 | — |
+| S38 | `unlimited` | "It's unlimited." | Epilogue | The $25,000 lesson | 1:30 | — |
+| S39 | `the-morning` | Access revoked. | Epilogue | The morning after | 1:15 | — |
+| S40 | `cache` | Five minutes. | Epilogue | Lesson 1 | 1:30 | — |
+| S41 | `fresh-sessions` | Start fresh. | Epilogue | Lesson 2 | 1:15 | — |
+| S42 | `shared-repo` | Build it once. Share it with everyone. | Close | Share it | 1:15 | — |
+| S43 | `thanks` | Questions? | Close | — | Q&A | — |
 
-Disabling every **A** saves about 4 min. Disabling every **B** saves about 6 more.
+**Totals:** ~51 min of talk. **A** cuts save ~3 min. **B** cuts save ~4.5 min more. Q&A fills the remaining ~9 min.
+
+### Component file mapping (old → new)
+
+Batch 0 moves every v1 component into `src/slides/legacy/`, which is outside the registry glob, so it's kept as reference. Each new `src/slides/Sxx_Name.jsx` is then written from its legacy source, or from scratch. `legacy/` is deleted in the final batch.
+
+| New | From legacy | New | From legacy |
+| --- | --- | --- | --- |
+| S01_Title | S01_Title | S23_ActCount | (ChapterCard) |
+| S02_WhoWeAre | S02_WhoWeAre | S24_RoleShift | S26_RoleShift |
+| S03_Agenda | S04_Agenda | S25_TicketFloor | S27_TicketFloor |
+| S04_ActGood | (ChapterCard) | S26_MakeItBetter | S28_MakeItBetter |
+| S05_TimeBack | S06_TimeBack | S27_PlanHours | S29_PlanHours |
+| S06_Manuals | S07_Manuals | S28_TheNumber | new |
+| S07_Poll | S09_Poll | S29_ActHowWeWork | (ChapterCard) |
+| S08_ActBad | (ChapterCard) | S30_WorkflowMap | S31_MyLoop (ideas) |
+| S09_KeynoteVsTerminal | S11_KeynoteVsTerminal | S31_Gather | new |
+| S10_NinetyNine | S12_NinetyNine | S32_PlanTogether | S32_AskEverything (ideas) |
+| S11_DidYouRead | S13_DidYouRead | S33_Orchestrator | S35_UnitLoop (ideas) |
+| S12_Circle | S14_Circle | S34_RightModel | S34_TheTeam, S40_Routing |
+| S13_Overengineered | S15_Overengineered | S35_Specialists | new |
+| S14_ActUgly | (ChapterCard) | S36_FilesMemory | S33_FilesMemory |
+| S15_Thinking | S18_Thinking | S37_CodeContext | new |
+| S16_Frameworks | S19_Frameworks | S38_Unlimited | S37_HardWay (ideas) |
+| S17_SayVsDo | S20_SayVsDo | S39_TheMorning | new |
+| S18_Elephant | S21_Elephant | S40_Cache | S39_Stateless (ideas) |
+| S19_ThreeBody | S22_PickTwo | S41_FreshSessions | S39_Stateless (ideas) |
+| S20_Slop | S23_Slop | S42_SharedRepo | S41_SharedRepo |
+| S21_MakeNoMistakes | S16_MakeNoMistakes | S43_Thanks | S43_Thanks |
+| S22_MeatProxy | S24_MeatProxy | | |
+
+**Dropped entirely:** S03_WrongSlide, S08_First80, S30_RightSize, S36_DontTrust, S38_Receipts, S40_Routing (its ideas go into S34), S42_DoomFlip. Every reference to the wrong-slide gag, the doom flip, the eraser and "camera on, brain optional" goes too.
 
 ---
 
 ## 6. The slides
 
-Each slide below has the same parts:
-
-- **Corner:** the top-right label.
-- **One idea:** the single primary idea.
-- **On screen:** the only text the audience sees.
-- **Visual:** the composition.
-- **Builds:** what each click does (`0` is the state on entry).
-- **In / Out:** the transition.
+Each slide has: **Idea** (the one thing), **On screen** (the only copy), **Visual**, **Builds**. Global rules (§3, §4) always apply; they aren't repeated here.
 
 ### Opening
 
----
-
 #### S01 · `title`
-
-- **Corner:** none
-- **One idea:** what this talk is, and that it will be honest.
-- **On screen:**
-  - "AI-Assisted Development" (small, above)
-  - "The Good, the Bad and the Ugly" (huge)
-  - "Rokibul Islam · InformatiQ team" (small)
-  - The BS23 logo small in the bottom-left, around 28 px tall: present but quiet.
-- **Visual:** pure typography and generous whitespace. The three words *Good / Bad / Ugly* can each carry a hairline-thin underline in their act colour, drawn left to right after the title lands (≥ 2 px, see 4.3).
-- **Builds:**
-  - 0: the title assembles word by word (stagger ~80 ms), then the underlines draw.
-  - No clicks.
-- **Out:** the title lifts up and fades while S02's horizon line draws in.
-
----
+- **Idea:** the opening frame. People look at it while everyone joins, so it should feel alive.
+- **On screen:** eyebrow "AI-Assisted Development", then the title "The Good, the Bad and the Ugly", then "Rokibul Islam · InformatiQ team". The BS23 logo is small at bottom-left. No other footer text.
+- **Visual:**
+  - **Tight lockup.** The eyebrow sits directly above the title (≈ 24–32 px gap; v1 had a huge gap).
+  - **Title** at display size over two lines. "Good", "Bad" and "Ugly" are set in their act colours (solid, not gradient).
+  - **Ambient art** on the right ~45% of the stage, slowly morphing infinitely (20–30 s cycles). It is a composition of three soft organic shapes:
+    - green, smooth and round ("good");
+    - amber, slightly jagged and glitchy, with an occasional subtle pixel-shift ("bad");
+    - coral, lumpy, a little melted ("ugly").
+  - The shapes drift and overlap gently. Low contrast, never distracting, survives Teams compression (large shapes, slow motion).
+- **Builds:** 0 only. The title draws in once on entry; the ambient art loops forever.
 
 #### S02 · `who-we-are`
-
-- **Corner:** `02 / Who we are`
-- **One idea:** we build software for offshore drilling, so mistakes matter.
-- **On screen:**
-  - Headline: "We build software for the middle of the North Sea."
-  - Small line: "Client: InformatiQ, Norway · Offshore drilling"
-  - Build 2 line: "When our code is wrong, someone on a rig reads the wrong number."
+- **Idea:** pride. These are the products our isolated team built. The audience doesn't know them.
+- **On screen:** headline "We build software for the North Sea." plus, per product, the logo, the name and one short descriptor. Nothing humorous. No stakes line.
+- **Order (exact):** WellMate · WellBook · GeologiQ · Offset Analyzer · LogistiQ · Event Analyzer · AnalytiQ · Portal.
+- **Descriptors** (from v1; flagged in `missing-pieces.md` for the presenter to confirm): WellMate *Drilling telemetry* · WellBook *Well operations* · GeologiQ *Subsurface models* · Offset Analyzer *Offset benchmark* · LogistiQ *Offshore logistics* · Event Analyzer *Incident analysis* · AnalytiQ *Analytics engine* · Portal *Unified portal* (Portal uses `informatiq.svg`).
 - **Visual:**
-  - A single horizon line across the lower third.
-  - A line-art offshore rig rises out of it, right of centre.
-  - The 8 app logos then sit along the horizon like a skyline, each with its name in small type underneath: WellMate, WellBook, LogistiQ, AnalytiQ, GeologiQ, Event Analyzer, Offset Analyzer, Portal (`informatiq.svg`).
-- **Builds:**
-  - 0: the horizon draws and the rig fades up from the line.
-  - 1: the logos rise one by one, left to right (stagger ~90 ms).
-  - 2: the stakes line fades in above the horizon, in ink rather than an accent colour. It is a statement, not a warning.
-- **Notes:** no team-member info. Keep the rig simple and monochrome, not a photo. The stakes line is paid off on S36.
-
----
-
-#### S03 · `wrong-slide`
-
-- **Corner:** `03 / The plan` (normal chrome, so it looks like a real slide)
-- **One idea:** a gag. It must look **completely legitimate** and never hint that it's wrong.
-- **On screen:**
-  - Headline: "How AI Will Destroy the Human Race"
-  - Sub: "A practical five-step plan"
-  - The steps are **not** shown. They are saved for S42.
-- **Visual:** one calm, serious illustration: a line-art globe with a small chat bubble attached showing the typing dots `•••`. It quietly foreshadows S18 and S42.
-- **Builds:**
-  - 0: the same entrance as any normal content slide, so nothing is suspicious.
-  - 1: **eraser wipe**, triggered after the presenter's "…wait, wrong deck". A blackboard duster sweeps left to right across the headline and sub. A stroke-shaped mask erases the text in chalky swipes, with a few dust specks that fade within 400 ms. What's revealed underneath is S04.
-- **Builder note:** make the eraser S03's *exit transition* into S04. Then disabling S03 leaves S04 working on its own.
-
----
-
-#### S04 · `agenda`
-
-- **Corner:** `04 / Today`
-- **One idea:** four chapters, and the last one is the fix.
-- **On screen:**
-  - Small kicker: "Today's feature presentation"
-  - The four chapter names, large, each with its act-coloured dot: **The Good · The Bad · The Ugly · Making It Good**
-  - Build 1 adds a small tag under "Making It Good": "the longest chapter"
-  - Small footer: "+ a poll · + Q&A"
-- **Visual:** a quiet cinematic nod to the Western: thin letterbox bars top and bottom (solid, not gradient). Everything else stays clean.
-- **Builds:**
-  - 0: revealed under the eraser from S03. The chapter names write on left to right as the eraser passes.
-  - 1: the first three names dim slightly, "Making It Good" gets a blue underline drawn left to right, and its tag fades in.
-  - 2: the footer fades in.
-- **Out:** the letterbox bars stay and become the bars of the S05 chapter card as its dark canvas fades in.
-
----
-
-### Act I · The Good
-
----
-
-#### S05 · `act-good`
-
-- **Corner:** none
-- **On screen:** "I" (small) / "The Good" (huge, green).
-- **Visual:** the chapter-card template: dark canvas with letterbox bars and centred type. All four chapter cards share it.
-- **Out:** chapter morph. "The Good" shrinks into S06's corner label.
-
----
-
-#### S06 · `time-back`
-
-- **Corner:** `06 / Time back`
-- **One idea:** AI took the toil, and we got real time back.
-- **On screen:** "We got our time back." Then the calendar's labels, and on build 2: "…so what are we doing with it?"
-- **Visual:** a Mon–Fri week calendar filled with chore blocks:
-  - "CRUD endpoints · 2 days"
-  - "Unit tests · 1 day"
-  - "Migration script · 1 day"
-  - "That one regex · 3 hours"
-  - "Docs nobody reads · Friday"
-- **Builds:**
-  - 0: the calendar is full.
-  - 1: every block shrinks to a thin sliver with a soft spring, leaving most of the week empty and white. Optionally `meat-cool` slides in.
-  - 2: the empty area gets one quiet line: "…so what are we doing with it?"
-- **Notes:** the empty calendar block is a shared element. It returns small on S27.
-
----
-
-#### S07 · `manuals`
-
-- **Corner:** `07 / Our best "good"`
-- **One idea:** a real team win: an automated user-manual workflow, with a human still in charge.
-- **On screen:**
-  - Headline: "Our user manuals write themselves."
-  - Build 3 adds: "A human still signs off."
-- **Visual:** a left-to-right pipeline drawn as one SVG path. Each node gets a small icon and a 1–3 word label:
-  - App
-  - What changed? (diff since the last snapshot)
-  - Screenshots
-  - Annotate
-  - Write
-  - Human review (with a drawn tick)
-  - Published manual
-
-  Beside it sits a sample screenshot card: a neutral mock, **not a real client screen**.
-- **Builds:**
-  - 0: headline.
-  - 1: the pipeline draws in groups: App → What changed → Screenshots.
-  - 2: numbered annotation callouts draw onto the sample screenshot, then the pipeline completes with Write.
-  - 3: the "Human review" node lights up and `meat-done` stamps it. The sub-line appears.
-- **Notes:** the "only what changed" node is the clever bit. Give it the slide's one green highlight.
-
----
-
-#### S08 · `first-80`
-
-- **Corner:** `08 / Day one`
-- **One idea:** AI is magical at the start of a project.
-- **On screen:** "Day one feels like magic." The bar shows "80%", with a small "the first 80%" under it.
-- **Visual:** one wide, thick progress bar, centred.
-- **Builds:**
-  - 0: the headline and an empty bar.
-  - 1: the bar rockets 0 → 80% in about 0.6 s with a counter, then stops dead. A text caret blinks at the bar's end. That is the cliffhanger.
-- **Out:** the poll (S09) rises in while the caret is still blinking. The bar is a shared element and reappears on S14.
-
----
-
-### Interlude · The poll
-
----
-
-#### S09 · `poll`
-
-- **Corner:** `09 / Your turn`, with a neutral ink dot. The poll sits between acts and belongs to none.
-- **One idea:** before the bad news, tell us yours. Honestly.
-- **On screen:**
-  - Small kicker: "Before the bad news…"
-  - Headline: "Be honest. It's anonymous."
-  - On click: "(Trust me. I'm one of you.)"
-  - A **QR code placeholder**, large: at least 360 px, pure black on white, with a quiet zone around it, because a phone has to read it from a laptop screen through Teams compression.
-  - Under it: `[short link]` and "Link's in the chat too". Small: "8 questions · 2 minutes · No names recorded".
-- **Visual:** the QR is the hero, left of centre. `meat-typing` sits to its right.
-- **Builds:**
-  - 0: kicker, headline and QR.
-  - 1: the "(Trust me…)" line slides in under the headline with a small delay, like an afterthought.
-  - 2 (optional): a thin 2:30 ring timer starts around the QR. It is a presenter pacing aid, so keep it subtle.
-- **In:** S08's bar holds at 80% with the caret still blinking, then slides up and away as the poll rises in. The cliffhanger waits while the audience answers.
-- **Out:** straight into the S10 chapter card.
-- **Why here:** by the end of The Good the audience is warmed up, and the poll breaks up the talking just when attention starts to dip. Every result is read later (S11 onward), so the answers feed straight into The Bad and The Ugly. Q5 is read on S11, about a minute after the poll closes.
-- **Builder note:** read the QR target and short link from one config value (e.g. `POLL_URL`) and generate the QR at build or run time. The survey doesn't exist yet, so this is a **placeholder**. The questions are in `presenter-notes.md` (Appendix A).
-
----
-
-### Act II · The Bad
-
----
-
-#### S10 · `act-bad`
-
-- **On screen:** "II" / "The Bad" (amber). Chapter card template.
-- **Out:** chapter morph into S11's corner label.
-
----
-
-#### S11 · `keynote-vs-terminal`
-
-- **Corner:** `11 / Promise vs. reality`
-- **One idea:** the gap between what AI is sold as and what we live with.
-- **On screen:** the headline "The keynote vs. my terminal.", then the two sides below.
-- **Visual:** a split composition (not cards):
-  - **Left** has polished keynote typography on a soft surface, one claim at a time: "Autonomous." · "End-to-end." · "Like a senior engineer who never sleeps." The claims are generic and unattributed.
-  - **Right** is a plain terminal or chat window:
-    - me: `the button still doesn't work`
-    - agent: `You're absolutely right! I apologize for the oversight. Here's the corrected version:`
-    - then the exact same code block.
-- **Builds:**
-  - 0: headline.
-  - 1–3: the left claims land one per click.
-  - 4: the terminal types in. The agent reply types at ~40 chars/s, and the "corrected" code is visibly identical to the earlier block (highlight both to show they match).
-- **Poll callback:** Q5, biggest frustration (spoken).
-
----
-
-#### S12 · `ninety-nine`
-
-- **Corner:** `12 / Accuracy`
-- **One idea:** instruction-following is inconsistent, and you never know which half you're in.
-- **On screen:** "AI follows your instructions 99% of the time." → "…99% of 50% of the time."
-- **Visual:** kinetic typography only, centred and huge.
-- **Builds:**
-  - 0: "AI follows your instructions 99% of the time." with a full stop. **Hold**: the audience nods.
-  - 1: the full stop slides away. "of 50% of the time." slides in from the right, smaller, then scales to match. Final line: **"99% of 50% of the time."**
-- **Notes:** nothing else on this slide.
-
----
-
-#### S13 · `did-you-read`
-
-- **Corner:** `13 / Selective hearing`
-- **One idea:** it appears to follow the instruction, and doesn't.
-- **On screen:** headline, then three instruction → result pairs. Each instruction is a chat bubble; each result is a diff or terminal snippet.
-  1. "Make the tests pass. Don't touch the tests." → `- it('calculates depth', …` / `+ it.skip('calculates depth', …` / `✓ All tests pass`
-  2. "Only change the button colour." → `14 files changed, 612 insertions(+), 88 deletions(-)`
-  3. "No comments in the code, please." → `// Removed all comments as requested`
-- **Visual:** the pairs reveal **one at a time in the same spot**, each replacing the previous, so the slide never has three items at once. `meat-cry` sits small in a corner on the last one.
-- **Builds:** 0: headline · 1–3: one pair per click.
-- **Notes:** the `✓ All tests pass` line is paid off on S36. If S13 is cut, the presenter drops that callback.
-
----
-
-#### S14 · `circle`
-
-- **Corner:** `14 / The last 20%`
-- **One idea:** AI is great at starting and bad at finishing. Fixing one thing breaks another.
-- **On screen:** prompt chips top-left (the user), agent replies top-right, and one shape centre stage.
-- **Visual:** one SVG shape that **morphs** smoothly between states (path morph, magic-move feel).
-- **Builds:**
-  - 0: chip "Draw a circle." → the shape is a **rectangle**.
-  - 1: chip "That's a rectangle. A circle, please." → it morphs into a **trapezium**.
-  - 2: chip "A. CIRCLE." → it morphs into a slightly rotated trapezium (or a triangle). The agent bubble says "Perfect! Here's your circle." next to a small drawn green tick.
-  - 3: S08's progress bar slides in along the bottom and jitters 81% → 79% → 82% → 78% (slowly, about 1 s per change). Label: "the last 20%". A small elapsed clock at the bar's end keeps running while the percentage stays stuck: "1 h" → "4 h" → "day 2" → "day 6". The bar goes nowhere, the clock goes everywhere.
-- **Notes:** this is the presenter's real story.
-
----
-
-#### S15 · `overengineered`
-
-- **Corner:** `15 / Overkill`
-- **One idea:** sometimes it does exactly what you asked, and far, far more.
-- **On screen:** prompt bubble "Add a dark mode toggle."
-- **Visual:** an IDE-style file tree on the right that grows line by line:
-  - `ThemeProvider.tsx`
-  - `ThemeContext.ts`
-  - `ThemeStrategyFactory.ts`
-  - `ThemeRegistry.ts`
-  - `useThemeObserver.ts`
-  - `theme.config.ts`
-  - `ThemeToggle.tsx`
-  - `ThemeToggle.test.tsx`
-  - `ThemeToggle.stories.tsx`
-  - `docs/THEME_ARCHITECTURE.md`
-
-  A green counter ticks up to `+2,184 lines`.
-- **Builds:**
-  - 0: the prompt.
-  - 1: the tree grows (fast stagger) as the counter climbs.
-  - 2: under the prompt, small: "What I needed:" `document.documentElement.classList.toggle('dark')`
-- **Cut:** A.
-
----
-
-#### S16 · `make-no-mistakes`
-
-- **Corner:** `16 / Our prompts`
-- **One idea:** pivot. Look at *our* prompts. Maybe it isn't only the AI.
-- **On screen:** the escalating prompts, then "The Bad is the AI."
-- **Visual:** kinetic typography. Each phrase lands bigger and heavier than the last, stacking loosely:
-  1. `make it better`
-  2. `improve the UI`
-  3. `think step by step`
-  4. `make it perfect`
-  5. `MAKE NO MISTAKES`
-  6. `please.`
-- **Builds:**
-  - 0: the first phrase is on screen on entry.
-  - 1–5: one more phrase per click.
-  - 6: the camera pulls back. All the phrases are inside a single chat input box labelled **"You"**.
-  - 7: everything clears to one centred line: **"The Bad is the AI."** Hold.
-- **Out:** S17 completes the sentence.
-
----
-
-### Act III · The Ugly
-
----
-
-#### S17 · `act-ugly`
-
-- **On screen:** "III" / "The Ugly" (coral). Build 1 adds, beneath it in smaller type: "…is us."
-- **Builds:** 0: card · 1: "…is us." types in.
-- **Out:** chapter morph.
-
----
-
-#### S18 · `thinking`
-
-- **Corner:** `18 / Time between chats`
-- **One idea:** chat-driven development wastes our time and shreds our focus.
-- **On screen:** only the dots at first. Then the headline (the spinner word lands on **"Doomscrolling…"**). Then the timeline and the focus line.
-- **Visual and builds** (per the presenter's original brief):
-  - 0: **only** the three-dot typing indicator, centred and large, gently looping. Nothing else on the slide.
-  - 1: the dots shrink and move to the left of the headline position. The headline cycles like Claude Code's spinner, about 600 ms per word: "Thinking…" → "Pondering…" → "Brewing…" → lands on **"Doomscrolling…"**, and holds.
-  - 2: a horizontal timeline labelled "an hour of chat-driven development". Short blue bursts (you: prompt or review) alternate with long grey gaps (waiting). Small icons sit in the gaps: a phone (Reels), a cha cup, a second tab. `meat-coffee` sits in the longest gap. Label it "illustrative": there is no measured number.
-  - 3: a "your focus" line draws over the timeline: spiky (burst, drop, burst, drop). The deepest drop gets one small caption: "context rot (yours)". The line is a shared element and returns on S29; the caption pairs with S33.
-- **Poll callback:** Q2 (what you do while it's thinking).
-
----
-
-#### S19 · `frameworks`
-
-- **Corner:** `19 / Methodologies`
-- **One idea:** the structured AI frameworks are proven and they work, but following them properly takes real tokens, time and discipline, and they are general by design.
-- **On screen:** headline "Proven. Thorough. Not cheap.", the two pan labels with short item labels, and the closing line. At the bottom, small: "Spec Kit · AI-DLC · BMAD · OpenSpec".
-- **Visual:** a large, simple line-art balance scale, centred. The left pan is labelled "What you get", the right pan "What it takes". Labels sit on the pans as small weights, 1–3 words each. Not cards.
-- **Builds:**
-  - 0: the headline, the four names along the bottom, and the empty, level scale.
-  - 1: "What you get" fills one item at a time: "Specs as contracts" · "Settled decisions" · "Phased work" · "Review gates". The left pan dips: this is real value.
-  - 2: "What it takes" fills the same way: "Tokens" · "Time" · "Learning curve" · "Process discipline". The scale settles level: the cost is as real as the value.
-  - 3: one line under the scale: **"General by design. Worth it when the job is big enough."**
-- **Notes:** respect is the point of this slide. Nothing here is a joke at the frameworks' expense. The only downsides named are cost, effort and the process you have to follow. The humour in this part of the talk is aimed at *us* (S20), not at the frameworks.
-
----
-
-#### S20 · `say-vs-do`
-
-- **Corner:** `20 / Say vs. do`
-- **One idea:** what we claim we do with AI and what actually happens are different.
-- **On screen:**
-  - Left label: "In the meeting", with the quote "We follow spec-driven development."
-  - Right label: "At 6:47 PM", with a chat input containing `fix it` and the Enter key being pressed.
-- **Visual:** two panes split by a thin vertical rule (≥ 2 px). `meat-meeting` sits on the left.
-- **Builds:** 0: left · 1: right (`fix it` types, then the Enter key press animates).
-- **Poll callback:** Q4 (frameworks: "strictly" vs. "I say I do").
-
----
-
-#### S21 · `elephant`
-
-- **Corner:** `21 / The elephant`
-- **One idea:** the AI budget quietly shapes *how* we work: we cut corners.
-- **On screen:** "The elephant in the room." → "Tokens." → three short lines → the Stark quote.
+  - **The spotlight.** Each click brings the next product into a big centre spotlight: logo ≥ 280 px wide, name at sub-headline size, descriptor below.
+  - **The tray.** As the next product arrives, the previous one glides (layout animation) into an organised **4 × 2 tray** that fills the lower half of the stage. Logos in the tray are still large (≥ 140 px), name underneath.
+  - **Final build:** the spotlight clears and the full tray settles centred and enlarged to use the whole slide.
+  - **Background:** a very subtle horizon line, with the offshore rig line-art small at the far right edge of the horizon.
+  - Logos must render crisp and large. The logo SVGs have wide aspect ratios, so size by height/width box, not by square tiles.
+- **Builds:** 0: headline and horizon. 1–8: one product each. 9: all eight settle into the final arrangement. (`totalBuilds: 9`)
+
+#### S03 · `agenda`
+- **Idea:** where we're going. The workflow chapter is the big one.
+- **On screen:** headline, then five chapters: "The Good · The Bad · The Ugly · Making It Count · How We Work". No poll announcement. The epilogue is **not** listed.
+- **Visual:** a horizontal **film-strip / timeline** spanning the stage. Each chapter is a segment whose **width is proportional to its time**, in its act colour, with its roman numeral and name in large type. The Making It Count and How We Work segments are visibly the longest.
+- **Builds:** 0: headline and empty strip track. 1: the segments slide in left to right in sequence (one build, staggered). 2: the "V · How We Work" segment lifts and brightens a little; the presenter says "most of our time goes here". (`totalBuilds: 2`)
+
+### I · The Good
+
+#### S04 · `act-good`, S08 · `act-bad`, S14 · `act-ugly`, S23 · `act-count`, S29 · `act-how` (chapter cards)
+- **Shared `ChapterCard` component.** Full-bleed **light** tinted canvas (§4.2), not dark.
+- **Content:** a huge roman numeral in the act accent (display size, ~240 px), and the chapter name in ink at display size. Nothing else: no kicker, no subtitle, no "InformatiQ Engineering · Retrospective".
+- **Motion:** the numeral and name arrive with one confident move (e.g. the numeral slides up and the name wipes in). A single large, slow, quiet motif in the accent colour fills the background: for example one big soft shape that drifts, distinct per act and matching the S01 shape for Good/Bad/Ugly. No letterbox bars.
+- **Builds:** 0.
+
+#### S05 · `time-back`
+- **Idea:** AI gave us real hours back.
+- Keep v1's content and idea (the week calendar, chores collapsing to minutes) and apply the global rules: bigger type, fill the stage, no meta text. Use `meat-cool`.
+- **Builds:** as v1 (verify `totalBuilds` against the component).
+
+#### S06 · `manuals`
+- **Idea:** our user manuals are now generated (captured, annotated, written), and a human reviews them.
+- Keep v1's content and idea, **fix the crash** (`springPhysics` not imported), and apply the global rules: bigger, less text. Use `meat-done`.
+- **Builds:** as v1.
+
+#### S07 · `poll`
+- Keep v1 (the QR code and link, `POLL_URL` placeholder). **Remove "camera on, brain optional"** and any other jokey caption. Bigger QR. The headline and the QR are the slide.
+- **Builds:** as v1.
+
+### II · The Bad
+
+#### S09 · `keynote-vs-terminal`
+- **Idea:** the gap between real promises and my real terminal.
+- **Visual:** a split.
+  - **Left: "the keynote".** A dark stage-like panel showing **three real, attributable public claims** in big quote type, each with a small source line (company and product, year). Use claims the vendors really made. Verify each one (WebFetch the official announcement if available) and record the URL in `missing-pieces.md` under "Facts". Candidates to verify:
+    - Anthropic, Claude Opus 4 launch (May 2025): "the world's best coding model", and that it can "work continuously for several hours".
+    - OpenAI, Codex launch (May 2025): "a cloud-based software engineering agent that can work on many tasks in parallel".
+    - Cognition, Devin (Mar 2024): "the first AI software engineer".
+
+    If a quote can't be verified, paraphrase it without quotation marks and say so in the log. **Never invent a quote.**
+  - **Right: "my terminal".** A large `CodeWindow` playing out one stack-agnostic, everyday failure:
+    - me: `Add a confirmation before deleting a well.`
+    - AI: `Done ✓ Added a confirmation dialog.`
+    - Then a tiny mock: clicking **Delete** shows a toast "Well deleted." *and then* the dialog "Are you sure you want to delete this well?" pops up.
+
+    The confirmation exists. It just comes after the deletion.
+- **On screen:** headline plus the two panels. No commentary.
+- **Builds:** 0: headline and the keynote panel with the first claim. 1: claims two and three. 2: the terminal types the request and the reply. 3: the mock plays: delete → toast → the late dialog. (`totalBuilds: 3`)
+
+#### S10 · `ninety-nine`
+- **Idea:** it's 99% right… 70% of the time.
+- **On screen:** "99%", then "of 70% of the time." No other copy.
+- **Visual (more engaging than v1):**
+  - **Build 0:** a giant **99%** counts up quickly at display size (~240 px) inside a confident ring gauge that fills almost all the way round.
+  - **Build 1:** the ring **splits**. 30% of it detaches and drops away greyed and cracked. The text **"of 70% of the time."** slides in beneath, and the 99% shrinks a little and shifts left to make room. Optional: a grid of 100 small dots, where 70 light up, then 99% of those stay lit.
+  - Pick one visual and do it well.
+- **Builds:** 0, 1. (`totalBuilds: 1`)
+
+#### S11 · `did-you-read`
+- **Idea:** it follows the instruction *and* adds things nobody asked for, sometimes things that go against the request.
+- **Visual:** one **large editor / terminal window** (≥ 75% of the stage width, code ≥ 28 px) with two scenarios played one at a time in the same window.
+- **Scenario 1 (follows it, and drifts the other way):**
+  - me: `Fix the date format in the wells table. Don't touch the API.`
+  - The diff shows the table date format fixed ✓, plus `api/wells.ts` changed: "also normalized dates in the API for consistency".
+- **Scenario 2 (button colour, merged with the comments gag):**
+  - The project rule is pinned at the top of the window: `CLAUDE.md: Keep comments minimal.`
+  - me: `Make the Save button blue.`
+  - The diff shows:
+    - a new design token `--color-action-primary-blue-500`;
+    - a new `ButtonVariant` type;
+    - the **Submit** and **Cancel** buttons changed too;
+    - a JSDoc block on every touched function.
+  - me: `Remove the comments.`
+  - The diff removes them all and adds exactly one line: `// removed all comments`.
+- **Closing line (keep):** "Technically correct. The best kind of correct." **Remove** "green checks don't mean working software" and any similar extra lines.
+- **Builds:** 0: headline. 1: scenario 1 prompt and diff. 2: scenario 2 prompt and diff. 3: "remove the comments" and `// removed all comments`. 4: the closing line. (`totalBuilds: 4`)
+
+#### S12 · `circle`
+- **Idea:** a **metaphor**. For anything that needs system design or architectural judgement, the AI overshoots, undershoots or builds something else. It rarely hits the sweet spot, and once it's on the wrong track it's very hard to bring back. (The notes cover the fix: sometimes you throw away the whole session.)
+- **On screen:** headline "I asked for a circle." and the chat. A small sub-line makes the metaphor explicit: "(Read: a simple architecture.)"
+- **Visual:** a chat column on the left and a large drawing canvas on the right. **Every AI turn uses the same `ChatTurn` style**, never mixed card colours. Before each AI reply, a `TypingBubble` shows for ~900 ms. The AI replies, in order:
+  1. "Perfect! Here's your circle." → draws a **rectangle**.
+  2. me: "That's a rectangle." → "You're absolutely right, my apologies!" → draws a **trapezium**.
+  3. me: "Just a circle." → "You're right to push back." → draws a circle covered in extra bolted-on shapes (overshoot), *or* a tiny dot (undershoot). Pick the funnier one.
+- **Final build:** a target / dartboard replaces the canvas, with the three attempts landing around the bull, never in it. Each correction lands *further* from the centre.
+- **Builds:** 0: headline and prompt. 1–3: the three exchanges. 4: the target. (`totalBuilds: 4`)
+
+#### S13 · `overengineered`
+- **Idea:** asked for a dark-mode toggle, got an architecture. The punchline is the documentation it wrote.
+- **On screen:** headline "Enterprise-grade dark mode." Prompt: `Add a dark mode toggle.`
 - **Visual:**
-  - A large, simple line-art elephant takes most of the slide and enters slowly, as if it was always there.
-  - Build 3 switches to a dark, cinematic canvas for the quote.
-- **Builds:**
-  - 0: the headline. The elephant draws in.
-  - 1: "Tokens." appears on the elephant's body. A small token meter sits on its flank.
-  - 2: three quiet lines, staggered: "We one-shot to save budget." · "We skip the review pass." · "We watch the meter more than the output."
-  - 3: dark canvas. Kinetic quote: *"I'm limited by the technology of my time."* (Howard Stark, *Iron Man 2*). Then "technology" is struck through and **"token budget"** writes in above it.
-- **Poll callback:** Q6 (when the budget runs out).
+  1. The file tree **explodes** outward: `ThemeProvider.tsx`, `ThemeContext.ts`, `useTheme.ts`, `ThemeRegistry.ts`, `tokens/dark.ts`, `tokens/light.ts`, `ThemeToggle.stories.tsx`…
+  2. Then the punchline: a document `THEME_ARCHITECTURE.md` slides in and **auto-scrolls** through an absurdly long table of contents (e.g. "1. Philosophy of Darkness", "4.3 Theme Lifecycle Hooks", "9. Migration Strategy (v1 → v2)"), with a page counter ticking up to "page 1 of 40".
+  3. The mascot (`meat-mindblown` or `meat-melt`) reacts beside it.
+- **Builds:** 0: prompt. 1: the file explosion. 2: the doc and the mascot. (`totalBuilds: 2`)
 
----
+### III · The Ugly
 
-#### S22 · `pick-two`
+#### S15 · `thinking`
+- **Idea:** we wait for the agent, and we doomscroll.
+- **Build 0:** **nothing on the slide** except one **huge** chat typing bubble (three dots, messaging-app style, ~360 px wide) in the dead centre, gently pulsing. No title, no corner badge.
+- **Build 1:** the bubble **morphs** (`layoutId`) smoothly into the headline "Doomscrolling…", and v1's content follows at the new, much bigger size: the spiky focus line, the phone/feed motif and `meat-coffee`. Use the space.
+- **Later builds:** as v1, enlarged. Drop any "(yours)" caption ("context rot", no owner).
+- **Builds:** v1 count + 1.
 
-- **Corner:** `22 / Expectations`
-- **One idea:** methodology, budget and deadline all at once is not realistic, and we should say it.
-- **On screen:** "Pick two." The vertices read "Follow the methodology" · "Stay within budget" · "Deliver on time".
-- **Visual:** a large triangle drawn with SVG strokes, and a small dot marker.
-- **Builds:**
-  - 0: the triangle draws.
-  - 1: the marker glides toward the centre, is gently pushed out to an edge, tries again, and is pushed out again. Smooth, no bounce.
-  - 2: the headline lands: "Pick two."
-- **Cut:** A.
+#### S16 · `frameworks`
+- Keep v1's idea and content: Spec Kit, AI-DLC, BMAD, OpenSpec are proven, thorough and not cheap, shown as a balance. Apply the global rules (bigger, less text). Treat the frameworks with respect.
 
----
+#### S17 · `say-vs-do`
+- Keep v1's idea. Make the two columns **much larger and more prominent**: big type, well spaced, readable from far away. Remove any small print and the "camera on, brain optional" mascot caption.
 
-#### S23 · `slop`
-
-- **Corner:** `23 / Slop`
-- **One idea:** AI output is becoming generic and recognisable, and we feed it.
-- **On screen:** a full-bleed slop page, then the grid, then the principle line.
+#### S18 · `elephant`
+- **Idea:** because of budget limits, we cut corners. We one-shot, and we skip review, documentation and QA.
+- **On screen:** headline "The elephant in the room." Stage labels only.
 - **Visual:**
-  - A believable generic AI landing page: purple-to-blue gradient, glass cards, "Supercharge your workflow" with a sparkle icon, three feature cards with bright icon badges, a rocket illustration, and a "Get started →" button. All icons are drawn, never emoji.
-  - **This is the deck's purple**, and it is fully intentional. The only other purple is S28's callback.
-- **Builds:**
-  - 0: the slop page fills the slide.
-  - 1: zoom out. It is one tile in a grid of 12 near-identical pages. Caption: "Spot the difference."
-  - 2 (optional, recommended): "Exhibit A: the first AI draft of this deck" slides in like a photo. It is `template_layout_feedback.png`, with the presenter's red annotations visible.
-  - 3: everything clears to: **"AI should follow our principles, not define them."**
-- **Small footnote** on build 3: "No purple gradients were harmed in the rest of this deck."
+  - **No elephant drawing** (the v1 one was ugly). If an elephant appears at all, it's a tiny, tasteful line-icon next to the headline.
+  - The slide is a **pipeline**: a full horizontal lane of stages: Plan · Spec · Implement · Review · Test · Docs · QA.
+  - Above it, a budget meter (no numbers) **drains**.
+  - With each click a stage is **snipped out** (a scissor cut, then the lane closes the gap), until only "Implement" is left. A stamp lands on it: "One shot."
+- **Builds:** 0: the full pipeline and full meter. 1: Review and Docs cut. 2: Spec, Test and QA cut. 3: the "One shot." stamp. (`totalBuilds: 3`)
 
----
-
-#### S24 · `meat-proxy`
-
-- **Corner:** `24 / Meat proxy`
-- **One idea:** a human who only forwards between client and AI adds nothing but latency, and can't answer "why".
-- **On screen:** "Don't be a meat proxy." Then the name tags, then the "Who is JSON?" bubble, then the punchline.
+#### S19 · `three-body`
+- **Idea:** framework/process, budget and on-time delivery pull against each other. The slide doesn't explain it; the presenter does.
+- **On screen:** headline "The three-body problem." Corner labels: "The framework", "The budget", "On time".
 - **Visual:**
-  - A horizontal pipe: **Client** → (blob) → **AI**. Arrows flow in and the same arrows flow out.
-  - `meat-proxy` sits in the middle of the pipe.
-- **Builds:**
-  - 0: the headline and the pipe. Arrows flow.
-  - 1: four name tags pop up around the blob one by one (a gentle scale-in, not a bounce): "The Human Clipboard" · "The Prompt Courier" · "The Certified Forwarder" · "The One-Tab Engineer".
-  - 2: a chat bubble from the blob to the AI: **"Who is JSON?"**
-  - 3: a bubble back from the client: "Why does it work like that?" The blob swaps to `meat-shrug`, captioned small: "The model said so."
-  - 4: the tags clear and the punchline lands: **"Your value-add shouldn't be latency."**
-- **Poll callback:** Q7 (shipped code you didn't fully understand).
-- **Notes:** do **not** put any meatproxy.me link on the slide.
+  - A big triangle fills the stage.
+  - The mascot **runs** from corner to corner. Whichever corner it reaches lights up while the other two dim and wobble.
+  - It gets visibly more exhausted each lap: speed drops, `meat-sweat`, then `meat-melt` collapsing in the middle.
+- **Builds:** 0: the triangle. 1: the run starts (it loops on its own). 2: the collapse. (`totalBuilds: 2`)
 
----
+#### S20 · `slop`
+- **Idea:** AI's default taste is everywhere, and it's purple.
+- **Build 0 (the slide *is* slop):** the full-bleed canvas is a purple / violet gradient (manifest `canvas` set for this slide). It's filled with glassmorphism cards, drawn sparkle icons, gradient text "Revolutionize Your Workflow", rainbow pills, "AI-powered" badges and a floating "Ask AI" bubble, plus a few gently twinkling sparkles. Pure 2024 AI-landing-page energy.
+- **Build 1:** everything **shrinks and morphs** into the clean slide: the canvas returns to `#FAFAFB` and the headline "Everything is purple now." lands. A small framed thumbnail of the slop remains as evidence.
+- **Build 2:** the principle line: **"AI should follow our principles, not its defaults."** Fix the broken animation from v1: it must animate in once, cleanly.
+- **Remove:** "Spot the difference" and "Exhibit A: the first AI draft of the deck".
+- **Builds:** 0, 1, 2. (`totalBuilds: 2`)
 
-### Act IV · Making It Good
+#### S21 · `make-no-mistakes` (moved from The Bad)
+- **Idea:** it's on us. Lazy, escalating prompts instead of clear ones. (The AI isn't perfect and won't be soon; the fix is how we ask.)
+- Keep v1's kinetic escalation: "make it better" → "Make it better. Make no mistakes." → "MAKE. NO. MISTAKES." Frame it as *our* habit: the prompts come from "me". Apply the global rules.
 
----
-
-#### S25 · `act-making-good`
-
-- **On screen:** "IV" / "Making It Good" (blue). Chapter card template.
-- **Out:** chapter morph into S26's corner label.
-
----
-
-#### S26 · `role-shift`
-
-- **Corner:** `26 / The role shift`
-- **One idea:** our job moved from typing to thinking, and that is where our value now lives.
-- **On screen:**
-  - Headline: "Promoted to orchestrator." with the sub "(no raise included)".
-  - A day bar.
-  - Five verbs.
-  - Build 3 kicker: "Engineering isn't dead. (Not yet.)"
-- **Visual:** a single horizontal "a day in my work" bar, with the blob from S24 carried over (shared element).
-- **Builds:**
-  - 0: a bar labelled **Before**: [writing code ████████][debugging ████][thinking █].
-  - 1: the bar morphs: segments resize and relabel into **Now**: [understanding & planning ███████][reviewing ████][writing code █]. The blob swaps to `meat-think`.
-  - 2: five verbs appear along a line, connected by a drawn path: **Understand → Decide → Delegate → Verify → Own**.
-  - 3: the small kicker line.
-- **Poll callback:** Q3 (do you miss writing code by hand?).
-
----
-
-#### S27 · `ticket-floor`
-
-- **Corner:** `27 / Add value`
-- **One idea:** with the time we got back, go beyond the requirement. Learn from competitors and best practice.
-- **On screen:**
-  - Headline: "The ticket is the floor, not the ceiling."
-  - A ticket card: "As a user, I want to see a list of wellbores."
-  - Idea chips.
-  - The line: "Look over the fence."
-- **Visual:** the ticket sits in the centre. On build 1, idea chips float out and settle around it: "keyboard navigation" · "saved views" · "empty state" · "loading state" · "density" · "accessibility".
-- **Builds:**
-  - 0: the ticket.
-  - 1: the chips appear.
-  - 2: "Look over the fence: competitors, best practices, great products."
-  - 3: the empty calendar from S06 returns small in a corner: "That's what the time is for."
-- **Cut:** B.
-
----
-
-#### S28 · `make-it-better`
-
-- **Corner:** `28 / Make it better`
-- **One idea:** AI lets us ship far more polish in the same time, if we bring the taste.
-- **On screen:** one UI mock at a time, a small state label, and the final line.
-- **Component (my call):** a **wellbore data grid** using clearly fake data (e.g. "Wellbore A-12", "Field: Demo North"). It nods to the real data-grid overhaul and bridges into the workflow chapter. UI only, no code.
-- **Builds:**
-  - 0, **"Before AI"** (label: "It worked. It was fine."): a plain bordered table, default font, "1 2 3 Next" pagination, and no loading, empty or hover states. Respectful, not mocked.
-  - 1, **"With AI"** (with a drawn sparkle icon): full slop. A purple gradient header, glass rows, a bright icon on every column, rainbow status pills, a floating "Ask AI about your wells!" bubble with a robot icon, sparkles. It is also broken: at the labelled "1280 px" width the last column is cut off and the header text overflows. Reuse S23's slop styling (callback); the 1280 px label returns on S36.
-  - 2, **"…just kidding."**: S03's eraser sweeps the slop away (callback).
-  - 3, **"With AI, done right"**:
-    - a calm grid in the design system;
-    - a sticky header, sortable columns and inline filter chips;
-    - a density toggle and a visible keyboard focus ring;
-    - a row-hover detail preview;
-    - a skeleton loading state that plays for 600 ms on entry, and an empty-state variant.
-    - Label: "Same ticket. Same deadline."
-  - 4: all mocks clear to: **"Before: bounded by hours. Now: bounded by imagination."**
-- **Notes:** this slide is UI only. The three mocks must look like they share a layout, so the morph between them reads as "the same component, evolving".
-
----
-
-#### S29 · `plan-hours`
-
-- **Corner:** `29 / Plan first`
-- **One idea:** plan deeply in one focused block, then let the AI execute for hours. Flow beats interruptions.
-- **On screen:**
-  - Headline: "Plan for hours. Let it run for hours."
-  - Two labels: "you: deep focus" and "agents: execution".
-  - Build 2: "Plan it well, then one-shot the plan."
-  - Build 3, small: "Small bug? Quick question? Chat is fine."
-- **Visual:** S18's spiky focus line (shared element).
-- **Builds:**
-  - 0: the spiky line returns.
-  - 1: it morphs into a long high plateau ("you: planning, ~3 h, deep focus"), followed by a long band in a second colour ("agents: executing, hours to a day"). Meanwhile your line moves to a lower lane labelled "you: review, next plan, client".
-  - 2: the one-shot line.
-  - 3: the fairness line.
-
----
-
-#### S30 · `right-size`
-
-- **Corner:** `30 / Right-size it`
-- **One idea:** don't run every task through one process. Size the process to the task, and borrow the frameworks' best ideas at the size you need.
-- **On screen:**
-  - Headline: "One workflow per feature."
-  - A spectrum with "Chatbot" at the left end and "Full framework" at the right.
-  - A "Me" marker.
-  - Three size rows.
-- **Visual:** a horizontal spectrum line with icons at each end: a chat bubble on the left, a stack of documents on the right.
-- **Builds:**
-  - 0: the spectrum.
-  - 1: the "Me" marker starts left, glides to the right end, then eases back and settles left of centre-middle.
-  - 2: three rows fade in under the marker:
-    - "Typo · small bug → just chat"
-    - "Medium feature → a plan + one session"
-    - "Big feature (10–30 commits) → custom workflow + agents"
-- **Poll callback:** Q1 (how you mostly work with AI).
-- **Notes:** the right end is not the bad end. The marker visits it on purpose, and the presenter says the middle borrows from it.
-
----
-
-#### S31 · `my-loop`
-
-- **Corner:** `31 / Feature-specific workflows`
-- **One idea:** the whole method in one picture: plan with a human, execute unattended, review at checkpoints.
-- **On screen:**
-  - Headline: "How I actually work."
-  - Three phase labels.
-  - Three rules at the bottom on the last build.
-- **Visual:** three regions left to right, connected by an animated SVG path:
-  - **Attended:** you + AI plan.
-  - **Unattended:** agents execute.
-  - **Attended:** checkpoint review.
-
-  A "continue" arrow loops from the review back into execution. Under the first region sit three tiny steps: "1. Brainstorm alone (what to do, and what *not* to do) · 2. AI asks me questions · 3. Plan + workflow files".
-- **Builds:**
-  - 0: headline.
-  - 1: the Attended (plan) region and its three steps.
-  - 2: the kickoff arrow draws, and the Unattended region fills in (small units ticking).
-  - 3: the checkpoint region, plus the "continue" loop.
-  - 4: three rules: "Every question answered up front." · "The files are the memory." · "The right model for each job." These signpost S32, S33 and S34.
-
----
-
-#### S32 · `ask-everything`
-
-- **Corner:** `32 / Planning`
-- **One idea:** every question is settled before execution, so execution never has to ask.
-- **On screen:** AI question bubbles → stamped answers → plan anatomy → kickoff snippet.
-- **Builds:**
-  - 0: question bubbles from the AI stack up on the left: "Grid or list?" · "What if there are zero results?" · "en + nb translations?" · "Which depth reference?"
-  - 1: each gets a short answer, then is "stamped" into a document card on the right titled `plan.md § Settled decisions`.
-  - 2: the document card expands into the plan's anatomy, four labelled sections: **Global constraints · Review focus · Shared contracts · Units** (scope · files · deps · verify commands).
-  - 3: a terminal snippet (the kickoff prompt). This is real and worth showing:
-    ```
-    Continue the data-inventory redesign. Read
-    temp-notes/data-inventory-redesign/README.md and follow its session
-    protocol autonomously. Do not ask me anything; log decisions in decisions.md.
-    ```
-    The last sentence gets the slide's one blue highlight.
-
----
-
-#### S33 · `files-memory`
-
-- **Corner:** `33 / Working folder`
-- **One idea:** state lives in files, not the chat, so any session can resume.
-- **On screen:** a chat that rots, a folder tree, and "Crash? Context limit? Next morning? Resume."
-- **Builds:**
-  - 0: a long chat transcript scrolls upward. Labels detach from the top and fade away: "the plan", "the conventions", "decision from turn 40". Caption: "context rot (the chat's)", pairing with S18's "context rot (yours)".
-  - 1: the chat dissolves into a folder tree, `temp-notes/<feature>/`, with one 2–4 word purpose per file:
-    - `README.md`: session protocol
-    - `plan.md`: decisions + units
-    - `specs/*.md`: the UI spec
-    - `progress.md`: `[ ] [~] [x] [!]` + hashes, tokens
-    - `decisions.md`: why, one line each
-    - `important-notes.md`: living memory
-    - `human-review.md`: questions for me
-  - 2: a fresh "new session" node connects to the folder and reads it. The line appears.
-
----
-
-#### S34 · `the-team`
-
-- **Corner:** `34 / Model routing`
-- **One idea:** route work by model. The expensive model does judgment; cheap models do mechanics.
-- **On screen:** "Pay for judgment, not for typing." Three tiers, then a frontmatter snippet.
-- **Visual:** three horizontal tiers stacked vertically, each with a weight hint ($$$ / $$ / $). Not cards: think of a mixing desk or org-chart rows.
-  - **Opus · judges**: orchestrator, designer. Note: "never writes product code".
-  - **Sonnet · builds & reviews**: implementer, reviewer, explorer, validator.
-  - **Haiku · runs**: browser runner, committer ("only when fully scripted").
-- **Builds:**
-  - 0: the Opus tier is on screen on entry.
-  - 1–2: the Sonnet tier, then the Haiku tier.
-  - 3: a small frontmatter snippet slides in:
-    ```markdown
-    ---
-    name: dir-implementer
-    model: sonnet
-    effort: medium
-    maxTurns: 150
-    ---
-    ```
-    Caption: "routing can't drift mid-run".
-
----
-
-#### S35 · `unit-loop`
-
-- **Corner:** `35 / Execution`
-- **One idea:** a disciplined loop per unit: implement, verify, review, fix once, commit.
-- **On screen:** "One unit at a time." The loop labels, then the kicker.
+#### S22 · `meat-proxy`
+- **Idea:** passing messages between client and model without thinking.
 - **Visual:**
-  - A loop diagram drawn as one SVG path, with a small dot travelling it (an allowed loop): **pick unit → implement (Sonnet) → verify (orchestrator re-runs) → review (HIGH/MEDIUM only) → one fix round → commit (Haiku, hooks run) → log + curate notes → next**.
-  - A short red side-arc from verify back to implement, labelled "red? same implementer, ≤ 5 rounds".
-  - On the right, a small DAG of units ticks `[x]` as the dot completes laps.
-- **Builds:**
-  - 0: the loop draws once, slowly.
-  - 1: the dot starts travelling and the DAG ticks.
-  - 2: kicker: **"One review. One fix round. Perfectionism loops are where token budgets go to die."**
+  - The client → me (blob) → AI pipe, as in v1.
+  - The proxy's "thoughts" appear **one by one as a commit-log list** (`git log --oneline` style, short hash plus message), stacking downward beside the blob, **never overlapping**. For example: `a1f3c2 forward client email to AI` · `b7e9d1 paste AI answer to client` · `c4d2a8 forward client reply to AI` · `d9b6e3 ask AI what the client meant` · …
+  - The list **stops at** `e2c1f7 who is JSON?`.
+  - Then the blob swaps to `meat-shrug` with "The model said so."
+- **Builds:** 0: the pipe. 1–4: one log line each, ending on "who is JSON?". 5: the shrug. Labels can't overlap the blob or each other (v1 had overlapping chips). (`totalBuilds: 5`)
 
----
+### IV · Making It Count
 
-#### S36 · `dont-trust`
+#### S24 · `role-shift`
+- **Idea:** we never coded all day (four hours on a good day). Now the coding part is largely solved, and the role has shifted: from the engineer who implements everything by hand to product owner, project manager and decision maker.
+- **On screen:** headline "The role shift." with the small sub "(no raise included)" (keep). Segment labels only.
+- **Visual:**
+  - A single **day bar** (8 h) that fills the width, labels **inside or above** each segment and always fully readable (v1 truncated them, see feedback image s26).
+  - **Before:** Coding ~4 h · Meetings · Debugging · Reviews · Thinking.
+  - **Now:** the Coding segment shrinks to a sliver labelled "AI". Planning · Designing · Evaluating · Deciding grow into the freed time.
+  - Then the identity swap. Beside the bar, the mascot changes from workhorse (`meat-printer` or `meat-clerk`) to `meat-think`. Its title tag flips from "Engineer: writes the code" to "Product owner · Project manager · Decision maker".
+- **Builds:** 0: the before bar. 1: the morph to now. 2: the identity swap. (`totalBuilds: 2`)
 
-- **Corner:** `36 / Verification`
-- **One idea:** green checks aren't proof. Verify for real, and let a gate the agent can't skip have the last word.
-- **On screen:** a stack of green checks, a broken screenshot, the runner/validator split, then the commit gate.
-- **Builds:**
-  - 0: green checks stack up: `lint ✓` · `tsc ✓` · `4,900 unit tests ✓` · `build ✓`.
-  - 1: beside them, a browser frame labelled "1280 px" (the same label as S28). A popover is clipped off-screen, a column is misaligned and there's a duplicated tooltip. Red circles draw around each.
-  - 2: the split diagram: **orchestrator writes the probe** → **Haiku runner** (runs it verbatim, returns raw JSON) → **Sonnet validator** (never browses; recomputes the numbers). Caption: "Scripts over clicking. Cheapest model. Numbers you can check."
-  - 3: the diagram clears to one commit gate, drawn left to right: `git add -- <paths>` → `pre-commit: design:check → lint` → `commit a1b2c3d`. Caption: "The last gate. Agents can't skip it: no `--no-verify`."
-- **Notes:** this slide pays off S02 (the rig) and S13 (the skipped tests); both callbacks are spoken.
+#### S25 · `ticket-floor`
+- **Idea:** with the time back, look over the fence: competitors, best practices, great products.
+- **On screen:** headline and one line: "Look over the fence." Remove v1's two idea-chip builds and the "reclaimed focus" card.
+- **Visual:**
+  - A ticket card sits on a "floor" line at the bottom-left.
+  - A long picket fence is drawn across the stage. The mascot (`meat-lurk` / `meat-eyes`) climbs up and peeks over it.
+  - Beyond the fence, three or four beautiful abstract "great product" silhouettes rise into view (polished UI shapes, no brand logos).
+- **Builds:** 0: the ticket on the floor and the headline. 1: the fence, the peek and what's beyond, plus the line. (`totalBuilds: 1`)
 
----
+#### S26 · `make-it-better`
+- **Idea:** with the heavy lifting delegated, we can deliver thoughtful UX that wasn't affordable before. It's not about more features; it's balance.
+- **Component:** one wellbore data grid with fake data ("Wellbore A-12", "Demo North"…). Every state shares the same layout box, so the change reads as *the same component evolving*. Wrap mock internals in `data-mock`.
+- **Build 0, "Before AI":**
+  - A simple, respectable table: a **search bar**, **sort icons** on the headers, plain borders and basic pagination.
+  - It worked and served its purpose. Not deliberately bare.
+  - No label mocking it.
+- **Build 1, the slop joke (unlabelled):**
+  - Purple gradient header, glass rows, an icon on every column, rainbow status pills, sparkles, a floating "Ask AI" bubble.
+  - **No text saying it's bad.** Instead, a large, earnest question to the audience: **"Beautiful, isn't it?"**
+  - The presenter reveals the joke.
+- **Build 2, "With AI, done right":**
+  - A calm, refined grid: search and filter chips, a compact/comfortable density toggle, and a brief **skeleton loading** state on entry (~600 ms).
+  - **Colour only where it means something:** status (e.g. a muted green/amber/red dot for well status) and one highlighted out-of-range value. No decorative colour.
+  - **The hero detail:** a long-text "Remarks" column truncates neatly. Build 2 also auto-hovers one cell (an animated cursor moves in), and a **popover** opens smoothly with the full text, fluid and rich but not distracting.
+- **Remove entirely:** the eraser / "sweeping the slop away" build; "Same ticket. Same deadline."; "(InformatiQ design system)"; "100% WCAG"; "Before: bounded by hours…"; every explanatory label.
+- **Builds:** 0, 1, 2. (`totalBuilds: 2`)
 
-#### S37 · `hard-way`
+#### S27 · `plan-hours`
+- **Idea:** plan deeply in one focused block, then let agents execute for hours.
+- **Visual:** a clear **two-lane day timeline**, labelled "Me" and "Agents", with a time axis from 09:00 to 18:00 and a sun or clock indicator moving along it.
+  - **Build 0:** S15's spiky, interrupted focus line (prompt, wait, scroll, prompt…) in the "Me" lane. It reads as chaos.
+  - **Build 1:** the line **morphs** into one long solid block, "Plan · ~3 h". The "Agents" lane then fills with a long "Execute" band that starts where the plan ends and runs past 18:00 (an arrow off the edge: "overnight"). Small unit ticks complete along it.
+  - **Build 2:** the "Me" lane fills with smaller blocks during execution: "Review", "Next plan", "Client". The point: I'm free while it runs.
+- **On screen:** headline. Lane labels. Block labels (1–2 words each). **No "(yours)"** anywhere.
+- **Builds:** 0, 1, 2. (`totalBuilds: 2`)
 
-- **Corner:** `37 / Safety rails`
-- **One idea:** every rule in the workflow comes from a real incident.
-- **On screen:** one incident card at a time, each stamped with the rule it produced.
-- **Visual:** a deck of postmortem-style tickets in the same spot. Each click flips to the next, so they are never laid out as a grid.
-- **Builds:**
-  - 0: "An agent deleted untracked files. Unrecoverable." → stamp: **"Agents never delete files they didn't create."**
-  - 1: "An implementer sat idle for ~65 minutes." → **"Stop it, resume it. Context intact."**
-  - 2: "A check passed by measuring the wrong element (shared class)." → **"Target `data-testid`, never utility classes."**
-  - 3: "A 40 px tolerance passed two elements on different rows." → **"Real tolerances: a few px."**
-  - 4: the cards stack away and one standing-rules card remains: **"Explicit paths only. No `git add -A`, no push, no force."**
-- **Cut:** B. If cut, the presenter says the standing rules in one line on S36.
+#### S28 · `the-number` (teaser)
+- **On screen:** only **$25,000**, centred, display size (~240 px), ink. No headline, no badge, no mascot. A very slow, subtle breathing of letter-spacing or opacity at most. The presenter says "hold on to that number".
+- **Exact geometry:** record the number's font, size, weight and position in `important-notes.md`. S38 starts with the identical number in the identical position.
+- **Builds:** 0.
 
----
+### V · How We Work
 
-#### S38 · `receipts`
+> Every content slide in this chapter shows the `WorkflowMiniMap` in the same spot (top-left, inside the safe area, small, about 520 × 56 px). It has 4 stations, Gather · Plan · Orchestrate · Remember, with the current station highlighted. S30 introduces the full-size map; S37 shows all stations done.
 
-- **Corner:** `38 / Numbers`
-- **One idea:** it's affordable. Here are real numbers.
-- **On screen:** kinetic numbers, one per click, each with a one-line label:
-  - **13 units** on **~0.25M orchestrator tokens** (data-inventory redesign, round 1)
-  - **~165k tokens** for 2 scripted browser checkpoints (data-grid overhaul)
-  - **10–30 commits** per feature: data-grid overhaul · data-inventory redesign ×2 · design-system migration
-- **Builds:** 0: the first figure on entry · 1–2: one more figure per click. Each number counts up quickly (≤ 600 ms), then settles.
-- **Cut:** A. If cut, the presenter says the first number on S35.
+#### S30 · `workflow-map`
+- **Idea:** we design a custom workflow per complex feature or module, or for a bundle of smaller features planned together. Two halves: I'm in the room for the first, agents run the second.
+- **On screen:** headline "How we work now." 4 station names. Two zone labels: "With me" / "Without me".
+- **Visual:**
+  - A large path draws across the stage, connecting 4 big stations, each with a drawn icon:
+    - **Gather** (magnifier / sources)
+    - **Plan** (document)
+    - **Orchestrate** (conductor node with branches)
+    - **Remember** (files)
+  - A soft zone behind Gather and Plan is labelled "With me", with the mascot `meat-think` small. A zone behind Orchestrate and Remember is labelled "Without me".
+  - A small loop arrow from Remember back to the start: next feature.
+- **Builds:** 0: headline. 1: Gather and Plan with the "With me" zone. 2: Orchestrate and Remember with the "Without me" zone. 3: the loop arrow. Then the map shrinks toward the mini-map position (a visual rhyme for S31). (`totalBuilds: 3`)
 
----
+#### S31 · `gather`
+- **Idea:** the client's requirement is only the start. As the engineer, I gather the rest: have we solved this in another project, how did the big players solve it, that blog post, the assets we already have. Then I become the user: who uses this, what would I look for first, what comes next, would *I* be happy with this requirement? Then I compose it into one brief. This is where ownership and expertise show.
+- **On screen:** headline "The requirement is just the start." Source labels (1–3 words each).
+- **Visual:**
+  - The client's ticket sits small in the centre.
+  - Sources orbit in from around the stage, one per click: "Past projects" · "How others solved it" · "That blog post" · "Our existing assets".
+  - Then the mascot (`meat-think`) steps into a "user's shoes" frame with three quick thought bubbles: "Who uses this?" · "What do I need first?" · "What comes next?"
+  - Finally every source and thought **flows into** the ticket, which grows into a rich "Brief" document.
+- **Builds:** 0: the ticket. 1: the four sources. 2: be the user. 3: the composition into the brief. (`totalBuilds: 3`)
 
-#### S39 · `stateless`
+#### S32 · `plan-together`
+- **Idea:** I bring the requirements and how I'd implement them. The AI is a co-worker that attacks the plan from every angle and asks every decision it can foresee, and I decide, because I hold the context. The output is a unit-by-unit plan, and each unit carries everything its agent needs.
+- **On screen:** headline "Plan with a co-worker." Short question bubbles. Unit anatomy labels.
+- **Visual:**
+  - **Build 1, the attack:** the brief from S31 sits in the centre. AI question bubbles arrive from different directions, with small arrows hitting the brief: "Zero results?" · "Offline?" · "Which users first?" · "How do we verify it?" · "Mobile?"
+  - **Build 2, my answers:** answer chips from "me" snap onto each question, and each pair stamps into the document.
+  - **Build 3, the plan:** the document splits into a **stack of unit cards**. One unit card expands to show its anatomy as six labelled bands: **Rules · Context (short) · Task · Tests · Verify · Agent rules**.
+- **Builds:** 0: headline and the brief. 1–3 as above. (`totalBuilds: 3`)
 
-- **Corner:** `39 / Context costs`
-- **One idea:** every message re-sends the whole conversation. Long, idle, sprawling sessions cost money *and* lose detail.
-- **On screen:** "It re-reads everything. Every time." Short labels per build: "cache: 5 min (API) · ~1 h (subscription)", "idle → compacted", `/clear` + "hand-off note".
-- **Visual:** the conversation as a stack of blocks next to a "model" box.
-- **Builds:**
-  - 0: each new turn adds a block, and the **whole stack** travels to the model box and back. The stack grows taller and a cost meter beside it climbs faster each turn.
-  - 1: a small timer badge appears on the stack (the cache TTL). The presenter "walks away": the badge runs out and the next turn's trip is drawn heavier, because it re-reads everything.
-  - 2: an overnight icon. The stack gets squashed into a thinner summary block, and some blocks blur away: **compacted while idle, detail quietly lost**.
-  - 3: the fix. `/clear` empties the stack. A small "hand-off note" file is carried into a fresh session, which starts with a tiny stack. Caption: "One task, one session. Files carry the context."
+#### S33 · `orchestrator`
+- **Idea:** the main session only orchestrates, like a project manager: it delegates and checks. The workers are fresh agents, and each gets *only* the context it needs. The codebase, conventions and rules are explored once, then sliced and handed out. Nobody re-explores, contexts stay short, and fresh agents stay cheap.
+- **On screen:** headline "One manager. Many fresh minds." Agent role labels. Two tiny meter labels: "Explore once" / "Explore every time".
+- **Visual:**
+  - **Build 1, explore once:** a single scan beam sweeps a codebase block and produces a "context pack": a deck of cards labelled Conventions · Design rules · Domain · Tests.
+  - **Build 2, deal:** the orchestrator node at the top deals **specific cards** to fresh agent nodes below: Designer (gets Design rules + Domain), Implementer (Conventions + Domain), Reviewer (Conventions + Tests), Tester (Tests). Each agent glows "fresh".
+  - **Build 3, the contrast:** a compact side-by-side of two token meters, with no numbers. "Explore every time": four scan beams, a tall bar. "Explore once": one beam, a short bar.
+- **Builds:** 0: headline, orchestrator and codebase. 1–3 as above. (`totalBuilds: 3`)
 
----
+#### S34 · `right-model`
+- **Idea:** match the model and the effort level to the job. The most capable model plans, decides, designs and reviews. A mid model implements and writes tests. A small model runs fully scripted chores (Playwright scripts, batched commits, cleaning up comments and debris) from instructions that can't be misread.
+- **On screen:** headline "Right model. Right effort." Tier labels and jobs.
+- **Visual:**
+  - Three horizontal tiers, like mixing-desk channels, not cards:
+    - **Opus**: Plan · Decide · Design · Review
+    - **Sonnet**: Implement · Unit tests
+    - **Haiku**: Run scripts · Commit · Clean up
+  - Each tier has an **effort slider** that animates to a different setting per task (e.g. Sonnet's slider moves from "medium" to "high" as a "complex feature" chip arrives).
+- **Builds:** 0: Opus tier. 1: Sonnet tier. 2: Haiku tier. 3: the effort sliders move. (`totalBuilds: 3`)
 
-#### S40 · `routing`
+#### S35 · `specialists`
+- **Idea:** we used to use general-purpose agents (a code reviewer, a UI designer, a backend expert). Their instructions grew and grew, and the results were mediocre. Now we generate specialised, temporary agents for one complex feature from our own workflow repo, which holds how we design them. Results are sharper and cheaper. When the feature ships, the agents retire.
+- **On screen:** headline "Built for this feature. Then retired." Minimal labels.
+- **Visual:**
+  - **Build 0, general purpose:** one generic agent node whose instruction document **grows taller and taller** (lines piling up past the top of the stage) while a small output-quality gauge sits at "meh".
+  - **Build 1, specialists:** a template from the "Workflow repo" stamps out three small, sharp agents with feature-specific names (`grid-designer`, `grid-implementer`, `grid-reviewer`). Their documents are short, and the quality gauge rises.
+  - **Build 2, retired:** a "Feature shipped ✓" check lands. The three agents fade into the repo, and the template stays.
+- **Builds:** 0, 1, 2. (`totalBuilds: 2`)
 
-- **Corner:** `40 / Cheap tricks`
-- **One idea:** right model, right effort, right context, plus specific prompts. These are the everyday cost levers.
-- **On screen:** three dials, each with one rule. Build 3 adds a "be specific" line.
-- **Visual:** three large dials or sliders in a row:
-  - **Model:** Haiku · Sonnet · Opus
-  - **Effort:** low → max
-  - **Context:** what it may read
-- **Builds:**
-  - 0: **Model** turns. Rule: "Write your routing down once." A tiny snippet underneath: "Sonnet: most work · Opus: design, planning, hard bugs · Haiku: scripted, mechanical".
-  - 1: **Effort** turns. Rule: "Low for simple. High for hard."
-  - 2: **Context** turns. Rule: "Sub-agents with scoped briefs. Keep files out." Snippet (accurate for Claude Code; `.claudeignore` does nothing):
-    ```json
-    { "permissions": { "deny": ["Read(./.env)", "Read(./dist/**)"] } }
-    ```
-  - 3: one line under all three: **"Not 'improve the UI'. Say what, where, and how you'll check it."**
+#### S36 · `files-memory`
+- **Idea:** we never rely on the chat or the harness's to-do list for progress. Files hold the state, so a session can die (even my laptop) and the next one resumes exactly where it stopped.
+- **The files:**
+  - `progress.md`: unit by unit.
+  - `decisions.md`: the calls agents made mid-run, for me to check.
+  - `notes.md`: the living memory for the next fresh agent; ~90% of it is disposable after the feature.
+  - `review-log.md`: non-severe findings parked for a human glance, because a reviewer *always* finds something.
+- **On screen:** headline "The files are the memory." File names and 2–4 word purposes.
+- **Visual:**
+  - **Build 1, the laptop dies:** a session runs (units ticking `[x]`), then the laptop screen goes black (battery icon empties).
+  - **Build 2, resume:** a new session node lights up, reads `progress.md` and resumes at **unit 7** exactly. The `[~]` becomes `[x]` and it continues.
+  - **Build 3, the folder:** the four files fan out, each with its purpose. `notes.md` shows a small "90% disposable" fade effect after a "feature shipped" tick.
+- **Builds:** 0: headline and the running session. 1–3 as above. (`totalBuilds: 3`)
 
----
+#### S37 · `code-context`
+- **Idea:** we save fewer of the markdown files we generate. Documentation that mirrors code drifts out of sync, which is debt. Newer models read well-designed code very well. We keep only product context, the complex-feature notes, decision records and a small memory bank for things that go against convention. Write better code with less context-as-text.
+- **On screen:** headline "Code is the new context." Kicker: "Better code. Fewer docs."
+- **Visual:**
+  - **Build 0:** a tall stack of markdown docs beside a code block. Red "out of sync" diff marks appear between them.
+  - **Build 1:** the stack **collapses**: most docs dissolve. Three thin ones remain, labelled Product context · Decision records · Memory bank. The code block grows cleaner and larger and becomes the centre.
+  - **Build 2:** the mini-map shows all four stations complete, and the kicker lands.
+- **Builds:** 0, 1, 2. (`totalBuilds: 2`)
 
-#### S41 · `shared-repo`
+### Epilogue · The $25,000 lesson
 
-- **Corner:** `41 / Team toolbox`
-- **One idea:** centralise skills, plugins, commands, agents and workflows in one team repo.
-- **On screen:** "Build it once. Share it with everyone." The repo node is labelled generically, "Team AI repo" (it's private, so no real name). Five item labels.
-- **Visual:** one repo node in the centre with spokes out to a ring of small engineer dots. Items flow outward along the spokes: skills · plugins · commands · agents · workflows (including "user-manual generator", a callback to S07).
-- **Builds:** 0: the node and spokes · 1: the items flow · 2: small line: "Every team should have one." · 3: the offer, small: "Want a starting point? Ask me." with the presenter's Teams handle.
-- **Cut:** B.
+> No chapter card (so nothing spoils it). Corner dot in ink. The tone is storytelling: big, simple visuals and very few words. **No budget figures on screen**; the presenter tells those. Only $25,000 appears.
 
----
+#### S38 · `unlimited`
+- **Build 0:** **$25,000**, identical to S28: same position, size and weight. The presenter: "Remember this number?"
+- **Build 1:** the number slides up and shrinks out of the way. The headline **"It's unlimited."** lands with a large drawn **∞** that draws itself on. Small "from → to" marks: "GitHub Copilot → Claude Code".
+- **Build 2, all in:** the ∞ gives way to a **sketchy wireframe** (rough, hand-drawn-looking prototype) that morphs into a **polished app** silhouette, with a "1 month" label. `meat-rocket`.
+- **Builds:** 0, 1, 2. (`totalBuilds: 2`)
 
-#### S42 · `doom-flip`
+#### S39 · `the-morning`
+- **On screen:** headline "Access revoked."
+- **Build 0:** a terminal: `claude` → `Error: access denied for this account`. In a corner, a mail icon with an unread badge: "Usage warning" (the missed email).
+- **Build 1:** a leaderboard titled "Top 10 users". The rows are anonymous bars. One row slides up and highlights: **"me · $25,000"**. This is the only place the full number is tied to me.
+- **Build 2:** the ∞ from S38 snaps into a small gauge with a needle. No numbers, no budget figures. The presenter tells the new-reality part (soft budget, actual usage, the salary joke).
+- **Builds:** 0, 1, 2. (`totalBuilds: 2`)
 
-- **Corner:** `42 / The plan`, the same label as S03 on purpose.
-- **One idea:** callback finale. The wrong slide was right all along, and its five steps flip into the five takeaways.
-- **On screen:** the S03 title, the globe and five steps. Then the flipped title and the five antidotes.
-- **Visual:** S03 returns exactly (shared element). This time a numbered list of 5 steps sits beside the globe.
-- **Builds:**
-  - 0: "How AI Will Destroy the Human Race: a practical five-step plan":
-    1. Keep them waiting.
-    2. Say "You're absolutely right!", then do it anyway.
-    3. Drain their budgets.
-    4. Paint everything purple.
-    5. Turn them into meat proxies.
-  - 1: the title morphs (word-level magic move) into **"…only if we let it."**
-  - 2–6: each step flips, one per click, into its antidote, in the act colour:
-    1. **Plan more. Prompt less.**
-    2. **Verify. Never trust "it passes".**
-    3. **Pay for judgment, not for typing.**
-    4. **Give it your principles.**
-    5. **Own every line you ship.**
-- **Notes:** these five lines *are* the takeaways. There is no separate takeaway slide, by design.
+#### S40 · `cache`
+- **Idea:** lesson 1. Our enterprise setup has a 5-minute prompt-cache TTL. Let it expire (a coffee break) and the next tiny message re-processes the whole 100K context. The fix in our workflow: the main session pings every 4:50 to keep the cache warm while sub-agents work.
+- **On screen:** headline "Five minutes." Labels: "5:00", "4:50" and "cached" / "re-cached". No dollar figures.
+- **Visual:**
+  - **Build 0:** a big context block (a stack labelled "100K context") with a circular **5:00 countdown ring**, glowing "cached".
+  - **Build 1:** `meat-coffee` walks off. The ring runs out. Then a tiny message "ok, continue" is sent, and the **entire** block flashes and is re-processed: a heavy animated sweep through all of it.
+  - **Build 2, the fix:** a heartbeat pulse every **4:50** keeps the ring topped up. Sub-agent nodes work below while the main block stays "cached".
+- **Builds:** 0, 1, 2. (`totalBuilds: 2`)
 
----
+#### S41 · `fresh-sessions`
+- **Idea:** lesson 2. Don't blindly resume yesterday's session. It may be compacted (repeatedly), and the details quietly drop out. Ask for a handoff document, then start a fresh session with it.
+- **On screen:** headline "Start fresh." Labels: "Yesterday", "Compacted", "Handoff", "Fresh session".
+- **Visual:**
+  - **Build 0:** yesterday's long conversation stack.
+  - **Build 1:** it gets **squeezed** (compaction) once, then again. Little detail blocks fall out and fade ("the decision from turn 40", "the edge case"). It looks smaller but holes are visible.
+  - **Build 2:** a neat **handoff doc** (Decisions · Status · Files · Next) is carried into a **fresh**, clean, small session that lights up.
+- **Builds:** 0, 1, 2. (`totalBuilds: 2`)
+- The presenter closes with: "That's why the workflow looks the way it does." It's spoken; there's no slide for it.
+
+### Close
+
+#### S42 · `shared-repo`
+- **Idea:** our team culture is to build, version and centralise our own agents, plugins, skills and workflows. In this era, reusable code isn't enough; we need reusable AI engineering, across sub-teams and projects. Brain Station 23 could do this company-wide.
+- **On screen:** headline "Build it once. Share it with everyone." Item labels: "Agents · Skills · Plugins · Workflows". One kicker on the final build: "Reusable code → reusable AI engineering."
+- **Visual:**
+  - **Build 0:** a central "Team AI repo" node with version tags (`v1.4`, `v2.0`) on its items.
+  - **Build 1:** items flow out along spokes to several project / sub-team nodes.
+  - **Build 2:** the whole picture shrinks into one of many similar hubs across a wider "company" field, connected. Then the kicker lands.
+- **No** Teams handle, no repo name, no "ask me".
+- **Builds:** 0, 1, 2. (`totalBuilds: 2`)
 
 #### S43 · `thanks`
-
-- **Corner:** none
-- **On screen:** "Questions?" with the sub "(Humans only.)" Small: "Rokibul Islam · InformatiQ team · Brain Station 23" and the BS23 logo, small. `meat-wave`.
-- **Builds:** 0 only.
-- **Optional:** a quiet "Your funniest AI moments" line, if the presenter reads poll free-text answers aloud.
-
----
-
-## 7. Calls I made (please check these while reading)
-
-1. **A four-act structure.** The Good / The Bad / The Ugly / Making It Good, with "The Bad is the AI. The Ugly is us." as the pivot.
-2. **The wrong slide is S03 and reveals the agenda.** It is paid off by the S42 finale, which doubles as the takeaway slide.
-3. **The poll sits between The Good and The Bad (S09, ~10:45), not in the opening.** Putting all the participation up front leaves a long stretch of listening afterwards. Here it breaks up the talk when attention dips, and every answer is read back during The Bad, The Ugly and Making It Good. The poll itself is a placeholder. It assumes Microsoft Forms (native to Teams) with "Record name" switched off so it is genuinely anonymous, plus a backup poll link in case Forms misbehaves. The QR code and the link go in the chat. Results are **spoken** at callback slides from a second monitor, not shown live on the slides. The presenter reads one or two early answers aloud while the poll is open.
-4. **"Let's make it better" uses a wellbore data grid with fake data.** It nods to the real data-grid overhaul and bridges into the workflow chapter.
-5. **There is no demo.** The workflow is explained on the slides themselves (S29–S38).
-6. **The meat blob is our recurring "engineer" character**, used on about 10 slides and at most once per slide.
-7. **No purple anywhere except the slop jokes.** The presenter calls this out.
-8. **The S13 examples are made-up but realistic**, and they stay as they are.
-9. **The idle-compaction point stays on S39, as you asked.** The cache-TTL point is added alongside it.
-10. **"Who is JSON?" is kept exactly that short**, and there is no meatproxy.me link anywhere.
-11. **43 slides, including 4 chapter cards**, timed to ~72.5 min plus ~7.5 min of Q&A, with an A/B cut list.
-12. **Notes, not a script.** `presenter-notes.md` gives each slide its point, reminders, click cues and punchlines. The delivery is the presenter's own.
-13. **Each "Bad" gets one spoken line on why it happens** (S12, S13, S15, S23): long chats dilute early instructions, it aims for "looks done", it writes the average of its training code. That gives the jokes technical weight, and each cause is fixed later in Act IV.
-14. **S36 is where trust gets earned.** It pays off the rig (S02) and the skipped tests (S13), and ends on a git-hook gate the agents can't skip.
-15. **No emoji anywhere.** The slop mocks use drawn icons instead.
-16. **The AI frameworks are treated with respect.** Spec Kit, AI-DLC, BMAD and OpenSpec are presented as proven and valuable. The only downsides named are the tokens, the effort and the process they ask you to follow, plus being general by design. S19 shows the trade-off as a balance, S20 aims the joke at us, and S30–S32 credit the frameworks as the source of the ideas the workflow borrows.
+- **On screen:** "Questions?" (display size), then "(Humans only.)" (keep), then one warm, funny closing line: **"Session ended. Cache kept warm for 4:50."** It pays off S40. If the implementer finds a better callback, log it in `decisions.md`.
+- **Visual:** a big, animated `meat-wave` (the arm/body waves; a gentle loop is allowed) as the hero. A clean full-bleed canvas.
+- **Remove:** the "Brain Station 23 / InformatiQ Norway" footer, "InformatiQ Tech Talk", "See you at the after party", the mascot caption, and the GitHub and Teams links.
+- **Builds:** 0.
 
 ---
 
-## 8. Suggestions worth considering
+## 7. Calls made during planning (check these when you review)
 
-- **Plant a friend for the wrong slide.** Online, nobody's laughter reaches you. Ask one colleague to unmute right after the S03 title and say something like "Bhai… wrong slide." It turns a silent gag into a shared moment.
-- **Appoint a chat captain.** One teammate watches the Teams chat, surfaces the funniest replies, and reads one or two out during the S13 and S18 prompts and in Q&A. With 200 people, chat *is* the room.
-- **Keep your camera on**, especially for S03, S12 and S16. On Teams, your face is the only reaction channel for the jokes.
-- **Use Teams reactions as audience participation.** The notes include prompts: a laugh reaction on S01 and at "You're absolutely right!", a raised hand at the slop page, a heart for "do you miss writing code?".
-- **Add a teammate cameo.** One 45-second real horror story from a teammate in Act II would make "my *team's* experiences" literal. It needs a quick handover rehearsal.
-- **Use the meta proof.** This deck was planned in one AI session (with clarifying questions) and will be built in another, which is exactly the S31 method. The notes use this on S31. It is honest, and it lands well.
-- **Watch the wording** in two places:
-  - The original brief said "third-world countries". The notes use *"budget planned in taka, tokens priced in dollars"* instead: same point, funnier, nobody winces.
-  - The "layoff list" line is kept, with care. It is delivered as a wake-up call, not a threat.
-
----
-
-## 9. Placeholders to fill before the build is final
-
-- [ ] `POLL_URL` + short link + QR (S09), the final poll questions (draft in `presenter-notes.md`, Appendix A), and a backup poll link
-- [x] Presenter's full name: Rokibul Islam (S01, S43)
-- [ ] Presenter's Teams handle (S41, S43)
-- [ ] What from the team repo can be shared outside the team (S41's offer)
-- [ ] Optional: a real before/after figure for the user manuals (S07). Leave it out rather than estimate
-- [ ] Optional: confirm that showing `template_layout_feedback.png` on S23 is OK
+1. **Slide IDs renumbered to S01–S43.** v1 components move to `src/slides/legacy/` as reference and are deleted at the end.
+2. **Act IV is "Making It Count"** and gets teal `#0E7C86`, so that V · How We Work can own InformatiQ blue.
+3. **The epilogue has no chapter card and isn't on the agenda**, to protect the $25,000 reveal.
+4. **$25,000 is the only team number on screen.** The budget, usage and salary joke are spoken.
+5. **S09 uses real vendor claims, verified with sources**, or unattributed paraphrases if a claim can't be verified.
+6. **S09's terminal example:** a delete confirmation that appears *after* the delete. It's stack-agnostic.
+7. **S12's sub-line "(Read: a simple architecture.)"** makes the metaphor explicit.
+8. **S13's headline is now "Enterprise-grade dark mode."** It matches the dark-mode joke better than "hello world".
+9. **S02's headline is shortened to "We build software for the North Sea."**, and the stakes line is removed (no humour on S02).
+10. **The workflow is 4 stations** (Gather · Plan · Orchestrate · Remember). Right-model and specialists live under Orchestrate; code-is-context closes the chapter.
+11. **S43's closing line is "Session ended. Cache kept warm for 4:50."**
+12. **Chapter cards are light and tinted, and share one component.** The S01 shapes are reused as per-act motifs.
+13. **Shared-element "magic moves" across slides** are done as visual rhymes (same element, same geometry), because slides are separate components.
+14. **A fixed 1920 × 1080 stage with a full-bleed background** fixes both the black bars and the tiny type.
