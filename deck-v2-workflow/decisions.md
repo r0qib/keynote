@@ -37,3 +37,6 @@
 - 2026-11-05 · B1 · chapter-card motifs morph slowly (same ActShape language as S01); only S01's Bad shape glitches
 - 2026-11-05 · B1 · S03 widths roughly time-proportional but Act IV weighted up so IV and V are the two widest · §6 says so explicitly; it beats strict proportionality
 - 2026-11-05 · B1 · S03 Act IV weight 11 (not 9) so IV > III; deepened act fills kept local to S03 for ≥4.5:1 white text
+- 2026-11-05 · B2 · S05 chores shortened to fit a column at 34 px (CRUD APIs, Unit tests, Migrations, Regex, API docs) · fit, minimal text
+- 2026-11-05 · B2 · S06 pipeline as a four-step stepper beside a WellMate manual mock; "incremental diff" left to the presenter · minimal text
+- 2026-11-05 · B2 · S07 b1 = QR folds into a check ("poll closed"); v1 caption, copy button, timer, kicker and mascot dropped · spec: headline + QR are the slide; keeps v1 build count

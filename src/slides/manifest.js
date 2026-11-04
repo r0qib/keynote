@@ -41,7 +41,7 @@ export const slideManifest = [
   s('S06', 'manuals', 'Our user manuals write themselves.', 'User manuals', 'Good', 1.75, 2, 'S06_Manuals',
     'Manuals generated from the product. [1] [2] Reviewed and done.'),
   s('S07', 'poll', "Be honest. It's anonymous.", 'Poll', 'Poll', 2.0, 1, 'S07_Poll',
-    'Launch the poll. Give people time. [1] Results.'),
+    'Launch the poll. Give people time. [1] The QR closes into a check: talk through the results.'),
 
   // II · The Bad
   s('S08', 'act-bad', 'II · The Bad', '', 'Bad', 0.17, 0, 'S08_ActBad', 'Chapter card. A beat, then move on.', chapter('Bad')),

@@ -2,7 +2,7 @@
 
 Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, reviewed, committed) · `[!]` blocked (reason logged).
 
-**next:** B2
+**next:** B3
 
 ---
 
@@ -45,13 +45,13 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Verify:** build green. `npm run snap -- --out .snaps/B0` shows no CRASH / console / NAV / letterbox at 1920×1080 **and** 1440×900. Open `/?presenter=true` in the snap browser, or check by code reading that the presenter view renders.
 - **Commit paths:** `index.html src tailwind.config.js package.json .gitignore deck-v2-workflow`
 
-### [x] B1 · Opening + chapter cards: S01, S02, S03, S04, S08, S14, S23, S29
+### [x] B1 · Opening + chapter cards: S01, S02, S03, S04, S08, S14, S23, S29 · bb94920
 - **Legacy:** `S01_Title`, `S02_WhoWeAre`, `S04_Agenda`, `S05_ActGood` (for what *not* to do), the logos in `src/assets/informatiq-app-suite-logos/`, `src/assets/bs23_logo.webp`.
 - **Notes:** the S01 ambient shapes and the chapter-card motifs should share one visual language (`src/components/deck/AmbientShapes.jsx` or similar). S02 is 9 builds, logos large.
 - **Scope:** `src/slides/S01_Title.jsx`, `S02_WhoWeAre.jsx`, `S03_Agenda.jsx`, `S04_ActGood.jsx`, `S08_ActBad.jsx`, `S14_ActUgly.jsx`, `S23_ActCount.jsx`, `S29_ActHowWeWork.jsx`, `src/components/deck/**`, `src/slides/manifest.js` (these entries).
 - **Verify:** build; `snap --slides S01,S02,S03,S04,S08,S14,S23,S29`.
 
-### [ ] B2 · The Good + Poll: S05, S06, S07
+### [x] B2 · The Good + Poll: S05, S06, S07
 - **Legacy:** `S06_TimeBack`, `S07_Manuals` (crash: missing `springPhysics` import), `S09_Poll`.
 - **Scope:** `src/slides/S05_TimeBack.jsx`, `S06_Manuals.jsx`, `S07_Poll.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S05,S06,S07`.

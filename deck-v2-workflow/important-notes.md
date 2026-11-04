@@ -42,3 +42,5 @@ React 18 + Vite 5 + Tailwind 3 + Framer Motion 11 + lucide-react. `npm run build
 - **Chrome:** corner badge top 33 / right 120, progress pill top-centre, inside the 96 px top band. Keep slide content below y=96. `chromeFromBuild` in the manifest hides chrome before that build (S15 = 1).
 - **Framer Motion won't animate `fontSize`** (stays at initial value). Use a CSS transition or `scale` instead.
 - **ActShape** props: `morph`, `glitch`, `duration`, `delay` (S01 + ChapterCard).
+- **SlideFrame** is `flex flex-col`; a `flex-row` className won't win. Nest a `flex flex-1` div for row layouts.
+- **Headline** size overrides: use `style={{ fontSize }}`, not a className (conflicts with `text-headline`).
