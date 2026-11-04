@@ -16,7 +16,7 @@
 12. **Minimal on-screen text everywhere;** the presenter tells the story. Never blame the audience; negatives are "me/we".
 13. **Look and feel:** clean, minimal, big type, WWDC / Google I/O-style motion; engaging without being distracting.
 14. **No black bars:** full-bleed viewport + fixed 1920×1080 scaled stage (planner's technical call).
-15. **Execution setup (planner's call):** Opus orchestrator + Opus builder, Sonnet reviewer/writer, Opus design director for the final pass, Haiku committer; visual verification by `tools/snap.mjs` screenshots at 1920×1080 and 1440×900.
+15. **Execution setup:** Opus orchestrator + Opus builder (no screenshot viewing); screenshot checking by Sonnet (reviewer, medium) from contact sheets; Haiku snap-runner + committer; full browser session by Sonnet (low) via Playwright MCP script `tools/e2e-deck.js` (fallback `tools/e2e.mjs`); Opus design director on final contact sheets only (presenter asked for efficiency, 2026-11-05).
 
 ## Execution-time decisions
 

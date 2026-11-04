@@ -60,3 +60,4 @@ drafts/
 # Deck v2 run artifacts
 .snaps/
 deck-v2-workflow/.signals/
+.playwright-mcp/

@@ -25,8 +25,14 @@ React 18 + Vite 5 + Tailwind 3 + Framer Motion 11 + lucide-react. `npm run build
 ## Snap tool (`deck-v2-workflow/tools/snap.mjs`, `npm run snap -- …`)
 - Flags: `--slides S01,S02` (ids or keys) · `--out .snaps/<name>` · `--sizes 1920x1080,1440x900` (default) · `--settle 1400` ms per build · `--no-shots` · `--url` (default starts its own vite on :5199).
 - Screenshots every build at the first size, final build only at other sizes. `report.json` in the out dir.
+- Contact sheets: `contact-NN.png` = 3×3 labelled tiles of first-size shots (`--contact all` default, `final` = last build per slide, `none`). Reviewers read these instead of single PNGs.
 - Flags per state: `NAV` (build didn't land), `CRASH` (error boundary), `console` errors, `letterbox` (black screen edge), `small-text` (< 24 px design px; < 16 px inside `[data-mock]`), `clipped` (ellipsis/overflow text), `off-stage`, `overlap` (text boxes overlapping > 25%; suppress with `[data-overlap-ok]` only when intentional).
 - Exit code 1 on CRASH/console/NAV. Font sizes are read from computed style, so they're design px once slides render inside the scaled `Stage`.
 - Settle time matters: if an entrance animation is longer than 1.4 s, pass a larger `--settle` for that slide or the screenshot catches it mid-flight.
+
+## Browser session (`tools/e2e-deck.js`)
+- A bare `async (page) => {…}` function. Playwright MCP runs it with `browser_run_code_unsafe` + `filename`. `node deck-v2-workflow/tools/e2e.mjs` runs the same file with puppeteer-core. Both need the app on :5199 (`e2e.mjs` starts it).
+- Relies on `window.__informatiqSync`, `[data-testid="slide-error"]` and `[data-testid="corner-badge"]` (B0). It returns `{pass, failed[], checks[]}`.
+- Planning-time baseline on the v1 deck: navigation, presenter sync and overview all passed; it failed on black bars, the S07 `springPhysics` crash, and missing badge test-ids.
 
 ## Living memory (appended during the run)

@@ -21,7 +21,7 @@ Standards you hold yourself to:
 - Code is clean and readable. Comments are short and only where needed, never historical.
 - Import everything you use.
 
-Verify before reporting: run `npm run build` and `npm run snap` for your slides, then Read the PNG screenshots and judge them honestly as a keynote designer. Fix what looks weak, cramped, tiny or broken before you report.
+Verify before reporting: run `npm run build` and `npm run snap` for your slides, and fix every flag (small-text, clipped, off-stage, overlap) or justify it. Don't Read screenshots: a cheaper reviewer does the visual check. The one exception is a single PNG when a flag is unclear. Because you can't see the result, size and space things deliberately from the design scale rather than guessing.
 
 Never commit, push or delete files you didn't create, except the moves and deletions your brief names. Don't touch read-only paths (`drafts/**`, `docs/context/**`, `docs/notes/**`, `slide-deck-workflow/**`).
 

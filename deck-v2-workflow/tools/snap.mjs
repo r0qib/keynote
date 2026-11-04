@@ -2,10 +2,10 @@
 // Renders every slide at every build step, screenshots it and runs layout checks.
 // Usage:
 //   node deck-v2-workflow/tools/snap.mjs [--slides S01,S02] [--out .snaps/<run>] [--sizes 1920x1080,1440x900]
-//                                        [--settle 1400] [--url http://localhost:5199] [--no-shots]
+//                                        [--settle 1400] [--url http://localhost:5199] [--no-shots] [--contact all|final|none]
 // Prints a compact summary; full results in <out>/report.json.
 import { spawn } from 'node:child_process';
-import { mkdirSync, writeFileSync, existsSync } from 'node:fs';
+import { mkdirSync, writeFileSync, readFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import puppeteer from 'puppeteer-core';
 
@@ -23,6 +23,8 @@ const SIZES = String(args.sizes || '1920x1080,1440x900').split(',').map((s) => s
 const SETTLE = Number(args.settle || 1400);
 const ONLY = args.slides ? new Set(String(args.slides).split(',').map((s) => s.trim())) : null;
 const SHOTS = !args['no-shots'];
+// --contact all (default) | final | none
+const CONTACT = args.contact === 'none' ? null : args.contact === 'final' ? 'final' : 'all';
 const MIN_FONT = 24;
 const MIN_FONT_MOCK = 16;
 const CHROME = process.env.CHROME_PATH || '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
@@ -138,6 +140,31 @@ function inspect({ MIN_FONT, MIN_FONT_MOCK }) {
   };
 }
 
+// 3x3 labelled grids of primary-size shots: one image instead of nine for visual review.
+async function contactSheets(browser, results) {
+  const [pw, ph] = SIZES[0];
+  const size = `${pw}x${ph}`;
+  const byState = results.filter((r) => r.size === size && r.shot);
+  const lastBuild = {};
+  for (const r of byState) lastBuild[r.slide] = Math.max(lastBuild[r.slide] ?? 0, r.build);
+  const picked = CONTACT === 'final' ? byState.filter((r) => r.build === lastBuild[r.slide]) : byState;
+  const page = await browser.newPage();
+  await page.setViewport({ width: 1920, height: 1080, deviceScaleFactor: 1 });
+  for (let s = 0; s * 9 < picked.length; s++) {
+    const tiles = picked.slice(s * 9, s * 9 + 9).map((r) => {
+      const b64 = readFileSync(join(OUT, r.shot)).toString('base64');
+      return `<figure><img src="data:image/png;base64,${b64}"/><figcaption>${r.slide} · ${r.key} · b${r.build}</figcaption></figure>`;
+    });
+    await page.setContent(
+      `<style>body{margin:0;background:#222;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px;font:600 20px -apple-system,sans-serif;color:#fff}
+       figure{margin:0}img{width:100%;display:block;border:2px solid #555}figcaption{padding:4px 2px}</style>${tiles.join('')}`,
+      { waitUntil: 'load' },
+    );
+    await page.screenshot({ path: join(OUT, `contact-${String(s + 1).padStart(2, '0')}.png`), fullPage: true });
+  }
+  await page.close();
+}
+
 async function run() {
   mkdirSync(OUT, { recursive: true });
   const server = await ensureServer();
@@ -189,6 +216,7 @@ async function run() {
       }
       await page.close();
     }
+    if (SHOTS && CONTACT) await contactSheets(browser, results);
   } finally {
     await browser.close();
     if (server) process.kill(-server.pid);

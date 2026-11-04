@@ -33,7 +33,7 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
      - Slide transition ≤ 500 ms.
   6. `src/index.css`: body background `#FAFAFB` (not black).
   7. `src/components/PresenterView.jsx`: previews use `Stage` (or its scaling logic), act colours from `theme.js`. Notes, timer, sync and previews must keep working.
-  8. `src/components/SlideErrorBoundary.jsx`: add `data-testid="slide-error"` to the fallback root.
+  8. `src/components/SlideErrorBoundary.jsx`: add `data-testid="slide-error"` to the fallback root. In `App.jsx`, give the corner badge `data-testid="corner-badge"`, rendered only when the slide has a badge. `tools/e2e-deck.js` relies on both.
   9. `src/slides/PlaceholderSlide.jsx`: a design-px placeholder that shows the slide id and title large, so the deck runs with no crashes.
   10. Rewrite `src/slides/manifest.js` for the 43 v2 slides (plan §5):
       - fields: `id`, `key`, `title`, `cornerLabel` (`''` where the corner is —), `act`, `durationMinutes`, `enabled: true`, `cutTier`, `totalBuilds` (from plan §6; where §6 says "as v1", copy the legacy manifest value and note it), `componentName` (new names, plan §5 mapping), `canvas` (chapter-card tints; `S20` purple slop gradient; default omitted), `notes` (one-line cue for now).
@@ -122,15 +122,31 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Scope:** `docs/plans/presenter-notes.md`, `docs/plans/presenter-script.md`, `src/slides/manifest.js` (`notes` field only), `docs/plans/slide-deck-plan.md` (§5 facts only).
 - **Verify:** build; spot-check that every `[n]` cue ≤ that slide's `totalBuilds`.
 
+### [ ] T1 · Full browser session (deck-browser-tester, Sonnet · low)
+- **Do:** run the Browser-tester brief (README §4). It runs `deck-v2-workflow/tools/e2e-deck.js` through the Playwright MCP (fallback: `node deck-v2-workflow/tools/e2e.mjs`). The session checks:
+  - every build forward, then everything backward;
+  - live corner-badge numbering;
+  - crashes and console errors;
+  - End / Home, and ArrowLeft into a slide landing on its last build;
+  - key mashing;
+  - presenter ↔ audience sync both ways, and the presenter timer and build state;
+  - overview open and close;
+  - no black bars at 1920×1080, 1440×900, 1280×720 and 1512×982.
+- **Don't fix anything here.** Record the failed checks in `progress.md` under T1 for Z1. No commit; nothing changes.
+
 ### [ ] Z1 · Deck-wide polish and final verification
 - **Do:**
-  1. Full snap: `npm run snap -- --out .snaps/final`.
-  2. Dispatch `deck-design-director` (Opus) on all `.snaps/final/*_1920x1080.png`, plus the `review-log.md` open items. It reviews consistency (type scale, spacing, colours, motion feel per build state, mascot use, chapter cards) and the "WWDC bar". It returns a ranked list of HIGH/MEDIUM fixes (≤ 15).
-  3. Dispatch one `deck-builder` fix round for those fixes (it may touch any slide or shared component).
+  1. Snap-runner: `--out .snaps/final --contact final`. This is the full deck at both sizes, plus contact sheets of each slide's final build.
+  2. Dispatch `deck-design-director` (Opus) on `.snaps/final/contact-*.png` only (~5 images), plus the `review-log.md` open items. It reviews:
+     - consistency: type scale, spacing, colours, mascot use, chapter cards;
+     - the "WWDC bar".
+
+     It returns a ranked list of HIGH/MEDIUM fixes (≤ 15).
+  3. Dispatch one `deck-builder` fix round for those fixes **plus T1's failed checks**. It may touch any slide or shared component.
   4. Delete `src/slides/legacy/` (`git rm -r`).
-  5. Re-run build and full snap: `.snaps/final` must be clean of CRASH / console / NAV / letterbox at both sizes.
+  5. Snap-runner again (`--out .snaps/final --contact final`): it must be clean of CRASH / console / NAV / letterbox at both sizes. Then re-dispatch `deck-browser-tester` (signal `Z1-e2e`) for the final browser session.
   6. Update `AGENTS.md`'s file list if anything moved.
-  7. Write `human-review.md` (the morning report).
+  7. Write `human-review.md` (the morning report), including any browser checks that still fail.
 - **Commit paths:** `src docs/plans deck-v2-workflow AGENTS.md`
 
 ---

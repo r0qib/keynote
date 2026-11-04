@@ -38,17 +38,26 @@ This folder is the workflow's brain. It follows the team's own custom-workflow m
 
 ## 2. Roles: model, effort, job
 
-The **orchestrator** is the Opus session the presenter starts. It reads this folder, dispatches agents, re-runs verification itself, keeps the tracking files, and commits through the committer. **It never writes slide code** and never reads whole source files. It reads agent reports, `git diff --stat`, and the snap summary.
+The **orchestrator** is the Opus session the presenter starts. It reads this folder, dispatches agents, keeps the tracking files, and commits through the committer.
+- **It never writes slide code** and never reads whole source files or screenshots.
+- It reads agent reports, `git diff --stat`, and the **verbatim** build/snap output the Haiku snap-runner returns. It judges that raw output itself, rather than trusting anyone's "it passes".
 
 | Agent (`.claude/agents/`) | Model · effort | Does | Never |
 | --- | --- | --- | --- |
-| `deck-builder` | Opus · high | Builds one batch: slide components, shared components, manifest entries. Runs build and snap, and looks at its own screenshots | Commit, edit files outside its brief, delete files it didn't create (except the moves and deletions the brief names) |
-| `deck-reviewer` | Sonnet · high | One pass over the batch: the diff, the spec sections and the screenshots. Reports **HIGH/MEDIUM only**, plus a short list of LOW findings for the log | Edit files |
+| `deck-builder` | Opus · high | Builds one batch: slide components, shared components, manifest entries. Runs build and snap and fixes every text flag. **Doesn't look at screenshots** (except one PNG when a flag is unclear) | Commit, edit files outside its brief, delete files it didn't create (except the moves and deletions the brief names) |
+| `deck-snap-runner` | Haiku | Runs the exact build and snap commands it is given, and returns the output **verbatim**, plus the list of contact sheets | Interpret, fix, or look at images |
+| `deck-reviewer` | Sonnet · medium | One pass over the batch: the spec sections, the diff, and the **contact sheets** (full-size PNGs only for builds that look wrong). This is the visual screenshot check. Reports **HIGH/MEDIUM only**, plus a short list of LOW findings for the log | Edit files |
+| `deck-browser-tester` | Sonnet · low | Batch T1: runs the full-deck browser session `tools/e2e-deck.js` through the Playwright MCP (fallback: `node tools/e2e.mjs`). Returns the raw JSON | Improvise extra testing, fix, edit |
 | `deck-writer` | Sonnet · high | Batch D1: presenter notes, presenter script, the manifest `notes` field | Edit slide code |
-| `deck-design-director` | Opus · high | Batch Z1: a deck-wide visual review of every final screenshot, for consistency and polish | Edit files |
+| `deck-design-director` | Opus · high | Batch Z1: a deck-wide visual review of the **final-build contact sheets** (~5 images), for consistency and polish | Edit files |
 | `deck-committer` | Haiku | `git add -- <explicit paths>`, then one commit with the given message. Reports the hash, or the hook output | Push, amend, force, `--no-verify`, `add -A` / `add .` |
 
-**Routing rule: pay for judgement, not for typing.** Opus designs and judges, Sonnet reviews and writes, Haiku commits from an exact instruction.
+**Routing rule: pay for judgement, not for typing.**
+- Opus designs.
+- Sonnet does the screenshot checking, reviewing, browser testing and writing.
+- Haiku runs commands and commits from exact instructions.
+
+**Screenshots are expensive context.** `snap` writes 3×3 labelled **contact sheets** (`contact-NN.png`, one image instead of nine), and reviewers read those first.
 
 ---
 
@@ -61,7 +70,7 @@ The **orchestrator** is the Opus session the presenter starts. It reads this fol
    - Changes that belong to no batch: **leave them alone** and note them in `decisions.md`.
 3. Clear stale signals: `rm -f deck-v2-workflow/.signals/*`.
 4. Append a session header to `progress.md § Session log`: date, HEAD hash, the batch you're starting.
-5. No dev server needed: `tools/snap.mjs` starts and stops its own on port 5199. A full-deck snap takes ~5–6 min, so give that Bash call a 600000 ms timeout (batch snaps take under a minute).
+5. No dev server needed: `tools/snap.mjs` and `tools/e2e.mjs` start and stop their own on port 5199. A full-deck snap takes ~5–6 min, so the snap-runner's Bash call needs a 600000 ms timeout (batch snaps take under a minute).
 
 **The batch loop.** Work through batches in `progress.md` order:
 
@@ -69,14 +78,15 @@ The **orchestrator** is the Opus session the presenter starts. It reads this fol
 pick next [ ] batch → mark [~]
    │
    ▼
-deck-builder (fresh, Opus, background) ──signal──▶ orchestrator verifies ITSELF:
+deck-builder (fresh, Opus, background) ──signal──▶ deck-snap-runner (Haiku) runs, returns output VERBATIM:
    │                                                 npm run build 2>&1 | tail -15
    │                                                 npm run snap -- --slides <ids> --out .snaps/<batch> 2>&1 | tail -40
+   │                                   orchestrator reads the raw output:
    │                                   red (build fails / CRASH / console / NAV / letterbox)
    │                                     → SendMessage the failing tail to the SAME builder (≤ 3 rounds)
    ▼ green
 deck-reviewer (fresh, Sonnet, background) ──▶ HIGH/MEDIUM findings
-   │                                             → ONE fix round via SendMessage to the SAME builder → re-verify (no re-review)
+   │                                             → ONE fix round via SendMessage to the SAME builder → snap-runner re-verifies (no re-review)
    │                                           LOW findings → review-log.md
    ▼
 deck-committer (Haiku) with the explicit path list → hash
@@ -100,7 +110,7 @@ progress [x] + hash · log decisions · curate important-notes.md · next batch
   sh deck-v2-workflow/tools/wait.sh <signal-id> 270
   ```
 - Every agent's **last action** is to write its report to `deck-v2-workflow/.signals/<signal-id>.done` and return the same text.
-  - Signal ids are `<batch>-<role>`, e.g. `B3-build`, `B3-review`.
+  - Signal ids are `<batch>-<role>`, e.g. `B3-build`, `B3-snap`, `B3-review`. A re-run of the snap-runner gets `-2`, `-3`, … (e.g. `B3-snap-2`).
   - Fix-round reports start with `"<batch> fix round <n>"`. Check that prefix, so you don't consume a stale signal.
 - After ~15 timeouts in a row (~70 min) with no signal, treat the agent as stalled (see the failure table).
 
@@ -125,9 +135,9 @@ Do: implement the slides exactly per spec, set each slide's manifest totalBuilds
 use the shared components in src/components/deck/, design px only, no responsive classes.
 Verify yourself before reporting:
   npm run build 2>&1 | tail -15
-  npm run snap -- --slides <ids> --out .snaps/<BATCH> 2>&1 | tail -40
-  Then LOOK at the screenshots in .snaps/<BATCH>/ (Read the PNGs): does each build look like a
-  keynote slide — big, balanced, nothing clipped/overlapping, one clear focal point?
+  npm run snap -- --slides <ids> --out .snaps/<BATCH> --contact none 2>&1 | tail -40
+  Fix every flag (small-text, clipped, off-stage, overlap) or justify it. Don't Read screenshots —
+  the Sonnet reviewer does the visual check. Exception: one PNG if a flag is unclear.
 Log any judgement call as one line to append in your report under "Decisions:"; missing assets/facts under "Missing:".
 Last action: write your report (≤ 25 lines: files changed, builds per slide, snap summary,
 Decisions:, Missing:, Open issues:) to deck-v2-workflow/.signals/<BATCH>-build.done, then return the same text.
@@ -138,7 +148,8 @@ Decisions:, Missing:, Open issues:) to deck-v2-workflow/.signals/<BATCH>-build.d
 ```
 You are deck-reviewer for batch <BATCH>. Do not edit anything.
 Read: deck-v2-workflow/important-notes.md · plan §3, §4 and §6 for <slide ids> · `git diff HEAD -- <paths>`
-(new files: read them) · every PNG in .snaps/<BATCH>/ (Read them; you can see images).
+(new files: read them) · the contact sheets .snaps/<BATCH>/contact-*.png (you can see images; each tile is
+labelled slide · build). Open a full-size PNG only for a build that looks wrong on the sheet (≤ 4 PNGs).
 Check, in priority order:
 1. Spec fidelity: each build shows what §6 says, on-screen copy matches, builds count matches manifest.
 2. Copy rules §3: no explanatory/meta text, no audience-blaming "you/your", word budget, no emoji, no purple outside S20/S26.
@@ -148,6 +159,34 @@ Check, in priority order:
 Report HIGH and MEDIUM findings only, each with slide+build, what's wrong, and the concrete fix.
 Add up to 5 LOW findings under "LOW (for the log)". ≤ 30 lines.
 Last action: write the report to deck-v2-workflow/.signals/<BATCH>-review.done, then return the same text.
+```
+
+### Snap-runner brief
+
+```
+You are deck-snap-runner. Run exactly these commands (Bash timeout 600000), nothing else:
+npm run build 2>&1 | tail -15
+npm run snap -- <ARGS> 2>&1 | tail -40
+ls <OUT>/contact-*.png
+Report the output of each command VERBATIM, under a heading with the command. No interpretation.
+Last action: write the report to deck-v2-workflow/.signals/<SIGNAL>.done, then return the same text.
+```
+
+`<ARGS>` is e.g. `--slides S09,S10,S11 --out .snaps/B3`. For Z1 it's `--out .snaps/final --contact final`.
+
+### Browser-tester brief (T1)
+
+```
+You are deck-browser-tester. Steps, exactly:
+1. Start the dev server in the background: `npx vite --port 5199 --strictPort > /tmp/deck-vite.log 2>&1 &`,
+   then wait until `curl -s -o /dev/null -w "%{http_code}" http://localhost:5199` prints 200 (≤ 30 s).
+2. Call mcp__plugin_playwright_playwright__browser_run_code_unsafe with filename
+   "deck-v2-workflow/tools/e2e-deck.js" (do not paste or modify the code). Then call browser_close.
+3. If the MCP tool is unavailable or errors before returning JSON, run instead:
+   node deck-v2-workflow/tools/e2e.mjs   (Bash timeout 600000)
+4. Stop the server: `pkill -f "vite --port 5199"`.
+Report: which runner was used, then the returned JSON verbatim. No interpretation, no extra testing.
+Last action: write the report to deck-v2-workflow/.signals/T1-e2e.done, then return the same text.
 ```
 
 ### Committer brief
@@ -176,6 +215,8 @@ Commit messages are Conventional Commits, e.g. `feat(deck): rebuild opening and 
 | The spec is ambiguous or contradicts itself | Choose what best serves the presenter's intent (§1 and §3 of the plan, and the raw feedback). Log it in `decisions.md` and continue |
 | An asset / fact / URL is missing | Use a clean placeholder that doesn't break the layout. Log it in `missing-pieces.md` |
 | A real vendor quote (S09) can't be verified | Use an unattributed paraphrase without quotation marks. Log it |
+| T1 browser session fails a check | Don't fix in T1. Pass the failed checks into the Z1 builder fix round, and re-run T1's session at the end of Z1 |
+| Playwright MCP unavailable to the tester | The tester falls back to `node deck-v2-workflow/tools/e2e.mjs` (same test, puppeteer-core) |
 | Agent stalls (no signal after ~70 min) | `TaskStop`, then SendMessage "continue". Still stuck: re-dispatch fresh with a brief that names the partial files |
 | Orchestrator context getting heavy | Finish the current batch, write `next:` in `progress.md`, and keep going. The files make compaction safe |
 
@@ -189,4 +230,10 @@ Commit messages are Conventional Commits, e.g. `feat(deck): rebuild opening and 
 - **No questions to the human.** Decide, log, continue.
 - **Comments in code:** short, only where needed, and never historical ("changed from v1…", "per feedback…").
 - **Everything the audience sees** follows plan §3 and §4. When in doubt, cut text.
-- **Done means:** every batch is `[x]` or `[!]` with a reason, Z1 is complete, `npm run build` is green, the final snap is clean of CRASH/console/NAV/letterbox, and `human-review.md` is written.
+- **Done means:**
+  - every batch is `[x]`, or `[!]` with a reason;
+  - Z1 is complete;
+  - `npm run build` is green;
+  - the final snap is clean of CRASH/console/NAV/letterbox;
+  - the final browser session (`e2e-deck.js`) passes, or its remaining failures are listed in `human-review.md`;
+  - `human-review.md` is written.
