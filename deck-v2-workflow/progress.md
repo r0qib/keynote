@@ -2,13 +2,13 @@
 
 Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, reviewed, committed) · `[!]` blocked (reason logged).
 
-**next:** B1
+**next:** B2
 
 ---
 
 ## Batches
 
-### [x] B0 · Foundation: full-bleed stage, design tokens, shared components, manifest v2
+### [x] B0 · Foundation: full-bleed stage, design tokens, shared components, manifest v2 · 087b6b4
 - **Slides:** none (all show `PlaceholderSlide` after this batch)
 - **Do:**
   1. `git mv` every `src/slides/S*.jsx` into `src/slides/legacy/` (the registry glob `./S*.jsx` won't pick them up there).
@@ -45,7 +45,7 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Verify:** build green. `npm run snap -- --out .snaps/B0` shows no CRASH / console / NAV / letterbox at 1920×1080 **and** 1440×900. Open `/?presenter=true` in the snap browser, or check by code reading that the presenter view renders.
 - **Commit paths:** `index.html src tailwind.config.js package.json .gitignore deck-v2-workflow`
 
-### [ ] B1 · Opening + chapter cards: S01, S02, S03, S04, S08, S14, S23, S29
+### [x] B1 · Opening + chapter cards: S01, S02, S03, S04, S08, S14, S23, S29
 - **Legacy:** `S01_Title`, `S02_WhoWeAre`, `S04_Agenda`, `S05_ActGood` (for what *not* to do), the logos in `src/assets/informatiq-app-suite-logos/`, `src/assets/bs23_logo.webp`.
 - **Notes:** the S01 ambient shapes and the chapter-card motifs should share one visual language (`src/components/deck/AmbientShapes.jsx` or similar). S02 is 9 builds, logos large.
 - **Scope:** `src/slides/S01_Title.jsx`, `S02_WhoWeAre.jsx`, `S03_Agenda.jsx`, `S04_ActGood.jsx`, `S08_ActBad.jsx`, `S14_ActUgly.jsx`, `S23_ActCount.jsx`, `S29_ActHowWeWork.jsx`, `src/components/deck/**`, `src/slides/manifest.js` (these entries).

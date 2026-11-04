@@ -32,3 +32,8 @@
 - 2026-11-05 · B0 · extra shared components `ActShape` (per-act motif for S01 + chapter cards) and `CanvasBackground` (audience + presenter) · one visual language
 - 2026-11-05 · B0 · review finding "show progress pill on badge-less slides" dropped: title, chapter cards, S28, S43 and S15 b0 stay chrome-free · they are full-bleed moments; S15 b0 spec says nothing on the slide
 - 2026-11-05 · all · orchestrator runs short batch re-verify snaps (fix rounds, < 1 min) directly instead of dispatching the snap-runner · same raw output, cheaper than an agent turn
+- 2026-11-05 · B1 · S03 build 2 dims I–IV to 50% while V lifts · one focal point
+- 2026-11-05 · B1 · S02 Portal uses `informatiq.svg` (portal.svg is a 44×44 icon); names shown under each logo per spec, descriptors only in the spotlight
+- 2026-11-05 · B1 · chapter-card motifs morph slowly (same ActShape language as S01); only S01's Bad shape glitches
+- 2026-11-05 · B1 · S03 widths roughly time-proportional but Act IV weighted up so IV and V are the two widest · §6 says so explicitly; it beats strict proportionality
+- 2026-11-05 · B1 · S03 Act IV weight 11 (not 9) so IV > III; deepened act fills kept local to S03 for ≥4.5:1 white text

@@ -34,7 +34,7 @@ export default function ChapterCard({ numeral, name, act }) {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: appleEase }}
       >
-        <ActShape act={act} color={accent} size={1100} />
+        <ActShape act={act} color={accent} size={1100} morph />
       </motion.div>
 
       <div className="absolute inset-0 px-safe-x flex flex-col justify-center">

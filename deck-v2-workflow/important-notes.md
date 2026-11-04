@@ -40,3 +40,5 @@ React 18 + Vite 5 + Tailwind 3 + Framer Motion 11 + lucide-react. `npm run build
 - **Type tokens:** `text-display` 200 · `headline` 96 · `sub` 48 · `body` 36 · `label` 28 · `code` 30 · `badge` 24. Safe area: `px-safe-x` / `py-safe-y`.
 - **Slides never paint their own background**; the manifest `canvas` (string, or array by buildStep) does it, via CanvasBackground.
 - **Chrome:** corner badge top 33 / right 120, progress pill top-centre, inside the 96 px top band. Keep slide content below y=96. `chromeFromBuild` in the manifest hides chrome before that build (S15 = 1).
+- **Framer Motion won't animate `fontSize`** (stays at initial value). Use a CSS transition or `scale` instead.
+- **ActShape** props: `morph`, `glitch`, `duration`, `delay` (S01 + ChapterCard).
