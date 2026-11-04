@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { typingDot } from '../../motion.js';
 
-// Messaging-app typing indicator. `size` is the bubble width in design px.
-export default function TypingBubble({ size = 160, color = '#E8E8EE', dotColor = '#4A4A55', tail = true, className = '', style, ...motionProps }) {
+// Messaging-app typing indicator. `size` is the bubble width in design px; `dots={false}` draws the bubble only.
+export default function TypingBubble({ size = 160, color = '#E8E8EE', dotColor = '#4A4A55', tail = true, dots = true, className = '', style, ...motionProps }) {
   const height = Math.round(size * 0.46);
   const dot = Math.round(size * 0.13);
   const gap = Math.round(size * 0.085);
@@ -13,7 +13,7 @@ export default function TypingBubble({ size = 160, color = '#E8E8EE', dotColor =
       style={{ width: size, height, borderRadius: height / 2, backgroundColor: color, gap, ...style }}
       {...motionProps}
     >
-      {[0, 1, 2].map((i) => (
+      {dots && [0, 1, 2].map((i) => (
         <motion.span
           key={i}
           className="block rounded-full"

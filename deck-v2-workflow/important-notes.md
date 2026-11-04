@@ -46,3 +46,5 @@ React 18 + Vite 5 + Tailwind 3 + Framer Motion 11 + lucide-react. `npm run build
 - **Headline** size overrides: use `style={{ fontSize }}`, not a className (conflicts with `text-headline`).
 - **openai.com blocks WebFetch/curl (403);** verify via `web.archive.org/web/<date>/<url>`.
 - **ChatAvatar** (named export) gives typing rows the same avatar as ChatTurn AI turns.
+- **Framer `layout`/`layoutId` misbehave inside the scaled Stage** (page-px deltas applied in design px). For morphs, measure offsetLeft/offsetTop and animate x/y/scale yourself (see S15 `offsetWithin`).
+- **TypingBubble** `dots={false}` draws just the bubble.

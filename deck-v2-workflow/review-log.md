@@ -30,3 +30,8 @@ Reviewers always find something. HIGH/MEDIUM get fixed in the batch; LOW and lef
 - LOW · S12 b0: chat column and canvas mostly empty; a larger ghost circle would fill the canvas.
 - LOW · S13 b0: single 40 px prompt pill in an empty stage; ~48 px would hold it better.
 - LOW · S13 b2: ~170 px empty strip under the last TOC line; window height ~680.
+- MEDIUM? · S11 b0→b1 headline glide uses Framer `layout`; under the scaled Stage (≠1920×1080) the in-flight path may be off. Z1: check at 1440×900 or switch to a manual offset.
+
+## B5
+- LOW · S15 code: BIG_* constants mirror TypingBubble internals by hand; export a helper if reused.
+- LOW · S17 b0: Enter key idle colour #8A8A96 on #2C2D35 is low contrast (decorative).

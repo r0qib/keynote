@@ -2,7 +2,7 @@
 
 Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, reviewed, committed) · `[!]` blocked (reason logged).
 
-**next:** B5
+**next:** B6
 
 ---
 
@@ -62,12 +62,12 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Scope:** `src/slides/S09_KeynoteVsTerminal.jsx`, `S10_NinetyNine.jsx`, `S11_DidYouRead.jsx`, manifest entries, `deck-v2-workflow/missing-pieces.md` (append).
 - **Verify:** build; `snap --slides S09,S10,S11`.
 
-### [x] B4 · The Bad (2): S12, S13
+### [x] B4 · The Bad (2): S12, S13 · 566e16d
 - **Legacy:** `S14_Circle`, `S15_Overengineered`.
 - **Scope:** `src/slides/S12_Circle.jsx`, `S13_Overengineered.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S12,S13`.
 
-### [ ] B5 · The Ugly (1): S15, S16, S17, S18
+### [x] B5 · The Ugly (1): S15, S16, S17, S18
 - **Legacy:** `S18_Thinking`, `S19_Frameworks`, `S20_SayVsDo`, `S21_Elephant`.
 - **Scope:** `src/slides/S15_Thinking.jsx`, `S16_Frameworks.jsx`, `S17_SayVsDo.jsx`, `S18_Elephant.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S15,S16,S17,S18`.

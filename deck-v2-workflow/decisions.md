@@ -45,3 +45,7 @@
 - 2026-11-05 · B3 · S10 has no headline (spec "No other copy"); S11 b0 centres the headline then glides it up at b1 · avoids an empty b0
 - 2026-11-05 · B4 · S12 attempt 3 overshoots (circle with parts bolted on) · reads as "architecture"; dart markers carry glyphs, not numbers
 - 2026-11-05 · B4 · S13 TOC scroll and mascot wobble are one-shot · §4.5 allows no ambient loop on S13
+- 2026-11-05 · B5 · S15 morph is a manual FLIP in design px (offsetLeft/Top), not Framer layoutId · layoutId measures page px, wrong under the scaled Stage
+- 2026-11-05 · B5 · S16 cost weights "Tokens" (b1) and "Time" (b2); framework names only · minimal, no unverified attributions
+- 2026-11-05 · B5 · S18 cuts Plan in b2 with Spec/Test/QA · spec says "until only Implement is left"
+- 2026-11-05 · B5 · S18 no elephant icon; meter uses a Coins icon instead of a label · spec "if at all"
