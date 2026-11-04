@@ -19,3 +19,8 @@ Reviewers always find something. HIGH/MEDIUM get fixed in the batch; LOW and lef
 ## B2
 - LOW · S05/S06: repeated hard-coded greys/greens (#ECECF0, #D2D2DA, #E6E6EC, #EEF7F2) → theme tokens.
 - LOW · S07: `POLL_URL` exported from a component file (react-refresh warning); move to a constants file.
+
+## B3
+- LOW · S09 b0: claim 1 at the top of the dark panel with ~60% empty until b1 (slots reserved). Consider centring then sliding up.
+- LOW · S09 claim 2 "Can work on many tasks in parallel." is a capitalised mid-sentence fragment (logged as verbatim fragment).
+- LOW · S11 b1/b2: ~150 px dead space at the bottom of the code window (fixed height avoids jumps; sound).

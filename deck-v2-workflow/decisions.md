@@ -40,3 +40,6 @@
 - 2026-11-05 · B2 · S05 chores shortened to fit a column at 34 px (CRUD APIs, Unit tests, Migrations, Regex, API docs) · fit, minimal text
 - 2026-11-05 · B2 · S06 pipeline as a four-step stepper beside a WellMate manual mock; "incremental diff" left to the presenter · minimal text
 - 2026-11-05 · B2 · S07 b1 = QR folds into a check ("poll closed"); v1 caption, copy button, timer, kicker and mascot dropped · spec: headline + QR are the slide; keeps v1 build count
+- 2026-11-05 · B3 · S09 claims are verbatim verified fragments (Cognition/Devin 2024, OpenAI/Codex 2025, Anthropic/Claude Opus 4 2025), date order; sources in missing-pieces § Facts
+- 2026-11-05 · B3 · S09 and S11 use the light CodeWindow so "my terminal" looks the same on both; S09 caret static (no ambient loop)
+- 2026-11-05 · B3 · S10 has no headline (spec "No other copy"); S11 b0 centres the headline then glides it up at b1 · avoids an empty b0

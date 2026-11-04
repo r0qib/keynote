@@ -2,7 +2,7 @@
 
 Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, reviewed, committed) · `[!]` blocked (reason logged).
 
-**next:** B3
+**next:** B4
 
 ---
 
@@ -51,12 +51,12 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Scope:** `src/slides/S01_Title.jsx`, `S02_WhoWeAre.jsx`, `S03_Agenda.jsx`, `S04_ActGood.jsx`, `S08_ActBad.jsx`, `S14_ActUgly.jsx`, `S23_ActCount.jsx`, `S29_ActHowWeWork.jsx`, `src/components/deck/**`, `src/slides/manifest.js` (these entries).
 - **Verify:** build; `snap --slides S01,S02,S03,S04,S08,S14,S23,S29`.
 
-### [x] B2 · The Good + Poll: S05, S06, S07
+### [x] B2 · The Good + Poll: S05, S06, S07 · f277f5b
 - **Legacy:** `S06_TimeBack`, `S07_Manuals` (crash: missing `springPhysics` import), `S09_Poll`.
 - **Scope:** `src/slides/S05_TimeBack.jsx`, `S06_Manuals.jsx`, `S07_Poll.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S05,S06,S07`.
 
-### [ ] B3 · The Bad (1): S09, S10, S11
+### [x] B3 · The Bad (1): S09, S10, S11
 - **Legacy:** `S11_KeynoteVsTerminal`, `S12_NinetyNine`, `S13_DidYouRead`.
 - **Notes:** S09 needs real, verified vendor claims (WebFetch the official announcements; log URLs in `missing-pieces.md § Facts`). S11 uses one large `CodeWindow`.
 - **Scope:** `src/slides/S09_KeynoteVsTerminal.jsx`, `S10_NinetyNine.jsx`, `S11_DidYouRead.jsx`, manifest entries, `deck-v2-workflow/missing-pieces.md` (append).
