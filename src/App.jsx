@@ -1,32 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { 
-  ChevronLeft, 
-  ChevronRight, 
-  Maximize, 
-  Minimize, 
-  LayoutGrid, 
-  Monitor,
-  ExternalLink
-} from 'lucide-react';
-import { slideVariants, appleEase } from './motion.js';
+import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Maximize, Minimize, LayoutGrid, Monitor } from 'lucide-react';
+import { slideTransition } from './motion.js';
+import { actAccent, resolveCanvas } from './theme.js';
 import { getSlideCornerBadge } from './slides/manifest.js';
 import { getSlideComponent } from './slides/registry.js';
 import { usePresentationSync } from './hooks/usePresentationSync.js';
 import PresenterView from './components/PresenterView.jsx';
 import SlideNavigatorModal from './components/SlideNavigatorModal.jsx';
 import SlideErrorBoundary from './components/SlideErrorBoundary.jsx';
-
-// Act accent colors matching design system (Rule 4.1)
-const ACT_COLORS = {
-  Opening: '#1B7ED0',
-  Good: '#1E9E6A',
-  Poll: '#111113', // Neutral ink dot: interlude sits between acts and belongs to none
-  Bad: '#D97706',
-  Ugly: '#E5484D',
-  'Making Good': '#1B7ED0',
-  Finale: '#1B7ED0',
-};
+import Stage from './components/deck/Stage.jsx';
+import CanvasBackground from './components/deck/CanvasBackground.jsx';
 
 function checkIsPresenterMode() {
   if (typeof window === 'undefined') return false;
@@ -132,65 +116,59 @@ export default function App() {
     return <PresenterView sync={sync} />;
   }
 
-  // --- Audience Presentation View ---
+  // --- Audience view: full-bleed canvas, scaled 1920 × 1080 stage ---
   const { activeSlide, activeSlideIndex, totalSlides, buildStep, direction } = sync;
   const ActiveSlideComponent = getSlideComponent(activeSlide?.componentName);
   const progressPercent = ((activeSlideIndex + 1) / totalSlides) * 100;
-  const cornerBadge = getSlideCornerBadge(activeSlideIndex);
-  const actColor = activeSlide?.dotColor || ACT_COLORS[activeSlide?.act] || '#1B7ED0';
+  const showChrome = buildStep >= (activeSlide?.chromeFromBuild || 0);
+  const cornerBadge = showChrome ? getSlideCornerBadge(activeSlideIndex) : null;
+  const actColor = actAccent(activeSlide?.act);
+  const canvas = resolveCanvas(activeSlide?.canvas, buildStep);
 
   return (
-    <div className="relative w-screen h-screen bg-[#000000] flex items-center justify-center p-2 sm:p-3 overflow-hidden select-none">
-      
-      {/* 
-        16:9 Presentation Canvas
-        Teams Screen-Share Optimized:
-        - Solid #FAFAFB canvas, no repeating dot patterns
-        - Sleek, thin black bezel
-        - Fits viewport without page scrollbars
-      */}
-      <main className="w-full max-w-[calc((100vh-1.5rem)*16/9)] max-h-full aspect-video bg-[#FAFAFB] slide-canvas relative rounded-2xl md:rounded-[28px] shadow-[0_25px_80px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.06)] overflow-hidden flex flex-col">
-        
-        {/* Floating Top-Center Inset Progress Bar */}
-        <div className="absolute top-4 left-1/2 -translate-x-1/2 w-32 md:w-48 h-1 md:h-1.5 bg-neutral-200/60 rounded-full overflow-hidden z-30 pointer-events-none">
-          <motion.div 
-            className="h-full bg-neutral-900 rounded-full"
-            initial={false}
-            animate={{ width: `${progressPercent}%` }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
-          />
-        </div>
+    <div
+      data-testid="slide-viewport"
+      className="fixed inset-0 w-screen h-screen overflow-hidden select-none bg-canvas"
+    >
+      <CanvasBackground canvas={canvas} />
 
-        {/* Top-Right Corner Label (Omitted on unbadged slides: S01, chapter cards S05, S10, S17, S25, S43) */}
-        {cornerBadge && (
-          <div className="absolute top-5 right-7 z-30 flex items-center gap-2 font-mono text-xs md:text-sm tracking-wide text-[#4A4A55] pointer-events-none">
-            <span 
-              className="w-2.5 h-2.5 rounded-full flex-shrink-0" 
-              style={{ backgroundColor: actColor }} 
-            />
-            <span className="font-semibold">{cornerBadge}</span>
-          </div>
-        )}
-
-        {/* Slide Content with Immediate Mount & Clean Transition */}
+      <Stage>
         <motion.div
           key={activeSlide?.id || activeSlideIndex}
-          initial={{ opacity: 0, x: direction > 0 ? 16 : -16 }}
+          initial={{ opacity: 0, x: direction > 0 ? 24 : -24 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.18, ease: appleEase }}
-          className="w-full h-full absolute inset-0"
+          transition={slideTransition}
+          className="absolute inset-0"
         >
           <SlideErrorBoundary
             slideId={activeSlide?.id || `slide-${activeSlideIndex}`}
             buildStep={buildStep}
           >
-            <ActiveSlideComponent
-              activeSlide={activeSlide}
-              buildStep={buildStep}
-            />
+            <ActiveSlideComponent activeSlide={activeSlide} buildStep={buildStep} />
           </SlideErrorBoundary>
         </motion.div>
-      </main>
+
+        {/* Chrome: progress pill (top centre) and corner badge (top right), in the top margin band */}
+        {cornerBadge && (
+          <>
+            <div className="absolute top-[41px] left-1/2 -translate-x-1/2 w-[200px] h-[8px] rounded-full bg-[#D9D9E0] overflow-hidden pointer-events-none z-30">
+              <motion.div
+                className="h-full rounded-full bg-ink"
+                initial={false}
+                animate={{ width: `${progressPercent}%` }}
+                transition={slideTransition}
+              />
+            </div>
+            <div
+              data-testid="corner-badge"
+              className="absolute top-[33px] right-safe-x z-30 flex items-center gap-[12px] font-mono text-badge text-muted pointer-events-none whitespace-nowrap"
+            >
+              <span className="w-[14px] h-[14px] rounded-full flex-shrink-0" style={{ backgroundColor: actColor }} />
+              <span>{cornerBadge}</span>
+            </div>
+          </>
+        )}
+      </Stage>
 
       {/* 
         Auto-Hiding Floating Dock at Bottom

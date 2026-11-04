@@ -21,3 +21,14 @@
 ## Execution-time decisions
 
 <!-- one line each: date · batch · decision · why -->
+- 2026-11-05 · all · `.claude/agents/deck-*` types aren't registered in this session; dispatch `general-purpose` with the matching model override and have each agent read its `.claude/agents/deck-<role>.md` as its role definition first · keeps roles/models per README §2
+- 2026-11-05 · all · session 2: `deck-*` agent types are now registered; dispatch them directly (supersedes the general-purpose fallback above) · roles/models come from the agent definitions
+- 2026-11-05 · B0 · `tools/e2e-deck.js` checks the corner badge at build `chromeFromBuild` (default 0) instead of always build 0 · S15 hides chrome at b0 by spec; avoids a false failure
+- 2026-11-05 · B0 · "As v1" totalBuilds: S05=2, S06=2, S07=1, S16=2, S17=1, S21=3; S15 = v1 1 + 1 = 2 · from legacy buildStep usage
+- 2026-11-05 · B0 · corner badge top 33 px / right 120 px, progress pill top-centre, both inside the 96 px top band; hidden on badge-less slides · can't collide with headlines at y=96
+- 2026-11-05 · B0 · new manifest field `chromeFromBuild` (S15 = 1) hides badge/progress before that build · S15 b0 spec
+- 2026-11-05 · B0 · durations: 0:10 = 0.17 min; S43 (Q&A) = 9 min so pacing sums to ~60 · plan §2
+- 2026-11-05 · B0 · canvas change is a 400 ms layered cross-fade (works for gradients); slide transition 450 ms appleEase · plan §4.1/§4.5
+- 2026-11-05 · B0 · extra shared components `ActShape` (per-act motif for S01 + chapter cards) and `CanvasBackground` (audience + presenter) · one visual language
+- 2026-11-05 · B0 · review finding "show progress pill on badge-less slides" dropped: title, chapter cards, S28, S43 and S15 b0 stay chrome-free · they are full-bleed moments; S15 b0 spec says nothing on the slide
+- 2026-11-05 · all · orchestrator runs short batch re-verify snaps (fix rounds, < 1 min) directly instead of dispatching the snap-runner · same raw output, cheaper than an agent turn

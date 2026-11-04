@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 import { 
   Play, 
   Pause, 
@@ -20,43 +19,12 @@ import {
 import { getSlideComponent } from '../slides/registry.js';
 import SlideNavigatorModal from './SlideNavigatorModal.jsx';
 import SlideErrorBoundary from './SlideErrorBoundary.jsx';
+import Stage from './deck/Stage.jsx';
+import CanvasBackground from './deck/CanvasBackground.jsx';
+import { actAccent, resolveCanvas } from '../theme.js';
 
-const ACT_COLORS = {
-  Opening: '#1B7ED0',
-  Good: '#1E9E6A',
-  Poll: '#111113', // Neutral ink dot: interlude sits between acts and belongs to none
-  Bad: '#D97706',
-  Ugly: '#E5484D',
-  'Making Good': '#1B7ED0',
-  Finale: '#1B7ED0',
-};
-
-/**
- * SlideFrame
- * Renders any slide component inside a responsive 16:9 container,
- * scaled from a 1920x1080 canvas using ResizeObserver.
- */
-function SlideFrame({ Component, activeSlide, buildStep, label, isNext = false }) {
-  const containerRef = useRef(null);
-  const [scale, setScale] = useState(0.25);
-
-  useEffect(() => {
-    if (!containerRef.current) return;
-    const updateScale = () => {
-      if (containerRef.current) {
-        const width = containerRef.current.clientWidth;
-        if (width > 0) {
-          setScale(width / 1920);
-        }
-      }
-    };
-
-    updateScale();
-    const observer = new ResizeObserver(updateScale);
-    observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, []);
-
+// Slide preview on the same scaled 1920 × 1080 stage and canvas as the audience view.
+function SlidePreview({ Component, activeSlide, buildStep, label, isNext = false }) {
   if (!Component) {
     return (
       <div className="w-full aspect-video rounded-xl bg-neutral-900 border border-neutral-800 flex flex-col items-center justify-center text-neutral-500 font-mono text-xs md:text-sm">
@@ -79,27 +47,17 @@ function SlideFrame({ Component, activeSlide, buildStep, label, isNext = false }
         )}
       </div>
 
-      <div 
-        ref={containerRef} 
-        className={`w-full aspect-video rounded-xl overflow-hidden bg-[#FAFAFB] relative border shadow-lg ${
+      <div
+        className={`w-full aspect-video rounded-xl overflow-hidden relative border shadow-lg pointer-events-none select-none ${
           isNext ? 'border-neutral-800 opacity-90' : 'border-neutral-700 ring-2 ring-neutral-700/50'
         }`}
       >
-        <div
-          className="origin-top-left absolute top-0 left-0 pointer-events-none select-none"
-          style={{
-            width: '1920px',
-            height: '1080px',
-            transform: `scale(${scale})`,
-          }}
-        >
-          <SlideErrorBoundary
-            slideId={activeSlide?.id || 'preview'}
-            buildStep={buildStep}
-          >
+        <CanvasBackground canvas={resolveCanvas(activeSlide?.canvas, buildStep)} />
+        <Stage>
+          <SlideErrorBoundary slideId={activeSlide?.id || 'preview'} buildStep={buildStep}>
             <Component activeSlide={activeSlide} buildStep={buildStep} />
           </SlideErrorBoundary>
-        </div>
+        </Stage>
       </div>
     </div>
   );
@@ -237,7 +195,7 @@ export default function PresenterView({ sync }) {
   const nextSlide = activeSlides[activeSlideIndex + 1] || null;
   const NextSlideComp = nextSlide ? getSlideComponent(nextSlide.componentName) : null;
 
-  const actColor = activeSlide?.dotColor || ACT_COLORS[activeSlide?.act] || '#1B7ED0';
+  const actColor = actAccent(activeSlide?.act);
 
   // Keyboard navigation
   useEffect(() => {
@@ -408,7 +366,7 @@ export default function PresenterView({ sync }) {
         <div className="lg:col-span-5 flex flex-col justify-between gap-5 h-full overflow-y-auto pr-1">
           
           {/* Current Slide Preview */}
-          <SlideFrame
+          <SlidePreview
             Component={CurrentSlideComp}
             activeSlide={activeSlide}
             buildStep={buildStep}
@@ -416,7 +374,7 @@ export default function PresenterView({ sync }) {
           />
 
           {/* Next Slide Preview */}
-          <SlideFrame
+          <SlidePreview
             Component={NextSlideComp}
             activeSlide={nextSlide}
             buildStep={0}

@@ -85,3 +85,32 @@ export const floatAnim = {
     },
   },
 };
+
+// Deck shell: slide change (≤ 500 ms) and canvas colour cross-fade (≤ 400 ms).
+export const slideTransition = { duration: 0.45, ease: appleEase };
+export const canvasTransition = { duration: 0.4, ease: appleEase };
+
+export const gentleSpring = { type: 'spring', stiffness: 280, damping: 22 };
+
+// Mascot presets (ambient loops; use only where the spec allows).
+export const mascotPresets = {
+  none: {},
+  bob: {
+    animate: { y: [0, -14, 0] },
+    transition: { duration: 2.6, repeat: Infinity, ease: 'easeInOut' },
+  },
+  blink: {
+    animate: { scaleY: [1, 1, 0.9, 1, 1] },
+    transition: { duration: 4, times: [0, 0.46, 0.5, 0.54, 1], repeat: Infinity, ease: 'easeInOut' },
+  },
+  wave: {
+    animate: { rotate: [0, 8, -6, 8, 0] },
+    transition: { duration: 1.8, repeat: Infinity, repeatDelay: 0.6, ease: 'easeInOut' },
+  },
+};
+
+// Typing indicator: dots rise in sequence, slowly.
+export const typingDot = (i, lift = 8) => ({
+  animate: { y: [0, -lift, 0], opacity: [0.35, 1, 0.35] },
+  transition: { duration: 1.4, repeat: Infinity, delay: i * 0.18, ease: 'easeInOut' },
+});

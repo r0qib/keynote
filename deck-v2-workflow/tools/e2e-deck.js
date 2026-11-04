@@ -24,7 +24,7 @@ async (page) => {
   await sleep(800);
 
   const slides = await page.evaluate(() =>
-    window.__informatiqSync.activeSlides.map((s) => ({ id: s.id, builds: s.totalBuilds || 0, corner: s.cornerLabel || '' })),
+    window.__informatiqSync.activeSlides.map((s) => ({ id: s.id, builds: s.totalBuilds || 0, corner: s.cornerLabel || '', chromeAt: s.chromeFromBuild || 0 })),
   );
   const totalSteps = slides.reduce((n, s) => n + s.builds + 1, 0);
   check('deck has slides', slides.length > 0, slides.length);
@@ -50,7 +50,7 @@ async (page) => {
       badge: (document.querySelector('[data-testid="corner-badge"]')?.innerText || '').trim(),
     }));
     if (dom.crash) crashes.push(`${slides[s.i].id} b${s.b}`);
-    if (s.b === 0) {
+    if (s.b === slides[s.i].chromeAt) {
       const want = slides[s.i].corner ? String(s.i + 1).padStart(2, '0') : null;
       if (want && !dom.badge.startsWith(`${want} /`)) badges.push(`${slides[s.i].id}: badge "${dom.badge}" expected ${want} / …`);
       if (!want && dom.badge) badges.push(`${slides[s.i].id}: unexpected badge "${dom.badge}"`);

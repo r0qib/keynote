@@ -2,13 +2,13 @@
 
 Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, reviewed, committed) · `[!]` blocked (reason logged).
 
-**next:** B0
+**next:** B1
 
 ---
 
 ## Batches
 
-### [ ] B0 · Foundation: full-bleed stage, design tokens, shared components, manifest v2
+### [x] B0 · Foundation: full-bleed stage, design tokens, shared components, manifest v2
 - **Slides:** none (all show `PlaceholderSlide` after this batch)
 - **Do:**
   1. `git mv` every `src/slides/S*.jsx` into `src/slides/legacy/` (the registry glob `./S*.jsx` won't pick them up there).
@@ -154,3 +154,5 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 ## Session log
 
 <!-- one line per session start/end: date · HEAD · batch · tokens left if known -->
+- 2026-11-05 · session 1 start · HEAD 7f68065 · starting B0
+- 2026-11-05 · session 2 start · HEAD 7f68065 · resuming B0 (tree partially changed: legacy moves, theme.js, tailwind, motion, manifest.v1)

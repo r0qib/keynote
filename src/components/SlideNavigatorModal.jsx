@@ -1,16 +1,7 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Clock, Layers, AlertTriangle } from 'lucide-react';
-
-const ACT_COLORS = {
-  Opening: '#1B7ED0',
-  Good: '#1E9E6A',
-  Poll: '#111113', // Neutral ink dot: interlude sits between acts and belongs to none
-  Bad: '#D97706',
-  Ugly: '#E5484D',
-  'Making Good': '#1B7ED0',
-  Finale: '#1B7ED0',
-};
+import { actAccent } from '../theme.js';
 
 export default function SlideNavigatorModal({
   isOpen,
@@ -59,7 +50,7 @@ export default function SlideNavigatorModal({
           <div className="overflow-y-auto py-5 pr-1 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5 flex-1">
             {activeSlides.map((slide, idx) => {
               const isSelected = idx === currentIndex;
-              const actColor = slide.dotColor || ACT_COLORS[slide.act] || '#1B7ED0';
+              const actColor = actAccent(slide.act);
 
               return (
                 <button

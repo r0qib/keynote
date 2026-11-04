@@ -16,17 +16,8 @@
     user-select: none;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #000000;
+    background-color: #FAFAFB;
   }
-}
-
-/* 
-  Solid off-white presentation canvas (#FAFAFB)
-  Teams Screen-Share Optimization: 
-  NO dot grid, NO repeating pattern, NO gradient banding
-*/
-.slide-canvas {
-  background-color: #FAFAFB;
 }
 
 /* Custom scrollbars for notes and overview modal */
