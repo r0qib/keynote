@@ -169,7 +169,7 @@ export default function S42_DoomFlip({ activeSlide, buildStep }) {
 
         {/* Morphing Title Container */}
         <div className="min-h-[76px] flex flex-col justify-center">
-          <AnimatePresence mode="wait">
+          <AnimatePresence>
             {!isMorphTitle ? (
               <motion.div
                 key="doom-title"

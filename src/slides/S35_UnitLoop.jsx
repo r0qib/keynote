@@ -243,36 +243,31 @@ export default function S35_UnitLoop({ activeSlide, buildStep }) {
 
       </div>
 
-      {/* Kicker Banner lands on Build 2 */}
-      {showKicker ? (
+      {/* Kicker Card lands on Build 2 */}
+      {showKicker && (
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: appleEase }}
-          className="z-10 bg-amber-50 rounded-xl p-4 border-2 border-amber-300 text-amber-950 shadow-sm flex items-center justify-between"
+          className="z-10 bg-[#111113] rounded-2xl p-4 sm:p-5 border border-neutral-800 text-white shadow-xl flex items-center justify-between"
         >
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-amber-500 text-white flex items-center justify-center shrink-0">
-              <Sparkles className="w-5 h-5 stroke-[2.2px]" />
+          <div className="flex items-center gap-3.5">
+            <div className="w-9 h-9 rounded-xl bg-amber-400 text-neutral-900 flex items-center justify-center shrink-0">
+              <Sparkles className="w-5 h-5 stroke-[2.5px]" />
             </div>
             <div>
-              <p className="text-sm sm:text-base font-bold text-amber-950">
+              <p className="text-sm sm:text-base font-bold text-white leading-snug">
                 "One review. One fix round. Perfectionism loops are where token budgets go to die."
               </p>
-              <p className="text-xs text-amber-800 mt-0.5">
+              <p className="text-xs text-neutral-400 mt-0.5">
                 Review HIGH / MEDIUM issues only. Don't bikeshed formatting or subjective nits.
               </p>
             </div>
           </div>
-          <span className="hidden sm:inline font-mono text-xs font-bold px-3 py-1 bg-white rounded-lg border-2 border-amber-200 text-amber-800 shrink-0 ml-4">
+          <span className="hidden sm:inline font-mono text-xs font-bold px-3 py-1 bg-neutral-800 rounded-lg border border-neutral-700 text-amber-400 shrink-0 ml-4">
             Max 1 fix round
           </span>
         </motion.div>
-      ) : (
-        <div className="z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-[#4A4A55] border-t-2 border-neutral-200 pt-3 gap-2">
-          <span className="font-mono">Progress is atomic: each unit produces a green test run and a clean commit.</span>
-          <span className="font-medium text-[#111113]">Discrete steps · Zero snowballing errors</span>
-        </div>
       )}
 
     </div>

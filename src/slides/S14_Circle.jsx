@@ -190,27 +190,19 @@ export default function S14_Circle({ activeSlide, buildStep }) {
           {/* Morphing Vector Path */}
           <svg
             viewBox="0 0 400 300"
-            className="w-full h-full max-w-sm sm:max-w-md z-10"
+            className="w-full h-full max-w-md sm:max-w-lg z-10"
             preserveAspectRatio="xMidYMid meet"
           >
-            {/* The Target Ghost Circle (What was actually asked for) */}
+            {/* The Target Ghost Circle */}
             <circle
               cx="200"
               cy="150"
-              r="85"
+              r="90"
               fill="none"
               stroke="#D4D4D8"
               strokeWidth="2.5"
               strokeDasharray="6 6"
             />
-            <text
-              x="200"
-              y="155"
-              textAnchor="middle"
-              className="font-mono text-[11px] fill-neutral-400 font-medium select-none"
-            >
-              (what you asked for: radius r=85)
-            </text>
 
             {/* The Actual Rendered Morphing Shape */}
             <motion.path
@@ -228,16 +220,11 @@ export default function S14_Circle({ activeSlide, buildStep }) {
             />
           </svg>
 
-          {/* Floating Shape Label Badge */}
+          {/* Simple Clean Shape Label */}
           <div className="absolute top-4 left-6 z-20 flex items-center gap-2">
-            <span className="font-mono text-xs uppercase px-2.5 py-1 rounded-md bg-neutral-900 text-white font-bold">
-              Rendered: {shapeName}
+            <span className="font-mono text-sm px-3 py-1 rounded-lg bg-neutral-900 text-white font-bold">
+              {shapeName}
             </span>
-            {currentStep >= 2 && (
-              <span className="font-mono text-xs uppercase px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 border-2 border-emerald-400 font-bold">
-                Status: Marked Complete ✓
-              </span>
-            )}
           </div>
         </div>
 
@@ -245,23 +232,17 @@ export default function S14_Circle({ activeSlide, buildStep }) {
         <AnimatePresence>
           {showJitterBar && (
             <motion.div
-              initial={{ opacity: 0, y: 24, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, ease: appleEase }}
-              className="mt-4 bg-neutral-100 rounded-2xl p-3 sm:p-4 border-2 border-amber-500/70 shadow-md flex flex-col gap-2"
+              className="mt-4 bg-white rounded-2xl p-4 border border-amber-300 shadow-sm flex flex-col gap-2"
             >
               {/* Progress Track & Jitter Bar */}
-              <div className="relative w-full bg-neutral-200 rounded-xl h-12 flex items-center px-3 border-2 border-neutral-300 overflow-hidden">
-                
-                {/* 100% Target Marker */}
+              <div className="relative w-full bg-neutral-200 rounded-xl h-12 flex items-center px-3 border border-neutral-300 overflow-hidden">
                 <span className="absolute right-4 font-mono text-xs font-bold text-neutral-400">
                   100% Done
                 </span>
-
-                {/* 80% Threshold Line */}
                 <div className="absolute left-[80%] top-0 bottom-0 w-0.5 border-r-2 border-dashed border-neutral-400 z-20" />
-
-                {/* Jittering Bar */}
                 <motion.div
                   initial={false}
                   animate={{ width: `${currentJitter.percent}%` }}
@@ -275,19 +256,15 @@ export default function S14_Circle({ activeSlide, buildStep }) {
                 </motion.div>
               </div>
 
-              {/* Bar Footer Details: Clock Runaway vs Progress Stuck */}
-              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs font-mono text-neutral-600 px-1 gap-2">
-                <div className="flex items-center gap-2">
-                  <span className="font-bold text-amber-700">The last 20%:</span>
-                  <span>Jittering between 78% and 82%</span>
+              {/* Bar Details */}
+              <div className="flex items-center justify-between text-xs font-mono text-neutral-600 px-1 pt-1">
+                <div className="font-bold text-amber-700">
+                  The last 20%: stuck in a loop
                 </div>
-
-                {/* Elapsed Runaway Clock */}
-                <div className="flex items-center gap-2 bg-white px-3 py-1 rounded-lg border-2 border-neutral-300">
-                  <Clock className="w-3.5 h-3.5 text-red-500 stroke-[2.5]" />
-                  <span className="text-neutral-500">Elapsed time:</span>
-                  <span className="font-bold text-red-600 text-sm">{currentJitter.clock}</span>
-                  <span className="text-[10px] text-neutral-400">(and counting...)</span>
+                <div className="flex items-center gap-2 bg-neutral-50 px-3 py-1 rounded-lg border border-neutral-200">
+                  <Clock className="w-3.5 h-3.5 text-red-500" />
+                  <span className="text-neutral-500">Elapsed:</span>
+                  <span className="font-bold text-red-600">{currentJitter.clock}</span>
                 </div>
               </div>
             </motion.div>
@@ -296,11 +273,6 @@ export default function S14_Circle({ activeSlide, buildStep }) {
 
       </div>
 
-      {/* Bottom Footer Quote */}
-      <div className="z-10 flex items-center justify-between pt-2 border-t-2 border-neutral-200 text-xs text-[#4A4A55] font-mono">
-        <span>"Three minutes to build the feature. Forty-five minutes on one dropdown z-index."</span>
-        <span className="text-[#D97706] font-semibold">The bar goes nowhere, the clock goes everywhere</span>
-      </div>
     </div>
   );
 }

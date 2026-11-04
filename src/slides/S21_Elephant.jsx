@@ -39,7 +39,7 @@ export default function S21_Elephant({ activeSlide, buildStep }) {
         isCinematicQuote ? 'bg-[#111113] text-[#FAFAFB]' : 'bg-[#FAFAFB] text-[#111113]'
       }`}
     >
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         
         {/* Builds 0, 1, 2: The Elephant Canvas */}
         {!isCinematicQuote ? (
@@ -47,8 +47,8 @@ export default function S21_Elephant({ activeSlide, buildStep }) {
             key="elephant-view"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.5, ease: appleEase }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: appleEase }}
             className="h-full w-full flex flex-col justify-between"
           >
             {/* Top Header */}
@@ -206,11 +206,6 @@ export default function S21_Elephant({ activeSlide, buildStep }) {
 
             </div>
 
-            {/* Bottom Pacing Indicator */}
-            <div className="z-10 flex items-center justify-between pt-3 border-t-2 border-neutral-200 text-xs text-[#4A4A55] font-mono">
-              <span>Token Economics in Practice</span>
-              <span className="text-[#E5484D] font-semibold">Budget shapes engineering behavior</span>
-            </div>
           </motion.div>
         ) : (
           
@@ -246,10 +241,10 @@ export default function S21_Elephant({ activeSlide, buildStep }) {
                   </span>
                   {/* Replacement animated word */}
                   <motion.span
-                    initial={{ opacity: 0, y: -24, scale: 0.8 }}
-                    animate={{ opacity: 1, y: -36, scale: 1 }}
-                    transition={{ ...springPhysics, delay: 0.6 }}
-                    className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[#E5484D] font-mono text-2xl sm:text-3xl md:text-4xl font-black bg-neutral-900/90 px-3 py-1 rounded-xl border-2 border-[#E5484D] shadow-lg"
+                    initial={{ opacity: 0, y: -10, scale: 0.8 }}
+                    animate={{ opacity: 1, y: -58, scale: 1 }}
+                    transition={{ ...springPhysics, delay: 0.3 }}
+                    className="absolute left-1/2 -translate-x-1/2 whitespace-nowrap text-[#E5484D] font-mono text-xl sm:text-2xl md:text-3xl font-black bg-neutral-900 px-3 py-1 rounded-xl border-2 border-[#E5484D] shadow-xl"
                   >
                     token budget
                   </motion.span>

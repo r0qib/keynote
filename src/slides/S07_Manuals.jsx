@@ -306,73 +306,43 @@ export default function S07_Manuals({ activeSlide, buildStep }) {
             </div>
           </div>
 
-          {/* Stamp Mascot: meat-done stamps when Human Review passes */}
+          {/* Stamp Mascot: meat-done cleanly anchored inside mockup header */}
           <AnimatePresence>
             {showHumanSignoff && (
               <motion.div
-                initial={{ opacity: 0, scale: 2.2, rotate: -25 }}
-                animate={{ opacity: 1, scale: 1, rotate: -6 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-                transition={{ type: 'spring', stiffness: 500, damping: 15 }}
-                className="absolute -bottom-6 -left-4 sm:-bottom-8 sm:-left-6 z-30 flex items-center gap-3 bg-white px-4 py-2 rounded-2xl border-2 border-[#1E9E6A] shadow-2xl"
+                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={springPhysics}
+                className="mt-4 flex items-center justify-between p-3.5 bg-emerald-50 rounded-xl border border-[#1E9E6A]/50"
               >
-                <img
-                  src={meatDoneSvg}
-                  alt="Approved"
-                  className="w-12 h-12 md:w-14 md:h-14 flex-shrink-0"
-                />
-                <div>
-                  <div className="font-mono text-xs font-black text-[#1E9E6A] tracking-wider uppercase">
-                    HUMAN APPROVED
-                  </div>
-                  <div className="text-xs text-neutral-600 font-medium">
-                    Verified by engineer
+                <div className="flex items-center gap-3">
+                  <img
+                    src={meatDoneSvg}
+                    alt="Approved"
+                    className="w-10 h-10 flex-shrink-0"
+                  />
+                  <div>
+                    <div className="font-bold text-sm text-[#111113]">
+                      "A human still signs off."
+                    </div>
+                    <div className="text-xs text-neutral-600">
+                      We removed the repetitive toil, not the human engineer.
+                    </div>
                   </div>
                 </div>
+                <span className="font-mono text-xs font-bold text-[#1E9E6A] px-2.5 py-1 rounded-md bg-white border border-[#1E9E6A]/30">
+                  Reviewed
+                </span>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
       </div>
 
-      {/* Bottom Footer or Human Signoff Banner */}
-      <div className="pt-3 border-t-2 border-neutral-200/60 z-10">
-        <AnimatePresence mode="wait">
-          {showHumanSignoff ? (
-            <motion.div
-              key="signoff"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              className="flex items-center justify-between bg-emerald-50 text-emerald-950 px-4 py-2.5 rounded-xl border-2 border-[#1E9E6A]/50 shadow-sm"
-            >
-              <div className="flex items-center gap-3 font-semibold text-sm md:text-base">
-                <CheckCircle2 className="w-5 h-5 text-[#1E9E6A] flex-shrink-0" />
-                <span>"A human still signs off."</span>
-                <span className="text-emerald-700 font-normal hidden sm:inline">
-                  — We removed the toil, not the person.
-                </span>
-              </div>
-              <div className="font-mono text-xs font-bold text-[#1E9E6A]">
-                100% VERIFIED
-              </div>
-            </motion.div>
-          ) : (
-            <div className="flex items-center justify-between text-xs md:text-sm text-[#4A4A55]">
-              <div className="flex items-center gap-2 font-mono">
-                <span className="w-2 h-2 rounded-full bg-[#1E9E6A]" />
-                <span>Git release</span>
-                <span className="text-neutral-300">→</span>
-                <span>Diff snapshot</span>
-                <span className="text-neutral-300">→</span>
-                <span>Annotated manual</span>
-              </div>
-              <div className="font-mono text-xs text-neutral-400">
-                Automated Documentation Workflow
-              </div>
-            </div>
-          )}
-        </AnimatePresence>
+      {/* Clean bottom note */}
+      <div className="pt-2 text-sm text-[#4A4A55] font-mono">
+        Git commit <span className="text-neutral-400">→</span> Incremental UI diff <span className="text-neutral-400">→</span> Headless annotated screenshots <span className="text-neutral-400">→</span> <span className="text-[#1E9E6A] font-semibold">Human approval</span>
       </div>
     </div>
   );

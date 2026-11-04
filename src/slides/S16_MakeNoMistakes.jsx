@@ -69,7 +69,7 @@ export default function S16_MakeNoMistakes({ activeSlide, buildStep }) {
 
       {/* Center Stage Arena */}
       <div className="my-auto w-full max-w-4xl mx-auto flex items-center justify-center z-10 py-2 min-h-[380px]">
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           
           {/* Builds 0, 1, 2: Kinetic Prompts Stacking & Camera Pull Back */}
           {!isFinalPunchline ? (
@@ -80,11 +80,11 @@ export default function S16_MakeNoMistakes({ activeSlide, buildStep }) {
                 opacity: 1,
                 scale: isZoomedOut ? 0.92 : 1,
               }}
-              exit={{ opacity: 0, scale: 0.9, filter: 'blur(6px)' }}
-              transition={{ duration: 0.6, ease: appleEase }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.35, ease: appleEase }}
               className={`w-full transition-all duration-500 ${
                 isZoomedOut
-                  ? 'bg-white rounded-3xl p-6 sm:p-8 border-2 border-neutral-400 shadow-xl'
+                  ? 'bg-white rounded-3xl p-6 sm:p-8 border-2 border-neutral-300 shadow-xl'
                   : 'bg-transparent'
               }`}
             >
@@ -93,20 +93,17 @@ export default function S16_MakeNoMistakes({ activeSlide, buildStep }) {
                 <motion.div
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="flex items-center justify-between pb-4 mb-4 border-b-2 border-neutral-200"
+                  transition={{ duration: 0.3 }}
+                  className="flex items-center justify-between pb-4 mb-4 border-b border-neutral-200"
                 >
                   <div className="flex items-center gap-2">
                     <span className="w-6 h-6 rounded-full bg-neutral-900 text-white font-mono text-xs flex items-center justify-center font-bold">
                       You
                     </span>
                     <span className="font-mono text-xs text-neutral-500 font-semibold tracking-wide">
-                      Single Prompt Input Field
+                      Single Prompt Box
                     </span>
                   </div>
-                  <span className="font-mono text-xs text-neutral-400">
-                    Ctrl + Enter to send
-                  </span>
                 </motion.div>
               )}
 
@@ -129,7 +126,7 @@ export default function S16_MakeNoMistakes({ activeSlide, buildStep }) {
                       className={`${phrase.size} ${phrase.weight} ${phrase.color} tracking-tight leading-tight select-none`}
                     >
                       {phrase.text === 'MAKE NO MISTAKES' ? (
-                        <span className="bg-amber-100/90 text-[#D97706] px-4 py-1 rounded-2xl border-2 border-[#D97706] inline-block shadow-sm">
+                        <span className="bg-amber-100 text-[#D97706] px-4 py-1.5 rounded-2xl border-2 border-[#D97706] inline-block shadow-sm">
                           {phrase.text}
                         </span>
                       ) : (
@@ -145,11 +142,11 @@ export default function S16_MakeNoMistakes({ activeSlide, buildStep }) {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.4 }}
-                  className="mt-6 pt-4 border-t-2 border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-3"
+                  transition={{ delay: 0.2, duration: 0.3 }}
+                  className="mt-6 pt-4 border-t border-neutral-200 flex items-center justify-between gap-3"
                 >
-                  <div className="text-xs text-neutral-500 font-sans italic text-center sm:text-left">
-                    "Send that to a junior engineer and they'd quit. Or come back with a rectangle."
+                  <div className="text-sm text-neutral-500 font-sans italic">
+                    "Send that to a junior engineer and they'd quit. Or draw a rectangle."
                   </div>
 
                   <div className="flex items-center gap-2">
@@ -167,7 +164,7 @@ export default function S16_MakeNoMistakes({ activeSlide, buildStep }) {
               key="punchline-statement"
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: appleEase }}
+              transition={{ duration: 0.5, ease: appleEase }}
               className="flex flex-col items-center justify-center text-center max-w-3xl"
             >
               <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-[#111113] leading-[1.05]">
@@ -179,11 +176,6 @@ export default function S16_MakeNoMistakes({ activeSlide, buildStep }) {
         </AnimatePresence>
       </div>
 
-      {/* Bottom Pacing Indicator */}
-      <div className="z-10 flex items-center justify-between pt-3 border-t-2 border-neutral-200 text-xs text-[#4A4A55] font-mono">
-        <span>When prompting becomes bargaining</span>
-        <span className="text-[#D97706] font-semibold">The limit of raw instructions</span>
-      </div>
     </div>
   );
 }

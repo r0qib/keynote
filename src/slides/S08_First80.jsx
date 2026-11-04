@@ -170,33 +170,19 @@ export default function S08_First80({ activeSlide, buildStep }) {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.6, ease: appleEase }}
-              className="mt-2 p-4 sm:p-5 rounded-2xl bg-white border-2 border-neutral-200/90 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
+              className="mt-4 p-5 sm:p-6 rounded-2xl bg-white border border-neutral-200 shadow-sm flex items-center justify-between"
             >
               <div className="flex items-center gap-3">
-                <span className="text-neutral-300 text-3xl font-serif leading-none">“</span>
-                <p className="text-sm sm:text-base md:text-lg font-medium text-neutral-800 italic">
+                <span className="text-[#1E9E6A] text-4xl font-serif leading-none">“</span>
+                <p className="text-base sm:text-lg md:text-xl font-medium text-neutral-800 italic">
                   Ten-x engineer. Already drafting the LinkedIn post.
                 </p>
-              </div>
-
-              <div className="font-mono text-xs font-bold text-neutral-400 bg-neutral-100 px-3 py-1.5 rounded-lg flex-shrink-0 self-end sm:self-auto">
-                Hold that bar in your mind →
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      {/* Bottom Footer */}
-      <div className="flex items-center justify-between pt-3 border-t-2 border-neutral-200/60 z-10 text-xs md:text-sm text-[#4A4A55]">
-        <div className="flex items-center gap-2 font-mono">
-          <span className="w-2 h-2 rounded-full bg-[#1E9E6A]" />
-          <span>Velocity: 0% → 80% rocket speed</span>
-        </div>
-        <div className="font-mono text-xs text-neutral-400">
-          The Honeymoon Phase
-        </div>
-      </div>
     </div>
   );
 }

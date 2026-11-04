@@ -209,44 +209,15 @@ export default function S29_PlanHours({ activeSlide, buildStep }) {
               </div>
 
               {/* Focus Architecture Insight */}
-              <div className="pt-2 flex items-center justify-between text-xs text-[#4A4A55]">
+              <div className="pt-2 flex items-center justify-between text-sm text-[#4A4A55] font-medium">
                 <span>Planning keeps all the context in your head. That's flow, and it's the part you cannot delegate.</span>
-                <span className="font-mono text-xs font-semibold text-[#1B7ED0]">No interruptions</span>
+                <span className="font-mono text-sm font-bold text-[#1B7ED0]">Zero interruptions</span>
               </div>
             </motion.div>
           )}
         </div>
       </div>
 
-      {/* Bottom Punchline (Build 2) */}
-      <div className="z-10 pt-3 border-t-2 border-neutral-200">
-        {showPunchline ? (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: appleEase }}
-            className="flex flex-wrap items-center justify-between gap-4 bg-blue-50 px-4 py-2.5 rounded-xl border-2 border-blue-200"
-          >
-            <div className="flex items-center gap-2">
-              <CheckCircle className="w-4 h-4 text-[#1B7ED0] flex-shrink-0" />
-              <span className="text-sm font-bold text-[#111113]">
-                Plan it well, then one-shot the plan.
-              </span>
-              <span className="text-xs text-[#4A4A55] hidden sm:inline">
-                (~90% lands cleanly on the first unattended run)
-              </span>
-            </div>
-            <span className="font-mono text-xs text-neutral-500">
-              Small bug? Quick question? Chat is fine.
-            </span>
-          </motion.div>
-        ) : (
-          <div className="flex items-center justify-between text-xs font-mono text-neutral-500">
-            <span>Invest up front so execution never stops to ask.</span>
-            <span>Flow beats churn</span>
-          </div>
-        )}
-      </div>
     </div>
   );
 }

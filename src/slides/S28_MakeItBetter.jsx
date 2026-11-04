@@ -92,38 +92,35 @@ export default function S28_MakeItBetter({ activeSlide, buildStep }) {
       </div>
 
       {/* Center Stage: The Evolving Data Grid Container */}
-      <div className="my-auto w-full max-w-5xl mx-auto z-10 py-3 relative">
+      <div className="my-auto w-full max-w-6xl mx-auto z-10 py-2 relative">
         
         {/* State Label & Metadata Bar */}
         <div className="flex items-center justify-between mb-3 px-1">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-xs uppercase tracking-wider text-neutral-400 font-bold">
-              Evolution Stage:
-            </span>
-            <span className={`px-2.5 py-0.5 rounded-full font-mono text-xs font-bold border-2 ${
+            <span className={`px-3 py-1 rounded-full font-mono text-xs font-bold border-2 ${
               stateIndex === 0 ? 'bg-neutral-100 text-neutral-700 border-neutral-300' :
               stateIndex === 1 ? 'bg-purple-100 text-purple-900 border-purple-400' :
               stateIndex === 2 ? 'bg-amber-100 text-amber-900 border-amber-400' :
               'bg-blue-50 text-[#1B7ED0] border-[#1B7ED0]'
             }`}>
-              {stateIndex === 0 && '01 · Before AI ("It worked. It was fine.")'}
-              {stateIndex === 1 && '02 · With AI ("Generic Slop & Inconsistent Tokens")'}
+              {stateIndex === 0 && '01 · Before AI ("It worked. It was bare-bones.")'}
+              {stateIndex === 1 && '02 · Unconstrained AI ("Generic Purple Slop")'}
               {stateIndex === 2 && '03 · Sweeping the slop away…'}
-              {stateIndex === 3 && '04 · With AI, done right (InformatiQ Design System)'}
+              {stateIndex === 3 && '04 · AI with Engineering Taste (InformatiQ Design System)'}
             </span>
           </div>
 
-          <div className="font-mono text-xs text-neutral-500">
+          <div className="font-mono text-xs text-neutral-500 font-semibold">
             {stateIndex === 3 ? (
-              <span className="font-bold text-[#1B7ED0]">Same ticket. Same deadline.</span>
+              <span className="text-[#1B7ED0]">Same ticket. Same deadline. Higher standard.</span>
             ) : (
-              <span>Component: Wellbore Data Grid</span>
+              <span>Wellbore Data Grid Component</span>
             )}
           </div>
         </div>
 
         {/* The Grid Window Canvas */}
-        <div className="relative min-h-[310px] w-full rounded-2xl bg-white border-2 border-neutral-300 shadow-md overflow-hidden flex flex-col justify-between">
+        <div className="relative min-h-[360px] w-full rounded-2xl bg-white border-2 border-neutral-300 shadow-lg overflow-hidden flex flex-col justify-between">
           
           {/* ========================================================= */}
           {/* STATE 0: Before AI (Plain Table)                          */}
@@ -490,24 +487,6 @@ export default function S28_MakeItBetter({ activeSlide, buildStep }) {
         </div>
       </div>
 
-      {/* Bottom Banner */}
-      <div className="z-10 pt-3 border-t-2 border-neutral-200">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="font-mono text-xs sm:text-sm font-black tracking-tight text-[#111113]">
-            {stateIndex === 3 ? (
-              <span className="text-[#1B7ED0]">
-                Before: bounded by hours. Now: bounded by imagination.
-              </span>
-            ) : (
-              <span>Same ticket. Same deadline. Taste makes the difference.</span>
-            )}
-          </div>
-
-          <div className="font-mono text-xs text-neutral-400">
-            UI-Only Benchmark
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

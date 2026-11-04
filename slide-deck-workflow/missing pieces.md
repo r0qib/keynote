@@ -24,7 +24,7 @@ When logging under a slide, use this format:
 ## Slide-by-Slide Register
 
 ### S01 · `title` (AI-Assisted Development: The Good, the Bad and the Ugly)
-- **[Content]** `Presenter Name`: Placeholder `[Presenter name]` used on screen. Needs presenter's real display name.
+- **[Content]** `Presenter Name`: Resolved — "Rokibul Islam" now on screen.
 - **[Asset]** `BS23 Logo`: Verified existing and integrated from `src/assets/bs23_logo.webp`.
 
 ### S02 · `who-we-are` (We build software for the middle of the North Sea.)
@@ -176,7 +176,7 @@ When logging under a slide, use this format:
 - **[Chrome]** `Corner Dot`: Configured with `#111113` neutral ink dot override in `manifest.js` and `App.jsx` matching S03.
 
 ### S43 · `thanks` (Questions? Humans only.)
-- **[Content]** `Presenter Name & Handles`: Configured placeholders `[Presenter name]` and `@presenter` ready for real presenter handles.
+- **[Content]** `Presenter Name & Handles`: Name resolved ("Rokibul Islam"). `@presenter` Teams handle still a placeholder; needs real handle.
 - **[Asset]** `BS23 Logo`: Verified and integrated from `src/assets/bs23_logo.webp`.
 - **[Asset]** `Mascot SVG`: Verified and integrated `meat-wave.svg` from `src/assets/meatproxy-emojis-svg/meat-wave.svg` with floating idle animation and after-party callback speech bubble.
 

@@ -189,7 +189,7 @@ export default function S30_RightSize({ activeSlide, buildStep }) {
                     </p>
                   </div>
 
-                  <div className="mt-4 pt-2 border-t-2 border-neutral-100 flex items-center justify-between text-[10px] font-mono text-neutral-400">
+                  <div className="mt-4 pt-2 border-t border-neutral-100 flex items-center justify-between text-xs font-mono text-neutral-400">
                     <span>Overhead: {idx === 0 ? '0%' : idx === 1 ? '15%' : '25%'}</span>
                     <span className="font-semibold text-neutral-600">
                       {idx === 2 ? 'InformatiQ Standard' : 'Everyday'}
@@ -202,23 +202,6 @@ export default function S30_RightSize({ activeSlide, buildStep }) {
         )}
       </div>
 
-      {/* Bottom Footer & Poll Callback */}
-      <div className="z-10 pt-3 border-t-2 border-neutral-200">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="font-mono text-xs sm:text-sm text-[#4A4A55] font-semibold">
-            {showTiers ? (
-              <span>The right end isn't bad — borrow its contracts, skip its bureaucracy.</span>
-            ) : (
-              <span>Size the workflow to the feature. Not the company.</span>
-            )}
-          </div>
-
-          <div className="flex items-center gap-1.5 font-mono text-xs text-neutral-500">
-            <span className="w-2 h-2 rounded-full bg-[#1B7ED0]" />
-            <span>Workflow Choice · Matching process weight to feature risk</span>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

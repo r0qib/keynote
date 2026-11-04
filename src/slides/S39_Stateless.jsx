@@ -255,36 +255,31 @@ export default function S39_Stateless({ activeSlide, buildStep }) {
 
       </div>
 
-      {/* Build 2 Bottom Banner */}
-      {showTheFix ? (
+      {/* Build 2 Bottom Card */}
+      {showTheFix && (
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, ease: appleEase }}
-          className="z-10 bg-blue-50 rounded-2xl p-4 sm:p-5 border-2 border-blue-300 text-blue-950 shadow-sm flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
+          className="z-10 bg-[#111113] rounded-2xl p-4 sm:p-5 border border-neutral-800 text-white shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
         >
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-[#1B7ED0] text-white flex items-center justify-center shrink-0 font-bold">
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-[#1B7ED0] text-white flex items-center justify-center shrink-0 font-bold">
               <Sparkles className="w-5 h-5 stroke-[2.2px]" />
             </div>
             <div>
-              <p className="text-sm sm:text-base font-bold text-neutral-900">
+              <p className="text-base font-bold text-white leading-snug">
                 "One task, one session. Files carry the context."
               </p>
-              <p className="text-xs text-[#4A4A55] mt-0.5">
+              <p className="text-xs text-neutral-400 mt-0.5">
                 Treat chat sessions like disposable compute containers, not permanent journals.
               </p>
             </div>
           </div>
-          <span className="font-mono text-xs font-bold px-3 py-1 bg-white text-[#1B7ED0] rounded-lg border-2 border-blue-200 shrink-0">
+          <span className="font-mono text-xs font-bold px-3 py-1 bg-neutral-800 text-[#1B7ED0] rounded-lg border border-neutral-700 shrink-0">
             Rule of thumb
           </span>
         </motion.div>
-      ) : (
-        <div className="z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-[#4A4A55] border-t-2 border-neutral-200 pt-3 gap-2">
-          <span className="font-mono">Every message in a 200k chat is an expensive re-evaluation.</span>
-          <span className="font-medium text-[#111113]">Keep chats short · Keep repo files rich</span>
-        </div>
       )}
 
     </div>

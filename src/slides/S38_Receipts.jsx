@@ -116,10 +116,10 @@ export default function S38_Receipts({ activeSlide, buildStep }) {
             </div>
 
             <div className="flex items-baseline gap-2">
-              <span className="text-5xl sm:text-6xl font-black tracking-tight text-[#111113]">
+              <span className="text-6xl sm:text-7xl font-black tracking-tight text-[#111113]">
                 <Counter end={13} duration={500} />
               </span>
-              <span className="text-xl sm:text-2xl font-bold text-neutral-500">units</span>
+              <span className="text-2xl font-bold text-neutral-400">units</span>
             </div>
 
             <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-blue-50 border-2 border-blue-200 text-[#1B7ED0] text-xs font-mono font-bold">
@@ -163,10 +163,10 @@ export default function S38_Receipts({ activeSlide, buildStep }) {
             </div>
 
             <div className="flex items-baseline gap-2">
-              <span className="text-5xl sm:text-6xl font-black tracking-tight text-[#111113]">
+              <span className="text-6xl sm:text-7xl font-black tracking-tight text-[#111113]">
                 {showStat2 ? <Counter end={165} duration={500} prefix="~" suffix="k" /> : '~165k'}
               </span>
-              <span className="text-xl sm:text-2xl font-bold text-neutral-500">tokens</span>
+              <span className="text-2xl font-bold text-neutral-400">tokens</span>
             </div>
 
             <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 border-2 border-emerald-200 text-emerald-700 text-xs font-mono font-bold">
@@ -207,12 +207,12 @@ export default function S38_Receipts({ activeSlide, buildStep }) {
             </div>
 
             <div className="flex items-baseline gap-2">
-              <span className="text-5xl sm:text-6xl font-black tracking-tight text-[#111113]">
+              <span className="text-6xl sm:text-7xl font-black tracking-tight text-[#111113]">
                 10–30
               </span>
-              <span className="text-xl sm:text-2xl font-bold text-neutral-500">commits</span>
+              <span className="text-2xl font-bold text-neutral-400">commits</span>
             </div>
-
+            
             <div className="mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-neutral-100 border-2 border-neutral-300 text-neutral-800 text-xs font-mono font-bold">
               <GitCommit className="w-3.5 h-3.5 stroke-[2.2px]" />
               <span>Per major overhaul feature</span>
@@ -232,19 +232,19 @@ export default function S38_Receipts({ activeSlide, buildStep }) {
       </div>
 
       {/* Build 2 Takeaway Banner */}
-      {showStat3 ? (
+      {showStat3 && (
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, ease: appleEase }}
-          className="z-10 bg-[#111113] rounded-2xl p-4 sm:p-5 border-2 border-neutral-800 text-neutral-100 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
+          className="z-10 bg-[#111113] rounded-2xl p-4 sm:p-5 border border-neutral-800 text-neutral-100 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
         >
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl bg-emerald-500 text-neutral-900 flex items-center justify-center shrink-0 font-bold">
-              <DollarSign className="w-5 h-5 stroke-[2.5px]" />
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500 text-neutral-900 flex items-center justify-center shrink-0 font-bold">
+              <DollarSign className="w-6 h-6 stroke-[2.5px]" />
             </div>
             <div>
-              <p className="text-sm sm:text-base font-bold text-white">
+              <p className="text-base font-bold text-white leading-snug">
                 "The answer to the elephant: spend where judgment is needed."
               </p>
               <p className="text-xs text-neutral-400 mt-0.5">
@@ -252,15 +252,10 @@ export default function S38_Receipts({ activeSlide, buildStep }) {
               </p>
             </div>
           </div>
-          <span className="font-mono text-xs font-bold px-3 py-1 bg-neutral-800 text-emerald-400 rounded-lg border-2 border-neutral-700 shrink-0">
+          <span className="font-mono text-xs font-bold px-3 py-1 bg-neutral-800 text-emerald-400 rounded-lg border border-neutral-700 shrink-0">
             Measurable ROI
           </span>
         </motion.div>
-      ) : (
-        <div className="z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-[#4A4A55] border-t-2 border-neutral-200 pt-3 gap-2">
-          <span className="font-mono">Real-world telemetry: small units and targeted prompts prevent token compounding.</span>
-          <span className="font-medium text-[#111113]">Bounded tasks · Predictable budgets</span>
-        </div>
       )}
 
     </div>

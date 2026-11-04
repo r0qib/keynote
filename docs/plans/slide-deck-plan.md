@@ -232,7 +232,7 @@ Each slide below has the same parts:
 - **On screen:**
   - "AI-Assisted Development" (small, above)
   - "The Good, the Bad and the Ugly" (huge)
-  - "[Presenter name] · InformatiQ team" (small)
+  - "Rokibul Islam · InformatiQ team" (small)
   - The BS23 logo small in the bottom-left, around 28 px tall: present but quiet.
 - **Visual:** pure typography and generous whitespace. The three words *Good / Bad / Ugly* can each carry a hairline-thin underline in their act colour, drawn left to right after the title lands (≥ 2 px, see 4.3).
 - **Builds:**
@@ -961,7 +961,7 @@ Each slide below has the same parts:
 #### S43 · `thanks`
 
 - **Corner:** none
-- **On screen:** "Questions?" with the sub "(Humans only.)" Small: "[Presenter name] · InformatiQ team · Brain Station 23" and the BS23 logo, small. `meat-wave`.
+- **On screen:** "Questions?" with the sub "(Humans only.)" Small: "Rokibul Islam · InformatiQ team · Brain Station 23" and the BS23 logo, small. `meat-wave`.
 - **Builds:** 0 only.
 - **Optional:** a quiet "Your funniest AI moments" line, if the presenter reads poll free-text answers aloud.
 
@@ -1005,7 +1005,8 @@ Each slide below has the same parts:
 ## 9. Placeholders to fill before the build is final
 
 - [ ] `POLL_URL` + short link + QR (S09), the final poll questions (draft in `presenter-notes.md`, Appendix A), and a backup poll link
-- [ ] Presenter's full name (S01, S43) and Teams handle (S41)
+- [x] Presenter's full name: Rokibul Islam (S01, S43)
+- [ ] Presenter's Teams handle (S41, S43)
 - [ ] What from the team repo can be shared outside the team (S41's offer)
 - [ ] Optional: a real before/after figure for the user manuals (S07). Leave it out rather than estimate
 - [ ] Optional: confirm that showing `template_layout_feedback.png` on S23 is OK

@@ -9,7 +9,7 @@ import bs23Logo from '../assets/bs23_logo.webp';
  * Headline: "AI-Assisted Development" (kicker above)
  * Title: "The Good, the Bad and the Ugly" (huge typography, ≥72px)
  * Animated Underlines: "Good" (green #1E9E6A), "Bad" (amber #D97706), "Ugly" (coral #E5484D)
- * Presenter info: "[Presenter name] · InformatiQ team"
+ * Presenter info: "Rokibul Islam · InformatiQ team"
  * Company logo: BS23 logo quiet in bottom-left (~28px tall, opacity-80)
  * Builds: 0 (No clicks)
  */
@@ -86,7 +86,7 @@ export default function S01_Title({ activeSlide, buildStep }) {
           transition={{ delay: 0.6, duration: 0.6, ease: appleEase }}
           className="text-lg md:text-2xl text-[#4A4A55] font-normal mt-8 md:mt-12 tracking-tight"
         >
-          [Presenter name] · InformatiQ team
+          Rokibul Islam · InformatiQ team
         </motion.p>
       </div>
 

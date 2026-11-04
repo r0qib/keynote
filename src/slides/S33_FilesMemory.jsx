@@ -80,76 +80,76 @@ export default function S33_FilesMemory({ activeSlide, buildStep }) {
       </div>
 
       {/* Center Stage: Chat Context Rot vs. Working Folder Tree */}
-      <div className="my-auto w-full max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch z-10 py-2">
+      <div className="my-auto w-full max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch z-10 py-2">
         
         {/* Left Column: The Fragile Chat Window (Context Rot) */}
-        <div className="md:col-span-5 flex flex-col justify-between bg-white rounded-2xl p-5 border-2 border-neutral-300 shadow-sm relative overflow-hidden">
+        <div className="md:col-span-5 flex flex-col justify-between bg-white rounded-3xl p-6 border-2 border-neutral-300 shadow-sm relative overflow-hidden">
           <div>
-            <div className="flex items-center justify-between pb-3 mb-3 border-b-2 border-neutral-100">
-              <div className="flex items-center gap-2 text-neutral-500 font-mono text-xs font-bold">
+            <div className="flex items-center justify-between pb-3.5 mb-4 border-b-2 border-neutral-100">
+              <div className="flex items-center gap-2 text-neutral-600 font-mono text-xs font-bold">
                 <MessageSquare className="w-4 h-4 text-neutral-400" />
-                <span>One Continuous Chat Thread</span>
+                <span>Single Chat Thread</span>
               </div>
-              <span className="text-[10px] font-mono text-red-600 bg-red-50 px-1.5 py-0.5 rounded border-2 border-red-200 font-bold">
+              <span className="text-xs font-mono text-red-600 bg-red-50 px-2 py-0.5 rounded-md border border-red-200 font-bold">
                 Turn 47 · 185k tokens
               </span>
             </div>
 
             {/* Simulated Chat Messages Fading Out */}
-            <div className="space-y-2.5 relative">
+            <div className="space-y-3 relative">
               {/* Turn 2: Faded Out */}
-              <div className="p-2.5 rounded-xl bg-neutral-100 border-2 border-neutral-200 opacity-30 select-none">
-                <div className="text-[10px] font-mono text-neutral-400">Turn 2 · Architecture Plan</div>
+              <div className="p-3 rounded-2xl bg-neutral-100 border border-neutral-200 opacity-25 select-none">
+                <div className="text-[11px] font-mono text-neutral-400">Turn 2 · Architecture Plan</div>
                 <div className="text-xs text-neutral-500 line-through">"Use True Vertical Depth as default..."</div>
               </div>
 
               {/* Turn 14: Dissolving */}
-              <div className="p-2.5 rounded-xl bg-neutral-100 border-2 border-neutral-200 opacity-45 select-none">
-                <div className="text-[10px] font-mono text-neutral-400">Turn 14 · Design Tokens</div>
+              <div className="p-3 rounded-2xl bg-neutral-100 border border-neutral-200 opacity-45 select-none">
+                <div className="text-[11px] font-mono text-neutral-400">Turn 14 · Design Tokens</div>
                 <div className="text-xs text-neutral-500">"Never use purple, keep 2px borders..."</div>
               </div>
 
               {/* Turn 32: Partial */}
-              <div className="p-2.5 rounded-xl bg-neutral-100 border-2 border-neutral-200 opacity-70">
-                <div className="text-[10px] font-mono text-neutral-500">Turn 32 · Unit 3 Bug Fix</div>
+              <div className="p-3 rounded-2xl bg-neutral-100 border border-neutral-200 opacity-70">
+                <div className="text-[11px] font-mono text-neutral-500">Turn 32 · Unit 3 Bug Fix</div>
                 <div className="text-xs text-neutral-700">"Fixed pagination index offset..."</div>
               </div>
 
               {/* Turn 47: The Crash / Amnesia */}
-              <div className="p-2.5 rounded-xl bg-red-50 border-2 border-red-200 text-red-900">
-                <div className="text-[10px] font-mono font-bold text-red-700 flex items-center justify-between">
-                  <span>Turn 47 · AI Assistant</span>
-                  <span>Amnesia!</span>
+              <div className="p-3.5 rounded-2xl bg-red-50 border-2 border-red-200 text-red-900 shadow-sm">
+                <div className="text-xs font-mono font-bold text-red-700 flex items-center justify-between">
+                  <span>Turn 47 · Assistant Amnesia</span>
+                  <span>LOST CONTEXT</span>
                 </div>
-                <div className="text-xs font-semibold mt-1">
+                <div className="text-sm font-semibold mt-1.5">
                   "Could you remind me what depth reference we agreed on?"
                 </div>
               </div>
 
               {/* Context Rot Callout Tag (Direct callback to S18) */}
-              <div className="absolute top-1/3 left-1/2 -translate-x-1/2 bg-white px-3 py-1.5 rounded-xl border-2 border-[#E5484D] shadow-md flex items-center gap-1.5 font-mono text-xs text-[#E5484D] font-bold z-20">
-                <AlertOctagon className="w-3.5 h-3.5 text-[#E5484D]" />
+              <div className="absolute top-1/3 left-1/2 -translate-x-1/2 bg-white px-3.5 py-1.5 rounded-xl border-2 border-[#E5484D] shadow-xl flex items-center gap-2 font-mono text-xs text-[#E5484D] font-bold z-20">
+                <AlertOctagon className="w-4 h-4 text-[#E5484D]" />
                 <span>context rot (the chat's)</span>
               </div>
             </div>
           </div>
 
-          <div className="mt-4 pt-2 border-t-2 border-neutral-100 text-[11px] font-mono text-neutral-400">
-            Eliminates chat history decay.
+          <div className="mt-4 pt-3 border-t-2 border-neutral-100 text-xs font-mono text-neutral-400">
+            Chat histories decay. Files in git don't.
           </div>
         </div>
 
         {/* Right Column: The Working Directory (temp-notes/) */}
-        <div className="md:col-span-7 flex flex-col justify-between bg-white rounded-2xl p-5 border-2 border-[#1B7ED0] shadow-sm relative overflow-hidden">
+        <div className="md:col-span-7 flex flex-col justify-between bg-white rounded-3xl p-6 border-2 border-[#1B7ED0] shadow-md relative overflow-hidden">
           <div>
-            <div className="flex items-center justify-between pb-3 mb-3 border-b-2 border-neutral-100">
-              <div className="flex items-center gap-2">
-                <Folder className="w-4 h-4 text-[#1B7ED0]" />
-                <span className="font-mono text-xs font-bold text-[#111113]">
+            <div className="flex items-center justify-between pb-3.5 mb-4 border-b-2 border-neutral-100">
+              <div className="flex items-center gap-2.5">
+                <Folder className="w-5 h-5 text-[#1B7ED0]" />
+                <span className="font-mono text-xs sm:text-sm font-bold text-[#111113]">
                   temp-notes/data-inventory-redesign/
                 </span>
               </div>
-              <span className="font-mono text-[10px] text-[#1B7ED0] bg-blue-50 px-2 py-0.5 rounded border-2 border-blue-200 font-bold">
+              <span className="font-mono text-xs text-[#1B7ED0] bg-blue-50 px-2.5 py-0.5 rounded-md border border-blue-200 font-bold">
                 7 Living Files
               </span>
             </div>
@@ -160,7 +160,7 @@ export default function S33_FilesMemory({ activeSlide, buildStep }) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.4 }}
-                className="space-y-1.5"
+                className="space-y-2"
               >
                 {FILES.map((f, i) => (
                   <motion.div
@@ -168,17 +168,17 @@ export default function S33_FilesMemory({ activeSlide, buildStep }) {
                     initial={{ opacity: 0, x: 12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ ...springPhysics, delay: i * 0.08 }}
-                    className="p-2 rounded-xl bg-neutral-50 hover:bg-blue-50/50 border-2 border-neutral-200 transition-colors flex items-center justify-between text-xs"
+                    className="p-2.5 rounded-xl bg-neutral-50 hover:bg-blue-50/50 border border-neutral-200 transition-colors flex items-center justify-between text-xs sm:text-sm"
                   >
-                    <div className="flex items-center gap-2">
-                      <FileText className="w-3.5 h-3.5 text-[#1B7ED0]" />
+                    <div className="flex items-center gap-2.5">
+                      <FileText className="w-4 h-4 text-[#1B7ED0]" />
                       <code className="font-mono font-bold text-[#111113]">{f.name}</code>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="font-mono text-[11px] font-semibold text-neutral-600 bg-white px-2 py-0.5 rounded border-2 border-neutral-200">
+                      <span className="font-mono text-xs font-semibold text-neutral-600 bg-white px-2 py-0.5 rounded border border-neutral-200">
                         {f.role}
                       </span>
-                      <span className="text-[11px] text-neutral-400 hidden sm:inline">
+                      <span className="text-xs text-neutral-400 hidden sm:inline">
                         {f.desc}
                       </span>
                     </div>
@@ -186,7 +186,7 @@ export default function S33_FilesMemory({ activeSlide, buildStep }) {
                 ))}
               </motion.div>
             ) : (
-              <div className="py-12 text-center text-xs font-mono text-neutral-400">
+              <div className="py-16 text-center text-sm font-mono text-neutral-400">
                 (Click next to inspect working directory schema)
               </div>
             )}
@@ -198,38 +198,19 @@ export default function S33_FilesMemory({ activeSlide, buildStep }) {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.5, ease: appleEase }}
-              className="mt-3 bg-blue-50 rounded-xl p-3 border-2 border-blue-200 flex items-center justify-between"
+              className="mt-4 bg-[#111113] text-white rounded-2xl p-4 border-2 border-neutral-800 flex items-center justify-between shadow-lg"
             >
-              <div className="flex items-center gap-2">
+              <div className="flex items-center gap-2.5">
                 <RefreshCw className="w-4 h-4 text-[#1B7ED0] animate-spin" />
-                <span className="text-xs font-bold text-[#111113]">
-                  New Session / Fresh Agent connects & reads files:
+                <span className="text-xs sm:text-sm font-bold text-white">
+                  Fresh Agent Session connects & reads directory:
                 </span>
               </div>
-              <span className="font-mono text-xs font-bold text-[#1B7ED0]">
+              <span className="font-mono text-xs font-bold text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded border border-emerald-700">
                 Zero token bleed · Instant sync
               </span>
             </motion.div>
           )}
-        </div>
-      </div>
-
-      {/* Bottom Footer */}
-      <div className="z-10 pt-3 border-t-2 border-neutral-200">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="font-mono text-xs sm:text-sm text-[#4A4A55] font-semibold">
-            {showNewSession ? (
-              <span className="text-[#1B7ED0] font-bold">
-                Crash? Context limit? Next morning? Resume without amnesia.
-              </span>
-            ) : (
-              <span>The chat is ephemeral scratch space. The repository files are the source of truth.</span>
-            )}
-          </div>
-
-          <div className="font-mono text-xs text-neutral-400">
-            temp-notes/ Architecture
-          </div>
         </div>
       </div>
     </div>

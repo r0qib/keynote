@@ -365,4 +365,37 @@
   6. **Automated Headless Browser Verification:** Executed automated Puppeteer verification in Chrome 156 against the live dev server, validating forward jumps across all 43 slides, backward navigation from slide 20 down to 0, rapid backwards rewind from 42 down to 0 at 40ms intervals, presenter view launch via `P`, and verifying 0 console errors and 0 blank screens. Production build `npm run build` succeeds cleanly.
 - **Rationale:** Delivers a reliable, presentation-grade keynote deck suitable for live screen sharing with zero distracting internal planning clutter.
 
+---
+
+### Deck Refactoring & Keynote Polish (Unattended Autonomous Run)
+#### 2026-11-03 · KEYNOTE-01 · Apple WWDC / Google I/O Aesthetic & Clutter Elimination
+- **Autonomous Decision:**
+  1. **Strictly Respectful Tone on External Methodologies (S19, S22, S30):**
+     - Completely eliminated any derogatory framing of AWS AI-DLC, GitHub Spec Kit, BMAD, or OpenSpec.
+     - Framed these methodologies as industry-standard, rigorous disciplines.
+     - Articulated the real, practical challenges developers face when following them step-by-step for small-to-medium tasks: token budget economics, waterfall overhead on everyday features, and context compaction latency.
+  2. **Elimination of "AI-Generated" Clutter & Footer Status Bars:**
+     - Removed uniform bottom status footer bars (`pt-3 border-t-2 border-neutral-200 text-xs text-[#4A4A55] font-mono`) that appeared mechanically across slides S04, S06, S08, S09, S11, S13, S14, S15, S19, S20, S22, S23, S24, S26, S27, S28, S29, S30, S31, S32, S33, S34, S35, S36, S37, S38, S39, S40, and S41.
+     - Removed website-like toast alert banners (`100% VERIFIED`, `Open Offer`, discount-coupon style pill boxes). Replaced them with high-contrast, bold keynote statement cards (`bg-[#111113] text-white`).
+  3. **Heroic App Suite Showcase on S02 (Who We Are):**
+     - Replaced tiny, unreadable 28px icons with prominent 16x16 / 18x18 cards, full app names (no truncated ellipsis like `Event Analy...`), and clear domain subtitles (Offshore Drilling, Well Integrity, Reservoir Geology, Subsea Logistics, Real-time Operations, Drilling Forensics), balanced against the North Sea rig vector.
+  4. **UI Overlapping & Layout Collisions Fixed:**
+     - `S06_TimeBack`: Fixed critical overlapping bug where the dark question dialog was laid out with `absolute inset-0` directly over the 5-day calendar columns. Integrated the question cleanly into the header block next to the headline.
+     - `S21_Elephant`: Adjusted the token budget strike-through vertical placement from `y: -36` to `y: -58` to eliminate text collision with "technology".
+     - `S27_TicketFloor`: Fixed value-add chips colliding with ticket card text (`"As a user, I want to see a list of..."`). Separated into clean flanking pillars (left chips, center ticket, right chips / calendar) with zero overlap.
+     - `S32_AskEverything`: Added padding clearance on plan document header to prevent green stamp `✓ SETTLED & CONTRACTED` from colliding with `§ Settled Decisions`.
+     - `S36_DontTrust`: Fixed `Clipped at 1280px!` badge collision with adjacent text, and prevented `Flow Rate` header from truncating to `Flow Ra`.
+  5. **Elimination of Blank Screen Glitches:**
+     - Removed `AnimatePresence mode="wait"` from `S16_MakeNoMistakes`, `S21_Elephant`, `S23_Slop`, `S37_HardWay`, and `S42_DoomFlip`, eliminating blank pauses and unmounted states during navigation.
+  6. **Heroic Typography & Visual Hierarchy:**
+     - Scaled headlines to ≥64px across slides.
+     - Scaled kinetic metrics on S38 (The Receipts) to giant 72px counters (13 units, ~165k tokens, 10–30 commits).
+     - Expanded execution tracks on S29, S31, S34, S35, S39, S40, and S41 into spacious, keynote-grade layouts.
+  7. **Verification & Git Discipline:**
+     - Verified all 43 slides end-to-end via automated Puppeteer browser testing at 1920x1080 resolution.
+     - `npm run build` succeeds cleanly with zero bundling or syntax errors.
+     - Left all changes unstaged and uncommitted for manual human review per user instructions.
+- **Rationale:** Restores the presenter's original vision from `docs/context/slide-plans.md`, elevates visual quality to premier keynote standards, eliminates bugs, and maintains strict professional respect toward software engineering methodologies.
+
+
 

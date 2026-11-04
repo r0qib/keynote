@@ -258,22 +258,17 @@ export default function S18_Thinking({ activeSlide, buildStep }) {
             </div>
 
             {/* Time labels below bar */}
-            <div className="flex justify-between items-center mt-2 px-1 font-mono text-[10px] text-neutral-400">
+            <div className="flex justify-between items-center mt-2 px-1 font-mono text-xs text-neutral-400">
               <span>0m (Start)</span>
               <span>15m</span>
               <span>30m</span>
               <span>45m</span>
-              <span>60m (Diff arrived, mental model gone)</span>
+              <span className="font-bold text-[#E5484D]">60m (Diff arrived, mental model gone)</span>
             </div>
           </motion.div>
 
       </div>
 
-      {/* Bottom Pacing Indicator */}
-      <div className="z-10 flex items-center justify-between pt-3 border-t-2 border-neutral-200 text-xs text-[#4A4A55] font-mono">
-        <span>Fragmented Attention Loop</span>
-        <span className="text-[#E5484D] font-semibold">"It isn't a time problem. It's an attention problem."</span>
-      </div>
     </div>
   );
 }

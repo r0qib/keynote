@@ -155,13 +155,12 @@ export default function S36_DontTrust({ activeSlide, buildStep }) {
                 className="bg-neutral-50 rounded-xl p-3 border-2 border-neutral-200 text-xs relative space-y-2.5 overflow-hidden"
               >
                 {/* Header row with column misalign */}
-                <div className="grid grid-cols-3 gap-2 font-mono text-[11px] font-bold text-neutral-700 pb-1.5 border-b-2 border-neutral-200 relative">
+                <div className="grid grid-cols-3 gap-2 font-mono text-[10px] sm:text-[11px] font-bold text-neutral-700 pb-1.5 border-b-2 border-neutral-200 items-center">
                   <div>Wellbore</div>
                   <div>TVD (m)</div>
-                  <div className="relative">
-                    Flow Rate
-                    {/* Bug 1: Misaligned column */}
-                    <span className="absolute -top-1 -right-1 px-1.5 py-0.2 bg-red-100 border-2 border-red-400 text-red-700 text-[9px] rounded-full font-bold">
+                  <div className="flex items-center gap-1">
+                    <span>Flow</span>
+                    <span className="px-1.5 py-0.5 bg-red-100 border border-red-400 text-red-700 text-[9px] rounded font-bold">
                       offset!
                     </span>
                   </div>
@@ -176,13 +175,14 @@ export default function S36_DontTrust({ activeSlide, buildStep }) {
 
                 {/* Bug 2: Clipped popover card hanging off the screen */}
                 <div className="relative pt-1">
-                  <div className="p-2 bg-white rounded-lg border-2 border-red-400 text-[10px] shadow-sm relative max-w-[190px]">
-                    <div className="font-bold text-neutral-800">Telemetry Sensor 04</div>
-                    <div className="text-neutral-500 text-[9px]">Status: Active telemetry feed</div>
-                    {/* Overflow label */}
-                    <div className="absolute -top-2 -right-3 bg-red-600 text-white font-mono text-[8px] font-bold px-1.5 py-0.5 rounded-full border-2 border-white">
-                      Clipped at 1280px!
+                  <div className="p-2.5 bg-red-50/80 rounded-xl border-2 border-red-400 text-xs shadow-sm">
+                    <div className="flex items-center justify-between">
+                      <span className="font-bold text-neutral-800">Telemetry Sensor 04</span>
+                      <span className="bg-red-600 text-white font-mono text-[9px] font-bold px-2 py-0.5 rounded-full">
+                        Clipped at 1280px!
+                      </span>
                     </div>
+                    <div className="text-neutral-500 text-[10px] mt-0.5">Status: Active telemetry feed</div>
                   </div>
                 </div>
 
@@ -282,25 +282,25 @@ export default function S36_DontTrust({ activeSlide, buildStep }) {
       </div>
 
       {/* Step 3 / Build 3: Unskippable Commit Gate */}
-      {showCommitGate ? (
+      {showCommitGate && (
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.45, ease: appleEase }}
-          className="z-10 bg-neutral-900 rounded-xl p-4 border-2 border-neutral-800 text-neutral-100 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
+          className="z-10 bg-[#111113] rounded-2xl p-4 sm:p-5 border border-neutral-800 text-neutral-100 shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
         >
-          <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-red-600 text-white flex items-center justify-center shrink-0">
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-xl bg-red-600 text-white flex items-center justify-center shrink-0">
               <Lock className="w-5 h-5 stroke-[2.2px]" />
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-mono text-xs text-emerald-400 font-bold">The Last Gate: Git Pre-Commit Hook</span>
-                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-red-950 text-red-300 border-2 border-red-700 font-bold">
+                <span className="font-mono text-xs sm:text-sm text-emerald-400 font-bold">The Last Gate: Git Pre-Commit Hook</span>
+                <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-red-950 text-red-300 border border-red-700 font-bold">
                   no --no-verify allowed
                 </span>
               </div>
-              <div className="font-mono text-xs text-neutral-300 mt-1 flex flex-wrap items-center gap-2">
+              <div className="font-mono text-xs sm:text-sm text-neutral-300 mt-1 flex flex-wrap items-center gap-2">
                 <span className="text-blue-400 font-semibold">git add -- &lt;paths&gt;</span>
                 <ArrowRight className="w-3.5 h-3.5 text-neutral-500" />
                 <span className="text-amber-300">pre-commit: design:check</span>
@@ -310,15 +310,10 @@ export default function S36_DontTrust({ activeSlide, buildStep }) {
             </div>
           </div>
 
-          <div className="text-xs text-neutral-400 font-medium self-end sm:self-center shrink-0">
-            <span className="text-white font-semibold">"Remember the rig? This is why we check."</span>
+          <div className="text-xs sm:text-sm text-neutral-300 font-medium self-end sm:self-center shrink-0">
+            <span className="text-white font-bold">"Remember the rig? This is why we check."</span>
           </div>
         </motion.div>
-      ) : (
-        <div className="z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-[#4A4A55] border-t-2 border-neutral-200 pt-3 gap-2">
-          <span className="font-mono">An agent without a definition of done will happily invent one.</span>
-          <span className="font-medium text-[#111113]">Strict bounds · Deterministic gates</span>
-        </div>
       )}
 
     </div>

@@ -232,9 +232,8 @@ export default function S13_DidYouRead({ activeSlide, buildStep }) {
                 />
               </motion.div>
 
-              <div className="flex items-center justify-between text-xs text-neutral-500 font-mono px-2">
+              <div className="flex items-center justify-between text-sm text-neutral-600 font-mono px-2">
                 <span>"A comment explaining that it removed all comments."</span>
-                <span className="text-neutral-400">Strict compliance at its finest</span>
               </div>
             </motion.div>
           )}
@@ -242,26 +241,6 @@ export default function S13_DidYouRead({ activeSlide, buildStep }) {
         </AnimatePresence>
       </div>
 
-      {/* Bottom Step Indicator Bar */}
-      <div className="z-10 flex items-center justify-between pt-3 border-t-2 border-neutral-200 text-xs text-[#4A4A55] font-mono">
-        <div className="flex items-center gap-3">
-          <span>
-            {activePair === 0 && 'Skipping tests to get green checks'}
-            {activePair === 1 && 'Refactoring 14 files for a button color'}
-            {activePair === 2 && 'Adding a comment to say comments are gone'}
-          </span>
-        </div>
-        <div className="flex items-center gap-1.5">
-          {[0, 1, 2].map((idx) => (
-            <span
-              key={idx}
-              className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                activePair === idx ? 'bg-[#D97706] w-6' : 'bg-neutral-300'
-              }`}
-            />
-          ))}
-        </div>
-      </div>
     </div>
   );
 }

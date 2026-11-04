@@ -243,27 +243,22 @@ export default function S34_TheTeam({ activeSlide, buildStep }) {
               </div>
             </div>
 
-            {/* Presenter Spoken Payoff Banner */}
+            {/* Presenter Spoken Payoff Card */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.4 }}
-              className="bg-amber-50 rounded-xl p-3.5 border-2 border-amber-200 text-amber-900 text-xs font-semibold flex items-center gap-2.5"
+              className="bg-[#111113] rounded-2xl p-4 border border-neutral-800 text-white text-sm font-bold flex items-center gap-3 shadow-lg"
             >
-              <Sparkles className="w-4 h-4 text-amber-600 shrink-0 stroke-[2.2px]" />
-              <span>"The most expensive model shouldn't be doing grep and git."</span>
+              <div className="w-8 h-8 rounded-xl bg-amber-400 text-neutral-900 flex items-center justify-center shrink-0">
+                <Sparkles className="w-4 h-4 stroke-[2.5px]" />
+              </div>
+              <span className="leading-snug">"The most expensive model shouldn't be doing grep and git."</span>
             </motion.div>
           </motion.div>
         )}
 
       </div>
-
-      {/* Bottom Footer Callout */}
-      <div className="z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs text-[#4A4A55] border-t-2 border-neutral-200 pt-3 gap-2">
-        <span className="font-mono">Rule: Orchestrator sets the bounds. Agents execute inside them.</span>
-        <span className="font-medium text-[#111113]">No model auto-escalation · Zero accidental costs</span>
-      </div>
-
     </div>
   );
 }

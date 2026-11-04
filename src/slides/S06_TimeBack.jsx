@@ -4,68 +4,33 @@ import { appleEase, springPhysics } from '../motion';
 import meatCoolSvg from '../assets/meatproxy-emojis-svg/meat-cool.svg';
 
 const DAYS = [
-  {
-    day: 'MON',
-    label: 'Monday',
-    chore: 'CRUD endpoints',
-    oldTime: '2 days',
-    newTime: '15 min',
-    desc: 'Scaffolding controllers, DTOs, mappers, boilerplate routes',
-  },
-  {
-    day: 'TUE',
-    label: 'Tuesday',
-    chore: 'Unit tests',
-    oldTime: '1 day',
-    newTime: '10 min',
-    desc: 'Mocking fixtures, assert boilerplate, edge-case tables',
-  },
-  {
-    day: 'WED',
-    label: 'Wednesday',
-    chore: 'Migration script',
-    oldTime: '1 day',
-    newTime: '12 min',
-    desc: 'Backfill scripts, column alter SQL, rollbacks',
-  },
-  {
-    day: 'THU',
-    label: 'Thursday',
-    chore: 'That one regex',
-    oldTime: '3 hours',
-    newTime: '45 sec',
-    desc: 'Fighting lookaheads, escaped slashes, boundary bugs',
-  },
-  {
-    day: 'FRI',
-    label: 'Friday',
-    chore: 'Docs nobody reads',
-    oldTime: 'Friday',
-    newTime: '5 min',
-    desc: 'Updating markdown wikis, OpenAPI specs that rot',
-  },
+  { day: 'MON', label: 'Monday', chore: 'CRUD APIs', time: '15 min', desc: 'Schemas, controllers, endpoints' },
+  { day: 'TUE', label: 'Tuesday', chore: 'Unit Tests', time: '10 min', desc: 'Fixtures, mocks, assertions' },
+  { day: 'WED', label: 'Wednesday', chore: 'DB Migrations', time: '12 min', desc: 'Schema alters & backfill scripts' },
+  { day: 'THU', label: 'Thursday', chore: 'Parsers & Regex', time: '1 min', desc: 'Wellbore telemetry parser regex' },
+  { day: 'FRI', label: 'Friday', chore: 'API Docs', time: '5 min', desc: 'Automated OpenAPI specifications' },
 ];
 
 /**
  * Slide 06: We got our time back.
  * 
- * Corner: 06 / Time back (Green accent dot #1E9E6A)
+ * Act I: The Good
  * Headline: "We got our time back."
+ * One idea: Boilerplate and routine chores dissolved from days into minutes.
  * 
  * Builds:
- *  - 0: Full week calendar packed with solid chore blocks.
- *  - 1: Chore blocks shrink with spring physics into thin slivers (10-15 min),
- *       leaving the calendar vast, open, and white. Mascot meat-cool slides in with sunglasses.
- *  - 2: Quiet ink statement appears across the open space: "…so what are we doing with it?"
+ *  - 0: Full week blocked out with manual scaffolding chores.
+ *  - 1: Chores collapse into thin slivers at the top. The week opens wide.
+ *  - 2: The thought-provoking pivot: "...so what are we doing with it?"
  */
 export default function S06_TimeBack({ activeSlide, buildStep }) {
   const isShrunk = buildStep >= 1;
   const showQuestion = buildStep >= 2;
 
   return (
-    <div className="h-full w-full flex flex-col justify-between p-8 sm:p-10 md:p-14 lg:p-16 relative bg-[#FAFAFB] text-[#111113] select-none overflow-hidden">
+    <div className="h-full w-full flex flex-col justify-between p-10 md:p-14 lg:p-16 relative bg-[#FAFAFB] text-[#111113] select-none overflow-hidden">
       
-      {/* Top Header: Headline & Subtitle */}
+      {/* Top Header */}
       <div className="z-10 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: -10 }}
@@ -79,14 +44,31 @@ export default function S06_TimeBack({ activeSlide, buildStep }) {
           </span>
         </motion.div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: appleEase }}
-          className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#111113] leading-[1.1]"
-        >
-          We got our time back.
-        </motion.h1>
+        <div className="flex flex-col sm:flex-row sm:items-baseline gap-4 sm:gap-6">
+          <motion.h1
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: appleEase }}
+            className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-[#111113] leading-[1.08]"
+          >
+            We got our time back.
+          </motion.h1>
+
+          {/* Build 2 Pivot Question beside/below headline with no overlap */}
+          <AnimatePresence>
+            {showQuestion && (
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.5, ease: appleEase }}
+                className="flex items-center gap-2 font-serif italic text-2xl sm:text-3xl text-[#1E9E6A] font-semibold"
+              >
+                <span>"…so what are we doing with it?"</span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
 
         <motion.p
           initial={{ opacity: 0, y: 8 }}
@@ -119,42 +101,39 @@ export default function S06_TimeBack({ activeSlide, buildStep }) {
                   </span>
                 </div>
 
-                {/* Day Column Body with Spring Collapsing Chore Block */}
+                {/* Day Column Body */}
                 <div className="p-2 sm:p-2.5 flex-1 flex flex-col justify-start relative">
                   
-                  {/* The Chore Block (Full in Build 0, Shrunk Sliver in Build 1 & 2) */}
+                  {/* The Chore Block (Full in Build 0, Collapsed in Build 1 & 2) */}
                   <motion.div
                     layout
                     transition={springPhysics}
                     animate={{
-                      height: isShrunk ? 44 : 280,
+                      height: isShrunk ? 54 : 280,
                     }}
-                    className={`w-full rounded-xl p-2.5 sm:p-3 flex flex-col justify-between transition-colors duration-500 overflow-hidden relative ${
+                    className={`w-full rounded-xl p-2.5 flex flex-col justify-between transition-colors duration-500 overflow-hidden relative ${
                       isShrunk
-                        ? 'bg-emerald-50/90 border-2 border-[#1E9E6A]/40 text-emerald-950 shadow-sm'
+                        ? 'bg-emerald-50/90 border-2 border-[#1E9E6A]/50 text-emerald-950 shadow-sm'
                         : 'bg-neutral-100 border-2 border-neutral-300 text-neutral-800'
                     }`}
                   >
-                    {/* Header Row of the Block */}
-                    <div className="flex items-start justify-between gap-1">
-                      <div className="font-bold text-xs sm:text-sm md:text-base leading-tight truncate">
+                    {/* Header Row */}
+                    <div className="flex items-center justify-between gap-1">
+                      <span className="font-bold text-xs sm:text-sm text-[#111113]">
                         {item.chore}
-                      </div>
-                      <motion.span
-                        key={isShrunk ? 'shrunk' : 'full'}
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className={`text-[10px] sm:text-xs font-mono font-bold px-1.5 py-0.5 rounded flex-shrink-0 ${
+                      </span>
+                      <span
+                        className={`font-mono text-[10px] sm:text-xs font-bold px-1.5 py-0.5 rounded-md ${
                           isShrunk
                             ? 'bg-[#1E9E6A] text-white'
                             : 'bg-neutral-200 text-neutral-700'
                         }`}
                       >
-                        {isShrunk ? item.newTime : item.oldTime}
-                      </motion.span>
+                        {item.time}
+                      </span>
                     </div>
 
-                    {/* Extended Description (Visible only when full in Build 0) */}
+                    {/* Pre-AI full explanation */}
                     {!isShrunk && (
                       <motion.div
                         initial={{ opacity: 0 }}
@@ -163,27 +142,30 @@ export default function S06_TimeBack({ activeSlide, buildStep }) {
                         transition={{ duration: 0.3 }}
                         className="mt-2 flex-1 flex flex-col justify-between"
                       >
-                        <p className="text-[11px] sm:text-xs text-neutral-500 line-clamp-3 leading-relaxed">
+                        <p className="text-xs text-neutral-600 leading-relaxed">
                           {item.desc}
                         </p>
-                        <div className="pt-2 border-t-2 border-neutral-200/80 flex items-center gap-1.5 text-[10px] font-mono text-neutral-400">
+                        <div className="pt-2 border-t border-neutral-200 flex items-center gap-1.5 text-[11px] font-mono text-neutral-500">
                           <span className="w-1.5 h-1.5 rounded-full bg-neutral-400" />
-                          Manual engineering
+                          Manual 8-hour sprint
                         </div>
                       </motion.div>
                     )}
                   </motion.div>
 
-                  {/* Empty Opened Area (Faint grid pattern visible when shrunk) */}
+                  {/* Empty Opened Area when shrunk */}
                   {isShrunk && (
                     <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: 0.2, duration: 0.5 }}
-                      className="flex-1 mt-3 rounded-lg border-2 border-dashed border-neutral-200/70 flex flex-col items-center justify-center p-2 text-center"
+                      className="flex-1 mt-3 rounded-xl border-2 border-dashed border-emerald-200/80 bg-emerald-50/20 flex flex-col items-center justify-center p-3 text-center"
                     >
-                      <span className="font-mono text-[10px] text-neutral-300 uppercase tracking-widest">
+                      <span className="font-mono text-xs font-bold text-[#1E9E6A] uppercase tracking-wider">
                         Reclaimed
+                      </span>
+                      <span className="text-[11px] text-neutral-400 mt-1">
+                        Focus time
                       </span>
                     </motion.div>
                   )}
@@ -193,68 +175,34 @@ export default function S06_TimeBack({ activeSlide, buildStep }) {
           })}
         </div>
 
-        {/* Mascot meat-cool: Slides in with sunglasses in Build 1 & 2 */}
+        {/* Mascot meat-cool: Sits cleanly in bottom corner without blocking content */}
         <AnimatePresence>
           {isShrunk && (
             <motion.div
-              initial={{ opacity: 0, x: 80, y: 30, scale: 0.7 }}
-              animate={{ opacity: 1, x: 0, y: 0, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
+              initial={{ opacity: 0, x: 40, scale: 0.8 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0 }}
               transition={{ ...springPhysics, delay: 0.25 }}
-              className="absolute -bottom-8 -right-4 sm:-right-8 md:-bottom-10 md:-right-10 flex items-center gap-3 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl border-2 border-neutral-200 shadow-xl z-30"
+              className="absolute -bottom-6 -right-2 sm:-right-4 flex items-center gap-3 bg-white px-4 py-2 rounded-2xl border-2 border-emerald-200 shadow-lg z-10"
             >
               <img
                 src={meatCoolSvg}
                 alt="Meatproxy cool"
-                className="w-12 h-12 md:w-14 md:h-14 flex-shrink-0"
+                className="w-10 h-10 md:w-12 md:h-12 flex-shrink-0"
               />
-              <div className="pr-1">
-                <div className="font-mono text-xs font-bold text-[#1E9E6A]">
-                  TOIL DISSOLVED
-                </div>
-                <div className="text-xs text-neutral-500 font-medium">
-                  Friday feels like Friday
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* Build 2: Quiet Ink Statement across the empty calendar */}
-        <AnimatePresence>
-          {showQuestion && (
-            <motion.div
-              initial={{ opacity: 0, y: 24, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.6, ease: appleEase }}
-              className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none"
-            >
-              <div className="bg-[#111113]/90 backdrop-blur-md text-[#FAFAFB] px-8 py-5 rounded-2xl shadow-2xl border-2 border-neutral-800 text-center max-w-xl mx-4">
-                <p className="text-2xl sm:text-3xl md:text-4xl font-serif italic text-white leading-tight">
-                  "…so what are we doing with it?"
-                </p>
-                <p className="mt-2.5 font-mono text-xs sm:text-sm text-neutral-400 tracking-wide">
-                  The first draft is practically free. Where did our focus go?
-                </p>
-              </div>
+              <span className="font-bold text-xs sm:text-sm text-[#111113]">
+                Toil dissolved.
+              </span>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
 
-      {/* Bottom Footer Callout */}
-      <div className="flex items-center justify-between pt-3 border-t-2 border-neutral-200/60 z-10 text-xs md:text-sm text-[#4A4A55]">
-        <div className="flex items-center gap-2 font-mono">
-          <span className="w-2 h-2 rounded-full bg-[#1E9E6A]" />
-          <span>Before: 5 days of grinding</span>
-          <span className="text-neutral-300">→</span>
-          <span className="font-semibold text-[#111113]">Now: Scaffolding in minutes</span>
-        </div>
-        <div className="font-mono text-xs text-neutral-400 hidden sm:block">
-          InformatiQ Dev Loop
-        </div>
+      {/* Subtle bottom note */}
+      <div className="pt-2 text-sm text-[#4A4A55] font-mono">
+        Before: 5 days of grinding <span className="text-neutral-400">→</span> <span className="text-[#1E9E6A] font-semibold">Now: Scaffolding in minutes</span>
       </div>
+
     </div>
   );
 }

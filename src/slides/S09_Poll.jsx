@@ -300,14 +300,9 @@ export default function S09_Poll({ activeSlide, buildStep = 0 }) {
               "I can't see who answered. Only the percentages."
             </p>
 
-            <p className="text-xs sm:text-sm text-[#4A4A55] mt-1.5 font-medium leading-relaxed">
+            <p className="text-sm text-[#4A4A55] mt-2 font-medium leading-relaxed">
               Camera on, brain optional? Answer question 4.
             </p>
-
-            <div className="mt-3 pt-2.5 border-t-2 border-neutral-100 flex items-center justify-between text-[11px] font-mono text-neutral-500">
-              <span className="font-bold text-[#111113]">100% ANONYMOUS</span>
-              <span className="text-neutral-400">Takes ~2 minutes</span>
-            </div>
           </div>
 
           {/* Mascot Image (Static & Crisp for Teams Screen-Share) */}
@@ -320,17 +315,6 @@ export default function S09_Poll({ activeSlide, buildStep = 0 }) {
           </div>
         </motion.div>
 
-      </div>
-
-      {/* Bottom Live Connection Footer */}
-      <div className="z-10 flex items-center justify-between border-t-2 border-neutral-200/80 pt-3 text-xs font-mono text-[#4A4A55]">
-        <div className="flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full bg-[#111113]" />
-          <span>Interactive Audience Survey</span>
-        </div>
-        <div className="hidden sm:block text-neutral-400">
-          Live responses will guide the discussion
-        </div>
       </div>
 
     </div>

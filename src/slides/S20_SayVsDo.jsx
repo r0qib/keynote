@@ -194,11 +194,6 @@ export default function S20_SayVsDo({ activeSlide, buildStep }) {
 
       </div>
 
-      {/* Bottom Pacing Indicator */}
-      <div className="z-10 flex items-center justify-between pt-3 border-t-2 border-neutral-200 text-xs text-[#4A4A55] font-mono">
-        <span>Architectural Intent vs. Terminal Reality</span>
-        <span className="text-[#E5484D] font-semibold">The Say / Do Gap</span>
-      </div>
     </div>
   );
 }

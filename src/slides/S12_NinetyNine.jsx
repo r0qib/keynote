@@ -106,11 +106,8 @@ export default function S12_NinetyNine({ activeSlide, buildStep }) {
                 transition={{ delay: 0.25, duration: 0.5, ease: appleEase }}
                 className="flex flex-col items-center gap-2"
               >
-                <div className="text-lg sm:text-xl md:text-2xl font-medium text-neutral-800 tracking-tight">
-                  "The worst part isn't the 50%. It's that you never know which half you're in."
-                </div>
-                <div className="font-mono text-xs sm:text-sm text-neutral-500">
-                  Instruction decay: turn 3's strict rule competing with 40 turns of chat history.
+                <div className="text-xl sm:text-2xl md:text-3xl font-medium text-neutral-800 tracking-tight text-center">
+                  "The problem isn't the 50%. It's that you never know which half you're in."
                 </div>
               </motion.div>
             )}
@@ -118,11 +115,6 @@ export default function S12_NinetyNine({ activeSlide, buildStep }) {
         </div>
       </div>
 
-      {/* Bottom Pacing Indicator */}
-      <div className="z-10 flex items-center justify-between pt-4 border-t-2 border-neutral-200 text-xs text-[#4A4A55] font-mono">
-        <span>The Inconsistency Dilemma</span>
-        <span className="text-neutral-500">Unpredictable failure modes</span>
-      </div>
     </div>
   );
 }

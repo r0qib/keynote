@@ -82,7 +82,7 @@ export default function S23_Slop({ activeSlide, buildStep }) {
 
       {/* Center Stage Arena */}
       <div className="my-auto w-full max-w-5xl mx-auto flex items-center justify-center z-10 py-2 relative min-h-[400px]">
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           
           {/* Build 0: Single Full Generic AI Slop Landing Page */}
           {buildStep === 0 && (
@@ -90,8 +90,8 @@ export default function S23_Slop({ activeSlide, buildStep }) {
               key="slop-single"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.5, ease: appleEase }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.35, ease: appleEase }}
               className="w-full max-w-3xl rounded-3xl overflow-hidden border-2 border-purple-300 shadow-2xl relative"
               style={{
                 background: 'linear-gradient(135deg, #1E1035 0%, #2E0854 50%, #0F0728 100%)',
@@ -284,11 +284,6 @@ export default function S23_Slop({ activeSlide, buildStep }) {
         </AnimatePresence>
       </div>
 
-      {/* Bottom Pacing Indicator */}
-      <div className="z-10 flex items-center justify-between pt-3 border-t-2 border-neutral-200 text-xs text-[#4A4A55] font-mono">
-        <span>The AI Slop Phenomenon</span>
-        <span className="text-[#E5484D] font-semibold">AI should follow your design principles, not invent them</span>
-      </div>
     </div>
   );
 }

@@ -101,7 +101,7 @@ export default function S43_Thanks({ activeSlide, buildStep }) {
               </div>
               <div>
                 <div className="font-bold text-[#111113]">
-                  [Presenter name]
+                  Rokibul Islam
                 </div>
                 <div className="text-[11px] text-neutral-500 font-sans">
                   InformatiQ team · Brain Station 23

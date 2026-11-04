@@ -194,11 +194,6 @@ export default function S22_PickTwo({ activeSlide, buildStep }) {
 
       </div>
 
-      {/* Bottom Pacing Indicator */}
-      <div className="z-10 flex items-center justify-between pt-3 border-t-2 border-neutral-200 text-xs text-[#4A4A55] font-mono">
-        <span>The Trilemma</span>
-        <span className="text-[#E5484D] font-semibold">Methodology · Budget · Speed</span>
-      </div>
     </div>
   );
 }

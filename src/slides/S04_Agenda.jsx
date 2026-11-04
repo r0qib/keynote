@@ -87,10 +87,10 @@ export default function S04_Agenda({ activeSlide, buildStep }) {
                   delay: index * 0.1,
                   ease: appleEase,
                 }}
-                className={`relative rounded-2xl p-6 md:p-7 border-2 flex flex-col justify-between transition-colors ${
+                className={`relative rounded-3xl p-7 md:p-8 border-2 flex flex-col justify-between transition-all min-h-[320px] md:min-h-[360px] ${
                   chapter.isHero && buildStep >= 1
-                    ? 'border-[#1B7ED0] bg-white shadow-md'
-                    : 'border-neutral-200/90 bg-white/70'
+                    ? 'border-[#1B7ED0] bg-white shadow-xl ring-4 ring-[#1B7ED0]/10'
+                    : 'border-neutral-200/90 bg-white shadow-sm'
                 }`}
               >
                 <div>
@@ -165,7 +165,7 @@ export default function S04_Agenda({ activeSlide, buildStep }) {
           y: buildStep >= 2 ? 0 : 12,
         }}
         transition={{ duration: 0.45, ease: appleEase }}
-        className="z-10 pb-2 border-t border-neutral-200/80 pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"
+        className="z-10 pb-2 pt-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"
       >
         <div className="flex items-center gap-4 sm:gap-6 font-mono text-xs sm:text-sm font-semibold text-[#111113]">
           <span className="flex items-center gap-2">
@@ -177,10 +177,6 @@ export default function S04_Agenda({ activeSlide, buildStep }) {
             <span className="w-2 h-2 rounded-full bg-[#111113]" />
             + Q&A Session (Humans only)
           </span>
-        </div>
-
-        <div className="font-mono text-xs text-[#4A4A55]">
-          Pacing: ~80 min total
         </div>
       </motion.div>
 

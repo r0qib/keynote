@@ -37,7 +37,7 @@ export default function S26_RoleShift({ activeSlide, buildStep }) {
     ? [
         { label: 'Planning & Architecture', pct: 60, bg: 'bg-[#1B7ED0]', text: 'text-white', sub: 'Contracts & design' },
         { label: 'Review & Verification', pct: 30, bg: 'bg-[#2D2D32]', text: 'text-white', sub: 'Diff inspection & gates' },
-        { label: 'Writing Code', pct: 10, bg: 'bg-[#E4E4E7]', text: 'text-[#111113]', sub: 'Surgical edits' },
+        { label: 'Code', pct: 10, bg: 'bg-[#E4E4E7]', text: 'text-[#111113]', sub: 'Surgical edits' },
       ]
     : [
         { label: 'Writing Code', pct: 70, bg: 'bg-[#111113]', text: 'text-white', sub: 'Typing by hand' },
@@ -197,27 +197,27 @@ export default function S26_RoleShift({ activeSlide, buildStep }) {
             </div>
 
             {/* Pipeline Nodes */}
-            <div className="grid grid-cols-5 gap-2 sm:gap-3 relative">
+            <div className="grid grid-cols-5 gap-3 md:gap-4 relative">
               {VERBS.map((v, i) => (
                 <motion.div
                   key={v.verb}
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ ...springPhysics, delay: i * 0.1 }}
-                  className="bg-white rounded-xl p-3 border-2 border-neutral-300 shadow-sm flex flex-col justify-between relative group hover:border-[#1B7ED0] transition-colors"
+                  className="bg-white rounded-2xl p-4 sm:p-5 border-2 border-neutral-200 shadow-sm flex flex-col justify-between relative group hover:border-[#1B7ED0] hover:shadow-md transition-all min-h-[140px]"
                 >
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="font-mono text-[10px] font-bold text-[#1B7ED0] bg-blue-50 px-1.5 py-0.5 rounded border-2 border-blue-200">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-mono text-xs font-bold text-[#1B7ED0] bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">
                       {v.step}
                     </span>
                     {i < VERBS.length - 1 && (
-                      <span className="text-neutral-300 font-mono text-xs font-bold">→</span>
+                      <span className="text-neutral-300 font-mono text-sm font-bold">→</span>
                     )}
                   </div>
-                  <div className="font-black text-sm sm:text-base text-[#111113] tracking-tight">
+                  <div className="font-black text-base sm:text-lg text-[#111113] tracking-tight">
                     {v.verb}
                   </div>
-                  <div className="text-[11px] text-[#4A4A55] leading-snug mt-1">
+                  <div className="text-xs sm:text-sm text-[#4A4A55] leading-snug mt-1">
                     {v.desc}
                   </div>
                 </motion.div>
@@ -227,27 +227,6 @@ export default function S26_RoleShift({ activeSlide, buildStep }) {
         )}
       </div>
 
-      {/* Bottom Kicker */}
-      <div className="z-10 flex items-center justify-between pt-2 border-t-2 border-neutral-200">
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="font-mono text-xs sm:text-sm text-[#4A4A55] font-semibold"
-        >
-          {showVerbs ? (
-            <span className="text-[#1B7ED0] font-bold">
-              Engineering isn't dead. (Not yet.)
-            </span>
-          ) : (
-            <span>Understand the system · Control the contracts · Own the outcome</span>
-          )}
-        </motion.p>
-
-        <div className="font-mono text-xs text-neutral-400">
-          InformatiQ Core Protocol
-        </div>
-      </div>
     </div>
   );
 }
