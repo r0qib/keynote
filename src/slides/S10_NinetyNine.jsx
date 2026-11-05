@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion, animate, useMotionValue, useTransform } from 'framer-motion';
 import { appleEase } from '../motion';
+import { colors } from '../theme';
 
 const SIZE = 680;
 const C = SIZE / 2;
