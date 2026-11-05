@@ -52,3 +52,7 @@ Reviewers always find something. HIGH/MEDIUM get fixed in the batch; LOW and lef
 ## B9
 - LOW · S32 b1/b2: brief shrinks to 0.76 (inner text ~24 px); consider 0.85 with bubbles pushed out.
 - LOW · S32 b3: unit-card stack (500 wide) lighter than the open card. Fine.
+
+## B10
+- LOW · S36 b3: unlabelled filler bars in the file cards could go.
+- LOW · S35 headline at 88 px (not 96) to fit one line; deliberate.

@@ -62,3 +62,6 @@
 - 2026-11-05 · B9 · S33 "fresh" agents = glow ring + sparkle (no label); b3 swaps the deal diagram for two token meters (one focal point)
 - 2026-11-05 · B9 · S34 mini-map active = Orchestrate (routing is part of orchestration); effort levels low/medium/high/max
 - 2026-11-05 · B9 · S32 word count over ~20 because the spec asks for 5 Q + 5 A + 6 labels · spec wins
+- 2026-11-05 · B10 · S35 headline (37 chars) at 88 px nowrap, bottom of the spec's range; growing doc masked to fade below the headline rather than going off-stage
+- 2026-11-05 · B10 · S35 gauge words "meh" → "sharp", no numbers; S36 file purposes Unit by unit · Calls made mid-run · Memory for fresh agents · Parked for a human
+- 2026-11-05 · B10 · S37 out-of-sync shown concretely (comments "20 results"/"spud date" vs code limit = 50, byRelevance); mini-map `complete` at b2
