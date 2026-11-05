@@ -149,53 +149,53 @@ The SVG README lists all available poses. Inline the SVG, or wrap it in `motion`
 
 ## 5. Slide manifest
 
-`enabled` is on for all. **Cut A** = disable first, **B** = second. Corner shows `NN / name`, with NN the live position. "—" means no corner badge.
+`enabled` is on for all. **Cut A** = disable first, **B** = second. Corner shows `NN / name`, with NN the live position. "—" means no corner badge. **Builds** is `totalBuilds` in `src/slides/manifest.js`: the number of clicks after the slide appears (so a slide with 2 builds has states 0, 1 and 2).
 
-| ID | key | Headline (on screen) | Act | Corner | Min | Cut |
-| --- | --- | --- | --- | --- | --- | --- |
-| S01 | `title` | AI-Assisted Development: The Good, the Bad and the Ugly | Opening | — | 0:30 | — |
-| S02 | `who-we-are` | We build software for the North Sea. | Opening | Who we are | 2:00 | — |
-| S03 | `agenda` | Today's feature presentation. | Opening | Agenda | 0:45 | — |
-| S04 | `act-good` | I · The Good | Good | — | 0:10 | — |
-| S05 | `time-back` | We got our time back. | Good | Time back | 1:30 | — |
-| S06 | `manuals` | Our user manuals write themselves. | Good | User manuals | 1:45 | — |
-| S07 | `poll` | Be honest. It's anonymous. | Poll | Poll | 2:00 | — |
-| S08 | `act-bad` | II · The Bad | Bad | — | 0:10 | — |
-| S09 | `keynote-vs-terminal` | The keynote vs. my terminal. | Bad | Promises | 1:30 | — |
-| S10 | `ninety-nine` | 99% of 70% of the time. | Bad | Reliability | 1:00 | — |
-| S11 | `did-you-read` | Did you even read what I said? | Bad | Listening | 1:30 | B |
-| S12 | `circle` | I asked for a circle. | Bad | The sweet spot | 1:30 | — |
-| S13 | `overengineered` | Enterprise-grade dark mode. | Bad | Overengineering | 1:00 | A |
-| S14 | `act-ugly` | III · The Ugly | Ugly | — | 0:10 | — |
-| S15 | `thinking` | Doomscrolling… | Ugly | Waiting | 1:30 | — |
-| S16 | `frameworks` | Proven. Thorough. Not cheap. | Ugly | Frameworks | 1:00 | B |
-| S17 | `say-vs-do` | What we say vs. what we do. | Ugly | Say vs. do | 1:00 | A |
-| S18 | `elephant` | The elephant in the room. | Ugly | Budget | 1:30 | — |
-| S19 | `three-body` | The three-body problem. | Ugly | Pick two | 1:00 | A |
-| S20 | `slop` | Everything is purple now. | Ugly | Slop | 1:15 | — |
-| S21 | `make-no-mistakes` | Make it better. Make no mistakes. | Ugly | Prompting | 1:00 | — |
-| S22 | `meat-proxy` | Don't be a meat proxy. | Ugly | Meat proxy | 1:30 | — |
-| S23 | `act-count` | IV · Making It Count | Count | — | 0:10 | — |
-| S24 | `role-shift` | The role shift. | Count | Role shift | 1:30 | — |
-| S25 | `ticket-floor` | The ticket is the floor, not the ceiling. | Count | Raise the bar | 0:45 | B |
-| S26 | `make-it-better` | Let's make it better. | Count | Make it better | 2:00 | — |
-| S27 | `plan-hours` | Plan for hours. Let it run for hours. | Count | Plan first | 1:15 | — |
-| S28 | `the-number` | $25,000 | Count | — | 0:20 | — |
-| S29 | `act-how` | V · How We Work | How | — | 0:10 | — |
-| S30 | `workflow-map` | How we work now. | How | The workflow | 1:30 | — |
-| S31 | `gather` | The requirement is just the start. | How | Gather | 1:45 | — |
-| S32 | `plan-together` | Plan with a co-worker. | How | Plan | 1:45 | — |
-| S33 | `orchestrator` | One manager. Many fresh minds. | How | Orchestrate | 2:00 | — |
-| S34 | `right-model` | Right model. Right effort. | How | Routing | 1:15 | B |
-| S35 | `specialists` | Built for this feature. Then retired. | How | Specialists | 1:15 | — |
-| S36 | `files-memory` | The files are the memory. | How | Remember | 1:45 | — |
-| S37 | `code-context` | Code is the new context. | How | Context | 1:15 | — |
-| S38 | `unlimited` | "It's unlimited." | Epilogue | The $25,000 lesson | 1:30 | — |
-| S39 | `the-morning` | Access revoked. | Epilogue | The morning after | 1:15 | — |
-| S40 | `cache` | Five minutes. | Epilogue | Lesson 1 | 1:30 | — |
-| S41 | `fresh-sessions` | Start fresh. | Epilogue | Lesson 2 | 1:15 | — |
-| S42 | `shared-repo` | Build it once. Share it with everyone. | Close | Share it | 1:15 | — |
-| S43 | `thanks` | Questions? | Close | — | Q&A | — |
+| ID | key | Headline (on screen) | Act | Corner | Min | Builds | Cut |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| S01 | `title` | AI-Assisted Development: The Good, the Bad and the Ugly | Opening | — | 0:30 | 0 | — |
+| S02 | `who-we-are` | We build software for the North Sea. | Opening | Who we are | 2:00 | 9 | — |
+| S03 | `agenda` | Today's feature presentation. | Opening | Agenda | 0:45 | 2 | — |
+| S04 | `act-good` | I · The Good | Good | — | 0:10 | 0 | — |
+| S05 | `time-back` | We got our time back. | Good | Time back | 1:30 | 2 | — |
+| S06 | `manuals` | Our user manuals write themselves. | Good | User manuals | 1:45 | 2 | — |
+| S07 | `poll` | Be honest. It's anonymous. | Poll | Poll | 2:00 | 1 | — |
+| S08 | `act-bad` | II · The Bad | Bad | — | 0:10 | 0 | — |
+| S09 | `keynote-vs-terminal` | The keynote vs. my terminal. | Bad | Promises | 1:30 | 3 | — |
+| S10 | `ninety-nine` | 99% of 70% of the time. | Bad | Reliability | 1:00 | 1 | — |
+| S11 | `did-you-read` | Did you even read what I said? | Bad | Listening | 1:30 | 4 | B |
+| S12 | `circle` | I asked for a circle. | Bad | The sweet spot | 1:30 | 4 | — |
+| S13 | `overengineered` | Enterprise-grade dark mode. | Bad | Overengineering | 1:00 | 2 | A |
+| S14 | `act-ugly` | III · The Ugly | Ugly | — | 0:10 | 0 | — |
+| S15 | `thinking` | Doomscrolling… | Ugly | Waiting | 1:30 | 2 | — |
+| S16 | `frameworks` | Proven. Thorough. Not cheap. | Ugly | Frameworks | 1:00 | 2 | B |
+| S17 | `say-vs-do` | What we say vs. what we do. | Ugly | Say vs. do | 1:00 | 1 | A |
+| S18 | `elephant` | The elephant in the room. | Ugly | Budget | 1:30 | 3 | — |
+| S19 | `three-body` | The three-body problem. | Ugly | Pick two | 1:00 | 2 | A |
+| S20 | `slop` | Everything is purple now. | Ugly | Slop | 1:15 | 2 | — |
+| S21 | `make-no-mistakes` | Make it better. Make no mistakes. | Ugly | Prompting | 1:00 | 2 | — |
+| S22 | `meat-proxy` | Don't be a meat proxy. | Ugly | Meat proxy | 1:30 | 5 | — |
+| S23 | `act-count` | IV · Making It Count | Count | — | 0:10 | 0 | — |
+| S24 | `role-shift` | The role shift. | Count | Role shift | 1:30 | 2 | — |
+| S25 | `ticket-floor` | The ticket is the floor, not the ceiling. | Count | Raise the bar | 0:45 | 1 | B |
+| S26 | `make-it-better` | Let's make it better. | Count | Make it better | 2:00 | 2 | — |
+| S27 | `plan-hours` | Plan for hours. Let it run for hours. | Count | Plan first | 1:15 | 2 | — |
+| S28 | `the-number` | $25,000 | Count | — | 0:20 | 0 | — |
+| S29 | `act-how` | V · How We Work | How | — | 0:10 | 0 | — |
+| S30 | `workflow-map` | How we work now. | How | The workflow | 1:30 | 3 | — |
+| S31 | `gather` | The requirement is just the start. | How | Gather | 1:45 | 3 | — |
+| S32 | `plan-together` | Plan with a co-worker. | How | Plan | 1:45 | 3 | — |
+| S33 | `orchestrator` | One manager. Many fresh minds. | How | Orchestrate | 2:00 | 3 | — |
+| S34 | `right-model` | Right model. Right effort. | How | Routing | 1:15 | 3 | B |
+| S35 | `specialists` | Built for this feature. Then retired. | How | Specialists | 1:15 | 2 | — |
+| S36 | `files-memory` | The files are the memory. | How | Remember | 1:45 | 3 | — |
+| S37 | `code-context` | Code is the new context. | How | Context | 1:15 | 2 | — |
+| S38 | `unlimited` | "It's unlimited." | Epilogue | The $25,000 lesson | 1:30 | 2 | — |
+| S39 | `the-morning` | Access revoked. | Epilogue | The morning after | 1:15 | 2 | — |
+| S40 | `cache` | Five minutes. | Epilogue | Lesson 1 | 1:30 | 2 | — |
+| S41 | `fresh-sessions` | Start fresh. | Epilogue | Lesson 2 | 1:15 | 2 | — |
+| S42 | `shared-repo` | Build it once. Share it with everyone. | Close | Share it | 1:15 | 2 | — |
+| S43 | `thanks` | Questions? | Close | — | Q&A | 0 | — |
 
 **Totals:** ~51 min of talk. **A** cuts save ~3 min. **B** cuts save ~4.5 min more. Q&A fills the remaining ~9 min.
 

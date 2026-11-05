@@ -2,7 +2,7 @@
 
 Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, reviewed, committed) · `[!]` blocked (reason logged).
 
-**next:** D1 + T1
+**next:** Z1
 
 ---
 
@@ -106,12 +106,12 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Scope:** `src/slides/S38_Unlimited.jsx`, `S39_TheMorning.jsx`, `S40_Cache.jsx`, `S41_FreshSessions.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S28,S38,S39,S40,S41`. Compare the S28 and S38 b0 screenshots: the number must be identical.
 
-### [x] B12 · Close: S42, S43
+### [x] B12 · Close: S42, S43 · a4b6a64
 - **Legacy:** `S41_SharedRepo`, `S43_Thanks`.
 - **Scope:** `src/slides/S42_SharedRepo.jsx`, `S43_Thanks.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S42,S43`.
 
-### [ ] D1 · Presenter docs (deck-writer, Sonnet)
+### [x] D1 · Presenter docs (deck-writer, Sonnet)
 - **Do:**
   1. Rewrite `docs/plans/presenter-notes.md` for S01–S43, with the same section style as v1 (point, reminders, click cues `[n]` matching the real builds, punchlines, poll callbacks, timing checkpoints). Story beats come from `drafts/slide_feedback/slide-feedback.md`: the S31/S33 workflow details, "How It All Started", "The $25,000 Lesson", "The New Reality", Lesson 1 and Lesson 2. That includes the spoken-only facts: the $1,100 soft budget, ~$3,000 actual, the salary joke, Copilot's pricing change, the Halliburton acquisition, AWS Bedrock, the top-10 list. Also: the S12 note about sometimes sacrificing the session to get back on track, and the S41 closer "That's why the workflow looks the way it does."
   2. Keep or adapt the Poll appendix (questions must not reference removed slides) and the Before-going-live and Facts appendices. Add the S09 vendor-claim sources from `missing-pieces.md`.
@@ -122,7 +122,7 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Scope:** `docs/plans/presenter-notes.md`, `docs/plans/presenter-script.md`, `src/slides/manifest.js` (`notes` field only), `docs/plans/slide-deck-plan.md` (§5 facts only).
 - **Verify:** build; spot-check that every `[n]` cue ≤ that slide's `totalBuilds`.
 
-### [ ] T1 · Full browser session (deck-browser-tester, Sonnet · low)
+### [x] T1 · Full browser session (deck-browser-tester, Sonnet · low)
 - **Do:** run the Browser-tester brief (README §4). It runs `deck-v2-workflow/tools/e2e-deck.js` through the Playwright MCP (fallback: `node deck-v2-workflow/tools/e2e.mjs`). The session checks:
   - every build forward, then everything backward;
   - live corner-badge numbering;
@@ -133,6 +133,7 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
   - overview open and close;
   - no black bars at 1920×1080, 1440×900, 1280×720 and 1512×982.
 - **Don't fix anything here.** Record the failed checks in `progress.md` under T1 for Z1. No commit; nothing changes.
+- **Result (2026-11-05, MCP runner):** pass — 43 slides, 131 steps, 16/16 checks, no failed checks for Z1.
 
 ### [ ] Z1 · Deck-wide polish and final verification
 - **Do:**

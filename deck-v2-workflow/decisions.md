@@ -72,3 +72,5 @@
 - 2026-11-05 · B11 · draw-on paths fade in with opacity so round caps leave no stray dot before drawing
 - 2026-11-05 · B12 · S42 nodes use real product names; b2 shrinks our hub into a ring of six wordless ghost hubs (hub text ~14 px visual on purpose) · "one hub among many"
 - 2026-11-05 · B12 · S43 text left + meat-wave hero right with a slow wave loop; chrome-free; entrance blur bookends S01
+- 2026-11-05 · D1/T1 · run T1 before D1 (not in parallel) · D1 edits manifest.js, which would HMR-reload the dev server mid-session and make T1 flaky
+- 2026-11-05 · D1 · poll readbacks remapped to existing slides (Q1 S30, Q2 S15, Q3 S24, Q4 S17, Q5 S11, Q6 S18, Q7 S22, Q8 S43); v1 numbers not on slides dropped from the notes
