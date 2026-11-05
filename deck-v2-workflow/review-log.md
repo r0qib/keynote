@@ -48,3 +48,7 @@ Reviewers always find something. HIGH/MEDIUM get fixed in the batch; LOW and lef
 ## B8
 - LOW · S30 b3 / S31 b0–b1 are sparse by spec sequence (not broken).
 - LOW · S31: source-card CARD_W is approximate for the flow into the ticket; measure for exact convergence.
+
+## B9
+- LOW · S32 b1/b2: brief shrinks to 0.76 (inner text ~24 px); consider 0.85 with bubbles pushed out.
+- LOW · S32 b3: unit-card stack (500 wide) lighter than the open card. Fine.

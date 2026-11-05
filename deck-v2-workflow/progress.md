@@ -2,7 +2,7 @@
 
 Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, reviewed, committed) · `[!]` blocked (reason logged).
 
-**next:** B9
+**next:** B10
 
 ---
 
@@ -82,7 +82,7 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Scope:** `src/slides/S24_RoleShift.jsx`, `S25_TicketFloor.jsx`, `S26_MakeItBetter.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S24,S25,S26`.
 
-### [x] B8 · Plan first, the teaser, the workflow map: S27, S28, S30, S31
+### [x] B8 · Plan first, the teaser, the workflow map: S27, S28, S30, S31 · 3a33af1
 - **Legacy:** `S29_PlanHours`, `S31_MyLoop` (ideas only).
 - **Notes:**
   - Create `src/components/deck/WorkflowMiniMap.jsx`. It's used by S31–S37.
@@ -90,7 +90,7 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Scope:** `src/slides/S27_PlanHours.jsx`, `S28_TheNumber.jsx`, `S30_WorkflowMap.jsx`, `S31_Gather.jsx`, `src/components/deck/WorkflowMiniMap.jsx`, manifest entries, `deck-v2-workflow/important-notes.md` (append).
 - **Verify:** build; `snap --slides S27,S28,S30,S31`.
 
-### [ ] B9 · How We Work (1): S32, S33, S34
+### [x] B9 · How We Work (1): S32, S33, S34
 - **Legacy (ideas):** `S32_AskEverything`, `S35_UnitLoop`, `S34_TheTeam`, `S40_Routing`. Background: `docs/context/AGENTIC-WORKFLOWS.md` §2–§7.
 - **Scope:** `src/slides/S32_PlanTogether.jsx`, `S33_Orchestrator.jsx`, `S34_RightModel.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S32,S33,S34`.

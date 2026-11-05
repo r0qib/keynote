@@ -58,3 +58,7 @@
 - 2026-11-05 · B8 · S30 b3 stations fly into the mini-map; final frame is headline + mini-map · spec "shrinks toward the mini-map"; loop arrow unlabelled (spoken)
 - 2026-11-05 · B8 · S31 layout sources left (b1) / ticket centre / user frame right (b2); ticket "Wellbore search." (INQ-1502) continues the S25/S26 wellbore grid
 - 2026-11-05 · B8 · shared `TheNumber` component renders $25,000 for S28 and S38 · guarantees identical geometry
+- 2026-11-05 · B9 · S32 brief starts on S31's final box, shrinks to 0.76 for b1–b2; each answered question stamps a check onto a brief row; b3 = unit cards + six-band anatomy
+- 2026-11-05 · B9 · S33 "fresh" agents = glow ring + sparkle (no label); b3 swaps the deal diagram for two token meters (one focal point)
+- 2026-11-05 · B9 · S34 mini-map active = Orchestrate (routing is part of orchestration); effort levels low/medium/high/max
+- 2026-11-05 · B9 · S32 word count over ~20 because the spec asks for 5 Q + 5 A + 6 labels · spec wins
