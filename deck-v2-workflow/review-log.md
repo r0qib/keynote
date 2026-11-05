@@ -39,3 +39,8 @@ Reviewers always find something. HIGH/MEDIUM get fixed in the batch; LOW and lef
 ## B6
 - LOW · S20 b0: corner badge has weak contrast on the purple gradient (shell chrome); Z1 could add a light text shadow on dark canvases.
 - LOW · S19: raw hex "#F1F1F4" triangle fill → theme token.
+
+## B7
+- LOW · S24 b0/b1: bottom ~150 px empty; bar could be 240 tall.
+- LOW · S26 b1: TEMP header icon/label sit ~15 px left of the values (cosmetic, fits the joke).
+- LOW · S26 b2: skeleton is a 650 ms one-shot; confirm it's visible live.

@@ -52,3 +52,5 @@
 - 2026-11-05 · B6 · S21 totalBuilds 3 → 2: three escalation states, the "me" bubbles are the headline, older bubbles shrink/mute · spec lists exactly three states
 - 2026-11-05 · B6 · S22 log is `git log --oneline --reverse` (newest at bottom); spec's c4d2a8 dropped to fit 4 builds
 - 2026-11-05 · B6 · S20 slop page is one full-stage layer that shrinks to a 0.5 framed thumbnail; "purple" in the headline uses the slop gradient
+- 2026-11-05 · B7 · S24 bar spans full 1680 px with mascot + tag below it; S25 meat-lurk shows head/eyes only over the fence; S26 b1 question replaces the headline in its slot
+- 2026-11-05 · B7 · S26 b2 "clipped:2" flags accepted: Remarks column truncates by spec, popover shows the full text
