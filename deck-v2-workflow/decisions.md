@@ -54,3 +54,7 @@
 - 2026-11-05 · B6 · S20 slop page is one full-stage layer that shrinks to a 0.5 framed thumbnail; "purple" in the headline uses the slop gradient
 - 2026-11-05 · B7 · S24 bar spans full 1680 px with mascot + tag below it; S25 meat-lurk shows head/eyes only over the fence; S26 b1 question replaces the headline in its slot
 - 2026-11-05 · B7 · S26 b2 "clipped:2" flags accepted: Remarks column truncates by spec, popover shows the full text
+- 2026-11-05 · B8 · WorkflowMiniMap: segmented pill at left 120 / top 96 (~576×56); Chapter V headlines sit below it (mt-[84px]) · one consistent spot S31–S37
+- 2026-11-05 · B8 · S30 b3 stations fly into the mini-map; final frame is headline + mini-map · spec "shrinks toward the mini-map"; loop arrow unlabelled (spoken)
+- 2026-11-05 · B8 · S31 layout sources left (b1) / ticket centre / user frame right (b2); ticket "Wellbore search." (INQ-1502) continues the S25/S26 wellbore grid
+- 2026-11-05 · B8 · shared `TheNumber` component renders $25,000 for S28 and S38 · guarantees identical geometry

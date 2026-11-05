@@ -9,3 +9,5 @@ export { default as TypingBubble } from './TypingBubble.jsx';
 export { default as ChatTurn, ChatAvatar } from './ChatTurn.jsx';
 export { default as CodeWindow } from './CodeWindow.jsx';
 export { default as CanvasBackground } from './CanvasBackground.jsx';
+export { default as WorkflowMiniMap, WORKFLOW_STAGES, MINI_MAP_POS } from './WorkflowMiniMap.jsx';
+export { default as TheNumber, THE_NUMBER } from './TheNumber.jsx';

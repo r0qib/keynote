@@ -2,7 +2,7 @@
 
 Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, reviewed, committed) · `[!]` blocked (reason logged).
 
-**next:** B8
+**next:** B9
 
 ---
 
@@ -77,12 +77,12 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Scope:** `src/slides/S19_ThreeBody.jsx`, `S20_Slop.jsx`, `S21_MakeNoMistakes.jsx`, `S22_MeatProxy.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S19,S20,S21,S22`.
 
-### [x] B7 · Making It Count (1): S24, S25, S26
+### [x] B7 · Making It Count (1): S24, S25, S26 · d8bc0cc
 - **Legacy:** `S26_RoleShift` (see `feedback_images/s26.png`: clipped labels), `S27_TicketFloor`, `S28_MakeItBetter`.
 - **Scope:** `src/slides/S24_RoleShift.jsx`, `S25_TicketFloor.jsx`, `S26_MakeItBetter.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S24,S25,S26`.
 
-### [ ] B8 · Plan first, the teaser, the workflow map: S27, S28, S30, S31
+### [x] B8 · Plan first, the teaser, the workflow map: S27, S28, S30, S31
 - **Legacy:** `S29_PlanHours`, `S31_MyLoop` (ideas only).
 - **Notes:**
   - Create `src/components/deck/WorkflowMiniMap.jsx`. It's used by S31–S37.
