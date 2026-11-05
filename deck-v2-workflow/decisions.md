@@ -70,3 +70,5 @@
 - 2026-11-05 · B11 · S40 b1 is a timed story (~5.2 s); b2 ring drains to 4:50 and refills in a loop (keep-alive pulse allowed by §4.5)
 - 2026-11-05 · B11 · S38 b1 "It's unlimited." at 120 px (above the 96 headline token) · it's the slide's single line, storytelling tone
 - 2026-11-05 · B11 · draw-on paths fade in with opacity so round caps leave no stray dot before drawing
+- 2026-11-05 · B12 · S42 nodes use real product names; b2 shrinks our hub into a ring of six wordless ghost hubs (hub text ~14 px visual on purpose) · "one hub among many"
+- 2026-11-05 · B12 · S43 text left + meat-wave hero right with a slow wave loop; chrome-free; entrance blur bookends S01

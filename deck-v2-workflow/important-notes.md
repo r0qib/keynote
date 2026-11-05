@@ -56,3 +56,4 @@ React 18 + Vite 5 + Tailwind 3 + Framer Motion 11 + lucide-react. `npm run build
 - **S32 b0 copies S31's Brief markup** (not shared). If S31's brief changes, mirror it in S32.
 - **InfinityMark** (deck): `<InfinityMark width stroke delay duration />`; `infinityPoints(width, n)` + `pointsToPath()` for equal-point-count `d` morphs.
 - **Snap settle:** S40 b1 needs `--settle 5500`; most slides are fine at 2000–3600.
+- **meat-wave.svg** is a traced bitmap (no arm group): wave the whole img around a bottom origin.

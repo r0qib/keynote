@@ -2,7 +2,7 @@
 
 Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, reviewed, committed) · `[!]` blocked (reason logged).
 
-**next:** B12
+**next:** D1 + T1
 
 ---
 
@@ -100,13 +100,13 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Scope:** `src/slides/S35_Specialists.jsx`, `S36_FilesMemory.jsx`, `S37_CodeContext.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S35,S36,S37`.
 
-### [x] B11 · Epilogue: S38, S39, S40, S41
+### [x] B11 · Epilogue: S38, S39, S40, S41 · 31d3f24
 - **Legacy (ideas):** `S37_HardWay`, `S39_Stateless`.
 - **Notes:** S38 build 0 must match S28's number geometry (`important-notes.md`). No budget figures on screen.
 - **Scope:** `src/slides/S38_Unlimited.jsx`, `S39_TheMorning.jsx`, `S40_Cache.jsx`, `S41_FreshSessions.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S28,S38,S39,S40,S41`. Compare the S28 and S38 b0 screenshots: the number must be identical.
 
-### [ ] B12 · Close: S42, S43
+### [x] B12 · Close: S42, S43
 - **Legacy:** `S41_SharedRepo`, `S43_Thanks`.
 - **Scope:** `src/slides/S42_SharedRepo.jsx`, `S43_Thanks.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S42,S43`.

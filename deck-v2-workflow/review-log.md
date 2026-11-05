@@ -60,3 +60,7 @@ Reviewers always find something. HIGH/MEDIUM get fixed in the batch; LOW and lef
 ## B11
 - LOW · S38 b1 headline at 120 px (not the 96 token); deliberate.
 - LOW · S40 b2: sub-agent cards unlabelled and bottom-heavy (y 872–968); acceptable.
+
+## B12
+- LOW · S43: closing line at text-body is small next to the 200 px title; consider text-sub. Layout sits slightly high.
+- LOW · S42 b0: hub at 1.28× leaves ~500 px side margins; could go ~1.4×.
