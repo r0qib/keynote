@@ -65,3 +65,8 @@
 - 2026-11-05 · B10 · S35 headline (37 chars) at 88 px nowrap, bottom of the spec's range; growing doc masked to fade below the headline rather than going off-stage
 - 2026-11-05 · B10 · S35 gauge words "meh" → "sharp", no numbers; S36 file purposes Unit by unit · Calls made mid-run · Memory for fresh agents · Parked for a human
 - 2026-11-05 · B10 · S37 out-of-sync shown concretely (comments "20 results"/"spud date" vs code limit = 50, byRelevance); mini-map `complete` at b2
+- 2026-11-05 · B11 · S38 `chromeFromBuild: 1` so b0 matches S28 exactly (DOM identical; pixel diff = antialias noise); number parks at the top from b1
+- 2026-11-05 · B11 · shared `InfinityMark` so the S38 ∞ and S39 ∞ are one shape; S39 b2 morphs ∞ into the gauge arc (no numbers)
+- 2026-11-05 · B11 · S40 b1 is a timed story (~5.2 s); b2 ring drains to 4:50 and refills in a loop (keep-alive pulse allowed by §4.5)
+- 2026-11-05 · B11 · S38 b1 "It's unlimited." at 120 px (above the 96 headline token) · it's the slide's single line, storytelling tone
+- 2026-11-05 · B11 · draw-on paths fade in with opacity so round caps leave no stray dot before drawing

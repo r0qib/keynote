@@ -108,7 +108,7 @@ export const slideManifest = [
 
   // Epilogue · The $25,000 lesson
   s('S38', 'unlimited', '"It\'s unlimited."', 'The $25,000 lesson', 'Epilogue', 1.5, 2, 'S38_Unlimited',
-    'Remember this number? [1] It\'s unlimited. [2] All in: one month.'),
+    'Remember this number? [1] It\'s unlimited. [2] All in: one month.', { chromeFromBuild: 1 }),
   s('S39', 'the-morning', 'Access revoked.', 'The morning after', 'Epilogue', 1.25, 2, 'S39_TheMorning',
     'Access denied. [1] Top 10 users. [2] The new reality, spoken only.'),
   s('S40', 'cache', 'Five minutes.', 'Lesson 1', 'Epilogue', 1.5, 2, 'S40_Cache',

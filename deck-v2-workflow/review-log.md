@@ -56,3 +56,7 @@ Reviewers always find something. HIGH/MEDIUM get fixed in the batch; LOW and lef
 ## B10
 - LOW · S36 b3: unlabelled filler bars in the file cards could go.
 - LOW · S35 headline at 88 px (not 96) to fit one line; deliberate.
+
+## B11
+- LOW · S38 b1 headline at 120 px (not the 96 token); deliberate.
+- LOW · S40 b2: sub-agent cards unlabelled and bottom-heavy (y 872–968); acceptable.

@@ -54,3 +54,5 @@ React 18 + Vite 5 + Tailwind 3 + Framer Motion 11 + lucide-react. `npm run build
 - **WorkflowMiniMap (S31–S37):** `<WorkflowMiniMap active="Plan" />` (name or index; earlier stations show done) or `complete` for S37 b2. Fixed at `left 120 · top 96`, about 610 × 56 (4 px border, 46 px pills), 26 px labels, upcoming labels `#3A3A44`. Render it as the first child of SlideFrame and give the Headline `className="mt-[84px]"`, so the headline sits at y = 180 (single line at 96 px fits 1680 wide for ≤ ~34 chars). Each station has `data-station` for morph measurements (S30 uses them).
 - **S31 → S32 Brief:** the final brief is at `left 560 · top 330 · 800 × 640`, 6 px ink border, radius 32, header "Brief" + "Wellbore search", five icon rows (History · Globe · Newspaper · Boxes · User) with grey bars.
 - **S32 b0 copies S31's Brief markup** (not shared). If S31's brief changes, mirror it in S32.
+- **InfinityMark** (deck): `<InfinityMark width stroke delay duration />`; `infinityPoints(width, n)` + `pointsToPath()` for equal-point-count `d` morphs.
+- **Snap settle:** S40 b1 needs `--settle 5500`; most slides are fine at 2000–3600.

@@ -2,7 +2,7 @@
 
 Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, reviewed, committed) · `[!]` blocked (reason logged).
 
-**next:** B11
+**next:** B12
 
 ---
 
@@ -95,12 +95,12 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Scope:** `src/slides/S32_PlanTogether.jsx`, `S33_Orchestrator.jsx`, `S34_RightModel.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S32,S33,S34`.
 
-### [x] B10 · How We Work (2): S35, S36, S37
+### [x] B10 · How We Work (2): S35, S36, S37 · 34d1092
 - **Legacy (ideas):** `S33_FilesMemory`.
 - **Scope:** `src/slides/S35_Specialists.jsx`, `S36_FilesMemory.jsx`, `S37_CodeContext.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S35,S36,S37`.
 
-### [ ] B11 · Epilogue: S38, S39, S40, S41
+### [x] B11 · Epilogue: S38, S39, S40, S41
 - **Legacy (ideas):** `S37_HardWay`, `S39_Stateless`.
 - **Notes:** S38 build 0 must match S28's number geometry (`important-notes.md`). No budget figures on screen.
 - **Scope:** `src/slides/S38_Unlimited.jsx`, `S39_TheMorning.jsx`, `S40_Cache.jsx`, `S41_FreshSessions.jsx`, manifest entries.
