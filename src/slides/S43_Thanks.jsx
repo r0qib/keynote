@@ -7,9 +7,9 @@ import { Mascot, Kicker } from '../components/deck';
 const MASCOT_SIZE = 640;
 
 const textIn = (delay, y = 32) => ({
-  initial: { opacity: 0, y, filter: 'blur(12px)' },
-  animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
-  transition: { duration: 0.8, delay, ease: appleEase },
+  initial: { opacity: 0, y },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, delay, ease: appleEase },
 });
 
 export default function S43_Thanks() {

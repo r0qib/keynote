@@ -6,7 +6,7 @@ export const STAGE_HEIGHT = 1080;
 export const SAFE_AREA = { x: 120, y: 96 };
 
 export const colors = {
-  canvas: '#FAFAFB',
+  canvas: '#F4F4F6',
   ink: '#111113',
   muted: '#4A4A55',
   blue: '#1B7ED0',
@@ -16,18 +16,18 @@ export const colors = {
   teal: '#0E7C86',
   mascot: '#F6A6A4',
   surface: '#FFFFFF',
-  line: '#E4E4EA',
+  line: '#E2E2E8',
 };
 
 // accent: corner dot + focal highlight. chapterCanvas: chapter card tint (null = none).
 export const ACTS = {
   Opening: { label: 'Opening', accent: colors.blue, chapterCanvas: null },
-  Good: { label: 'I · The Good', accent: colors.green, chapterCanvas: '#EEF7F2' },
+  Good: { label: 'I · The Good', accent: colors.green, chapterCanvas: '#E5F4EC' },
   Poll: { label: 'Poll', accent: colors.ink, chapterCanvas: null },
-  Bad: { label: 'II · The Bad', accent: colors.amber, chapterCanvas: '#FBF3E8' },
-  Ugly: { label: 'III · The Ugly', accent: colors.coral, chapterCanvas: '#FCEFEF' },
-  Count: { label: 'IV · Making It Count', accent: colors.teal, chapterCanvas: '#EBF5F6' },
-  How: { label: 'V · How We Work', accent: colors.blue, chapterCanvas: '#EDF4FB' },
+  Bad: { label: 'II · The Bad', accent: colors.amber, chapterCanvas: '#F8EEDF' },
+  Ugly: { label: 'III · The Ugly', accent: colors.coral, chapterCanvas: '#FAE6E6' },
+  Count: { label: 'IV · Making It Count', accent: colors.teal, chapterCanvas: '#E0EFF1' },
+  How: { label: 'V · How We Work', accent: colors.blue, chapterCanvas: '#E4EFF8' },
   Epilogue: { label: 'Epilogue', accent: colors.ink, chapterCanvas: null },
   Close: { label: 'Close', accent: colors.blue, chapterCanvas: null },
 };

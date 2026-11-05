@@ -130,53 +130,59 @@ export default function App() {
   return (
     <div
       data-testid="slide-viewport"
-      className="fixed inset-0 w-screen h-screen overflow-hidden select-none bg-canvas"
+      className="fixed inset-0 w-screen h-screen overflow-hidden select-none bg-black flex items-center justify-center p-2 sm:p-3 md:p-4"
     >
-      <CanvasBackground canvas={canvas} />
+      {/* 
+        macOS / Display-framed rounded card canvas:
+        Curved corners, subtle bezel border, and deep ambient drop shadow against the black bezel backdrop
+      */}
+      <main className="relative w-full h-full max-w-[calc((100vh-1rem)*16/9)] md:max-w-[calc((100vh-2rem)*16/9)] max-h-full aspect-video rounded-2xl md:rounded-[28px] overflow-hidden shadow-[0_25px_80px_rgba(0,0,0,0.9),0_0_0_1px_rgba(255,255,255,0.08)] bg-canvas flex flex-col">
+        <CanvasBackground canvas={canvas} />
 
-      <Stage>
-        <motion.div
-          key={activeSlide?.id || activeSlideIndex}
-          initial={{ opacity: 0, x: direction > 0 ? 24 : -24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={slideTransition}
-          className="absolute inset-0"
-        >
-          <SlideErrorBoundary
-            slideId={activeSlide?.id || `slide-${activeSlideIndex}`}
-            buildStep={buildStep}
+        <Stage>
+          <motion.div
+            key={activeSlide?.id || activeSlideIndex}
+            initial={{ opacity: 0, x: direction > 0 ? 24 : -24 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={slideTransition}
+            className="absolute inset-0"
           >
-            <ActiveSlideComponent activeSlide={activeSlide} buildStep={buildStep} />
-          </SlideErrorBoundary>
-        </motion.div>
+            <SlideErrorBoundary
+              slideId={activeSlide?.id || `slide-${activeSlideIndex}`}
+              buildStep={buildStep}
+            >
+              <ActiveSlideComponent activeSlide={activeSlide} buildStep={buildStep} />
+            </SlideErrorBoundary>
+          </motion.div>
 
-        {/* Chrome: progress pill (top centre) and corner badge (top right), in the top margin band */}
-        {cornerBadge && (
-          <>
-            <div
-              className={`absolute top-[41px] left-1/2 -translate-x-1/2 w-[200px] h-[8px] rounded-full overflow-hidden pointer-events-none z-30 ${onDark ? 'bg-white/35' : 'bg-[#D9D9E0]'}`}
-            >
-              <motion.div
-                className={`h-full rounded-full ${onDark ? 'bg-white' : 'bg-ink'}`}
-                initial={false}
-                animate={{ width: `${progressPercent}%` }}
-                transition={slideTransition}
-              />
-            </div>
-            <div
-              data-testid="corner-badge"
-              className={`absolute top-[33px] right-safe-x z-30 flex items-center gap-[12px] font-mono text-badge pointer-events-none whitespace-nowrap ${onDark ? 'text-white' : 'text-muted'}`}
-              style={onDark ? { textShadow: '0 1px 2px rgba(0, 0, 0, 0.25)' } : undefined}
-            >
-              <span
-                className="w-[14px] h-[14px] rounded-full flex-shrink-0"
-                style={{ backgroundColor: onDark ? '#FFFFFF' : actColor }}
-              />
-              <span>{cornerBadge}</span>
-            </div>
-          </>
-        )}
-      </Stage>
+          {/* Chrome: progress pill (top centre) and corner badge (top right), in the top margin band */}
+          {cornerBadge && (
+            <>
+              <div
+                className={`absolute top-[41px] left-1/2 -translate-x-1/2 w-[200px] h-[8px] rounded-full overflow-hidden pointer-events-none z-30 ${onDark ? 'bg-white/35' : 'bg-[#D9D9E0]'}`}
+              >
+                <motion.div
+                  className={`h-full rounded-full ${onDark ? 'bg-white' : 'bg-ink'}`}
+                  initial={false}
+                  animate={{ width: `${progressPercent}%` }}
+                  transition={slideTransition}
+                />
+              </div>
+              <div
+                data-testid="corner-badge"
+                className={`absolute top-[33px] right-safe-x z-30 flex items-center gap-[12px] font-mono text-badge pointer-events-none whitespace-nowrap ${onDark ? 'text-white' : 'text-muted'}`}
+                style={onDark ? { textShadow: '0 1px 2px rgba(0, 0, 0, 0.25)' } : undefined}
+              >
+                <span
+                  className="w-[14px] h-[14px] rounded-full flex-shrink-0"
+                  style={{ backgroundColor: onDark ? '#FFFFFF' : actColor }}
+                />
+                <span>{cornerBadge}</span>
+              </div>
+            </>
+          )}
+        </Stage>
+      </main>
 
       {/* 
         Auto-Hiding Floating Dock at Bottom

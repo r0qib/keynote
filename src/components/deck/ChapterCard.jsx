@@ -13,7 +13,7 @@ const SHAPE_INSET = SHAPE_SIZE * 0.09;
 const SHAPE_CLEAR = 100;
 
 // Full-bleed chapter card: accent numeral + chapter name, one drifting act motif behind.
-// The tinted canvas comes from the manifest `canvas`.
+// Features rich cinematic backdrop glow and prominent contrast for act transition.
 export default function ChapterCard({ numeral, name, act }) {
   const accent = actAccent(act);
   const nameRef = useRef(null);
@@ -46,6 +46,14 @@ export default function ChapterCard({ numeral, name, act }) {
 
   return (
     <div className="absolute inset-0 overflow-hidden text-ink">
+      {/* Dynamic ambient backdrop illumination for contrast */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(ellipse 70% 60% at 75% 45%, ${accent}1F 0%, transparent 70%), radial-gradient(circle at 18% 50%, ${accent}0D 0%, transparent 60%)`,
+        }}
+      />
+
       <motion.div
         className="absolute"
         style={{ right: shapeRight, top: -10 }}
@@ -53,14 +61,33 @@ export default function ChapterCard({ numeral, name, act }) {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: appleEase }}
       >
-        <ActShape act={act} color={accent} size={SHAPE_SIZE} morph />
+        <ActShape act={act} color={accent} size={SHAPE_SIZE} opacity={0.24} morph />
       </motion.div>
 
       <div className="absolute inset-0 px-safe-x flex flex-col justify-center">
+        {/* Act category kicker indicator */}
         <motion.div
-          className="font-black leading-none tracking-[-0.03em]"
+          className="flex items-center gap-[16px] mb-[28px]"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: appleEase }}
+        >
+          <span
+            className="w-[18px] h-[18px] rounded-full shadow-[0_0_16px] flex-shrink-0"
+            style={{ backgroundColor: accent, boxShadow: `0 0 16px ${accent}` }}
+          />
+          <span
+            className="font-mono text-[32px] font-bold tracking-[0.25em] uppercase"
+            style={{ color: accent }}
+          >
+            ACT {numeral}
+          </span>
+        </motion.div>
+
+        <motion.div
+          className="font-black leading-none tracking-[-0.03em] drop-shadow-sm"
           style={{ fontSize: 240, color: accent }}
-          initial={{ opacity: 0, y: 120 }}
+          initial={{ opacity: 0, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: appleEase }}
         >
@@ -68,7 +95,7 @@ export default function ChapterCard({ numeral, name, act }) {
         </motion.div>
         <motion.div
           ref={nameRef}
-          className="self-start font-extrabold leading-[1.2] tracking-[-0.03em] whitespace-nowrap"
+          className="self-start font-extrabold leading-[1.15] tracking-[-0.03em] whitespace-nowrap text-ink mt-[12px]"
           style={{ fontSize: nameSize }}
           initial={{ clipPath: 'inset(0 100% 0 0)' }}
           animate={{ clipPath: 'inset(0 0% 0 0)' }}

@@ -80,7 +80,7 @@ function Segment({ kind, x, w, i }) {
   return (
     <motion.div
       className="absolute top-0 h-full flex items-center justify-center"
-      style={{ left: x, width: w, backgroundColor: isWork ? colors.blue : '#ECECF1', borderLeft: i ? '4px solid #FAFAFB' : 'none' }}
+      style={{ left: x, width: w, backgroundColor: isWork ? colors.blue : '#ECECF1', borderLeft: i ? `4px solid ${colors.canvas}` : 'none' }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.4, ease: appleEase, delay: 0.45 + i * 0.08 }}

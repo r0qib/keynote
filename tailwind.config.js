@@ -29,11 +29,11 @@ export default {
         badge: ["24px", { lineHeight: "1", letterSpacing: "0.02em", fontWeight: "600" }],
       },
       colors: {
-        canvas: "#FAFAFB",
+        canvas: "#F4F4F6",
         ink: "#111113",
         muted: "#4A4A55",
         surface: "#FFFFFF",
-        line: "#E4E4EA",
+        line: "#E2E2E8",
         card: "#FFFFFF",
         mascot: "#F6A6A4",
         accent: {
@@ -44,11 +44,11 @@ export default {
           teal: "#0E7C86",
         },
         tint: {
-          good: "#EEF7F2",
-          bad: "#FBF3E8",
-          ugly: "#FCEFEF",
-          count: "#EBF5F6",
-          how: "#EDF4FB",
+          good: "#E5F4EC",
+          bad: "#F8EEDF",
+          ugly: "#FAE6E6",
+          count: "#E0EFF1",
+          how: "#E4EFF8",
         },
       },
       spacing: {

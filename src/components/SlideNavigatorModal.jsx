@@ -27,7 +27,7 @@ export default function SlideNavigatorModal({
           exit={{ scale: 0.95, y: 15 }}
           transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
           onClick={(e) => e.stopPropagation()}
-          className="bg-[#FAFAFB] text-[#111113] rounded-3xl p-6 md:p-8 max-w-5xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-neutral-300"
+          className="bg-canvas text-[#111113] rounded-3xl p-6 md:p-8 max-w-5xl w-full max-h-[85vh] flex flex-col shadow-2xl border border-neutral-300"
         >
           {/* Header */}
           <div className="flex items-center justify-between pb-5 border-b border-neutral-200">

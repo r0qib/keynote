@@ -18,9 +18,9 @@ const LINES = [
 ];
 
 const wordIn = (i) => ({
-  initial: { opacity: 0, y: 56, filter: 'blur(12px)' },
-  animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
-  transition: { duration: 0.8, delay: 0.15 + i * 0.07, ease: appleEase },
+  initial: { opacity: 0, y: 48 },
+  animate: { opacity: 1, y: 0 },
+  transition: { duration: 0.7, delay: 0.15 + i * 0.08, ease: appleEase },
 });
 
 export default function S01_Title() {
@@ -41,7 +41,7 @@ export default function S01_Title() {
             act={act}
             color={color}
             size={size}
-            opacity={0.2}
+            opacity={0.25}
             duration={duration}
             glitch={glitch}
             morph
