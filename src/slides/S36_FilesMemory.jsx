@@ -20,14 +20,18 @@ const NODE = { left: 1520, width: 280, height: 240 };
 const resumeRowY = GROUP.top + CARD.top + ROW.top + (RESUME - 1) * ROW.height + ROW.height / 2;
 
 const FILES = [
-  { name: 'progress.md', purpose: 'Unit by unit' },
-  { name: 'decisions.md', purpose: 'Mid-run calls' },
-  { name: 'notes.md', purpose: 'Memory for fresh agents', disposable: true },
-  { name: 'review-log.md', purpose: 'Parked for a human' },
+  { name: 'progress.md', purpose: 'Unit by unit', lines: ['[x] Unit 6', '[x] Unit 7', '[~] Unit 8'] },
+  { name: 'decisions.md', purpose: 'Mid-run calls', lines: ['Unit 3: reuse repo', 'Unit 5: cache 5 min', 'Unit 6: no mobile'] },
+  {
+    name: 'notes.md',
+    purpose: 'Memory for fresh agents',
+    disposable: true,
+    lines: ['Use WellboreRepo', 'Seed: 40 wells', 'e2e on port 5199', 'Map test is flaky'],
+  },
+  { name: 'review-log.md', purpose: 'Parked for a human', lines: ['Nit: rename query', 'Nit: extract hook', 'Nit: tidy imports'] },
 ];
 const FAN = { top: 340, width: 390, height: 620, gap: 40 };
 const fanLeft = (i) => 120 + i * (FAN.width + FAN.gap);
-const NOTE_BARS = [300, 240, 280, 200, 260, 220, 290, 180];
 
 // Shows `from`, then switches to `to` after `delay` ms.
 function useDelayed(from, to, delay) {
@@ -243,7 +247,7 @@ function Session({ buildStep }) {
   );
 }
 
-function FileCard({ name, purpose, disposable, i }) {
+function FileCard({ name, purpose, lines, disposable, i }) {
   const from = {
     x: GROUP.left + CARD.left - fanLeft(i) + i * 10,
     y: GROUP.top + CARD.top - FAN.top + i * 10,
@@ -259,20 +263,22 @@ function FileCard({ name, purpose, disposable, i }) {
       <FileText size={44} strokeWidth={2.4} color={i === 0 ? colors.blue : colors.ink} />
       <div className="mt-[24px] font-mono text-[34px] font-bold leading-none text-ink">{name}</div>
       <div className="mt-[20px] h-[92px] text-[36px] font-semibold leading-[46px] text-muted">{purpose}</div>
-      <div className="relative mt-[32px] flex flex-col gap-[24px]">
-        {NOTE_BARS.map((w, k) => (
+      <div data-mock className="relative mt-[32px] flex flex-col">
+        {lines.map((line, k) => (
           <motion.span
-            key={k}
-            className="block h-[14px] rounded-full bg-[#DCDCE3]"
-            style={{ width: w }}
+            key={line}
+            className="whitespace-nowrap font-mono text-[24px] font-medium leading-[40px] text-ink"
             initial={false}
             animate={{ opacity: disposable && k > 0 ? 0.12 : 1 }}
             transition={{ duration: 0.8, ease: appleEase, delay: disposable ? 1.9 + k * 0.05 : 0 }}
-          />
+          >
+            {line}
+          </motion.span>
         ))}
         {disposable && (
           <motion.span
-            className="absolute left-0 right-0 top-[64px] text-center text-[36px] font-bold leading-none"
+            data-overlap-ok
+            className="absolute left-0 right-0 top-[82px] text-center text-[36px] font-bold leading-none"
             style={{ color: colors.coral }}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}

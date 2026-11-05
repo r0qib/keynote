@@ -192,7 +192,8 @@ function ExploreDeal({ scanned, dealt }) {
 }
 
 const PANEL = { top: 330, width: 800, height: 640 };
-const MINI_LINES = [[0, 260], [24, 200], [48, 150], [24, 230], [0, 180], [24, 120]];
+// What the agents explore: the same slice of the repo on both sides.
+const TREE = ['src/search/', '  WellboreRepo.ts', '  searchApi.ts', '  filters.ts', 'tests/search.spec.ts'];
 
 function Meter({ fill, color, delay, duration }) {
   return (
@@ -240,8 +241,12 @@ function Panel({ label, left, beams, fill, color, duration, i }) {
         ))}
       </svg>
 
-      <div data-mock className="absolute rounded-[24px] border-[4px] border-[#D4D4DC] bg-[#F7F7F9] px-[28px] py-[28px]" style={{ left: 60, top: 340, width: 480, height: 210 }}>
-        <CodeLines lines={MINI_LINES} scanned={false} gap={14} />
+      <div data-mock className="absolute rounded-[24px] border-[4px] border-[#D4D4DC] bg-[#F7F7F9] px-[28px] py-[26px]" style={{ left: 60, top: 340, width: 480, height: 210 }}>
+        {TREE.map((line) => (
+          <div key={line} className="whitespace-pre font-mono text-[24px] font-medium leading-[30px]" style={{ color: line.endsWith('/') ? colors.ink : colors.muted }}>
+            {line}
+          </div>
+        ))}
       </div>
 
       <Meter fill={fill} color={color} delay={0.9 + i * 0.1} duration={duration} />

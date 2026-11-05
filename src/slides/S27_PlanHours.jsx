@@ -34,7 +34,11 @@ const toPath = (pts) => pts.map(([x, y], i) => `${i ? 'L' : 'M'} ${x.toFixed(1)}
 
 // While I wait, the agent works in short bursts.
 const BLIPS = [[70, 130], [262, 330], [490, 545], [662, 730], [884, 950], [1098, 1160], [1280, 1320]];
-const UNITS = 9;
+const UNITS = 8;
+// The execute band runs past 18:00 and fades out before the safe-area edge.
+const BAND_END = 1800;
+const TAIL = BAND_END - DAY_END;
+const UNIT_PITCH = 54;
 
 const ME_BLOCKS = [
   { label: 'Review', from: 12.5, to: 14 },
@@ -185,11 +189,21 @@ function Blips() {
 
 function ExecuteBand() {
   const left = hx(12);
-  const unitsLeft = 1010;
+  const unitsLeft = 990;
+  const fade = `linear-gradient(to right, #000 calc(100% - ${TAIL}px), transparent 100%)`;
   return (
     <motion.div
       className="absolute overflow-hidden rounded-l-[24px]"
-      style={{ left, top: AGENTS_TOP + 16, width: 1920 - left, height: LANE_H - 32, background: colors.ink, transformOrigin: '0% 50%' }}
+      style={{
+        left,
+        top: AGENTS_TOP + 16,
+        width: BAND_END - left,
+        height: LANE_H - 32,
+        background: colors.ink,
+        transformOrigin: '0% 50%',
+        WebkitMaskImage: fade,
+        maskImage: fade,
+      }}
       initial={{ scaleX: 0 }}
       animate={{ scaleX: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.2 } }}
@@ -200,7 +214,7 @@ function ExecuteBand() {
         <motion.div
           key={i}
           className="absolute flex h-[44px] w-[44px] items-center justify-center rounded-[10px] border-[4px]"
-          style={{ left: unitsLeft - left + i * 64, top: (LANE_H - 32 - 44) / 2 }}
+          style={{ left: unitsLeft - left + i * UNIT_PITCH, top: (LANE_H - 32 - 44) / 2 }}
           initial={{ borderColor: 'rgba(255,255,255,0.45)', backgroundColor: 'rgba(30,158,106,0)' }}
           animate={{ borderColor: colors.green, backgroundColor: colors.green }}
           transition={{ duration: 0.25, delay: 1.9 + i * 0.14 }}
@@ -217,7 +231,7 @@ function ExecuteBand() {
       ))}
       <motion.div
         className="absolute top-0 flex h-full items-center gap-[12px] whitespace-nowrap text-[36px] font-semibold leading-none text-white"
-        style={{ right: 56 }}
+        style={{ right: TAIL }}
         initial={{ opacity: 0, x: -16 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5, ease: appleEase, delay: 2.0 }}

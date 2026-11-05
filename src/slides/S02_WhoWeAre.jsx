@@ -13,15 +13,16 @@ import eventAnalyzerLogo from '../assets/informatiq-app-suite-logos/eventAnalyze
 import analytiQLogo from '../assets/informatiq-app-suite-logos/analytiQ.svg';
 import informatiqLogo from '../assets/informatiq-app-suite-logos/informatiq.svg';
 
+// aspect = logo SVG viewBox width / height.
 const PRODUCTS = [
-  { name: 'WellMate', logo: wellMateLogo, desc: 'Drilling telemetry' },
-  { name: 'WellBook', logo: wellBookLogo, desc: 'Well operations' },
-  { name: 'GeologiQ', logo: geologiQLogo, desc: 'Subsurface models' },
-  { name: 'Offset Analyzer', logo: offsetAnalyzerLogo, desc: 'Offset benchmark' },
-  { name: 'LogistiQ', logo: logistiQLogo, desc: 'Offshore logistics' },
-  { name: 'Event Analyzer', logo: eventAnalyzerLogo, desc: 'Incident analysis' },
-  { name: 'AnalytiQ', logo: analytiQLogo, desc: 'Analytics engine' },
-  { name: 'Portal', logo: informatiqLogo, desc: 'Unified portal' },
+  { name: 'WellMate', logo: wellMateLogo, aspect: 4.51, desc: 'Drilling telemetry' },
+  { name: 'WellBook', logo: wellBookLogo, aspect: 4.02, desc: 'Well operations' },
+  { name: 'GeologiQ', logo: geologiQLogo, aspect: 4.42, desc: 'Subsurface models' },
+  { name: 'Offset Analyzer', logo: offsetAnalyzerLogo, aspect: 6.41, desc: 'Offset benchmark' },
+  { name: 'LogistiQ', logo: logistiQLogo, aspect: 4.0, desc: 'Offshore logistics' },
+  { name: 'Event Analyzer', logo: eventAnalyzerLogo, aspect: 6.41, desc: 'Incident analysis' },
+  { name: 'AnalytiQ', logo: analytiQLogo, aspect: 4.47, desc: 'Analytics engine' },
+  { name: 'Portal', logo: informatiqLogo, aspect: 6.73, desc: 'Unified portal' },
 ];
 
 const FINAL_BUILD = PRODUCTS.length + 1;
@@ -32,7 +33,20 @@ const COL_CENTRES = [330, 750, 1170, 1590];
 // Design-px geometry per state: centre x, top y, logo box, name size, gap logo → name.
 const SPOTLIGHT = { cx: 960, top: 290, logoW: 900, logoH: 170, name: 64, gap: 32 };
 const tray = (i) => ({ cx: COL_CENTRES[i % 4], top: 690 + Math.floor(i / 4) * 150, logoW: 340, logoH: 76, name: 30, gap: 12 });
-const final = (i) => ({ cx: COL_CENTRES[i % 4], top: 380 + Math.floor(i / 4) * 300, logoW: 384, logoH: 120, name: 40, gap: 20 });
+// Final grid: every logo gets the same optical area (wide wordmarks run a little lower), capped in width.
+const FINAL_LOGO = { area: 23000, maxW: 380 };
+const finalLogo = (aspect) => {
+  const w = Math.min(FINAL_LOGO.maxW, Math.sqrt(FINAL_LOGO.area * aspect));
+  return { logoW: w, logoH: w / aspect };
+};
+const final = (i) => ({
+  cx: COL_CENTRES[i % 4],
+  top: 380 + Math.floor(i / 4) * 300,
+  ...finalLogo(PRODUCTS[i].aspect),
+  name: 40,
+  gap: 20,
+});
+const FINAL_LOGO_H = Math.max(...PRODUCTS.map((p) => finalLogo(p.aspect).logoH));
 
 function stateFor(i, buildStep) {
   if (buildStep >= FINAL_BUILD) return { mode: 'final', geo: final(i) };
@@ -44,6 +58,7 @@ function stateFor(i, buildStep) {
 function Product({ product, index, buildStep }) {
   const { mode, geo } = stateFor(index, buildStep);
   const isSpot = mode === 'spot';
+  const isFinal = mode === 'final';
   const isHidden = mode === 'hidden';
   // The incoming product waits a beat while the previous one glides into the tray.
   const delay = isSpot ? 0.3 : mode === 'final' ? index * 0.04 : 0;
@@ -64,7 +79,7 @@ function Product({ product, index, buildStep }) {
     >
       <motion.div
         initial={false}
-        animate={{ width: geo.logoW, height: geo.logoH }}
+        animate={{ width: geo.logoW, height: geo.logoH, marginTop: isFinal ? (FINAL_LOGO_H - geo.logoH) / 2 : 0, marginBottom: isFinal ? (FINAL_LOGO_H - geo.logoH) / 2 : 0 }}
         transition={move}
       >
         <img src={product.logo} alt="" draggable={false} className="block w-full h-full object-contain" />
@@ -79,11 +94,11 @@ function Product({ product, index, buildStep }) {
         {product.name}
       </motion.div>
       <motion.div
-        className="text-body text-muted whitespace-nowrap"
-        style={{ marginTop: 6 }}
+        className="font-medium text-muted whitespace-nowrap"
+        style={{ marginTop: 6, lineHeight: 1.3, fontSize: isFinal ? 28 : 36, transition: `font-size 0.9s ${CSS_EASE} ${delay}s` }}
         initial={false}
-        animate={{ opacity: isSpot ? 1 : 0 }}
-        transition={{ duration: isSpot ? 0.6 : 0.3, delay: isSpot ? 0.5 : 0, ease: appleEase }}
+        animate={{ opacity: isSpot || isFinal ? 1 : 0 }}
+        transition={{ duration: 0.6, delay: isSpot ? 0.5 : isFinal ? 0.4 + index * 0.04 : 0, ease: appleEase }}
       >
         {product.desc}
       </motion.div>
@@ -100,7 +115,7 @@ function Rig({ width }) {
       height={(width * 200) / 220}
       fill="none"
       stroke="currentColor"
-      strokeWidth="2"
+      strokeWidth="3"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -124,7 +139,7 @@ function Rig({ width }) {
 }
 
 const HORIZON_Y = 1000;
-const RIG_WIDTH = 160;
+const RIG_WIDTH = 220;
 
 export default function S02_WhoWeAre({ buildStep = 0 }) {
   return (

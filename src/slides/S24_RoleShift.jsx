@@ -4,7 +4,7 @@ import { appleEase, gentleSpring } from '../motion';
 import { SlideFrame, Headline, Kicker, Mascot } from '../components/deck';
 
 // Day bar geometry (design px).
-const BAR = { left: 120, top: 316, width: 1680, height: 220 };
+const BAR = { left: 120, top: 316, width: 1680, height: 240 };
 const GAP = 8;
 
 const TONES = {
@@ -168,14 +168,12 @@ export default function S24_RoleShift({ buildStep = 0 }) {
 
   return (
     <SlideFrame>
-      <div className="flex items-baseline gap-[36px]">
-        <Headline initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: appleEase }}>
-          The role shift.
-        </Headline>
-        <Kicker initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.3 }}>
-          (no raise included)
-        </Kicker>
-      </div>
+      <Headline initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: appleEase }}>
+        The role shift.
+      </Headline>
+      <Kicker variant="aside" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, delay: 0.3 }}>
+        (no raise included)
+      </Kicker>
 
       <DayBar now={now} />
 

@@ -29,7 +29,15 @@ const AGENTS = [
 const GAUGE = { left: 1400, top: 450, width: 400, r: 165, stroke: 30 };
 // Gauge svg sits below the 36 px label + 24 px gap.
 const SVG_TOP = 60;
-const SHIP = { width: 560, height: 120 };
+const SHIP = { width: 520, height: 120 };
+// b2: the gauge grows into the focal point; the pill sits between repo and gauge.
+const GAUGE_GROW = { scale: 1.3, x: -110 };
+const SHIP_LEFT = 635;
+const LINK_Y = rowTop(1) + AGENT_ROW.height / 2;
+const LINKS = [
+  `M ${REPO.left + REPO.width + 10} ${LINK_Y} H ${SHIP_LEFT - 12}`,
+  `M ${SHIP_LEFT + SHIP.width + 12} ${LINK_Y} H 1250 M 1236 ${LINK_Y - 14} L 1250 ${LINK_Y} L 1236 ${LINK_Y + 14}`,
+];
 
 // Long instruction doc: bar widths repeat; every fifth bar is a patched-in rule.
 const DOC_BARS = Array.from({ length: 44 }, (_, i) => ({ w: [480, 400, 500, 340, 440, 300][i % 6], patch: i % 5 === 3 }));
@@ -80,14 +88,20 @@ function GrowingDoc() {
   );
 }
 
-function Gauge({ value, word, color }) {
+function Gauge({ value, word, color, grow }) {
   const { r, stroke, width } = GAUGE;
   const cx = width / 2;
   const cy = r + stroke;
   const NEEDLE = r - 36;
   const arc = `M ${cx - r} ${cy} A ${r} ${r} 0 0 1 ${cx + r} ${cy}`;
   return (
-    <div className="absolute flex flex-col items-center" style={{ left: GAUGE.left, top: GAUGE.top, width: GAUGE.width }}>
+    <motion.div
+      className="absolute flex flex-col items-center"
+      style={{ left: GAUGE.left, top: GAUGE.top, width: GAUGE.width }}
+      initial={false}
+      animate={grow ? GAUGE_GROW : { scale: 1, x: 0 }}
+      transition={{ duration: 0.8, ease: appleEase, delay: grow ? 0.5 : 0 }}
+    >
       <span className="text-[36px] font-semibold leading-none text-muted">Quality</span>
       <svg width={width} height={cy + stroke / 2 + 4} className="mt-[24px]" aria-hidden="true">
         <path d={arc} fill="none" stroke="#E4E4EA" strokeWidth={stroke} strokeLinecap="round" />
@@ -122,7 +136,28 @@ function Gauge({ value, word, color }) {
           {word}
         </motion.span>
       </AnimatePresence>
-    </div>
+    </motion.div>
+  );
+}
+
+function Links() {
+  return (
+    <svg className="absolute left-0 top-0" width="1920" height="1080" aria-hidden="true">
+      {LINKS.map((d, i) => (
+        <motion.path
+          key={d}
+          d={d}
+          fill="none"
+          stroke={colors.ink}
+          strokeWidth={4}
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          initial={{ pathLength: 0, opacity: 0 }}
+          animate={{ pathLength: 1, opacity: 1 }}
+          transition={{ pathLength: { duration: 0.4, ease: appleEase, delay: 0.35 + i * 0.4 }, opacity: { duration: 0.1, delay: 0.35 + i * 0.4 } }}
+        />
+      ))}
+    </svg>
   );
 }
 
@@ -147,15 +182,15 @@ function Repo({ pulse }) {
         transition={{ duration: 1.3, delay: 0.75, ease: 'easeInOut' }}
       >
         <span className="text-[32px] font-bold leading-none text-ink">Template</span>
-        <div className="mt-[36px] flex flex-col gap-[22px]">
-          {[260, 200, 240, 160].map((w) => (
-            <span key={w} className="block h-[14px] rounded-full bg-[#B9D6F2]" style={{ width: w }} />
+        <div className="mt-[28px] flex flex-col">
+          {['role:', 'rules:', 'context:', 'verify:'].map((line) => (
+            <span key={line} className="font-mono text-[28px] font-medium leading-[44px] text-ink">{line}</span>
           ))}
         </div>
       </motion.div>
-      <div className="absolute bottom-[40px] left-[32px] right-[32px] flex flex-col gap-[22px]">
-        {[300, 220, 260].map((w) => (
-          <span key={w} className="block h-[14px] rounded-full bg-[#E4E4EA]" style={{ width: w }} />
+      <div className="absolute bottom-[36px] left-[32px] right-[32px] flex flex-col">
+        {['agents/', 'skills/', 'workflows/'].map((line) => (
+          <span key={line} className="font-mono text-[28px] font-medium leading-[44px] text-muted">{line}</span>
         ))}
       </div>
     </motion.div>
@@ -191,9 +226,9 @@ function Specialist({ name, Icon, i }) {
         <Icon size={42} strokeWidth={2.4} color={colors.blue} />
       </span>
       <span className="ml-[24px] whitespace-nowrap font-mono text-[36px] font-bold leading-none text-ink">{name}</span>
-      <div className="ml-auto flex h-[132px] w-[200px] shrink-0 flex-col justify-center gap-[20px] rounded-[18px] border-[4px] border-[#D4D4DC] px-[24px]">
-        {[136, 100, 120].map((w) => (
-          <span key={w} className="block h-[12px] rounded-full bg-[#B9D6F2]" style={{ width: w }} />
+      <div className="ml-auto flex h-[132px] w-[200px] shrink-0 flex-col justify-center rounded-[18px] border-[4px] border-[#D4D4DC] px-[24px]">
+        {['role', 'rules', 'verify'].map((line) => (
+          <span key={line} className="font-mono text-[24px] font-medium leading-[34px] text-muted">{line}</span>
         ))}
       </div>
     </motion.div>
@@ -206,7 +241,7 @@ function Shipped() {
       className="absolute flex items-center justify-center gap-[24px] rounded-full bg-ink"
       style={{
         ...SHIP,
-        left: AGENT_ROW.left + (AGENT_ROW.width - SHIP.width) / 2,
+        left: SHIP_LEFT,
         top: rowTop(1) + (AGENT_ROW.height - SHIP.height) / 2,
         zIndex: 2,
       }}
@@ -263,9 +298,15 @@ export default function S35_Specialists({ buildStep = 0 }) {
       <AnimatePresence>
         {specialists && !shipped && AGENTS.map((a, i) => <Specialist key={a.name} {...a} i={i} />)}
       </AnimatePresence>
+      {shipped && <Links />}
       {shipped && <Shipped />}
 
-      <Gauge value={specialists ? 0.88 : 0.4} word={specialists ? 'sharp' : 'meh'} color={specialists ? colors.blue : colors.amber} />
+      <Gauge
+        value={specialists ? 0.88 : 0.4}
+        word={specialists ? 'sharp' : 'meh'}
+        color={specialists ? colors.blue : colors.amber}
+        grow={shipped}
+      />
     </SlideFrame>
   );
 }

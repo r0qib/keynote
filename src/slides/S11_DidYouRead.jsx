@@ -4,6 +4,9 @@ import { Pin } from 'lucide-react';
 import { appleEase } from '../motion';
 import { SlideFrame, Headline, CodeWindow } from '../components/deck';
 
+// Headline offset that centres it on the safe area: (888 - 100) / 2.
+const HEAD_DY = 394;
+
 const MARK = { add: '+', del: '-', ctx: ' ' };
 const MARK_COLOR = { add: 'text-[#0F7A4E]', del: 'text-[#C0262D]', ctx: 'text-muted' };
 
@@ -127,8 +130,8 @@ export default function S11_DidYouRead({ buildStep = 0 }) {
   const closing = buildStep >= 4;
 
   return (
-    <SlideFrame className={showWindow ? 'justify-start' : 'justify-center'}>
-      <motion.div layout transition={{ layout: { duration: 0.7, ease: appleEase } }}>
+    <SlideFrame>
+      <motion.div initial={false} animate={{ y: showWindow ? 0 : HEAD_DY }} transition={{ duration: 0.7, ease: appleEase }}>
         <Headline initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: appleEase }}>
           Did you even read what I said?
         </Headline>

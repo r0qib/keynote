@@ -16,12 +16,15 @@ const SHRINK = 0.76;
 const BRIEF_LEFT = CENTRE.x - (BRIEF.width * SHRINK) / 2;
 const BRIEF_RIGHT = CENTRE.x + (BRIEF.width * SHRINK) / 2;
 
+// Mirrors S31's final brief rows.
 const BRIEF_ROWS = [
-  { Icon: History, bars: [500, 340] },
-  { Icon: Globe, bars: [460, 400] },
-  { Icon: Newspaper, bars: [520, 280] },
-  { Icon: Boxes, bars: [440, 380] },
-  { Icon: User, bars: [500, 320] },
+  { Icon: History, text: 'Past projects' },
+  { Icon: Globe, text: 'How others solved it' },
+  { Icon: Newspaper, text: 'That blog post' },
+  { Icon: Boxes, text: 'Our existing assets' },
+  { Icon: User, text: 'Who uses this?' },
+  { Icon: User, text: 'What do I need first?' },
+  { Icon: User, text: 'What comes next?' },
 ];
 
 // side: which side of the brief; top: question bubble top; from: fly-in offset.
@@ -36,50 +39,39 @@ const Q_H = 72;
 const GAP = 8; // bubble to arrow
 const ARROW_W = 44;
 
-const UNITS = [1, 2, 3, 4, 5, 6];
+const UNITS = ['Search API', 'Filters', 'Results list', 'Pagination', 'Empty state', 'E2E tests'];
 const OPEN_UNIT = 3;
 const UNIT = { left: 120, top: 330, width: 500, height: 90, gap: 18 };
 const OPEN_CARD = { left: 720, top: 316, width: 1080, height: 640 };
 const BANDS = [
-  { label: 'Rules', Icon: ShieldCheck, bars: [420, 260] },
-  { label: 'Context (short)', Icon: BookOpen, bars: [140] },
-  { label: 'Task', Icon: Target, bars: [480, 300] },
-  { label: 'Tests', Icon: FlaskConical, bars: [380, 220] },
-  { label: 'Verify', Icon: BadgeCheck, bars: [320] },
-  { label: 'Agent rules', Icon: Bot, bars: [360, 200] },
+  { label: 'Rules', Icon: ShieldCheck, line: 'Use WellboreRepo' },
+  { label: 'Context (short)', Icon: BookOpen, line: 'Builds on unit 1' },
+  { label: 'Task', Icon: Target, line: 'Render the results' },
+  { label: 'Tests', Icon: FlaskConical, line: '3 unit + 1 e2e' },
+  { label: 'Verify', Icon: BadgeCheck, line: '≤ 200 ms' },
+  { label: 'Agent rules', Icon: Bot, line: 'No new packages' },
 ];
 
 const unitTop = (i) => UNIT.top + i * (UNIT.height + UNIT.gap);
 
-function BriefRow({ Icon, bars, i, stamped }) {
+function BriefRow({ Icon, text, i, stamped }) {
   return (
-    <div className="flex h-[80px] items-center gap-[24px]">
-      <span className="flex h-[56px] w-[56px] shrink-0 items-center justify-center rounded-[16px] bg-tint-how">
-        <Icon size={32} strokeWidth={2.4} color={colors.blue} />
+    <div className="flex h-[56px] items-center gap-[20px]">
+      <span className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-[12px] bg-tint-how">
+        <Icon size={26} strokeWidth={2.4} color={colors.blue} />
       </span>
-      <div className="flex flex-col gap-[12px]">
-        {bars.map((w) => (
-          <motion.div
-            key={w}
-            className="h-[16px] rounded-full"
-            style={{ width: w }}
-            initial={false}
-            animate={{ backgroundColor: stamped ? '#B9D6F2' : '#DCDCE3' }}
-            transition={{ duration: 0.4, delay: stamped ? 0.65 + i * 0.14 : 0 }}
-          />
-        ))}
-      </div>
+      <span className="whitespace-nowrap text-[28px] font-semibold leading-none text-ink">{text}</span>
       <AnimatePresence>
         {stamped && (
           <motion.span
-            className="ml-auto flex h-[56px] w-[56px] items-center justify-center rounded-full"
+            className="ml-auto flex h-[44px] w-[44px] items-center justify-center rounded-full"
             style={{ background: colors.blue }}
             initial={{ opacity: 0, scale: 1.8, rotate: -14 }}
             animate={{ opacity: 1, scale: 1, rotate: 0 }}
             exit={{ opacity: 0, transition: { duration: 0.2 } }}
-            transition={{ ...gentleSpring, delay: 0.6 + i * 0.14 }}
+            transition={{ ...gentleSpring, delay: 0.6 + i * 0.1 }}
           >
-            <Check size={34} strokeWidth={3.4} color="#FFFFFF" />
+            <Check size={28} strokeWidth={3.4} color="#FFFFFF" />
           </motion.span>
         )}
       </AnimatePresence>
@@ -97,18 +89,18 @@ function Brief({ asking, stamped }) {
       exit={{ scale: 0.4, opacity: 0, transition: { duration: 0.45, ease: appleEase, delay: 0.1 } }}
       transition={{ duration: 0.7, ease: appleEase }}
     >
-      <div data-mock className="absolute inset-[44px]">
+      <div data-mock className="absolute inset-[40px]">
         <div className="flex items-center gap-[24px]">
-          <span className="flex h-[72px] w-[72px] items-center justify-center rounded-[20px]" style={{ background: colors.blue }}>
-            <FileText size={44} strokeWidth={2.4} color="#FFFFFF" />
+          <span className="flex h-[64px] w-[64px] items-center justify-center rounded-[18px]" style={{ background: colors.blue }}>
+            <FileText size={40} strokeWidth={2.4} color="#FFFFFF" />
           </span>
           <span className="text-[56px] font-extrabold leading-none text-ink">Brief</span>
           <span className="ml-auto whitespace-nowrap text-[32px] font-medium text-muted">Wellbore search</span>
         </div>
-        <div className="mt-[28px] h-[4px] rounded-full bg-line" />
-        <div className="mt-[28px] flex flex-col gap-[12px]">
+        <div className="mt-[20px] h-[4px] rounded-full bg-line" />
+        <div className="mt-[20px] flex flex-col gap-[8px]">
           {BRIEF_ROWS.map((row, i) => (
-            <BriefRow key={i} {...row} i={i} stamped={stamped} />
+            <BriefRow key={row.text} {...row} i={i} stamped={stamped} />
           ))}
         </div>
       </div>
@@ -175,7 +167,8 @@ function QuestionPair({ item, i, answered }) {
   );
 }
 
-function UnitCard({ n, i }) {
+function UnitCard({ name, i }) {
+  const n = i + 1;
   const open = n === OPEN_UNIT;
   const top = unitTop(i);
   return (
@@ -193,10 +186,7 @@ function UnitCard({ n, i }) {
       transition={{ ...gentleSpring, delay: 0.2 + i * 0.06 }}
     >
       <span className="whitespace-nowrap text-[36px] font-bold leading-none text-ink">Unit {n}</span>
-      <div className="ml-auto flex flex-col gap-[10px]">
-        <div className="h-[14px] w-[180px] rounded-full bg-[#DCDCE3]" />
-        <div className="h-[14px] w-[120px] rounded-full bg-[#DCDCE3]" />
-      </div>
+      <span className="ml-auto whitespace-nowrap text-[28px] font-medium leading-none text-muted">{name}</span>
     </motion.div>
   );
 }
@@ -220,9 +210,12 @@ function OpenUnit() {
         animate={{ opacity: 1, scale: 1, x: 0 }}
         transition={{ duration: 0.7, ease: appleEase, delay: 0.6 }}
       >
-        <div className="text-[56px] font-extrabold leading-none text-ink">Unit {OPEN_UNIT}</div>
+        <div className="flex items-baseline gap-[24px] whitespace-nowrap">
+          <span className="text-[56px] font-extrabold leading-none text-ink">Unit {OPEN_UNIT}</span>
+          <span className="text-[36px] font-semibold leading-none text-muted">{UNITS[OPEN_UNIT - 1]}</span>
+        </div>
         <div className="mt-[30px] flex flex-col gap-[12px]">
-          {BANDS.map(({ label, Icon, bars }, i) => (
+          {BANDS.map(({ label, Icon, line }, i) => (
             <motion.div
               key={label}
               className="flex h-[72px] items-center gap-[20px] rounded-[18px] bg-tint-how px-[24px]"
@@ -232,11 +225,7 @@ function OpenUnit() {
             >
               <Icon size={36} strokeWidth={2.4} color={colors.blue} />
               <span className="whitespace-nowrap text-[36px] font-semibold leading-none text-ink">{label}</span>
-              <div className="ml-auto flex items-center gap-[12px]">
-                {bars.map((w) => (
-                  <div key={w} className="h-[16px] rounded-full bg-[#C6D6E6]" style={{ width: w }} />
-                ))}
-              </div>
+              <span className="ml-auto whitespace-nowrap font-mono text-[28px] font-medium leading-none text-muted">{line}</span>
             </motion.div>
           ))}
         </div>
@@ -267,7 +256,7 @@ export default function S32_PlanTogether({ buildStep = 0 }) {
         {asking && !split && QUESTIONS.map((item, i) => <QuestionPair key={item.q} item={item} i={i} answered={answered} />)}
       </AnimatePresence>
 
-      {split && UNITS.map((n, i) => <UnitCard key={n} n={n} i={i} />)}
+      {split && UNITS.map((name, i) => <UnitCard key={name} name={name} i={i} />)}
       {split && <OpenUnit />}
     </SlideFrame>
   );

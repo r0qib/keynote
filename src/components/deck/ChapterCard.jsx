@@ -6,6 +6,11 @@ import ActShape from './ActShape.jsx';
 
 const NAME_MAX = 184;
 const NAME_WIDTH = STAGE_WIDTH - SAFE_AREA.x * 2;
+const SHAPE_SIZE = 1100;
+const SHAPE_RIGHT = -140;
+// The motif's visible edge sits ~9% inside its box; keep it this far clear of the title (drift included).
+const SHAPE_INSET = SHAPE_SIZE * 0.09;
+const SHAPE_CLEAR = 100;
 
 // Full-bleed chapter card: accent numeral + chapter name, one drifting act motif behind.
 // The tinted canvas comes from the manifest `canvas`.
@@ -13,6 +18,7 @@ export default function ChapterCard({ numeral, name, act }) {
   const accent = actAccent(act);
   const nameRef = useRef(null);
   const [nameSize, setNameSize] = useState(NAME_MAX);
+  const [shapeRight, setShapeRight] = useState(SHAPE_RIGHT);
 
   // Shrink the name (never grow past NAME_MAX) so it always fits the safe-area width on one line.
   useLayoutEffect(() => {
@@ -25,16 +31,29 @@ export default function ChapterCard({ numeral, name, act }) {
     document.fonts?.ready.then(fit);
   }, [name]);
 
+  // Push the motif right (bleeding off the stage) when a long title would run into it.
+  useLayoutEffect(() => {
+    const place = () => {
+      const el = nameRef.current;
+      if (!el) return;
+      const titleRight = el.offsetLeft + el.offsetWidth;
+      const maxRight = STAGE_WIDTH - SHAPE_SIZE + SHAPE_INSET - titleRight - SHAPE_CLEAR;
+      setShapeRight(Math.min(SHAPE_RIGHT, maxRight));
+    };
+    place();
+    document.fonts?.ready.then(place);
+  }, [nameSize]);
+
   return (
     <div className="absolute inset-0 overflow-hidden text-ink">
       <motion.div
         className="absolute"
-        style={{ right: -140, top: -10 }}
+        style={{ right: shapeRight, top: -10 }}
         initial={{ opacity: 0, scale: 0.92 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1.2, ease: appleEase }}
       >
-        <ActShape act={act} color={accent} size={1100} morph />
+        <ActShape act={act} color={accent} size={SHAPE_SIZE} morph />
       </motion.div>
 
       <div className="absolute inset-0 px-safe-x flex flex-col justify-center">

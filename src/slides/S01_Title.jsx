@@ -93,7 +93,7 @@ export default function S01_Title() {
         src={bs23Logo}
         alt="Brain Station 23"
         className="absolute block"
-        style={{ left: 120, bottom: 96, height: 40 }}
+        style={{ left: 120, bottom: 96, height: 52 }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.9, ease: appleEase }}

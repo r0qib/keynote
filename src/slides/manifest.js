@@ -3,6 +3,7 @@
  * Cut tiers: A = disable first, B = second.
  * `canvas`: full-bleed background (CSS string, or array indexed by buildStep). Default #FAFAFB.
  * `chromeFromBuild`: hide the corner badge and progress bar before this build (default 0).
+ * `darkCanvas`: light chrome for dark/saturated canvases (boolean, or array indexed by buildStep).
  */
 import { chapterCanvas } from '../theme.js';
 
@@ -69,7 +70,7 @@ export const slideManifest = [
   s('S19', 'three-body', 'The three-body problem.', 'Pick two', 'Ugly', 1.0, 2, 'S19_ThreeBody',
     'Point: three corners, pick two. [1] The run starts. [2] The collapse. Real constraint, not a complaint. Cut tier A.', { cutTier: 'A' }),
   s('S20', 'slop', 'Everything is purple now.', 'Slop', 'Ugly', 1.25, 2, 'S20_Slop',
-    'Let the slop land. [1] Back to clean: "Everything is purple now." [2] "AI should follow our principles, not its defaults."', { canvas: [SLOP_GRADIENT, '#FAFAFB'] }),
+    'Let the slop land. [1] Back to clean: "Everything is purple now." [2] "AI should follow our principles, not its defaults."', { canvas: [SLOP_GRADIENT, '#FAFAFB'], darkCanvas: [true, false] }),
   s('S21', 'make-no-mistakes', 'Make it better. Make no mistakes.', 'Prompting', 'Ugly', 1.0, 2, 'S21_MakeNoMistakes',
     'Point: my lazy prompts. "make it better" [1] "Make it better. Make no mistakes." [2] "MAKE. NO. MISTAKES." Read each louder.'),
   s('S22', 'meat-proxy', "Don't be a meat proxy.", 'Meat proxy', 'Ugly', 1.5, 5, 'S22_MeatProxy',

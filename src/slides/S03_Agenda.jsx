@@ -1,17 +1,18 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { appleEase, gentleSpring } from '../motion.js';
-import { colors } from '../theme.js';
+import { colors, chapterCanvas } from '../theme.js';
 import { Headline } from '../components/deck';
 
 // Widths roughly follow talk time (plan §2 minutes), with IV weighted up so IV and V are the widest.
 // Fills are deepened act accents so white text stays at 4.5:1 or better.
+// On b2 the other frames go to their light chapter tint with accent text.
 const CHAPTERS = [
-  { numeral: 'I', name: ['The', 'Good'], color: '#198559', weight: 5.5 },
-  { numeral: 'II', name: ['The', 'Bad'], color: '#B06005', weight: 6.5 },
-  { numeral: 'III', name: ['The', 'Ugly'], color: '#D04246', weight: 10 },
-  { numeral: 'IV', name: ['Making', 'It Count'], color: colors.teal, weight: 11 },
-  { numeral: 'V', name: ['How', 'We Work'], color: '#1A78C6', weight: 12.5 },
+  { numeral: 'I', name: ['The', 'Good'], color: '#198559', tint: chapterCanvas('Good'), weight: 5.5 },
+  { numeral: 'II', name: ['The', 'Bad'], color: '#B06005', tint: chapterCanvas('Bad'), weight: 6.5 },
+  { numeral: 'III', name: ['The', 'Ugly'], color: '#D04246', tint: chapterCanvas('Ugly'), weight: 10 },
+  { numeral: 'IV', name: ['Making', 'It Count'], color: colors.teal, tint: chapterCanvas('Count'), weight: 11 },
+  { numeral: 'V', name: ['How', 'We Work'], color: '#1A78C6', tint: chapterCanvas('How'), weight: 12.5 },
 ];
 const FOCUS = 4;
 
@@ -80,10 +81,11 @@ export default function S03_Agenda({ buildStep = 0 }) {
         {FRAMES.map((f, i) => {
           const isFocus = i === FOCUS;
           const lifted = focused && isFocus;
+          const dimmed = focused && !isFocus;
           return (
             <motion.div
               key={f.numeral}
-              className="absolute flex flex-col justify-between text-white"
+              className="absolute flex flex-col justify-between"
               style={{
                 left: f.left,
                 top: FRAME_TOP,
@@ -91,12 +93,13 @@ export default function S03_Agenda({ buildStep = 0 }) {
                 height: FRAME_HEIGHT,
                 borderRadius: 14,
                 padding: 22,
-                background: f.color,
                 zIndex: isFocus ? 1 : 0,
               }}
               initial={false}
               animate={{
-                opacity: shown ? (focused && !isFocus ? 0.7 : 1) : 0,
+                opacity: shown ? 1 : 0,
+                backgroundColor: dimmed ? f.tint : f.color,
+                color: dimmed ? f.color : '#FFFFFF',
                 x: shown ? 0 : -64,
                 y: lifted ? -24 : 0,
                 scale: lifted ? 1.02 : 1,
@@ -106,7 +109,7 @@ export default function S03_Agenda({ buildStep = 0 }) {
               }}
               transition={
                 focused
-                  ? { ...gentleSpring, opacity: { duration: 0.5, ease: appleEase } }
+                  ? { ...gentleSpring, backgroundColor: { duration: 0.5, ease: appleEase }, color: { duration: 0.5, ease: appleEase } }
                   : { duration: 0.7, delay: shown ? i * 0.12 : 0, ease: appleEase }
               }
             >

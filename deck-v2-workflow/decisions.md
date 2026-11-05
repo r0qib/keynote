@@ -74,3 +74,10 @@
 - 2026-11-05 · B12 · S43 text left + meat-wave hero right with a slow wave loop; chrome-free; entrance blur bookends S01
 - 2026-11-05 · D1/T1 · run T1 before D1 (not in parallel) · D1 edits manifest.js, which would HMR-reload the dev server mid-session and make T1 flaky
 - 2026-11-05 · D1 · poll readbacks remapped to existing slides (Q1 S30, Q2 S15, Q3 S24, Q4 S17, Q5 S11, Q6 S18, Q7 S22, Q8 S43); v1 numbers not on slides dropped from the notes
+- 2026-11-05 · Z1 · S30 b3 holds the full map with the loop arrow; the shrink-to-mini-map is dropped · the shrink left ghost layers over the headline/chrome and an empty stage while the presenter talks; S31's mini-map carries the rhyme. Loop arrow stays unlabelled (spoken)
+- 2026-11-05 · Z1 · S02 final grid keeps logo + name and adds the descriptor (secondary), logos normalised to one height box · spec asks for logo, name and descriptor; director wanted name replaced, spec wins
+- 2026-11-05 · Z1 · skeleton bars in V/epilogue mocks replaced by short real strings inside data-mock · reads as finished engineering, not a wireframe
+- 2026-11-05 · Z1 · S02 logos sized by equal optical area (not a strict 72 px height box) · wide wordmarks looked lighter in a fixed-height box
+- 2026-11-05 · Z1 · S27 execute band ends at x 1800 with a 140 px fade; units 9 → 8 so "Overnight →" fits inside the safe area
+- 2026-11-05 · Z1 · S34 shows only the active effort label; no +24 px rows (would overflow the bottom safe edge)
+- 2026-11-05 · Z1 · no second design review after the fix round (README Z1: fix round → final snap + browser session) · protocol

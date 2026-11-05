@@ -5,8 +5,9 @@ import { colors } from '../theme';
 import { SlideFrame, Headline, Mascot } from '../components/deck';
 
 const SLABS = 8;
-const STACK = { left: 180, top: 250, width: 760 };
-const RING = { left: 1160, top: 269, size: 440, stroke: 28 };
+const STACK = { left: 120, top: 236, width: 900 };
+const STACK_LABEL_TOP = 738;
+const RING = { left: 1130, top: 210, size: 540, stroke: 34 };
 const RING_R = (RING.size - RING.stroke) / 2;
 const SLAB_GREY = '#E3E7EE';
 const SLAB_HOT = '#F6D5D6';
@@ -113,7 +114,7 @@ export default function S40_Cache({ buildStep = 0 }) {
       </motion.div>
       <motion.div
         className="absolute text-[40px] leading-[48px] font-bold text-center"
-        style={{ left: STACK.left, top: 756, width: STACK.width }}
+        style={{ left: STACK.left, top: STACK_LABEL_TOP, width: STACK.width }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.4 }}
@@ -175,15 +176,15 @@ export default function S40_Cache({ buildStep = 0 }) {
                   transition={{ duration: 0.9, ease: appleEase, delay: 0.3 }}
                 />
               </motion.svg>
-              <span className="mt-[8px] font-mono text-[112px] leading-[1] font-bold tracking-[-0.03em]">4:50</span>
+              <span className="mt-[8px] font-mono text-[136px] leading-[1] font-bold tracking-[-0.03em]">4:50</span>
             </>
           ) : (
-            <motion.span className="font-mono text-[120px] leading-[1] font-bold tracking-[-0.03em]">{clock}</motion.span>
+            <motion.span className="font-mono text-[144px] leading-[1] font-bold tracking-[-0.03em]">{clock}</motion.span>
           )}
         </div>
       </motion.div>
 
-      <div className="absolute flex justify-center" style={{ left: RING.left - 80, top: 750, width: RING.size + 160 }}>
+      <div className="absolute flex justify-center" style={{ left: RING.left - 80, top: RING.top + RING.size + 20, width: RING.size + 160 }}>
         <CachePill phase={phase} />
       </div>
 
@@ -205,9 +206,9 @@ export default function S40_Cache({ buildStep = 0 }) {
         {buildStep === 1 && ['sent', 'sweep'].includes(phase) && (
           <motion.div
             key="message"
-            className="absolute left-[968px] top-[206px] h-[68px] px-[28px] rounded-[24px] rounded-bl-[8px] bg-ink text-white text-[32px] font-semibold flex items-center whitespace-nowrap"
+            className="absolute left-[780px] top-[128px] h-[68px] px-[28px] rounded-[24px] rounded-bl-[8px] bg-ink text-white text-[32px] font-semibold flex items-center whitespace-nowrap"
             initial={{ opacity: 0, x: 60 }}
-            animate={phase === 'sent' ? { opacity: 1, x: 0, y: 0, scale: 1 } : { opacity: 0, x: -360, y: 60, scale: 0.4 }}
+            animate={phase === 'sent' ? { opacity: 1, x: 0, y: 0, scale: 1 } : { opacity: 0, x: -200, y: 170, scale: 0.4 }}
             exit={{ opacity: 0 }}
             transition={phase === 'sent' ? gentleSpring : { duration: 0.5, ease: appleEase }}
           >
@@ -258,8 +259,11 @@ function CachePill({ phase }) {
   );
 }
 
-const AGENT_X = [420, 740, 1060, 1380];
-const BUS_Y = 840;
+const AGENTS = ['Explore', 'Test', 'Review', 'Docs'];
+const AGENT = { width: 360, gap: 80, top: 892, height: 92 };
+const agentX = (i) => 120 + AGENT.width / 2 + i * (AGENT.width + AGENT.gap);
+const BUS_Y = 868;
+const BUS_FROM = { x: STACK.left + STACK.width / 2, y: STACK_LABEL_TOP + 56 };
 
 // b2: sub-agents work below while the main session keeps the cache warm.
 function SubAgents() {
@@ -267,7 +271,7 @@ function SubAgents() {
     <motion.div className="absolute inset-0" exit={{ opacity: 0, transition: { duration: 0.3 } }}>
       <svg className="absolute inset-0" width="1920" height="1080" viewBox="0 0 1920 1080" aria-hidden>
         <motion.path
-          d={`M560 812 V${BUS_Y} M${AGENT_X[0]} ${BUS_Y} H${AGENT_X[3]} ${AGENT_X.map((x) => `M${x} ${BUS_Y} V872`).join(' ')}`}
+          d={`M${BUS_FROM.x} ${BUS_FROM.y} V${BUS_Y} M${agentX(0)} ${BUS_Y} H${agentX(3)} ${AGENTS.map((_, i) => `M${agentX(i)} ${BUS_Y} V${AGENT.top}`).join(' ')}`}
           fill="none"
           stroke={colors.ink}
           strokeWidth="6"
@@ -277,17 +281,18 @@ function SubAgents() {
           transition={{ duration: 0.7, ease: appleEase, delay: 0.2, opacity: { duration: 0.1, delay: 0.2 } }}
         />
       </svg>
-      {AGENT_X.map((x, i) => (
+      {AGENTS.map((name, i) => (
         <motion.div
-          key={x}
-          className="absolute w-[240px] h-[96px] rounded-[24px] bg-surface border-[4px] border-ink px-[24px] flex flex-col justify-center gap-[14px]"
-          style={{ left: x - 120, top: 872 }}
+          key={name}
+          data-mock
+          className="absolute rounded-[24px] bg-surface border-[4px] border-ink px-[28px] flex items-center gap-[24px]"
+          style={{ left: agentX(i) - AGENT.width / 2, top: AGENT.top, width: AGENT.width, height: AGENT.height }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...gentleSpring, delay: 0.5 + i * 0.08 }}
         >
-          <span className="h-[12px] rounded-full bg-[#D5DAE3]" style={{ width: [150, 120, 160, 110][i] }} />
-          <span className="h-[16px] rounded-full bg-[#EEF1F6] overflow-hidden">
+          <span className="w-[112px] shrink-0 whitespace-nowrap text-[28px] font-semibold leading-none text-ink">{name}</span>
+          <span className="h-[16px] flex-1 rounded-full bg-[#EEF1F6] overflow-hidden">
             <motion.span
               className="block h-full rounded-full bg-accent-teal"
               initial={{ width: '0%' }}

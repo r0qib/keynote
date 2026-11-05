@@ -22,12 +22,10 @@ const CARD_W = 440; // approximate, for the flow into the ticket
 const FRAME = { left: 1300, top: 374, width: 500, height: 556 };
 const THOUGHTS = ['Who uses this?', 'What do I need first?', 'What comes next?'];
 
+// Everything gathered lands in the brief, one row each (S32 mirrors these rows).
 const BRIEF_ROWS = [
-  { Icon: History, bars: [560, 380] },
-  { Icon: Globe, bars: [520, 440] },
-  { Icon: Newspaper, bars: [580, 300] },
-  { Icon: Boxes, bars: [500, 420] },
-  { Icon: User, bars: [560, 360] },
+  ...SOURCES.map(({ label, Icon }) => ({ Icon, text: label })),
+  ...THOUGHTS.map((text) => ({ Icon: User, text })),
 ];
 
 const flowInto = (cx, cy, i) => ({
@@ -131,37 +129,33 @@ function BriefContent() {
   return (
     <motion.div
       data-mock
-      className="absolute inset-[44px]"
+      className="absolute inset-[40px]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0, transition: { duration: 0.2 } }}
       transition={{ duration: 0.4, delay: 0.95 }}
     >
       <div className="flex items-center gap-[24px]">
-        <span className="flex h-[72px] w-[72px] items-center justify-center rounded-[20px]" style={{ background: colors.blue }}>
-          <FileText size={44} strokeWidth={2.4} color="#FFFFFF" />
+        <span className="flex h-[64px] w-[64px] items-center justify-center rounded-[18px]" style={{ background: colors.blue }}>
+          <FileText size={40} strokeWidth={2.4} color="#FFFFFF" />
         </span>
         <span className="text-[56px] font-extrabold leading-none text-ink">Brief</span>
         <span className="ml-auto whitespace-nowrap text-[32px] font-medium text-muted">Wellbore search</span>
       </div>
-      <div className="mt-[28px] h-[4px] rounded-full bg-line" />
-      <div className="mt-[28px] flex flex-col gap-[12px]">
-        {BRIEF_ROWS.map(({ Icon, bars }, i) => (
+      <div className="mt-[20px] h-[4px] rounded-full bg-line" />
+      <div className="mt-[20px] flex flex-col gap-[8px]">
+        {BRIEF_ROWS.map(({ Icon, text }, i) => (
           <motion.div
-            key={i}
-            className="flex h-[80px] items-center gap-[24px]"
+            key={text}
+            className="flex h-[56px] items-center gap-[20px]"
             initial={{ opacity: 0, x: -16 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.45, ease: appleEase, delay: 1.05 + i * 0.1 }}
+            transition={{ duration: 0.45, ease: appleEase, delay: 1.05 + i * 0.08 }}
           >
-            <span className="flex h-[56px] w-[56px] shrink-0 items-center justify-center rounded-[16px] bg-tint-how">
-              <Icon size={32} strokeWidth={2.4} color={colors.blue} />
+            <span className="flex h-[44px] w-[44px] shrink-0 items-center justify-center rounded-[12px] bg-tint-how">
+              <Icon size={26} strokeWidth={2.4} color={colors.blue} />
             </span>
-            <div className="flex flex-col gap-[12px]">
-              {bars.map((w) => (
-                <div key={w} className="h-[16px] rounded-full bg-[#DCDCE3]" style={{ width: w }} />
-              ))}
-            </div>
+            <span className="whitespace-nowrap text-[28px] font-semibold leading-none text-ink">{text}</span>
           </motion.div>
         ))}
       </div>

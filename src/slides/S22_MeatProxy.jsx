@@ -25,7 +25,7 @@ const SEGMENTS = [
 function Arrows({ from, to, delay }) {
   const head = 22;
   return (
-    <g stroke={colors.muted} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" fill="none">
+    <g stroke={colors.ink} strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" fill="none">
       <motion.path
         d={`M ${from} ${ROW_Y - 22} L ${to} ${ROW_Y - 22} M ${to - head} ${ROW_Y - 22 - head} L ${to} ${ROW_Y - 22} L ${to - head} ${ROW_Y - 22 + head}`}
         initial={{ pathLength: 0 }}

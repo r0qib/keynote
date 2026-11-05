@@ -8,9 +8,8 @@ const LEVELS = ['low', 'medium', 'high', 'max'];
 // The visible tiers are centred in the content area (y 300–984) and settle upward as tiers arrive.
 const AREA = { top: 300, height: 684 };
 const TIER = { height: 216, gap: 18 };
-const SLIDER = { left: 1090, width: 540, trackY: 118 };
+const SLIDER = { left: 1090, width: 540, trackY: 134 };
 const BASE_LEVEL = 1; // medium
-const LEVEL_INK = '#3A3A44';
 
 // level: where the slider lands when the task arrives (build 3).
 const TIERS = [
@@ -42,7 +41,7 @@ function TaskTag({ text, level, i }) {
   const pos = level === 0 ? { left: -20 } : level === last ? { right: -20 } : { left: levelX(level) };
   const centred = level !== 0 && level !== last;
   return (
-    <div className={`absolute top-[16px] ${centred ? '-translate-x-1/2' : ''}`} style={pos}>
+    <div className={`absolute top-[10px] ${centred ? '-translate-x-1/2' : ''}`} style={pos}>
       <motion.div
         className="flex h-[64px] items-center whitespace-nowrap rounded-[32px] border-[4px] bg-tint-how px-[26px] text-[36px] font-semibold leading-none"
         style={{ borderColor: colors.blue, color: colors.blue }}
@@ -74,17 +73,11 @@ function EffortSlider({ level, moved, task, i }) {
         transition={transition}
       />
       {LEVELS.map((name, l) => (
-        <div key={name} className="absolute flex flex-col items-center" style={{ left: levelX(l), top: SLIDER.trackY - 15, transform: 'translateX(-50%)' }}>
-          <span className="block h-[30px] w-[6px] rounded-full bg-[#C4C4CE]" />
-          <motion.span
-            className="mt-[14px] whitespace-nowrap text-[30px] font-semibold leading-none"
-            initial={false}
-            animate={{ color: l === current ? colors.blue : LEVEL_INK }}
-            transition={{ duration: 0.3, delay: transition.delay + 0.2 }}
-          >
-            {name}
-          </motion.span>
-        </div>
+        <span
+          key={name}
+          className="absolute block h-[30px] w-[6px] -translate-x-1/2 rounded-full bg-[#C4C4CE]"
+          style={{ left: levelX(l), top: SLIDER.trackY - 15 }}
+        />
       ))}
       <motion.span
         className="absolute block h-[56px] w-[56px] rounded-full border-[6px] bg-surface shadow-[0_6px_16px_rgba(17,17,19,0.16)]"
@@ -93,6 +86,21 @@ function EffortSlider({ level, moved, task, i }) {
         animate={{ x }}
         transition={transition}
       />
+      {/* Only the active level is named, riding under the knob. */}
+      <motion.div className="absolute left-0 w-0" style={{ top: SLIDER.trackY + 40 }} initial={false} animate={{ x }} transition={transition}>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.span
+            key={LEVELS[current]}
+            className="absolute left-0 top-0 whitespace-nowrap text-[28px] font-semibold leading-none"
+            style={{ color: colors.blue, x: '-50%' }}
+            initial={{ opacity: 0, y: -6 }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 0.3, delay: moved ? transition.delay + 0.35 : 0 } }}
+            exit={{ opacity: 0, transition: { duration: 0.15 } }}
+          >
+            {LEVELS[current]}
+          </motion.span>
+        </AnimatePresence>
+      </motion.div>
     </div>
   );
 }

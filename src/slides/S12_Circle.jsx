@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { appleEase, gentleSpring } from '../motion';
 import { colors } from '../theme';
-import { SlideFrame, Headline, ChatTurn, ChatAvatar, TypingBubble } from '../components/deck';
+import { SlideFrame, Headline, Kicker, ChatTurn, ChatAvatar, TypingBubble } from '../components/deck';
 
 // `build`: the build a human turn appears on. `reply`: the attempt an AI turn belongs to.
 const TURNS = [
@@ -74,7 +74,7 @@ function Attempt({ n }) {
 
 // Mini glyph of each attempt, drawn inside its dart marker.
 function Glyph({ n }) {
-  const g = { stroke: '#FFFFFF', strokeWidth: 5, fill: 'none', strokeLinejoin: 'round', strokeLinecap: 'round' };
+  const g = { stroke: '#FFFFFF', strokeWidth: 6, fill: 'none', strokeLinejoin: 'round', strokeLinecap: 'round', transform: 'scale(1.2)' };
   if (n === 1) return <rect x="-18" y="-13" width="36" height="26" {...g} />;
   if (n === 2) return <path d="M -9 -13 L 9 -13 L 19 13 L -19 13 Z" {...g} />;
   return (
@@ -84,6 +84,8 @@ function Glyph({ n }) {
     </>
   );
 }
+
+const DART_R = 44;
 
 // Each correction lands further from the bull.
 const HITS = [
@@ -119,10 +121,10 @@ function Target() {
         return (
           <g key={n} transform={`translate(${x} ${y})`}>
             <motion.circle
-              r="36"
+              r={DART_R}
               fill="none"
               stroke={colors.ink}
-              strokeWidth="4"
+              strokeWidth="6"
               initial={{ scale: 1, opacity: 0 }}
               animate={{ scale: [1, 1.9], opacity: [0.5, 0] }}
               transition={{ delay: delay + 0.15, duration: 0.6, ease: appleEase }}
@@ -132,7 +134,7 @@ function Target() {
               animate={{ scale: 1, opacity: 1 }}
               transition={{ ...gentleSpring, delay }}
             >
-              <circle r="36" fill={colors.ink} />
+              <circle r={DART_R} fill={colors.ink} />
               <Glyph n={n} />
             </motion.g>
           </g>
@@ -155,14 +157,14 @@ export default function S12_Circle({ buildStep = 0 }) {
       <Headline initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: appleEase }}>
         I asked for a circle.
       </Headline>
-      <motion.p
-        className="mt-[12px] text-sub text-muted font-medium"
+      <Kicker
+        variant="aside"
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: appleEase, delay: 0.15 }}
       >
         (Read: a simple architecture.)
-      </motion.p>
+      </Kicker>
 
       <div className="flex flex-1 min-h-0 gap-[64px] mt-[36px]">
         <div className="w-[920px] shrink-0 flex flex-col gap-[12px]">

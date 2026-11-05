@@ -124,6 +124,8 @@ export default function App() {
   const cornerBadge = showChrome ? getSlideCornerBadge(activeSlideIndex) : null;
   const actColor = actAccent(activeSlide?.act);
   const canvas = resolveCanvas(activeSlide?.canvas, buildStep);
+  const dark = activeSlide?.darkCanvas;
+  const onDark = Array.isArray(dark) ? Boolean(dark[Math.min(buildStep, dark.length - 1)]) : Boolean(dark);
 
   return (
     <div
@@ -151,9 +153,11 @@ export default function App() {
         {/* Chrome: progress pill (top centre) and corner badge (top right), in the top margin band */}
         {cornerBadge && (
           <>
-            <div className="absolute top-[41px] left-1/2 -translate-x-1/2 w-[200px] h-[8px] rounded-full bg-[#D9D9E0] overflow-hidden pointer-events-none z-30">
+            <div
+              className={`absolute top-[41px] left-1/2 -translate-x-1/2 w-[200px] h-[8px] rounded-full overflow-hidden pointer-events-none z-30 ${onDark ? 'bg-white/35' : 'bg-[#D9D9E0]'}`}
+            >
               <motion.div
-                className="h-full rounded-full bg-ink"
+                className={`h-full rounded-full ${onDark ? 'bg-white' : 'bg-ink'}`}
                 initial={false}
                 animate={{ width: `${progressPercent}%` }}
                 transition={slideTransition}
@@ -161,9 +165,13 @@ export default function App() {
             </div>
             <div
               data-testid="corner-badge"
-              className="absolute top-[33px] right-safe-x z-30 flex items-center gap-[12px] font-mono text-badge text-muted pointer-events-none whitespace-nowrap"
+              className={`absolute top-[33px] right-safe-x z-30 flex items-center gap-[12px] font-mono text-badge pointer-events-none whitespace-nowrap ${onDark ? 'text-white' : 'text-muted'}`}
+              style={onDark ? { textShadow: '0 1px 2px rgba(0, 0, 0, 0.25)' } : undefined}
             >
-              <span className="w-[14px] h-[14px] rounded-full flex-shrink-0" style={{ backgroundColor: actColor }} />
+              <span
+                className="w-[14px] h-[14px] rounded-full flex-shrink-0"
+                style={{ backgroundColor: onDark ? '#FFFFFF' : actColor }}
+              />
               <span>{cornerBadge}</span>
             </div>
           </>

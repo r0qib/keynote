@@ -57,3 +57,7 @@ React 18 + Vite 5 + Tailwind 3 + Framer Motion 11 + lucide-react. `npm run build
 - **InfinityMark** (deck): `<InfinityMark width stroke delay duration />`; `infinityPoints(width, n)` + `pointsToPath()` for equal-point-count `d` morphs.
 - **Snap settle:** S40 b1 needs `--settle 5500`; most slides are fine at 2000–3600.
 - **meat-wave.svg** is a traced bitmap (no arm group): wave the whole img around a bottom origin.
+- **S31 → S32 Brief** is 7 text rows (56 px rows, 28 px text): 4 sources + 3 user questions. S32 mirrors S31's markup.
+- **Kicker `variant="aside"`** (40 px / 500, muted, mt 16) is the one style for parenthetical asides (S12, S24, S43).
+- **Manifest `darkCanvas`** (bool or array by buildStep) switches the chrome to white badge/dot/pill with a text-shadow (S20 b0).
+- **src/slides/legacy/ was deleted in Z1**; v1 sources live on branch `snapshot/pre-deck-v2`.

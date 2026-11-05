@@ -45,20 +45,24 @@ const bezier = (p, t) => {
 const PACKET = { start: 0.9, perItem: 0.22, perSpoke: 0.05, duration: 0.9 };
 const packetDelay = (spokeIndex, itemIndex) => PACKET.start + itemIndex * PACKET.perItem + spokeIndex * PACKET.perSpoke;
 
-// b2: our hub shrinks into the centre of a company field of similar hubs.
-const OURS = { cx: 960, cy: 550, scale: 0.42 };
-const GHOST_SCALE = 0.22;
+// b2: our hub shrinks into the centre of a company field; four similar hubs sit in the safe-area corners.
+const OURS = { cx: 960, cy: 566, scale: 0.58 };
+const GHOST_SCALE = 0.16;
+const GHOST_W = BOX.width * GHOST_SCALE;
+const GHOST_H = BOX.height * GHOST_SCALE;
+const FIELD = { left: 120, right: 1800, top: 252, bottom: 890 };
 const GHOSTS = [
-  { cx: 400, cy: 290 },
-  { cx: 1520, cy: 290 },
-  { cx: 1615, cy: 550 },
-  { cx: 1520, cy: 810 },
-  { cx: 400, cy: 810 },
-  { cx: 305, cy: 550 },
+  { cx: FIELD.left + GHOST_W / 2, cy: FIELD.top + GHOST_H / 2 },
+  { cx: FIELD.right - GHOST_W / 2, cy: FIELD.top + GHOST_H / 2 },
+  { cx: FIELD.right - GHOST_W / 2, cy: FIELD.bottom - GHOST_H / 2 },
+  { cx: FIELD.left + GHOST_W / 2, cy: FIELD.bottom - GHOST_H / 2 },
 ];
+// Text grows while the picture shrinks, so labels stay readable on b2.
+const textGrow = { transition: 'font-size 0.9s cubic-bezier(0.16, 1, 0.3, 1), line-height 0.9s cubic-bezier(0.16, 1, 0.3, 1)' };
 const HALO_PAD = 24;
 const SPOKE_COLOR = '#9AA1AE';
-const RING = GHOSTS.map((g, i) => [g, GHOSTS[(i + 1) % GHOSTS.length]]);
+// Side links only; top and bottom links would graze our halo.
+const RING = [[GHOSTS[0], GHOSTS[3]], [GHOSTS[1], GHOSTS[2]]];
 
 export default function S42_SharedRepo({ buildStep = 0 }) {
   const spread = buildStep >= 1;
@@ -82,7 +86,7 @@ export default function S42_SharedRepo({ buildStep = 0 }) {
       >
         <Spokes spread={spread} animateIn={buildStep === 1} />
         {PROJECTS.map((name, i) => (
-          <ProjectNode key={name} name={name} index={i} spread={spread} animateIn={buildStep === 1} />
+          <ProjectNode key={name} name={name} index={i} spread={spread} company={company} animateIn={buildStep === 1} />
         ))}
         {buildStep === 1 && SPOKES.map((p, i) => ITEMS.map((item, k) => <Packet key={`${i}-${k}`} path={p} color={item.color} delay={packetDelay(i, k)} />))}
         <Hub spread={spread} company={company} />
@@ -128,7 +132,7 @@ function Hub({ spread, company }) {
     >
       <div className="flex items-center gap-[20px]" style={{ height: 56 }}>
         <BranchMark />
-        <span className="font-extrabold tracking-[-0.02em]" style={{ fontSize: 46, lineHeight: '56px' }}>
+        <span className="font-extrabold tracking-[-0.02em]" style={{ fontSize: company ? 56 : 46, lineHeight: '56px', ...textGrow }}>
           Team AI repo
         </span>
       </div>
@@ -143,7 +147,12 @@ function Hub({ spread, company }) {
             transition={{ duration: 0.5, delay: 0.3 + k * 0.08, ease: appleEase }}
           >
             <span className="rounded-full shrink-0" style={{ width: 22, height: 22, background: item.color }} />
-            <span className="ml-[20px] text-[40px] leading-[48px] font-semibold">{item.label}</span>
+            <span
+              className="ml-[20px] font-semibold"
+              style={{ fontSize: company ? 60 : 40, lineHeight: company ? '64px' : '48px', ...textGrow }}
+            >
+              {item.label}
+            </span>
             <motion.span
               className="ml-auto h-[48px] px-[16px] rounded-[12px] bg-surface border-[3px] border-line font-mono text-[28px] font-semibold text-muted flex items-center"
               initial={{ opacity: 0, scale: 0.6 }}
@@ -192,7 +201,7 @@ function Spokes({ spread, animateIn }) {
   );
 }
 
-function ProjectNode({ name, index, spread, animateIn }) {
+function ProjectNode({ name, index, spread, company, animateIn }) {
   const left = index < 3 ? 30 : 1650 - NODE.w;
   const top = NODE_Y[index % 3] - NODE.h / 2;
   return (
@@ -203,7 +212,9 @@ function ProjectNode({ name, index, spread, animateIn }) {
       animate={spread ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.7 }}
       transition={animateIn ? { ...gentleSpring, delay: 0.5 + index * 0.06 } : { duration: 0.3 }}
     >
-      <span className="text-[36px] leading-[40px] font-bold">{name}</span>
+      <span className="font-bold" style={{ fontSize: company ? 48 : 36, lineHeight: company ? '52px' : '40px', ...textGrow }}>
+        {name}
+      </span>
       <span className="flex gap-[10px]">
         {ITEMS.map((item, k) => (
           <motion.span

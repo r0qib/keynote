@@ -2,7 +2,7 @@
 
 Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, reviewed, committed) · `[!]` blocked (reason logged).
 
-**next:** Z1
+**next:** done (see human-review.md)
 
 ---
 
@@ -111,7 +111,7 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Scope:** `src/slides/S42_SharedRepo.jsx`, `S43_Thanks.jsx`, manifest entries.
 - **Verify:** build; `snap --slides S42,S43`.
 
-### [x] D1 · Presenter docs (deck-writer, Sonnet)
+### [x] D1 · Presenter docs (deck-writer, Sonnet) · 7328fe2
 - **Do:**
   1. Rewrite `docs/plans/presenter-notes.md` for S01–S43, with the same section style as v1 (point, reminders, click cues `[n]` matching the real builds, punchlines, poll callbacks, timing checkpoints). Story beats come from `drafts/slide_feedback/slide-feedback.md`: the S31/S33 workflow details, "How It All Started", "The $25,000 Lesson", "The New Reality", Lesson 1 and Lesson 2. That includes the spoken-only facts: the $1,100 soft budget, ~$3,000 actual, the salary joke, Copilot's pricing change, the Halliburton acquisition, AWS Bedrock, the top-10 list. Also: the S12 note about sometimes sacrificing the session to get back on track, and the S41 closer "That's why the workflow looks the way it does."
   2. Keep or adapt the Poll appendix (questions must not reference removed slides) and the Before-going-live and Facts appendices. Add the S09 vendor-claim sources from `missing-pieces.md`.
@@ -135,7 +135,7 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 - **Don't fix anything here.** Record the failed checks in `progress.md` under T1 for Z1. No commit; nothing changes.
 - **Result (2026-11-05, MCP runner):** pass — 43 slides, 131 steps, 16/16 checks, no failed checks for Z1.
 
-### [ ] Z1 · Deck-wide polish and final verification
+### [x] Z1 · Deck-wide polish and final verification
 - **Do:**
   1. Snap-runner: `--out .snaps/final --contact final`. This is the full deck at both sizes, plus contact sheets of each slide's final build.
   2. Dispatch `deck-design-director` (Opus) on `.snaps/final/contact-*.png` only (~5 images), plus the `review-log.md` open items. It reviews:
@@ -157,3 +157,4 @@ Status codes: `[ ]` pending · `[~]` in progress · `[x]` done (built, snapped, 
 <!-- one line per session start/end: date · HEAD · batch · tokens left if known -->
 - 2026-11-05 · session 1 start · HEAD 7f68065 · starting B0
 - 2026-11-05 · session 2 start · HEAD 7f68065 · resuming B0 (tree partially changed: legacy moves, theme.js, tailwind, motion, manifest.v1)
+- 2026-11-05 · session 2 end · all batches done; final snap clean (expected S26/S40 flags only), final e2e 16/16 pass

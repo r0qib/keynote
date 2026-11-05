@@ -116,7 +116,7 @@ function Products() {
       {/* Dashboard window */}
       <motion.div
         className="absolute rounded-[32px] border-[6px] border-ink bg-surface"
-        style={{ left: 1520, top: 420, width: 280, height: 400 }}
+        style={{ left: 1520, top: 280, width: 280, height: 540 }}
         {...rise(0.85)}
       >
         <div className="flex gap-[10px] border-b-[4px] border-line px-[24px] py-[18px]">
@@ -124,7 +124,7 @@ function Products() {
             <span key={c} className="h-[18px] w-[18px] rounded-full" style={{ background: c }} />
           ))}
         </div>
-        <div className="flex h-[170px] items-end gap-[12px] px-[24px] pt-[24px]">
+        <div className="flex h-[300px] items-end gap-[12px] px-[24px] pt-[24px]">
           {[45, 70, 55, 95, 80].map((h, i) => (
             <div
               key={i}
@@ -135,27 +135,6 @@ function Products() {
         </div>
       </motion.div>
 
-      {/* Floating card */}
-      <motion.div
-        className="absolute flex items-center justify-center rounded-[36px] bg-accent-teal shadow-[0_24px_48px_rgba(14,124,134,0.25)]"
-        style={{ left: 1650, top: 236, width: 150, height: 150 }}
-        {...rise(1.0)}
-      >
-        <svg width="96" height="96" viewBox="0 0 130 130" aria-hidden="true">
-          <circle cx="65" cy="65" r="48" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="16" />
-          <circle
-            cx="65"
-            cy="65"
-            r="48"
-            fill="none"
-            stroke="#FFFFFF"
-            strokeWidth="16"
-            strokeLinecap="round"
-            strokeDasharray={`${2 * Math.PI * 48 * 0.72} ${2 * Math.PI * 48}`}
-            transform="rotate(-90 65 65)"
-          />
-        </svg>
-      </motion.div>
     </>
   );
 }

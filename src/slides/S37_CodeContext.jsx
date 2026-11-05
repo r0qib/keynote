@@ -9,7 +9,7 @@ const BORDER = '#D4D4DC';
 const CORAL_TINT = 'rgba(229,72,77,0.12)';
 
 // Code window: scaled up and centred from build 1 (below the kicker); smaller beside the stack at build 0.
-const CODE = { width: 1240, big: 1.15, left: (1920 - 1240 * 1.15) / 2, top: 378, small: 0.85, smallLeft: 746, smallTop: 330 };
+const CODE = { width: 1240, big: 1.12, left: (1920 - 1240 * 1.12) / 2, top: 396, small: 0.85, smallLeft: 746, smallTop: 330 };
 // CodeWindow chrome: 64 px title bar, body padding overridden to 28 px; text-code line height 30 × 1.45.
 const CODE_BAR = 64;
 const CODE_PAD = 28;
@@ -17,7 +17,7 @@ const LINE_H = 43.5;
 const CODE_BODY_TOP = CODE_BAR + CODE_PAD;
 
 const STACK = { left: 120, top: 330, width: 440, sheet: 116, step: 64 };
-const STRIP = { top: 904, width: (1680 - 2 * 40) / 3, height: 80, gap: 40 };
+const STRIP = { top: 912, width: (1680 - 2 * 40) / 3, height: 72, gap: 40 };
 const stripLeft = (k) => 120 + k * (STRIP.width + STRIP.gap);
 
 const DOCS = [
@@ -96,7 +96,7 @@ function Sheet({ file, keep, i, collapsed }) {
     <motion.div
       data-mock
       className="absolute overflow-hidden rounded-[20px] border-[4px] bg-surface"
-      style={{ zIndex: i, borderColor: strip ? colors.blue : BORDER }}
+      style={{ zIndex: i, borderColor: BORDER }}
       initial={{ ...geometry, opacity: 0, y: 30 }}
       animate={{
         ...geometry,
@@ -122,13 +122,14 @@ function Sheet({ file, keep, i, collapsed }) {
       </motion.div>
       {keep && (
         <motion.div
-          className="absolute inset-0 flex items-center gap-[16px] pl-[28px]"
+          className="absolute inset-0 flex items-center gap-[16px] pl-[32px]"
           initial={false}
           animate={{ opacity: strip ? 1 : 0 }}
           transition={{ duration: 0.4, delay: strip ? 0.7 : 0 }}
         >
-          <FileText size={34} strokeWidth={2.4} color={colors.blue} />
-          <span className="whitespace-nowrap text-[34px] font-semibold leading-none text-ink">{keep}</span>
+          <span className="absolute bottom-0 left-0 top-0 w-[6px]" style={{ background: colors.blue }} />
+          <FileText size={32} strokeWidth={2.4} color={colors.blue} />
+          <span className="whitespace-nowrap text-[32px] font-semibold leading-none text-ink">{keep}</span>
         </motion.div>
       )}
     </motion.div>

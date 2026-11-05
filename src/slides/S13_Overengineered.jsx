@@ -50,7 +50,7 @@ const TOC = [
 ];
 
 const LINE = 44;
-const VISIBLE = 13;
+const VISIBLE = 12;
 const SCROLL_MAX = (TOC.length - VISIBLE) * LINE;
 
 function FileChip({ name, x, y, i }) {
@@ -103,7 +103,7 @@ function ArchitectureDoc() {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.7, ease: appleEase, delay: 0.15 }}
     >
-      <CodeWindow title="THEME_ARCHITECTURE.md" width={1160} bodyClassName="overflow-hidden" style={{ height: 740 }}>
+      <CodeWindow title="THEME_ARCHITECTURE.md" width={1160} bodyClassName="overflow-hidden" style={{ height: 680 }}>
         <div className="relative overflow-hidden" style={{ height: VISIBLE * LINE }}>
           <motion.div style={{ y }}>
             {TOC.map((line, i) => (
@@ -155,7 +155,7 @@ export default function S13_Overengineered({ buildStep = 0 }) {
 
       <AnimatePresence>
         {showDoc && (
-          <motion.div key="doc" className="absolute flex items-center justify-between" style={{ left: 120, right: 120, top: 244, height: 740 }}>
+          <motion.div key="doc" className="absolute flex items-center justify-between" style={{ left: 120, right: 120, top: 264, height: 680 }}>
             <motion.div
               className="w-[440px] flex justify-center"
               initial={{ opacity: 0, scale: 0.6, y: 40 }}

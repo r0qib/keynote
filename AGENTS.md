@@ -17,4 +17,4 @@ The v1 workflow in `slide-deck-workflow/` is history. Don't follow it, and don't
    - one commit per batch on `main`, explicit paths only, never push.
 3. **Files are the memory:** `deck-v2-workflow/progress.md`, `decisions.md`, `important-notes.md`, `review-log.md`, `missing-pieces.md`.
 4. **Read-only paths** (raw inputs and history): `drafts/**`, `docs/context/**`, `docs/notes/**`, `slide-deck-workflow/**`, and the branch `snapshot/pre-deck-v2`.
-5. **Slides** live in `src/slides/S<id>_<Name>.jsx` and are registered in `src/slides/manifest.js`. They are designed on the fixed 1920×1080 stage, in design px, with no responsive classes.
+5. **Slides** live in `src/slides/S<id>_<Name>.jsx` and are registered in `src/slides/manifest.js`. They are designed on the fixed 1920×1080 stage, in design px, with no responsive classes. Shared parts live in `src/components/deck/` (import from its `index.js`). The v1 slides are only on the branch `snapshot/pre-deck-v2`.
