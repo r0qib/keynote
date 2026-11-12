@@ -6,8 +6,8 @@ Anything we don't have yet. Each entry: what, where it's used, the placeholder i
 
 | What | Slide | Placeholder | Resolve |
 | --- | --- | --- | --- |
-| Final poll URL + backup link | S07 | `POLL_URL` mock (`https://forms.office.com/r/informatiq-ai`) | Presenter drops the real Forms link into `S07_Poll.jsx` |
-| Product descriptors confirmed | S02 | v1 descriptors (Drilling telemetry, Well operations, …) | Presenter confirms or edits in `S02_WhoWeAre.jsx` |
+| Final poll URL + backup link | S07 | Real Google Form URL configured (`https://docs.google.com/forms/d/e/1FAIpQLSeyGE2MdQ7CtcFBG0Ui6CWwbMfpkZ1JuyOraXECVXS6Ic55pg/viewform?usp=publish-editor`) | Resolved in `S07_Poll.jsx` (direct link text hidden per presenter request) |
+| Product descriptors confirmed | S02 | Confirmed with presenter (2026-11-05) | Resolved in `S02_WhoWeAre.jsx` |
 
 ## Facts (verified sources)
 

@@ -81,3 +81,7 @@
 - 2026-11-05 · Z1 · S27 execute band ends at x 1800 with a 140 px fade; units 9 → 8 so "Overnight →" fits inside the safe area
 - 2026-11-05 · Z1 · S34 shows only the active effort label; no +24 px rows (would overflow the bottom safe edge)
 - 2026-11-05 · Z1 · no second design review after the fix round (README Z1: fix round → final snap + browser session) · protocol
+- 2026-11-05 · polish · S02: updated product descriptors per presenter clarification (WellMate: Well program & planning; WellBook: Rig & project management; GeologiQ: Real-time 3D digital twin; Offset Analyzer: Multi-well offset analysis; Portal: Unified suite portal) · accurate product scope
+- 2026-11-05 · polish · S24: Debugging transitions to "Second-phase fixing" when AI is introduced (now state) · reflects that with AI, engineers don't debug traditional code, but fix what was missed in the initial phase
+- 2026-11-05 · polish · S02: added build 10 click reveal for global expansion ("And now, globally. | Acquired by Halliburton · Piloting across Brazil, Argentina, Mexico & beyond") under the North Sea headline · presenter requested click reveal to show the global/Halliburton scale after presenting the 8-product suite
+- 2026-11-05 · poll · S07: added real Google Forms poll URL to QR code generator; removed direct URL text display on slide per presenter request

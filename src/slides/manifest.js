@@ -30,8 +30,8 @@ export const slideManifest = [
   // Opening
   s('S01', 'title', 'AI-Assisted Development: The Good, the Bad and the Ugly', '', 'Opening', 0.5, 0, 'S01_Title',
     'Point: honest talk, real experience, no vendor pitch. Who I am, InformatiQ team. Say "I am in the ugly part too."'),
-  s('S02', 'who-we-are', 'We build software for the North Sea.', 'Who we are', 'Opening', 2.0, 9, 'S02_WhoWeAre',
-    'Pride, no jokes. [1] WellMate. [2] WellBook. [3] GeologiQ. [4] Offset Analyzer. [5] LogistiQ. [6] Event Analyzer. [7] AnalytiQ. [8] Portal. [9] All eight together.'),
+  s('S02', 'who-we-are', 'We build software for the North Sea.', 'Who we are', 'Opening', 2.0, 10, 'S02_WhoWeAre',
+    'Pride, no jokes. [1] WellMate. [2] WellBook. [3] GeologiQ. [4] Offset Analyzer. [5] LogistiQ. [6] Event Analyzer. [7] AnalytiQ. [8] Portal. [9] All eight together. [10] Now globally: Halliburton, Brazil, Argentina, Mexico.'),
   s('S03', 'agenda', "Today's feature presentation.", 'Agenda', 'Opening', 0.75, 2, 'S03_Agenda',
     'Point: where we are going. [1] The five chapters slide in. [2] How We Work lifts: "Most of our time goes here."'),
 
@@ -41,8 +41,8 @@ export const slideManifest = [
     'Point: AI took the toil. [1] The week collapses to minutes. [2] "...so what are we doing with it?" Leave it hanging.'),
   s('S06', 'manuals', 'Our user manuals write themselves.', 'User manuals', 'Good', 1.75, 2, 'S06_Manuals',
     'Point: manuals generated, human reviewed. [1] Screenshots, pins, the page is written. [2] Reviewed. "We removed the toil, not the person."'),
-  s('S07', 'poll', "Be honest. It's anonymous.", 'Poll', 'Poll', 2.0, 1, 'S07_Poll',
-    'Paste the link in the chat now. Anonymous, 8 questions, 2 minutes. [1] Poll closed (QR turns into a check). Answers are read back later.'),
+  s('S07', 'poll', "Be honest. It's anonymous.", 'Poll', 'Poll', 2.5, 2, 'S07_Poll',
+    'Paste the link in the chat now. Anonymous, 2 minutes. [1] Start the 2:00 timer (it grows and counts down; last 10 s turn red). [2] Poll closed (QR turns into a check). Answers are read back later.'),
 
   // II · The Bad
   s('S08', 'act-bad', 'II · The Bad', '', 'Bad', 0.17, 0, 'S08_ActBad', 'Chapter card. A beat, then move on.', chapter('Bad')),
@@ -79,7 +79,7 @@ export const slideManifest = [
   // IV · Making It Count
   s('S23', 'act-count', 'IV · Making It Count', '', 'Count', 0.17, 0, 'S23_ActCount', 'Chapter card. Mood shift: the ugly part is the one we can change.', chapter('Count')),
   s('S24', 'role-shift', 'The role shift.', 'Role shift', 'Count', 1.5, 2, 'S24_RoleShift',
-    'Point: the role has shifted. Before: coding was ~4 h. [1] Coding shrinks to AI. [2] Workhorse to decision maker. "No raise included." Poll Q3.'),
+    'Point: the role has shifted. Before: coding was ~4 h. [1] Coding shrinks to AI; debugging becomes second-phase fixing. [2] Workhorse to decision maker. "No raise included." Poll Q3.'),
   s('S25', 'ticket-floor', 'The ticket is the floor, not the ceiling.', 'Raise the bar', 'Count', 0.75, 1, 'S25_TicketFloor',
     'Point: the ticket is the floor, not the ceiling. [1] The fence, the peek, what is beyond: "Look over the fence." Cut tier B.', { cutTier: 'B' }),
   s('S26', 'make-it-better', "Let's make it better.", 'Make it better', 'Count', 2.0, 2, 'S26_MakeItBetter',
@@ -120,7 +120,7 @@ export const slideManifest = [
   // Close
   s('S42', 'shared-repo', 'Build it once. Share it with everyone.', 'Share it', 'Close', 1.25, 2, 'S42_SharedRepo',
     'Point: build it once, share it. Agents, skills, plugins, workflows, versioned. [1] Out to the projects. [2] Company-wide hubs: "Reusable AI engineering."'),
-  s('S43', 'thanks', 'Questions?', '', 'Close', 9, 0, 'S43_Thanks', 'Thank you. Humans only. Closing line: "Session ended. Cache kept warm for 4:50." Read one or two Q8 answers to warm up the Q&A.'),
+  s('S43', 'thanks', 'Questions?', '', 'Close', 9, 0, 'S43_Thanks', 'Thank you. Humans only. Read one or two poll answers to warm up the Q&A.'),
 ];
 
 export function getActiveSlides() {

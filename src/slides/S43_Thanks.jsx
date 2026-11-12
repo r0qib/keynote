@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { appleEase, gentleSpring } from '../motion';
-import { colors } from '../theme';
 import { Mascot, Kicker } from '../components/deck';
 
 const MASCOT_SIZE = 640;
@@ -22,14 +21,6 @@ export default function S43_Thanks() {
         <Kicker variant="aside" {...textIn(0.45)}>
           (Humans only.)
         </Kicker>
-        <motion.p
-          className="flex items-center gap-[20px] font-semibold text-ink whitespace-nowrap"
-          style={{ marginTop: 48, fontSize: 44, lineHeight: 1.15 }}
-          {...textIn(1.1, 16)}
-        >
-          <span className="rounded-full shrink-0" style={{ width: 24, height: 24, background: colors.green }} />
-          Session ended. Cache kept warm for 4:50.
-        </motion.p>
       </div>
 
       {/* Hero: rises in on a spring, then a slow wave from the base. */}

@@ -53,13 +53,13 @@ Our team is a bit isolated. We mostly work with the client, day in and day out, 
 
 We build software for the North Sea.
 
-[click] WellMate. Drilling telemetry. (Add the one sentence only you know.)
+[click] WellMate. Well program and planning. Planning before drilling starts, government approvals, and pre-drill analysis.
 
-[click] WellBook. Well operations.
+[click] WellBook. Rig and project management. Everything about the rig and the team running it.
 
-[click] GeologiQ. Subsurface models. (Pause here. Let people read the logo.)
+[click] GeologiQ. Real-time 3D digital twin. A virtual world for the rigs, vessels, and everything below sea level in real time.
 
-[click] Offset Analyzer. Offset benchmarking.
+[click] Offset Analyzer. Multi-well offset analysis. Geological analysis across multiple wells and wellbores.
 
 [click] LogistiQ. Offshore logistics.
 
@@ -67,9 +67,11 @@ We build software for the North Sea.
 
 [click] AnalytiQ. Our analytics engine.
 
-[click] And Portal. The unified front door to all of it.
+[click] And Portal. The unified suite portal. The single landing page that unifies all our applications.
 
-[click] Eight products. All built by this group of people, and I'm genuinely proud of every one of them. Look at them sitting together like that. WellMate to Portal, and everything in between. Each of them started as a conversation, a whiteboard, and a lot of coffee, and each one is now something people rely on. Please remember this slide, because every story I tell you today, the good, the bad and the ugly, happened while we were building these.
+[click] Eight products. All built by this group of people, and I'm genuinely proud of every one of them. Look at them sitting together like that. WellMate to Portal, and everything in between. Each of them started as a conversation, a whiteboard, and a lot of coffee, and each one is now something people rely on.
+
+[click] And while we built our foundation in the North Sea, we are not limited to Norway anymore. We were recently acquired by Halliburton. Today, our software is supporting global energy companies — currently piloting in Brazil, Argentina, Mexico, and many more places to come. Please remember this slide, because every story I tell you today, the good, the bad and the ugly, happened while we were building these.
 
 ---
 
@@ -135,7 +137,7 @@ We removed the toil. Not the person.
 
 ### S07 · Be honest. It's anonymous.  (2:00 · starts 6:40)
 
-*Cue: Paste the link in the chat now. Anonymous, 8 questions, 2 minutes. [1] Poll closed (QR turns into a check). Answers are read back later.*
+*Cue: Paste the link in the chat now. Anonymous, 2 minutes. [1] Start the 2:00 timer (it grows and counts down; last 10 s turn red). [2] Poll closed (QR turns into a check). Answers are read back later.*
 
 Okay. Before I tell you everything that goes wrong, I'd like you to tell me what goes wrong for you.
 
@@ -431,7 +433,7 @@ So, what do we do with the time? First, we have to notice that the role itself c
 
 Here's a myth: that engineers write code all day. We never did. On a good day, coding was about four hours. The rest was meetings, debugging, reviews, and thinking.
 
-[click] Now the coding part is largely solved. It shrinks to a sliver, labelled "AI". And look at what grows into the freed time: planning, designing, evaluating, deciding.
+[click] Now the coding part is largely solved. It shrinks to a sliver, labelled "AI". And look at what grows into the freed time: planning, designing, evaluating, deciding. We don't spend hours debugging traditional code anymore either — instead, we do second-phase fixing: catching and fixing whatever we missed in the first phase.
 
 Poll result: (read Q3). Which is fair. Some of us miss it. I miss it too, a bit.
 
@@ -737,7 +739,7 @@ In this era, writing reusable code isn't enough. We need to think about reusable
 
 ### S43 · Questions?  (9:00 · starts 50:41)
 
-*Cue: Thank you. Humans only. Closing line: "Session ended. Cache kept warm for 4:50." Read one or two Q8 answers to warm up the Q&A.*
+*Cue: Thank you. Humans only. Read one or two poll answers to warm up the Q&A.*
 
 That's it from me. Thank you.
 
@@ -745,6 +747,6 @@ If you remember one thing: the Good is real, the Bad is the AI, and the Ugly is 
 
 Now, questions. Humans only, please.
 
-(Read one or two answers to the free-text poll question to warm the room up. And since the session has ended, the cache is being kept warm for 4:50.)
+(Read one or two answers to the free-text poll question to warm the room up.)
 
 ---

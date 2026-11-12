@@ -14,7 +14,7 @@
 - **Spoken only** marks facts that never appear on a slide: the budget, the usage, the salary joke. Only **$25,000** is ever on screen.
 - Never blame the audience. Every negative is "me" or "we".
 
-**Clock (talk ≈ 50:41 + Q&A):** 0:00 Opening · 3:15 The Good · 6:40 poll · 8:40 The Bad · 15:20 The Ugly · 25:16 Making It Count · 31:16 How We Work · 43:56 Epilogue · 49:26 Close · 50:41 Q&A · 60:00 stop
+**Clock (talk ≈ 50:41 + Q&A; S07 is now 2:30, so everything after it runs +0:30):** 0:00 Opening · 3:15 The Good · 6:40 poll · 8:40 The Bad · 15:20 The Ugly · 25:16 Making It Count · 31:16 How We Work · 43:56 Epilogue · 49:26 Close · 50:41 Q&A · 60:00 stop
 
 **Cut list:** if rehearsals run long, disable **A** first (S13, S17, S19; saves about 3 min), then **B** (S11, S16, S25, S34; about 4.5 more) in the slide manifest. If you are behind on the day, give an A or B slide one sentence and move on. Poll readbacks: if Q4's slide (S17) is cut, read Q4 on S18; if Q5's (S11) is cut, read it on S12.
 
@@ -39,15 +39,16 @@
 ---
 
 ### S02 · We build software for the North Sea.
-`0:30 → 2:30 · 2:00` · 9 clicks
+`0:30 → 2:30 · 2:00` · 10 clicks
 
 **Point:** pride. These are the products our team built, and most of the company has never seen them.
 
 - Our team is isolated and mostly works with the client, so this is internal bragging, and we have earned it
 - No jokes on this slide. Respect the products
 - **[1]** WellMate · **[2]** WellBook · **[3]** GeologiQ · **[4]** Offset Analyzer · **[5]** LogistiQ · **[6]** Event Analyzer · **[7]** AnalytiQ · **[8]** Portal. One product per click, in that order
-- **[9]** all eight together: finish on the whole picture
-- Descriptors on the slide come from v1 and are still flagged in missing-pieces.md. Confirm or edit before going live
+- **[9]** all eight together: finish on the whole picture of what we built
+- **[10]** the global reveal: acquired by Halliburton, piloting across Brazil, Argentina, Mexico, and beyond. We are no longer limited to Norway/North Sea
+- Descriptors: WellMate (Well program & planning), WellBook (Rig & project management), GeologiQ (Real-time 3D digital twin), Offset Analyzer (Multi-well offset analysis), LogistiQ (Offshore logistics), Event Analyzer (Incident analysis), AnalytiQ (Analytics engine), Portal (Unified suite portal)
 - One thing only you know per product, if you want it. Do not make up numbers
 
 > "We build software for the North Sea."
@@ -117,16 +118,17 @@
 ## Poll
 
 ### S07 · Be honest. It's anonymous.
-`6:40 → 8:40 · 2:00` · 1 click
+`6:40 → 9:10 · 2:30` · 2 clicks
 
 **Point:** before the bad news, tell us yours. Honestly.
 
 - **Paste the poll link in the chat now.** The QR is for phones. Test it through a Teams share beforehand
-- 8 questions, about 2 minutes. Habits and opinions, not a test
+- About 2 minutes, with a timer on screen. Habits and opinions, not a test
 - Say it up front: no names recorded, nothing goes near anyone's performance review. "I literally cannot see who answered"
 - While they answer, read one or two early answers from the results screen
 - Move on at about 60-70% responses
-- **[1]** the QR closes into a check: poll closed. Talk through the headline numbers if you want a quick one
+- **[1]** start the 2:00 timer: it grows, counts down, and the last 10 s turn red
+- **[2]** the QR closes into a check: poll closed. Talk through the headline numbers if you want a quick one
 - Results are read back later: Q2 on S15, Q3 on S24, Q4 on S17, Q5 on S11, Q6 on S18, Q7 on S22, Q1 on S30, Q8 on S43
 
 > "Before I tell you what goes wrong, tell me what goes wrong for you."
@@ -394,7 +396,7 @@
 
 - Sub on screen: "(no raise included)". Keep it
 - Before: a day bar. Coding ~4 h, then meetings, debugging, reviews, thinking. We never coded all day; four hours on a good day
-- **[1]** the coding segment shrinks to a sliver labelled "AI". Planning, designing, evaluating and deciding grow into the time
+- **[1]** the coding segment shrinks to a sliver labelled "AI". Planning, designing, evaluating and deciding grow into the time. Debugging transforms into "Second-phase fixing" (fixing what was missed in the first phase)
 - **[2]** the identity swap: the workhorse becomes a decision maker. "Product owner · Project manager · Decision maker"
 - **Poll Q3:** do you miss writing code by hand? Read it with kindness. Some of us do
 - We are not the workhorse any more
@@ -707,14 +709,12 @@
 
 **Point:** thank you. Questions, humans only.
 
-- Thank you. Then the closing line on screen pays off S40: "Session ended. Cache kept warm for 4:50."
+- Thank you
 - Warm up with one or two funny free-text answers from poll Q8
 - The chat captain feeds you questions. Hard stop at 60:00
 - Do not reveal anything new on the slide. It is only the mascot waving
 
 > "Humans only."
-
-> "Session ended. Cache kept warm for 4:50."
 
 ---
 
@@ -733,7 +733,7 @@
 
 ## Appendix A · Poll questions (S07)
 
-Anonymous, 8 questions, about 2 minutes. Each question lists the slide where you read its result.
+Anonymous, about 2 minutes (timer on S07). Each question lists the slide where you read its result.
 
 **Q1. How do you mostly work with AI coding agents?** → S30
 - Chat back-and-forth until it works
@@ -793,11 +793,11 @@ Anonymous, 8 questions, about 2 minutes. Each question lists the slide where you
 - [ ] In Teams, share **the audience window only**, then check the presenter view isn't visible in the share
 - [ ] Camera on
 - [ ] Forms: "Record name" off, and "Anyone can respond" (or org-only with names off)
-- [ ] Replace the placeholder `POLL_URL` in `S07_Poll.jsx` with the real Forms link (see `missing-pieces.md`)
+- [x] Replace the placeholder `POLL_URL` in `S07_Poll.jsx` with the real Forms link (see `missing-pieces.md`)
 - [ ] Scan the QR **through a Teams share from a phone**. If it won't scan, make it bigger
 - [ ] Poll link copied, ready to paste at S07. A **backup poll** (a second Form or a StrawPoll) is ready in case Forms misbehaves
 - [ ] If your Forms has a Present mode, open it on screen B for live results; otherwise keep the Responses tab open
-- [ ] Confirm the S02 product descriptors (WellMate Drilling telemetry · WellBook Well operations · GeologiQ Subsurface models · Offset Analyzer Offset benchmark · LogistiQ Offshore logistics · Event Analyzer Incident analysis · AnalytiQ Analytics engine · Portal Unified portal)
+- [x] Confirmed the S02 product descriptors (WellMate: Well program & planning · WellBook: Rig & project management · GeologiQ: Real-time 3D digital twin · Offset Analyzer: Multi-well offset analysis · LogistiQ: Offshore logistics · Event Analyzer: Incident analysis · AnalytiQ: Analytics engine · Portal: Unified suite portal)
 - [ ] Chat captain briefed: watches the chat and sends you the best replies privately
 - [ ] Notifications off (Teams, Slack, OS). Phone face down. Water
 

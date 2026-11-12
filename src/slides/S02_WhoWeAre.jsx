@@ -1,5 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Globe } from 'lucide-react';
 import { appleEase } from '../motion.js';
 import { colors } from '../theme.js';
 import { Headline } from '../components/deck';
@@ -15,14 +16,14 @@ import informatiqLogo from '../assets/informatiq-app-suite-logos/informatiq.svg'
 
 // aspect = logo SVG viewBox width / height.
 const PRODUCTS = [
-  { name: 'WellMate', logo: wellMateLogo, aspect: 4.51, desc: 'Drilling telemetry' },
-  { name: 'WellBook', logo: wellBookLogo, aspect: 4.02, desc: 'Well operations' },
-  { name: 'GeologiQ', logo: geologiQLogo, aspect: 4.42, desc: 'Subsurface models' },
-  { name: 'Offset Analyzer', logo: offsetAnalyzerLogo, aspect: 6.41, desc: 'Offset benchmark' },
+  { name: 'WellMate', logo: wellMateLogo, aspect: 4.51, desc: 'Well program & planning' },
+  { name: 'WellBook', logo: wellBookLogo, aspect: 4.02, desc: 'Rig & project management' },
+  { name: 'GeologiQ', logo: geologiQLogo, aspect: 4.42, desc: 'Real-time 3D digital twin' },
+  { name: 'Offset Analyzer', logo: offsetAnalyzerLogo, aspect: 6.41, desc: 'Multi-well offset analysis' },
   { name: 'LogistiQ', logo: logistiQLogo, aspect: 4.0, desc: 'Offshore logistics' },
   { name: 'Event Analyzer', logo: eventAnalyzerLogo, aspect: 6.41, desc: 'Incident analysis' },
   { name: 'AnalytiQ', logo: analytiQLogo, aspect: 4.47, desc: 'Analytics engine' },
-  { name: 'Portal', logo: informatiqLogo, aspect: 6.73, desc: 'Unified portal' },
+  { name: 'Portal', logo: informatiqLogo, aspect: 6.73, desc: 'Unified suite portal' },
 ];
 
 const FINAL_BUILD = PRODUCTS.length + 1;
@@ -177,6 +178,45 @@ export default function S02_WhoWeAre({ buildStep = 0 }) {
       >
         We build software for the North Sea.
       </Headline>
+
+      <AnimatePresence>
+        {buildStep >= 10 && (
+          <motion.div
+            key="global-reveal"
+            className="absolute flex items-center gap-[18px]"
+            style={{ left: 120, top: 236 }}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.6, ease: appleEase }}
+          >
+            <div className="flex items-center gap-[10px] rounded-full bg-accent-blue/10 border border-accent-blue/25 px-[16px] py-[6px]">
+              <Globe size={22} className="text-accent-blue shrink-0" />
+              <span className="text-[24px] font-bold text-accent-blue tracking-[-0.01em]">
+                And now, globally.
+              </span>
+            </div>
+
+            <span className="text-[28px] text-line font-light">|</span>
+
+            <div className="flex items-center gap-[12px] text-[26px]">
+              <span className="font-bold text-ink">Acquired by Halliburton</span>
+              <span className="text-muted font-medium">·</span>
+              <span className="text-muted font-medium">Piloting across</span>
+              <span className="rounded-[8px] bg-surface border border-line px-[14px] py-[3px] text-[24px] font-semibold text-ink shadow-sm">
+                Brazil
+              </span>
+              <span className="rounded-[8px] bg-surface border border-line px-[14px] py-[3px] text-[24px] font-semibold text-ink shadow-sm">
+                Argentina
+              </span>
+              <span className="rounded-[8px] bg-surface border border-line px-[14px] py-[3px] text-[24px] font-semibold text-ink shadow-sm">
+                Mexico
+              </span>
+              <span className="text-muted font-normal text-[26px]">& beyond</span>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {PRODUCTS.map((product, i) => (
         <Product key={product.name} product={product} index={i} buildStep={buildStep} />

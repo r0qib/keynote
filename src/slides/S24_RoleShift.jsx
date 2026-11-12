@@ -21,7 +21,7 @@ const SEGMENTS = [
   { key: 'evaluating', label: 'Evaluating', hours: [0, 0.9], tone: 'teal' },
   { key: 'deciding', label: 'Deciding', hours: [0, 0.9], tone: 'teal' },
   { key: 'meetings', label: 'Meetings', hours: [1, 1], tone: 'grey' },
-  { key: 'debugging', label: 'Debugging', hours: [1, 1], tone: 'grey' },
+  { key: 'debugging', label: 'Second-phase fixing', hours: [1, 1], tone: 'grey' },
   { key: 'reviews', label: 'Reviews', hours: [1, 1], tone: 'grey' },
   { key: 'thinking', label: 'Thinking', hours: [1, 1], tone: 'grey' },
 ];
@@ -69,6 +69,35 @@ function CodingLabel({ now }) {
   );
 }
 
+function DebuggingLabel({ now }) {
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      {now ? (
+        <motion.span
+          key="fixing"
+          className="text-center px-[8px] text-[26px] font-semibold tracking-[-0.01em] leading-[1.15]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: { duration: 0.15 } }}
+          transition={{ duration: 0.4, delay: 0.5 }}
+        >
+          Second-phase<br />fixing
+        </motion.span>
+      ) : (
+        <motion.span
+          key="debugging"
+          className="min-w-0 overflow-hidden whitespace-nowrap px-[8px] text-[32px] font-semibold tracking-[-0.01em]"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: { duration: 0.15 } }}
+        >
+          Debugging
+        </motion.span>
+      )}
+    </AnimatePresence>
+  );
+}
+
 function DayBar({ now }) {
   const boxes = layoutBar(now ? 1 : 0);
   return (
@@ -95,6 +124,8 @@ function DayBar({ now }) {
           >
             {s.key === 'coding' ? (
               <CodingLabel now={now} />
+            ) : s.key === 'debugging' ? (
+              <DebuggingLabel now={now} />
             ) : (
               <span className="min-w-0 overflow-hidden whitespace-nowrap px-[8px] text-[32px] font-semibold tracking-[-0.01em]">
                 {s.label}

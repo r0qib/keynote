@@ -255,14 +255,14 @@ Each slide has: **Idea** (the one thing), **On screen** (the only copy), **Visua
 - **Idea:** pride. These are the products our isolated team built. The audience doesn't know them.
 - **On screen:** headline "We build software for the North Sea." plus, per product, the logo, the name and one short descriptor. Nothing humorous. No stakes line.
 - **Order (exact):** WellMate · WellBook · GeologiQ · Offset Analyzer · LogistiQ · Event Analyzer · AnalytiQ · Portal.
-- **Descriptors** (from v1; flagged in `missing-pieces.md` for the presenter to confirm): WellMate *Drilling telemetry* · WellBook *Well operations* · GeologiQ *Subsurface models* · Offset Analyzer *Offset benchmark* · LogistiQ *Offshore logistics* · Event Analyzer *Incident analysis* · AnalytiQ *Analytics engine* · Portal *Unified portal* (Portal uses `informatiq.svg`).
+- **Descriptors** (confirmed with presenter, 2026-11-05): WellMate *Well program & planning* · WellBook *Rig & project management* · GeologiQ *Real-time 3D digital twin* · Offset Analyzer *Multi-well offset analysis* · LogistiQ *Offshore logistics* · Event Analyzer *Incident analysis* · AnalytiQ *Analytics engine* · Portal *Unified suite portal* (Portal uses `informatiq.svg`).
 - **Visual:**
   - **The spotlight.** Each click brings the next product into a big centre spotlight: logo ≥ 280 px wide, name at sub-headline size, descriptor below.
   - **The tray.** As the next product arrives, the previous one glides (layout animation) into an organised **4 × 2 tray** that fills the lower half of the stage. Logos in the tray are still large (≥ 140 px), name underneath.
   - **Final build:** the spotlight clears and the full tray settles centred and enlarged to use the whole slide.
   - **Background:** a very subtle horizon line, with the offshore rig line-art small at the far right edge of the horizon.
   - Logos must render crisp and large. The logo SVGs have wide aspect ratios, so size by height/width box, not by square tiles.
-- **Builds:** 0: headline and horizon. 1–8: one product each. 9: all eight settle into the final arrangement. (`totalBuilds: 9`)
+- **Builds:** 0: headline and horizon. 1–8: one product each. 9: all eight settle into the final arrangement. 10: global reveal (acquired by Halliburton, piloting across Brazil, Argentina, Mexico & beyond). (`totalBuilds: 10`)
 
 #### S03 · `agenda`
 - **Idea:** where we're going. The workflow chapter is the big one.
@@ -422,7 +422,7 @@ Each slide has: **Idea** (the one thing), **On screen** (the only copy), **Visua
 - **Visual:**
   - A single **day bar** (8 h) that fills the width, labels **inside or above** each segment and always fully readable (v1 truncated them, see feedback image s26).
   - **Before:** Coding ~4 h · Meetings · Debugging · Reviews · Thinking.
-  - **Now:** the Coding segment shrinks to a sliver labelled "AI". Planning · Designing · Evaluating · Deciding grow into the freed time.
+  - **Now:** the Coding segment shrinks to a sliver labelled "AI". Planning · Designing · Evaluating · Deciding grow into the freed time; Debugging becomes Second-phase fixing.
   - Then the identity swap. Beside the bar, the mascot changes from workhorse (`meat-printer` or `meat-clerk`) to `meat-think`. Its title tag flips from "Engineer: writes the code" to "Product owner · Project manager · Decision maker".
 - **Builds:** 0: the before bar. 1: the morph to now. 2: the identity swap. (`totalBuilds: 2`)
 
