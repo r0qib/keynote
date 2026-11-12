@@ -32,5 +32,6 @@ Open `http://localhost:5173` and press **`F`** to go fullscreen.
 
 - **Next / Prev:** `→` / `←` / `Space`
 - **Fullscreen:** `F`
+- **Presenter View:** `P` (For presenter view with notes and context)
 - **Slide Navigator Drawer:** `O` or `Esc`
 - **Dock:** Move mouse to bottom edge to reveal the floating macOS glass dock.
